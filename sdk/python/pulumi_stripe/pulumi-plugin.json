@@ -1,5 +1,0 @@
-{
-  "resource": true,
-  "name": "stripe",
-  "server": "github://api.github.com/georgegebbett"
-}
