@@ -244,9 +244,8 @@ In this section, we will create a Pulumi program in TypeScript that utilizes the
 1. Create a new Pulumi program in the `examples/` directory, e.g.:
 
     ```bash
-    mkdir examples/stripe-example
-    mkdir examples/stripe-example/ts # Change "my-example" to something more meaningful.
-    cd examples/stripe-example/ts
+    mkdir examples/my-example/ts # Change "my-example" to something more meaningful.
+    cd examples/my-example/ts
     pulumi new typescript
     # (Go through the prompts with the default values)
     npm install

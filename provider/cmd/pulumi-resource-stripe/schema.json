@@ -1,0 +1,2171 @@
+{
+    "name": "stripe",
+    "description": "A Pulumi package for creating and managing stripe cloud resources.",
+    "keywords": [
+        "pulumi",
+        "stripe",
+        "category/cloud"
+    ],
+    "homepage": "https://www.pulumi.com",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`stripe` Terraform Provider](https://github.com/lukasaron/terraform-provider-stripe).",
+    "repository": "https://github.com/georgegebbett/pulumi-stripe",
+    "publisher": "Pulumi",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "language": {
+        "csharp": {
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
+            "compatibility": "tfbridge20"
+        },
+        "go": {
+            "importBasePath": "github.com/georgegebbett/pulumi-stripe/sdk/go/stripe",
+            "generateResourceContainerTypes": true,
+            "generateExtraInputTypes": true
+        },
+        "nodejs": {
+            "packageDescription": "A Pulumi package for creating and managing stripe cloud resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/lukasaron/terraform-provider-stripe)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-stripe` repo](https://github.com/georgegebbett/pulumi-stripe/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-stripe` repo](https://github.com/lukasaron/terraform-provider-stripe/issues).",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
+        },
+        "python": {
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/lukasaron/terraform-provider-stripe)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-stripe` repo](https://github.com/georgegebbett/pulumi-stripe/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-stripe` repo](https://github.com/lukasaron/terraform-provider-stripe/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
+        }
+    },
+    "config": {
+        "variables": {
+            "apiKey": {
+                "type": "string",
+                "description": "The Stripe secret API key\n",
+                "secret": true
+            }
+        },
+        "defaults": [
+            "apiKey"
+        ]
+    },
+    "types": {
+        "stripe:index/PortalConfigurationBusinessProfile:PortalConfigurationBusinessProfile": {
+            "properties": {
+                "headline": {
+                    "type": "string",
+                    "description": "String. The messaging shown to customers in the portal.\n"
+                },
+                "privacyPolicyUrl": {
+                    "type": "string",
+                    "description": "String. A link to the business's publicly available privacy policy.\n"
+                },
+                "termsOfServiceUrl": {
+                    "type": "string",
+                    "description": "String. A link to the business's publicly available terms of service.\n"
+                }
+            },
+            "type": "object"
+        },
+        "stripe:index/PortalConfigurationFeatures:PortalConfigurationFeatures": {
+            "properties": {
+                "customerUpdate": {
+                    "$ref": "#/types/stripe:index/PortalConfigurationFeaturesCustomerUpdate:PortalConfigurationFeaturesCustomerUpdate",
+                    "description": "List(Resource). Information about updating the customer details in the portal. See Customer Update.\n"
+                },
+                "invoiceHistory": {
+                    "$ref": "#/types/stripe:index/PortalConfigurationFeaturesInvoiceHistory:PortalConfigurationFeaturesInvoiceHistory",
+                    "description": "List(Resource). Information about showing the billing history in the portal. See Invoice History.\n"
+                },
+                "paymentMethodUpdate": {
+                    "$ref": "#/types/stripe:index/PortalConfigurationFeaturesPaymentMethodUpdate:PortalConfigurationFeaturesPaymentMethodUpdate",
+                    "description": "List(Resource). Information about updating payment methods in the portal. See Payment Method Update.\n"
+                },
+                "subscriptionCancel": {
+                    "$ref": "#/types/stripe:index/PortalConfigurationFeaturesSubscriptionCancel:PortalConfigurationFeaturesSubscriptionCancel",
+                    "description": "List(Resource). Information about canceling subscriptions in the portal. See Subscription Cancel.\n"
+                },
+                "subscriptionPauses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stripe:index/PortalConfigurationFeaturesSubscriptionPause:PortalConfigurationFeaturesSubscriptionPause"
+                    },
+                    "description": "List(Resource). Information about pausing subscriptions in the portal. See Subscription Pause.\n"
+                },
+                "subscriptionUpdates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stripe:index/PortalConfigurationFeaturesSubscriptionUpdate:PortalConfigurationFeaturesSubscriptionUpdate"
+                    },
+                    "description": "List(Resource). Information about updating subscriptions in the portal. See Subscription Update.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "customerUpdate",
+                        "invoiceHistory",
+                        "paymentMethodUpdate",
+                        "subscriptionCancel",
+                        "subscriptionPauses",
+                        "subscriptionUpdates"
+                    ]
+                }
+            }
+        },
+        "stripe:index/PortalConfigurationFeaturesCustomerUpdate:PortalConfigurationFeaturesCustomerUpdate": {
+            "properties": {
+                "allowedUpdates": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). The types of customer updates that are supported [`name`, `email`, `address`, `shipping`, `phone`, `tax_id`]. When empty, customers are not updatable.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
+        "stripe:index/PortalConfigurationFeaturesInvoiceHistory:PortalConfigurationFeaturesInvoiceHistory": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
+        "stripe:index/PortalConfigurationFeaturesPaymentMethodUpdate:PortalConfigurationFeaturesPaymentMethodUpdate": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
+        "stripe:index/PortalConfigurationFeaturesSubscriptionCancel:PortalConfigurationFeaturesSubscriptionCancel": {
+            "properties": {
+                "cancellationReason": {
+                    "$ref": "#/types/stripe:index/PortalConfigurationFeaturesSubscriptionCancelCancellationReason:PortalConfigurationFeaturesSubscriptionCancelCancellationReason",
+                    "description": "List(Resource). Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer. Details of this field is in Cancellation Reason.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "String. Whether to cancel subscriptions immediately or at the end of the billing period. Valid value is either `immediately` or `at_period_end`\n"
+                },
+                "prorationBehavior": {
+                    "type": "string",
+                    "description": "String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `create_prorations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
+        "stripe:index/PortalConfigurationFeaturesSubscriptionCancelCancellationReason:PortalConfigurationFeaturesSubscriptionCancelCancellationReason": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Bool. Whether the feature is enabled.\n"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). Which cancellation reasons will be given as options to the customer. Supported values are `too_expensive`, `missing_features`, `switched_service`, `unused`, `customer_service`, `too_complex`, `low_quality`, and `other`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "options"
+            ]
+        },
+        "stripe:index/PortalConfigurationFeaturesSubscriptionPause:PortalConfigurationFeaturesSubscriptionPause": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.\n"
+                }
+            },
+            "type": "object"
+        },
+        "stripe:index/PortalConfigurationFeaturesSubscriptionUpdate:PortalConfigurationFeaturesSubscriptionUpdate": {
+            "properties": {
+                "defaultAllowedUpdates": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). The types of subscription updates that are supported. When empty, subscriptions are not updatable. Supported values are `price`, `quantity`, and `promotion_code`.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.\n"
+                },
+                "products": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stripe:index/PortalConfigurationFeaturesSubscriptionUpdateProduct:PortalConfigurationFeaturesSubscriptionUpdateProduct"
+                    },
+                    "description": "List(Resource). The list of products that support subscription updates. See details Products.\n"
+                },
+                "prorationBehavior": {
+                    "type": "string",
+                    "description": "String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `create_prorations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultAllowedUpdates",
+                "enabled",
+                "products"
+            ]
+        },
+        "stripe:index/PortalConfigurationFeaturesSubscriptionUpdateProduct:PortalConfigurationFeaturesSubscriptionUpdateProduct": {
+            "properties": {
+                "prices": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). The list of price IDs for the product that a subscription can be updated to.\n"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "String. The product id.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "prices",
+                "product"
+            ]
+        },
+        "stripe:index/PortalConfigurationLoginPage:PortalConfigurationLoginPage": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.\n"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "url"
+                    ]
+                }
+            }
+        },
+        "stripe:index/PriceCurrencyOption:PriceCurrencyOption": {
+            "properties": {
+                "currency": {
+                    "type": "string",
+                    "description": "String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).\n"
+                },
+                "customUnitAmount": {
+                    "$ref": "#/types/stripe:index/PriceCurrencyOptionCustomUnitAmount:PriceCurrencyOptionCustomUnitAmount",
+                    "description": "List(Resource). When set, \nprovides configuration for the amount to be adjusted by the customer during Checkout Sessions and Payment Links.\nSee details in custom unit amount.\n"
+                },
+                "taxBehavior": {
+                    "type": "string",
+                    "description": "String. Only required if a default tax behavior was not provided in the Stripe Tax settings. \nSpecifies whether the price is considered inclusive of taxes or exclusive of taxes.\nOne of `inclusive`, `exclusive`, or `unspecified`.\nOnce specified as either inclusive or exclusive, it cannot be changed.\n"
+                },
+                "tiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stripe:index/PriceCurrencyOptionTier:PriceCurrencyOptionTier"
+                    },
+                    "description": "List(Resource). Each element represents a pricing tier. \nThis parameter requires `billing_scheme` to be set to `tiered`. This resource can be used more than once and follows\nthe same fields as the root tiers block\n"
+                },
+                "unitAmount": {
+                    "type": "integer",
+                    "description": "Int. A positive integer in cents (or 0 for a free price) representing how much to charge.\n"
+                },
+                "unitAmountDecimal": {
+                    "type": "number",
+                    "description": "Float. Same as unit_amount, but accepts a decimal value in cents with at most 12\ndecimal places. Only one of unit_amount and unit_amount_decimal can be set.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "currency"
+            ]
+        },
+        "stripe:index/PriceCurrencyOptionCustomUnitAmount:PriceCurrencyOptionCustomUnitAmount": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Bool. Pass in `true` to enable `custom_unit_amount`, otherwise omit `custom_unit_amount`.\n"
+                },
+                "maximum": {
+                    "type": "integer",
+                    "description": "Int. The maximum unit amount the customer can specify for this item.\n"
+                },
+                "minimum": {
+                    "type": "integer",
+                    "description": "Int. The minimum unit amount the customer can specify for this item. \nMust be at least the minimum charge amount.\n"
+                },
+                "preset": {
+                    "type": "integer",
+                    "description": "Int. The starting unit amount which can be updated by the customer.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
+        "stripe:index/PriceCurrencyOptionTier:PriceCurrencyOptionTier": {
+            "properties": {
+                "flatAmount": {
+                    "type": "integer",
+                    "description": "Int. The flat billing amount for an entire tier, regardless of the number of units in the\ntier.\n"
+                },
+                "flatAmountDecimal": {
+                    "type": "number",
+                    "description": "Float. Same as `flat_amount`, but accepts a decimal value representing an integer\nin the minor units of the currency. Only one of `flat_amount` and `flat_amount_decimal` can be set.\n"
+                },
+                "unitAmount": {
+                    "type": "integer",
+                    "description": "Int. The per-unit billing amount for each individual unit for which this tier applies.\n"
+                },
+                "unitAmountDecimal": {
+                    "type": "number",
+                    "description": "Float. Same as `unit_amount`, but accepts a decimal value in cents with at most 12\ndecimal places. Only one of `unit_amount` and `unit_amount_decimal` can be set.\n"
+                },
+                "upTo": {
+                    "type": "integer",
+                    "description": "Int. Specifies the upper bound of this tier. The lower bound of a tier is the upper bound of the\nprevious tier adding one. Use `-1` to define a fallback tier.\n"
+                }
+            },
+            "type": "object"
+        },
+        "stripe:index/PriceRecurring:PriceRecurring": {
+            "properties": {
+                "aggregateUsage": {
+                    "type": "string",
+                    "description": "String. Specifies a usage of aggregation strategy for prices of `usage_type=metered`.\nAllowed values are `sum` for summing up all usage during a period, `last_during_period` for using the last usage\nrecord reported within a period, `last_ever` for using the last usage record ever (across period bounds) or `max`\nwhich uses the usage record with the maximum reported usage during a period.\n"
+                },
+                "interval": {
+                    "type": "string",
+                    "description": "String. Specifies billing frequency. Either `day`, `week`, `month` or `year`.\n"
+                },
+                "intervalCount": {
+                    "type": "integer",
+                    "description": "Int. The number of intervals between subscription billings. For\nexample, `interval=month` and `interval_count=3` bills every 3 months. Maximum of one year interval allowed (1 year,\n12 months, or 52 weeks).\n"
+                },
+                "usageType": {
+                    "type": "string",
+                    "description": "String. Configures how the quantity per period should be determined. Can be either `metered`\nor `licensed`. `licensed` automatically bills the quantity set when adding it to a subscription. `metered` aggregates\nthe total usage based on usage records. Defaults to `licensed`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "interval"
+            ]
+        },
+        "stripe:index/PriceTier:PriceTier": {
+            "properties": {
+                "flatAmount": {
+                    "type": "integer",
+                    "description": "Int. The flat billing amount for an entire tier, regardless of the number of units in the\ntier.\n"
+                },
+                "flatAmountDecimal": {
+                    "type": "number",
+                    "description": "Float. Same as `flat_amount`, but accepts a decimal value representing an integer\nin the minor units of the currency. Only one of `flat_amount` and `flat_amount_decimal` can be set.\n"
+                },
+                "unitAmount": {
+                    "type": "integer",
+                    "description": "Int. The per-unit billing amount for each individual unit for which this tier applies.\n"
+                },
+                "unitAmountDecimal": {
+                    "type": "number",
+                    "description": "Float. Same as `unit_amount`, but accepts a decimal value in cents with at most 12\ndecimal places. Only one of `unit_amount` and `unit_amount_decimal` can be set.\n"
+                },
+                "upTo": {
+                    "type": "integer",
+                    "description": "Int. Specifies the upper bound of this tier. The lower bound of a tier is the upper bound of the\nprevious tier adding one. Use `-1` to define a fallback tier.\n"
+                }
+            },
+            "type": "object"
+        },
+        "stripe:index/PriceTransformQuantity:PriceTransformQuantity": {
+            "properties": {
+                "divideBy": {
+                    "type": "integer",
+                    "description": "Int. Divide usage by this number.\n"
+                },
+                "round": {
+                    "type": "string",
+                    "description": "String. After division, either round the result `up` or `down`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "divideBy",
+                "round"
+            ]
+        },
+        "stripe:index/PromotionCodeRestrictions:PromotionCodeRestrictions": {
+            "properties": {
+                "firstTimeTransaction": {
+                    "type": "boolean",
+                    "description": "Bool. A Boolean indicating if the Promotion Code should only be redeemed for Customers without any successful payments or invoices.\n"
+                },
+                "minimumAmount": {
+                    "type": "integer",
+                    "description": "Int. Minimum amount required to redeem this Promotion Code into a Coupon (e.g., a purchase must be $100 or more to work).\n"
+                },
+                "minimumAmountCurrency": {
+                    "type": "string",
+                    "description": "String. Three-letter ISO code for `minimum_amount`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "firstTimeTransaction",
+                "minimumAmount",
+                "minimumAmountCurrency"
+            ]
+        }
+    },
+    "provider": {
+        "description": "The provider type for the stripe package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "apiKey": {
+                "type": "string",
+                "description": "The Stripe secret API key\n",
+                "secret": true
+            }
+        },
+        "required": [
+            "apiKey"
+        ],
+        "inputProperties": {
+            "apiKey": {
+                "type": "string",
+                "description": "The Stripe secret API key\n",
+                "secret": true
+            }
+        },
+        "requiredInputs": [
+            "apiKey"
+        ]
+    },
+    "resources": {
+        "stripe:index/card:Card": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as stripe from \"@pulumi/stripe\";\n\n// card for the customer\nconst cardCard = new stripe.Card(\"cardCard\", {\n    customer: stripe_customer.customer.id,\n    number: \"4242424242424242\",\n    cvc: 123,\n    expMonth: 8,\n    expYear: 2030,\n});\n// card for the customer with address\nconst cardIndex_cardCard = new stripe.Card(\"cardIndex/cardCard\", {\n    customer: stripe_customer.customer.id,\n    number: \"4242424242424242\",\n    cvc: 123,\n    expMonth: 8,\n    expYear: 2030,\n    address: {\n        line1: \"1 The Best Street\",\n        line2: \"Apartment 401\",\n        city: \"Sydney\",\n        state: \"NSW\",\n        zip: \"2000\",\n        country: \"Australia\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_stripe as stripe\n\n# card for the customer\ncard_card = stripe.Card(\"cardCard\",\n    customer=stripe_customer[\"customer\"][\"id\"],\n    number=\"4242424242424242\",\n    cvc=123,\n    exp_month=8,\n    exp_year=2030)\n# card for the customer with address\ncard_index_card_card = stripe.Card(\"cardIndex/cardCard\",\n    customer=stripe_customer[\"customer\"][\"id\"],\n    number=\"4242424242424242\",\n    cvc=123,\n    exp_month=8,\n    exp_year=2030,\n    address={\n        \"line1\": \"1 The Best Street\",\n        \"line2\": \"Apartment 401\",\n        \"city\": \"Sydney\",\n        \"state\": \"NSW\",\n        \"zip\": \"2000\",\n        \"country\": \"Australia\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Stripe = Pulumi.Stripe;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // card for the customer\n    var cardCard = new Stripe.Card(\"cardCard\", new()\n    {\n        Customer = stripe_customer.Customer.Id,\n        Number = \"4242424242424242\",\n        Cvc = 123,\n        ExpMonth = 8,\n        ExpYear = 2030,\n    });\n\n    // card for the customer with address\n    var cardIndex_cardCard = new Stripe.Card(\"cardIndex/cardCard\", new()\n    {\n        Customer = stripe_customer.Customer.Id,\n        Number = \"4242424242424242\",\n        Cvc = 123,\n        ExpMonth = 8,\n        ExpYear = 2030,\n        Address = \n        {\n            { \"line1\", \"1 The Best Street\" },\n            { \"line2\", \"Apartment 401\" },\n            { \"city\", \"Sydney\" },\n            { \"state\", \"NSW\" },\n            { \"zip\", \"2000\" },\n            { \"country\", \"Australia\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/georgegebbett/pulumi-stripe/sdk/go/stripe\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := stripe.NewCard(ctx, \"cardCard\", \u0026stripe.CardArgs{\n\t\t\tCustomer: pulumi.Any(stripe_customer.Customer.Id),\n\t\t\tNumber:   pulumi.String(\"4242424242424242\"),\n\t\t\tCvc:      pulumi.Int(123),\n\t\t\tExpMonth: pulumi.Int(8),\n\t\t\tExpYear:  pulumi.Int(2030),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewCard(ctx, \"cardIndex/cardCard\", \u0026stripe.CardArgs{\n\t\t\tCustomer: pulumi.Any(stripe_customer.Customer.Id),\n\t\t\tNumber:   pulumi.String(\"4242424242424242\"),\n\t\t\tCvc:      pulumi.Int(123),\n\t\t\tExpMonth: pulumi.Int(8),\n\t\t\tExpYear:  pulumi.Int(2030),\n\t\t\tAddress: pulumi.StringMap{\n\t\t\t\t\"line1\":   pulumi.String(\"1 The Best Street\"),\n\t\t\t\t\"line2\":   pulumi.String(\"Apartment 401\"),\n\t\t\t\t\"city\":    pulumi.String(\"Sydney\"),\n\t\t\t\t\"state\":   pulumi.String(\"NSW\"),\n\t\t\t\t\"zip\":     pulumi.String(\"2000\"),\n\t\t\t\t\"country\": pulumi.String(\"Australia\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.stripe.Card;\nimport com.pulumi.stripe.CardArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var cardCard = new Card(\"cardCard\", CardArgs.builder()        \n            .customer(stripe_customer.customer().id())\n            .number(\"4242424242424242\")\n            .cvc(123)\n            .expMonth(8)\n            .expYear(2030)\n            .build());\n\n        var cardIndex_cardCard = new Card(\"cardIndex/cardCard\", CardArgs.builder()        \n            .customer(stripe_customer.customer().id())\n            .number(\"4242424242424242\")\n            .cvc(123)\n            .expMonth(8)\n            .expYear(2030)\n            .address(Map.ofEntries(\n                Map.entry(\"line1\", \"1 The Best Street\"),\n                Map.entry(\"line2\", \"Apartment 401\"),\n                Map.entry(\"city\", \"Sydney\"),\n                Map.entry(\"state\", \"NSW\"),\n                Map.entry(\"zip\", \"2000\"),\n                Map.entry(\"country\", \"Australia\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # card for the customer\n  cardCard:\n    type: stripe:Card\n    properties:\n      # stripe_customer.customer has to be created separately\n      customer: ${stripe_customer.customer.id}\n      number: '4242424242424242'\n      cvc: 123\n      expMonth: 8\n      expYear: 2030\n  # card for the customer with address\n  cardIndex/cardCard:\n    type: stripe:Card\n    properties:\n      # stripe_customer.customer has to be created separately\n      customer: ${stripe_customer.customer.id}\n      number: '4242424242424242'\n      cvc: 123\n      expMonth: 8\n      expYear: 2030\n      address:\n        line1: 1 The Best Street\n        line2: Apartment 401\n        city: Sydney\n        state: NSW\n        zip: '2000'\n        country: Australia\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "address": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Address map with fields related to the address: `line1`, `line2`, `city`, `state`\n, `zip` and `country`.\n"
+                },
+                "addressLine1Check": {
+                    "type": "string",
+                    "description": "String. If address `line1` was provided, results of the check: `pass`, `fail`, `unavailable`,\nor `unchecked`.\n"
+                },
+                "addressZipCheck": {
+                    "type": "string",
+                    "description": "String. If address `zip` was provided, results of the check: `pass`, `fail`, `unavailable`,\nor `unchecked`.\n"
+                },
+                "availablePayoutMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). A set of available payout methods for this card. Only values from this set\nshould be passed as the method when creating a payout.\n"
+                },
+                "brand": {
+                    "type": "string",
+                    "description": "String. Card brand. Can be `American Express`, `Diners Club`, `Discover`, `JCB`, `MasterCard`, `UnionPay`\n, `Visa`, or `Unknown`.\n"
+                },
+                "country": {
+                    "type": "string",
+                    "description": "String. Two-letter ISO code representing the country of the card. You could use this attribute to get a\nsense of the international breakdown of cards you’ve collected.\n"
+                },
+                "customer": {
+                    "type": "string",
+                    "description": "String. The customer that this card belongs to.\n"
+                },
+                "cvc": {
+                    "type": "integer",
+                    "description": "Int. Card security code. Highly recommended to always include this value, but it's required only\nfor accounts based in European countries.\n",
+                    "secret": true
+                },
+                "cvcCheck": {
+                    "type": "string",
+                    "description": "String. If a `cvc` was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`. A\nresult of `unchecked` indicates that CVC was provided but hasn’t been checked yet\n"
+                },
+                "expMonth": {
+                    "type": "integer",
+                    "description": "Int. Number representing the card's expiration month.\n"
+                },
+                "expYear": {
+                    "type": "integer",
+                    "description": "Int. Four-digit number representing the card's expiration year.\n"
+                },
+                "fingerprint": {
+                    "type": "string",
+                    "description": "String. Uniquely identifies this particular card number. You can use this attribute to check whether\ntwo customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize\ncard information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card\nnumber.\n"
+                },
+                "funding": {
+                    "type": "string",
+                    "description": "String. Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`.\n"
+                },
+                "last4": {
+                    "type": "string",
+                    "description": "String. The last four digits of the card.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for\nstoring additional information about the object in a structured format.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "String. Cardholder name.\n"
+                },
+                "number": {
+                    "type": "string",
+                    "description": "String. The card number, as a string without any separators.\n",
+                    "secret": true
+                },
+                "tokenizationMethod": {
+                    "type": "string",
+                    "description": "String. If the card number is tokenized, this is the method that was used. Can\nbe `android_pay` (includes Google Pay), `apple_pay`, `masterpass`, `visa_checkout`, or `null`.\n"
+                }
+            },
+            "required": [
+                "addressLine1Check",
+                "addressZipCheck",
+                "availablePayoutMethods",
+                "brand",
+                "country",
+                "customer",
+                "cvcCheck",
+                "expMonth",
+                "expYear",
+                "fingerprint",
+                "funding",
+                "last4",
+                "name",
+                "number",
+                "tokenizationMethod"
+            ],
+            "inputProperties": {
+                "address": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Address map with fields related to the address: `line1`, `line2`, `city`, `state`\n, `zip` and `country`.\n"
+                },
+                "customer": {
+                    "type": "string",
+                    "description": "String. The customer that this card belongs to.\n",
+                    "willReplaceOnChanges": true
+                },
+                "cvc": {
+                    "type": "integer",
+                    "description": "Int. Card security code. Highly recommended to always include this value, but it's required only\nfor accounts based in European countries.\n",
+                    "secret": true,
+                    "willReplaceOnChanges": true
+                },
+                "expMonth": {
+                    "type": "integer",
+                    "description": "Int. Number representing the card's expiration month.\n"
+                },
+                "expYear": {
+                    "type": "integer",
+                    "description": "Int. Four-digit number representing the card's expiration year.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for\nstoring additional information about the object in a structured format.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "String. Cardholder name.\n"
+                },
+                "number": {
+                    "type": "string",
+                    "description": "String. The card number, as a string without any separators.\n",
+                    "secret": true,
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "customer",
+                "expMonth",
+                "expYear",
+                "number"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Card resources.\n",
+                "properties": {
+                    "address": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map(String). Address map with fields related to the address: `line1`, `line2`, `city`, `state`\n, `zip` and `country`.\n"
+                    },
+                    "addressLine1Check": {
+                        "type": "string",
+                        "description": "String. If address `line1` was provided, results of the check: `pass`, `fail`, `unavailable`,\nor `unchecked`.\n"
+                    },
+                    "addressZipCheck": {
+                        "type": "string",
+                        "description": "String. If address `zip` was provided, results of the check: `pass`, `fail`, `unavailable`,\nor `unchecked`.\n"
+                    },
+                    "availablePayoutMethods": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List(String). A set of available payout methods for this card. Only values from this set\nshould be passed as the method when creating a payout.\n"
+                    },
+                    "brand": {
+                        "type": "string",
+                        "description": "String. Card brand. Can be `American Express`, `Diners Club`, `Discover`, `JCB`, `MasterCard`, `UnionPay`\n, `Visa`, or `Unknown`.\n"
+                    },
+                    "country": {
+                        "type": "string",
+                        "description": "String. Two-letter ISO code representing the country of the card. You could use this attribute to get a\nsense of the international breakdown of cards you’ve collected.\n"
+                    },
+                    "customer": {
+                        "type": "string",
+                        "description": "String. The customer that this card belongs to.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "cvc": {
+                        "type": "integer",
+                        "description": "Int. Card security code. Highly recommended to always include this value, but it's required only\nfor accounts based in European countries.\n",
+                        "secret": true,
+                        "willReplaceOnChanges": true
+                    },
+                    "cvcCheck": {
+                        "type": "string",
+                        "description": "String. If a `cvc` was provided, results of the check: `pass`, `fail`, `unavailable`, or `unchecked`. A\nresult of `unchecked` indicates that CVC was provided but hasn’t been checked yet\n"
+                    },
+                    "expMonth": {
+                        "type": "integer",
+                        "description": "Int. Number representing the card's expiration month.\n"
+                    },
+                    "expYear": {
+                        "type": "integer",
+                        "description": "Int. Four-digit number representing the card's expiration year.\n"
+                    },
+                    "fingerprint": {
+                        "type": "string",
+                        "description": "String. Uniquely identifies this particular card number. You can use this attribute to check whether\ntwo customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize\ncard information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card\nnumber.\n"
+                    },
+                    "funding": {
+                        "type": "string",
+                        "description": "String. Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`.\n"
+                    },
+                    "last4": {
+                        "type": "string",
+                        "description": "String. The last four digits of the card.\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for\nstoring additional information about the object in a structured format.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "String. Cardholder name.\n"
+                    },
+                    "number": {
+                        "type": "string",
+                        "description": "String. The card number, as a string without any separators.\n",
+                        "secret": true,
+                        "willReplaceOnChanges": true
+                    },
+                    "tokenizationMethod": {
+                        "type": "string",
+                        "description": "String. If the card number is tokenized, this is the method that was used. Can\nbe `android_pay` (includes Google Pay), `apple_pay`, `masterpass`, `visa_checkout`, or `null`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stripe:index/coupon:Coupon": {
+            "description": "With this resource, you can create a coupon - [Stripe API coupon documentation](https://stripe.com/docs/api/coupons).\n\nA coupon contains information about a percent-off or amount-off discount you might want to apply to a customer.\n\nA coupon has either a `percent_off` or an `amount_off` and `currency`. If you set an `amount_off`, that amount will be subtracted from any invoice’s subtotal. \n\nFor example, an invoice with a subtotal of $100 will have a final total of $0 if a coupon with an amount_off of 20000 is applied to it and an invoice with a subtotal of $300 will have a final total of $100 if a coupon with an amount_off of 20000 is applied to it.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.stripe.Coupon;\nimport com.pulumi.stripe.CouponArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var couponCoupon = new Coupon(\"couponCoupon\", CouponArgs.builder()        \n            .amountOff(1000)\n            .currency(\"aud\")\n            .duration(\"once\")\n            .maxRedemptions(10)\n            .build());\n\n        var couponIndex_couponCoupon = new Coupon(\"couponIndex/couponCoupon\", CouponArgs.builder()        \n            .percentageOff(33.3)\n            .duration(\"forever\")\n            .build());\n\n        var couponStripeIndex_couponCoupon = new Coupon(\"couponStripeIndex/couponCoupon\", CouponArgs.builder()        \n            .amountOff(2000)\n            .duration(\"once\")\n            .redeemBy(\"2025-07-23T03:27:06+00:00\")\n            .appliesTos(stripe_product.product().id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # coupon for the amount off discount\n  couponCoupon:\n    type: stripe:Coupon\n    properties:\n      amountOff: 1000\n      currency: aud\n      duration: once\n      maxRedemptions: 10\n  # coupon for the percentage off discount\n  couponIndex/couponCoupon:\n    type: stripe:Coupon\n    properties:\n      percentageOff: 33.3\n      duration: forever\n  # coupon with limitation to a date and the product only\n  couponStripeIndex/couponCoupon:\n    type: stripe:Coupon\n    properties:\n      amountOff: 2000\n      duration: once\n      redeemBy: 2025-07-23T03:27:06+00:00\n      # the stripe_product.product has to be created separately\n      appliesTos:\n        - ${stripe_product.product.id}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "amountOff": {
+                    "type": "integer",
+                    "description": "Int. Amount (in the currency specified) that will be taken off the subtotal of any invoices for this customer.\n"
+                },
+                "appliesTos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). A list of product IDs this coupon applies to.\n"
+                },
+                "couponId": {
+                    "type": "string",
+                    "description": "String. Unique string of your choice that will be used to identify this coupon when applying it to a customer.\n"
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "String. Required if `amount_off` has been set, the three-letter ISO code for the currency of the amount to take off.\n"
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "String. Describes how long a customer who applies this coupon will get the discount. One of `forever`, `once`, and `repeating`.\n"
+                },
+                "durationInMonths": {
+                    "type": "integer",
+                    "description": "If duration is repeating, the number of months the coupon applies. Null if coupon duration is forever or once.\n"
+                },
+                "maxRedemptions": {
+                    "type": "integer",
+                    "description": "Int. Maximum number of times this coupon can be redeemed, in total, across all customers, before it is no longer valid.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "String. Name of the coupon displayed to customers on for instance invoices or receipts.\n"
+                },
+                "percentOff": {
+                    "type": "number",
+                    "description": "Float. Percent that will be taken off the subtotal of any invoices for this customer for the duration of the coupon. For example, a coupon with percent_off of 50 will make a $100 invoice $50 instead.\n"
+                },
+                "redeemBy": {
+                    "type": "string",
+                    "description": "String. Date after which the coupon can no longer be redeemed. Expected format is in the `RFC3339`.\n"
+                },
+                "timesRedeemed": {
+                    "type": "integer",
+                    "description": "Int. Number of times this coupon has been applied to a customer.\n"
+                },
+                "valid": {
+                    "type": "boolean",
+                    "description": "Bool. Taking account of the above properties, whether this coupon can still be applied to a customer.\n"
+                }
+            },
+            "required": [
+                "couponId",
+                "name",
+                "timesRedeemed",
+                "valid"
+            ],
+            "inputProperties": {
+                "amountOff": {
+                    "type": "integer",
+                    "description": "Int. Amount (in the currency specified) that will be taken off the subtotal of any invoices for this customer.\n",
+                    "willReplaceOnChanges": true
+                },
+                "appliesTos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). A list of product IDs this coupon applies to.\n",
+                    "willReplaceOnChanges": true
+                },
+                "couponId": {
+                    "type": "string",
+                    "description": "String. Unique string of your choice that will be used to identify this coupon when applying it to a customer.\n",
+                    "willReplaceOnChanges": true
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "String. Required if `amount_off` has been set, the three-letter ISO code for the currency of the amount to take off.\n",
+                    "willReplaceOnChanges": true
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "String. Describes how long a customer who applies this coupon will get the discount. One of `forever`, `once`, and `repeating`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "durationInMonths": {
+                    "type": "integer",
+                    "description": "If duration is repeating, the number of months the coupon applies. Null if coupon duration is forever or once.\n",
+                    "willReplaceOnChanges": true
+                },
+                "maxRedemptions": {
+                    "type": "integer",
+                    "description": "Int. Maximum number of times this coupon can be redeemed, in total, across all customers, before it is no longer valid.\n",
+                    "willReplaceOnChanges": true
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "String. Name of the coupon displayed to customers on for instance invoices or receipts.\n"
+                },
+                "percentOff": {
+                    "type": "number",
+                    "description": "Float. Percent that will be taken off the subtotal of any invoices for this customer for the duration of the coupon. For example, a coupon with percent_off of 50 will make a $100 invoice $50 instead.\n",
+                    "willReplaceOnChanges": true
+                },
+                "redeemBy": {
+                    "type": "string",
+                    "description": "String. Date after which the coupon can no longer be redeemed. Expected format is in the `RFC3339`.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Coupon resources.\n",
+                "properties": {
+                    "amountOff": {
+                        "type": "integer",
+                        "description": "Int. Amount (in the currency specified) that will be taken off the subtotal of any invoices for this customer.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "appliesTos": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List(String). A list of product IDs this coupon applies to.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "couponId": {
+                        "type": "string",
+                        "description": "String. Unique string of your choice that will be used to identify this coupon when applying it to a customer.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "currency": {
+                        "type": "string",
+                        "description": "String. Required if `amount_off` has been set, the three-letter ISO code for the currency of the amount to take off.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "duration": {
+                        "type": "string",
+                        "description": "String. Describes how long a customer who applies this coupon will get the discount. One of `forever`, `once`, and `repeating`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "durationInMonths": {
+                        "type": "integer",
+                        "description": "If duration is repeating, the number of months the coupon applies. Null if coupon duration is forever or once.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "maxRedemptions": {
+                        "type": "integer",
+                        "description": "Int. Maximum number of times this coupon can be redeemed, in total, across all customers, before it is no longer valid.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "String. Name of the coupon displayed to customers on for instance invoices or receipts.\n"
+                    },
+                    "percentOff": {
+                        "type": "number",
+                        "description": "Float. Percent that will be taken off the subtotal of any invoices for this customer for the duration of the coupon. For example, a coupon with percent_off of 50 will make a $100 invoice $50 instead.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "redeemBy": {
+                        "type": "string",
+                        "description": "String. Date after which the coupon can no longer be redeemed. Expected format is in the `RFC3339`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "timesRedeemed": {
+                        "type": "integer",
+                        "description": "Int. Number of times this coupon has been applied to a customer.\n"
+                    },
+                    "valid": {
+                        "type": "boolean",
+                        "description": "Bool. Taking account of the above properties, whether this coupon can still be applied to a customer.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stripe:index/customer:Customer": {
+            "description": "With this resource, you can create a customer - [Stripe API customer documentation](https://stripe.com/docs/api/customers).\n\nCustomer objects allow you to perform recurring charges, and to track multiple charges, \nthat are associated with the same customer.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as stripe from \"@pulumi/stripe\";\n\n// A customer with other details\nconst customer = new stripe.Customer(\"customer\", {\n    balance: 10000,\n    invoicePrefix: \"LA000\",\n    invoiceSettings: {\n        customFieldName: \"customFieldValue\",\n        footer: \"--- Lukas Aron ---\",\n    },\n    nextInvoiceSequence: 1001,\n    preferredLocales: [\n        \"eng\",\n        \"esp\",\n    ],\n    shipping: {\n        city: \"Sydney\",\n        country: \"AU\",\n        line1: \"1 The Best Street\",\n        line2: \"Apartment 401\",\n        name: \"Lukas Aron\",\n        phone: \"+610123456789\",\n        postal_code: \"2000\",\n        state: \"New South Wales\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_stripe as stripe\n\n# A customer with other details\ncustomer = stripe.Customer(\"customer\",\n    balance=10000,\n    invoice_prefix=\"LA000\",\n    invoice_settings={\n        \"customFieldName\": \"customFieldValue\",\n        \"footer\": \"--- Lukas Aron ---\",\n    },\n    next_invoice_sequence=1001,\n    preferred_locales=[\n        \"eng\",\n        \"esp\",\n    ],\n    shipping={\n        \"city\": \"Sydney\",\n        \"country\": \"AU\",\n        \"line1\": \"1 The Best Street\",\n        \"line2\": \"Apartment 401\",\n        \"name\": \"Lukas Aron\",\n        \"phone\": \"+610123456789\",\n        \"postal_code\": \"2000\",\n        \"state\": \"New South Wales\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Stripe = Pulumi.Stripe;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // A customer with other details\n    var customer = new Stripe.Customer(\"customer\", new()\n    {\n        Balance = 10000,\n        InvoicePrefix = \"LA000\",\n        InvoiceSettings = \n        {\n            { \"customFieldName\", \"customFieldValue\" },\n            { \"footer\", \"--- Lukas Aron ---\" },\n        },\n        NextInvoiceSequence = 1001,\n        PreferredLocales = new[]\n        {\n            \"eng\",\n            \"esp\",\n        },\n        Shipping = \n        {\n            { \"city\", \"Sydney\" },\n            { \"country\", \"AU\" },\n            { \"line1\", \"1 The Best Street\" },\n            { \"line2\", \"Apartment 401\" },\n            { \"name\", \"Lukas Aron\" },\n            { \"phone\", \"+610123456789\" },\n            { \"postal_code\", \"2000\" },\n            { \"state\", \"New South Wales\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/georgegebbett/pulumi-stripe/sdk/go/stripe\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := stripe.NewCustomer(ctx, \"customer\", \u0026stripe.CustomerArgs{\n\t\t\tBalance:       pulumi.Int(10000),\n\t\t\tInvoicePrefix: pulumi.String(\"LA000\"),\n\t\t\tInvoiceSettings: pulumi.StringMap{\n\t\t\t\t\"customFieldName\": pulumi.String(\"customFieldValue\"),\n\t\t\t\t\"footer\":          pulumi.String(\"--- Lukas Aron ---\"),\n\t\t\t},\n\t\t\tNextInvoiceSequence: pulumi.Int(1001),\n\t\t\tPreferredLocales: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"eng\"),\n\t\t\t\tpulumi.String(\"esp\"),\n\t\t\t},\n\t\t\tShipping: pulumi.StringMap{\n\t\t\t\t\"city\":        pulumi.String(\"Sydney\"),\n\t\t\t\t\"country\":     pulumi.String(\"AU\"),\n\t\t\t\t\"line1\":       pulumi.String(\"1 The Best Street\"),\n\t\t\t\t\"line2\":       pulumi.String(\"Apartment 401\"),\n\t\t\t\t\"name\":        pulumi.String(\"Lukas Aron\"),\n\t\t\t\t\"phone\":       pulumi.String(\"+610123456789\"),\n\t\t\t\t\"postal_code\": pulumi.String(\"2000\"),\n\t\t\t\t\"state\":       pulumi.String(\"New South Wales\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.stripe.Customer;\nimport com.pulumi.stripe.CustomerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var customer = new Customer(\"customer\", CustomerArgs.builder()        \n            .balance(10000)\n            .invoicePrefix(\"LA000\")\n            .invoiceSettings(Map.ofEntries(\n                Map.entry(\"customFieldName\", \"customFieldValue\"),\n                Map.entry(\"footer\", \"--- Lukas Aron ---\")\n            ))\n            .nextInvoiceSequence(1001)\n            .preferredLocales(            \n                \"eng\",\n                \"esp\")\n            .shipping(Map.ofEntries(\n                Map.entry(\"city\", \"Sydney\"),\n                Map.entry(\"country\", \"AU\"),\n                Map.entry(\"line1\", \"1 The Best Street\"),\n                Map.entry(\"line2\", \"Apartment 401\"),\n                Map.entry(\"name\", \"Lukas Aron\"),\n                Map.entry(\"phone\", \"+610123456789\"),\n                Map.entry(\"postal_code\", \"2000\"),\n                Map.entry(\"state\", \"New South Wales\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # A customer with other details\n  customer:\n    type: stripe:Customer\n    properties:\n      balance: 10000\n      # $100\n      invoicePrefix: LA000\n      invoiceSettings:\n        customFieldName: customFieldValue\n        footer: '--- Lukas Aron ---'\n      nextInvoiceSequence: 1001\n      preferredLocales:\n        - eng\n        - esp\n      shipping:\n        city: Sydney\n        country: AU\n        line1: 1 The Best Street\n        line2: Apartment 401\n        name: Lukas Aron\n        phone: '+610123456789'\n        postal_code: '2000'\n        state: New South Wales\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "address": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). The customer’s address, for all individual fields see: Address Fields.\n"
+                },
+                "balance": {
+                    "type": "integer",
+                    "description": "Int. Current balance, if any, being stored on the customer. If negative, the customer has credit to apply to their next invoice. If positive, the customer has an amount owed that will be added to their next invoice. The balance does not refer to any unpaid invoices; it solely takes into account amounts that have yet to be successfully applied to any invoice. This balance is only taken into account as invoices are finalized.\n"
+                },
+                "defaultInvoicePrefix": {
+                    "type": "string",
+                    "description": "String. The default invoice prefix generated by Stripe when not individual invoice prefix provided.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "String. An arbitrary string that you can attach to a customer object. It is displayed alongside the customer in the dashboard.\n"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "String. Customer’s email address. It’s displayed alongside the customer in your dashboard and can be useful for searching and tracking. This may be up to 512 characters.\n"
+                },
+                "invoicePrefix": {
+                    "type": "string",
+                    "description": "String. The prefix for the customer used to generate unique invoice numbers. Must be `3–12 uppercase letters or numbers`.\n"
+                },
+                "invoiceSettings": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Default invoice settings for this customer. For supported fields see: Invoice Settings Fields.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "String. The customer’s full name or business name.\n"
+                },
+                "nextInvoiceSequence": {
+                    "type": "integer",
+                    "description": "Int. The sequence to be used on the customer’s next invoice. Defaults to 1.\n"
+                },
+                "phone": {
+                    "type": "string",
+                    "description": "String. The customer’s phone number.\n"
+                },
+                "preferredLocales": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). Customer’s preferred languages, ordered by preference.\n"
+                },
+                "shipping": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Mailing and shipping address for the customer. Appears on invoices emailed to this customer. For all individual fields see: Shipping Fields.\n"
+                }
+            },
+            "required": [
+                "defaultInvoicePrefix",
+                "name"
+            ],
+            "inputProperties": {
+                "address": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). The customer’s address, for all individual fields see: Address Fields.\n"
+                },
+                "balance": {
+                    "type": "integer",
+                    "description": "Int. Current balance, if any, being stored on the customer. If negative, the customer has credit to apply to their next invoice. If positive, the customer has an amount owed that will be added to their next invoice. The balance does not refer to any unpaid invoices; it solely takes into account amounts that have yet to be successfully applied to any invoice. This balance is only taken into account as invoices are finalized.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "String. An arbitrary string that you can attach to a customer object. It is displayed alongside the customer in the dashboard.\n"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "String. Customer’s email address. It’s displayed alongside the customer in your dashboard and can be useful for searching and tracking. This may be up to 512 characters.\n"
+                },
+                "invoicePrefix": {
+                    "type": "string",
+                    "description": "String. The prefix for the customer used to generate unique invoice numbers. Must be `3–12 uppercase letters or numbers`.\n"
+                },
+                "invoiceSettings": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Default invoice settings for this customer. For supported fields see: Invoice Settings Fields.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "String. The customer’s full name or business name.\n"
+                },
+                "nextInvoiceSequence": {
+                    "type": "integer",
+                    "description": "Int. The sequence to be used on the customer’s next invoice. Defaults to 1.\n"
+                },
+                "phone": {
+                    "type": "string",
+                    "description": "String. The customer’s phone number.\n"
+                },
+                "preferredLocales": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). Customer’s preferred languages, ordered by preference.\n"
+                },
+                "shipping": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Mailing and shipping address for the customer. Appears on invoices emailed to this customer. For all individual fields see: Shipping Fields.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Customer resources.\n",
+                "properties": {
+                    "address": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map(String). The customer’s address, for all individual fields see: Address Fields.\n"
+                    },
+                    "balance": {
+                        "type": "integer",
+                        "description": "Int. Current balance, if any, being stored on the customer. If negative, the customer has credit to apply to their next invoice. If positive, the customer has an amount owed that will be added to their next invoice. The balance does not refer to any unpaid invoices; it solely takes into account amounts that have yet to be successfully applied to any invoice. This balance is only taken into account as invoices are finalized.\n"
+                    },
+                    "defaultInvoicePrefix": {
+                        "type": "string",
+                        "description": "String. The default invoice prefix generated by Stripe when not individual invoice prefix provided.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "String. An arbitrary string that you can attach to a customer object. It is displayed alongside the customer in the dashboard.\n"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "String. Customer’s email address. It’s displayed alongside the customer in your dashboard and can be useful for searching and tracking. This may be up to 512 characters.\n"
+                    },
+                    "invoicePrefix": {
+                        "type": "string",
+                        "description": "String. The prefix for the customer used to generate unique invoice numbers. Must be `3–12 uppercase letters or numbers`.\n"
+                    },
+                    "invoiceSettings": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map(String). Default invoice settings for this customer. For supported fields see: Invoice Settings Fields.\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "String. The customer’s full name or business name.\n"
+                    },
+                    "nextInvoiceSequence": {
+                        "type": "integer",
+                        "description": "Int. The sequence to be used on the customer’s next invoice. Defaults to 1.\n"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "description": "String. The customer’s phone number.\n"
+                    },
+                    "preferredLocales": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List(String). Customer’s preferred languages, ordered by preference.\n"
+                    },
+                    "shipping": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map(String). Mailing and shipping address for the customer. Appears on invoices emailed to this customer. For all individual fields see: Shipping Fields.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stripe:index/portalConfiguration:PortalConfiguration": {
+            "description": "With this resource, you can create a Customer Portal Configuration - [Stripe API portal configuration documentation](https://stripe.com/docs/api/customer_portal/configuration).\n\nThe Billing customer portal is a Stripe-hosted UI for subscription and billing management.\n\nA portal configuration describes the functionality and features that you want to provide to your customers through the portal.\n\n\u003e Removal of the Customer Portal isn't supported through the Stripe SDK. The best practice, which this provider follows,\nis to deactivate the Customer Portal by marking it as inactive on destroy, which indicates that resource is no longer\navailable.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as stripe from \"@pulumi/stripe\";\n\n// A billing portal using all the available options\nconst portalConfiguration = new stripe.PortalConfiguration(\"portalConfiguration\", {\n    businessProfile: {\n        headline: \"My special headline\",\n        privacyPolicyUrl: \"https://example.com/privacy\",\n        termsOfServiceUrl: \"https://example.com/terms\",\n    },\n    defaultReturnUrl: \"https://example.com/special_headline\",\n    features: {\n        customerUpdate: {\n            allowedUpdates: [\n                \"email\",\n                \"address\",\n                \"shipping\",\n                \"phone\",\n                \"tax_id\",\n            ],\n            enabled: true,\n        },\n        invoiceHistory: {\n            enabled: true,\n        },\n        paymentMethodUpdate: {\n            enabled: true,\n        },\n        subscriptionCancel: {\n            cancellationReason: {\n                enabled: true,\n                options: [\n                    \"too_expensive\",\n                    \"missing_features\",\n                    \"switched_service\",\n                    \"unused\",\n                    \"customer_service\",\n                    \"too_complex\",\n                    \"low_quality\",\n                    \"other\",\n                ],\n            },\n            enabled: true,\n            mode: \"at_period_end\",\n            prorationBehavior: \"none\",\n        },\n        subscriptionPauses: [{\n            enabled: true,\n        }],\n        subscriptionUpdates: [{\n            defaultAllowedUpdates: [\n                \"price\",\n                \"quantity\",\n                \"promotion_code\",\n            ],\n            enabled: true,\n            products: [{\n                prices: [\n                    \"my_price_id1\",\n                    \"my_price_id2\",\n                ],\n                product: \"my_product_id\",\n            }],\n            prorationBehavior: \"none\",\n        }],\n    },\n    metadata: {\n        foo: \"bar\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_stripe as stripe\n\n# A billing portal using all the available options\nportal_configuration = stripe.PortalConfiguration(\"portalConfiguration\",\n    business_profile=stripe.PortalConfigurationBusinessProfileArgs(\n        headline=\"My special headline\",\n        privacy_policy_url=\"https://example.com/privacy\",\n        terms_of_service_url=\"https://example.com/terms\",\n    ),\n    default_return_url=\"https://example.com/special_headline\",\n    features=stripe.PortalConfigurationFeaturesArgs(\n        customer_update=stripe.PortalConfigurationFeaturesCustomerUpdateArgs(\n            allowed_updates=[\n                \"email\",\n                \"address\",\n                \"shipping\",\n                \"phone\",\n                \"tax_id\",\n            ],\n            enabled=True,\n        ),\n        invoice_history=stripe.PortalConfigurationFeaturesInvoiceHistoryArgs(\n            enabled=True,\n        ),\n        payment_method_update=stripe.PortalConfigurationFeaturesPaymentMethodUpdateArgs(\n            enabled=True,\n        ),\n        subscription_cancel=stripe.PortalConfigurationFeaturesSubscriptionCancelArgs(\n            cancellation_reason=stripe.PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgs(\n                enabled=True,\n                options=[\n                    \"too_expensive\",\n                    \"missing_features\",\n                    \"switched_service\",\n                    \"unused\",\n                    \"customer_service\",\n                    \"too_complex\",\n                    \"low_quality\",\n                    \"other\",\n                ],\n            ),\n            enabled=True,\n            mode=\"at_period_end\",\n            proration_behavior=\"none\",\n        ),\n        subscription_pauses=[stripe.PortalConfigurationFeaturesSubscriptionPauseArgs(\n            enabled=True,\n        )],\n        subscription_updates=[stripe.PortalConfigurationFeaturesSubscriptionUpdateArgs(\n            default_allowed_updates=[\n                \"price\",\n                \"quantity\",\n                \"promotion_code\",\n            ],\n            enabled=True,\n            products=[stripe.PortalConfigurationFeaturesSubscriptionUpdateProductArgs(\n                prices=[\n                    \"my_price_id1\",\n                    \"my_price_id2\",\n                ],\n                product=\"my_product_id\",\n            )],\n            proration_behavior=\"none\",\n        )],\n    ),\n    metadata={\n        \"foo\": \"bar\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Stripe = Pulumi.Stripe;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // A billing portal using all the available options\n    var portalConfiguration = new Stripe.PortalConfiguration(\"portalConfiguration\", new()\n    {\n        BusinessProfile = new Stripe.Inputs.PortalConfigurationBusinessProfileArgs\n        {\n            Headline = \"My special headline\",\n            PrivacyPolicyUrl = \"https://example.com/privacy\",\n            TermsOfServiceUrl = \"https://example.com/terms\",\n        },\n        DefaultReturnUrl = \"https://example.com/special_headline\",\n        Features = new Stripe.Inputs.PortalConfigurationFeaturesArgs\n        {\n            CustomerUpdate = new Stripe.Inputs.PortalConfigurationFeaturesCustomerUpdateArgs\n            {\n                AllowedUpdates = new[]\n                {\n                    \"email\",\n                    \"address\",\n                    \"shipping\",\n                    \"phone\",\n                    \"tax_id\",\n                },\n                Enabled = true,\n            },\n            InvoiceHistory = new Stripe.Inputs.PortalConfigurationFeaturesInvoiceHistoryArgs\n            {\n                Enabled = true,\n            },\n            PaymentMethodUpdate = new Stripe.Inputs.PortalConfigurationFeaturesPaymentMethodUpdateArgs\n            {\n                Enabled = true,\n            },\n            SubscriptionCancel = new Stripe.Inputs.PortalConfigurationFeaturesSubscriptionCancelArgs\n            {\n                CancellationReason = new Stripe.Inputs.PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgs\n                {\n                    Enabled = true,\n                    Options = new[]\n                    {\n                        \"too_expensive\",\n                        \"missing_features\",\n                        \"switched_service\",\n                        \"unused\",\n                        \"customer_service\",\n                        \"too_complex\",\n                        \"low_quality\",\n                        \"other\",\n                    },\n                },\n                Enabled = true,\n                Mode = \"at_period_end\",\n                ProrationBehavior = \"none\",\n            },\n            SubscriptionPauses = new[]\n            {\n                new Stripe.Inputs.PortalConfigurationFeaturesSubscriptionPauseArgs\n                {\n                    Enabled = true,\n                },\n            },\n            SubscriptionUpdates = new[]\n            {\n                new Stripe.Inputs.PortalConfigurationFeaturesSubscriptionUpdateArgs\n                {\n                    DefaultAllowedUpdates = new[]\n                    {\n                        \"price\",\n                        \"quantity\",\n                        \"promotion_code\",\n                    },\n                    Enabled = true,\n                    Products = new[]\n                    {\n                        new Stripe.Inputs.PortalConfigurationFeaturesSubscriptionUpdateProductArgs\n                        {\n                            Prices = new[]\n                            {\n                                \"my_price_id1\",\n                                \"my_price_id2\",\n                            },\n                            Product = \"my_product_id\",\n                        },\n                    },\n                    ProrationBehavior = \"none\",\n                },\n            },\n        },\n        Metadata = \n        {\n            { \"foo\", \"bar\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/georgegebbett/pulumi-stripe/sdk/go/stripe\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := stripe.NewPortalConfiguration(ctx, \"portalConfiguration\", \u0026stripe.PortalConfigurationArgs{\n\t\t\tBusinessProfile: \u0026stripe.PortalConfigurationBusinessProfileArgs{\n\t\t\t\tHeadline:          pulumi.String(\"My special headline\"),\n\t\t\t\tPrivacyPolicyUrl:  pulumi.String(\"https://example.com/privacy\"),\n\t\t\t\tTermsOfServiceUrl: pulumi.String(\"https://example.com/terms\"),\n\t\t\t},\n\t\t\tDefaultReturnUrl: pulumi.String(\"https://example.com/special_headline\"),\n\t\t\tFeatures: \u0026stripe.PortalConfigurationFeaturesArgs{\n\t\t\t\tCustomerUpdate: \u0026stripe.PortalConfigurationFeaturesCustomerUpdateArgs{\n\t\t\t\t\tAllowedUpdates: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"email\"),\n\t\t\t\t\t\tpulumi.String(\"address\"),\n\t\t\t\t\t\tpulumi.String(\"shipping\"),\n\t\t\t\t\t\tpulumi.String(\"phone\"),\n\t\t\t\t\t\tpulumi.String(\"tax_id\"),\n\t\t\t\t\t},\n\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tInvoiceHistory: \u0026stripe.PortalConfigurationFeaturesInvoiceHistoryArgs{\n\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tPaymentMethodUpdate: \u0026stripe.PortalConfigurationFeaturesPaymentMethodUpdateArgs{\n\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tSubscriptionCancel: \u0026stripe.PortalConfigurationFeaturesSubscriptionCancelArgs{\n\t\t\t\t\tCancellationReason: \u0026stripe.PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgs{\n\t\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t\t\tOptions: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.String(\"too_expensive\"),\n\t\t\t\t\t\t\tpulumi.String(\"missing_features\"),\n\t\t\t\t\t\t\tpulumi.String(\"switched_service\"),\n\t\t\t\t\t\t\tpulumi.String(\"unused\"),\n\t\t\t\t\t\t\tpulumi.String(\"customer_service\"),\n\t\t\t\t\t\t\tpulumi.String(\"too_complex\"),\n\t\t\t\t\t\t\tpulumi.String(\"low_quality\"),\n\t\t\t\t\t\t\tpulumi.String(\"other\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tEnabled:           pulumi.Bool(true),\n\t\t\t\t\tMode:              pulumi.String(\"at_period_end\"),\n\t\t\t\t\tProrationBehavior: pulumi.String(\"none\"),\n\t\t\t\t},\n\t\t\t\tSubscriptionPauses: stripe.PortalConfigurationFeaturesSubscriptionPauseArray{\n\t\t\t\t\t\u0026stripe.PortalConfigurationFeaturesSubscriptionPauseArgs{\n\t\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tSubscriptionUpdates: stripe.PortalConfigurationFeaturesSubscriptionUpdateArray{\n\t\t\t\t\t\u0026stripe.PortalConfigurationFeaturesSubscriptionUpdateArgs{\n\t\t\t\t\t\tDefaultAllowedUpdates: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.String(\"price\"),\n\t\t\t\t\t\t\tpulumi.String(\"quantity\"),\n\t\t\t\t\t\t\tpulumi.String(\"promotion_code\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t\t\tProducts: stripe.PortalConfigurationFeaturesSubscriptionUpdateProductArray{\n\t\t\t\t\t\t\t\u0026stripe.PortalConfigurationFeaturesSubscriptionUpdateProductArgs{\n\t\t\t\t\t\t\t\tPrices: pulumi.StringArray{\n\t\t\t\t\t\t\t\t\tpulumi.String(\"my_price_id1\"),\n\t\t\t\t\t\t\t\t\tpulumi.String(\"my_price_id2\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\tProduct: pulumi.String(\"my_product_id\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\tProrationBehavior: pulumi.String(\"none\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tMetadata: pulumi.StringMap{\n\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.stripe.PortalConfiguration;\nimport com.pulumi.stripe.PortalConfigurationArgs;\nimport com.pulumi.stripe.inputs.PortalConfigurationBusinessProfileArgs;\nimport com.pulumi.stripe.inputs.PortalConfigurationFeaturesArgs;\nimport com.pulumi.stripe.inputs.PortalConfigurationFeaturesCustomerUpdateArgs;\nimport com.pulumi.stripe.inputs.PortalConfigurationFeaturesInvoiceHistoryArgs;\nimport com.pulumi.stripe.inputs.PortalConfigurationFeaturesPaymentMethodUpdateArgs;\nimport com.pulumi.stripe.inputs.PortalConfigurationFeaturesSubscriptionCancelArgs;\nimport com.pulumi.stripe.inputs.PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var portalConfiguration = new PortalConfiguration(\"portalConfiguration\", PortalConfigurationArgs.builder()        \n            .businessProfile(PortalConfigurationBusinessProfileArgs.builder()\n                .headline(\"My special headline\")\n                .privacyPolicyUrl(\"https://example.com/privacy\")\n                .termsOfServiceUrl(\"https://example.com/terms\")\n                .build())\n            .defaultReturnUrl(\"https://example.com/special_headline\")\n            .features(PortalConfigurationFeaturesArgs.builder()\n                .customerUpdate(PortalConfigurationFeaturesCustomerUpdateArgs.builder()\n                    .allowedUpdates(                    \n                        \"email\",\n                        \"address\",\n                        \"shipping\",\n                        \"phone\",\n                        \"tax_id\")\n                    .enabled(true)\n                    .build())\n                .invoiceHistory(PortalConfigurationFeaturesInvoiceHistoryArgs.builder()\n                    .enabled(true)\n                    .build())\n                .paymentMethodUpdate(PortalConfigurationFeaturesPaymentMethodUpdateArgs.builder()\n                    .enabled(true)\n                    .build())\n                .subscriptionCancel(PortalConfigurationFeaturesSubscriptionCancelArgs.builder()\n                    .cancellationReason(PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgs.builder()\n                        .enabled(true)\n                        .options(                        \n                            \"too_expensive\",\n                            \"missing_features\",\n                            \"switched_service\",\n                            \"unused\",\n                            \"customer_service\",\n                            \"too_complex\",\n                            \"low_quality\",\n                            \"other\")\n                        .build())\n                    .enabled(true)\n                    .mode(\"at_period_end\")\n                    .prorationBehavior(\"none\")\n                    .build())\n                .subscriptionPauses(PortalConfigurationFeaturesSubscriptionPauseArgs.builder()\n                    .enabled(true)\n                    .build())\n                .subscriptionUpdates(PortalConfigurationFeaturesSubscriptionUpdateArgs.builder()\n                    .defaultAllowedUpdates(                    \n                        \"price\",\n                        \"quantity\",\n                        \"promotion_code\")\n                    .enabled(true)\n                    .products(PortalConfigurationFeaturesSubscriptionUpdateProductArgs.builder()\n                        .prices(                        \n                            \"my_price_id1\",\n                            \"my_price_id2\")\n                        .product(\"my_product_id\")\n                        .build())\n                    .prorationBehavior(\"none\")\n                    .build())\n                .build())\n            .metadata(Map.of(\"foo\", \"bar\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # A billing portal using all the available options\n  portalConfiguration:\n    type: stripe:PortalConfiguration\n    properties:\n      businessProfile:\n        headline: My special headline\n        privacyPolicyUrl: https://example.com/privacy\n        termsOfServiceUrl: https://example.com/terms\n      defaultReturnUrl: https://example.com/special_headline\n      features:\n        customerUpdate:\n          allowedUpdates:\n            - email\n            - address\n            - shipping\n            - phone\n            - tax_id\n          enabled: true\n        invoiceHistory:\n          enabled: true\n        paymentMethodUpdate:\n          enabled: true\n        subscriptionCancel:\n          cancellationReason:\n            enabled: true\n            options:\n              - too_expensive\n              - missing_features\n              - switched_service\n              - unused\n              - customer_service\n              - too_complex\n              - low_quality\n              - other\n          enabled: true\n          mode: at_period_end\n          prorationBehavior: none\n        subscriptionPauses:\n          - enabled: true\n        subscriptionUpdates:\n          - defaultAllowedUpdates:\n              - price\n              - quantity\n              - promotion_code\n            enabled: true\n            products:\n              - prices:\n                  - my_price_id1\n                  - my_price_id2\n                product: my_product_id\n            prorationBehavior: none\n      metadata:\n        foo: bar\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Bool. Whether the configuration is active and can be used to create portal sessions. (On create it is always set as `true`)\n"
+                },
+                "businessProfile": {
+                    "$ref": "#/types/stripe:index/PortalConfigurationBusinessProfile:PortalConfigurationBusinessProfile",
+                    "description": "List(Resource). The business information shown to customers in the portal. More details in Business Profile section\n"
+                },
+                "defaultReturnUrl": {
+                    "type": "string",
+                    "description": "String. The default URL to redirect customers to when they click on the portal’s link to return to your website. This can be overriden when creating the session.\n"
+                },
+                "features": {
+                    "$ref": "#/types/stripe:index/PortalConfigurationFeatures:PortalConfigurationFeatures",
+                    "description": "List(Resource). Information about the features available in the portal. Feature section described in Feature section\n"
+                },
+                "loginPage": {
+                    "$ref": "#/types/stripe:index/PortalConfigurationLoginPage:PortalConfigurationLoginPage",
+                    "description": "List(Resource). The hosted login page for this configuration. See details in Login Page Section.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                }
+            },
+            "required": [
+                "businessProfile",
+                "features",
+                "loginPage"
+            ],
+            "inputProperties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Bool. Whether the configuration is active and can be used to create portal sessions. (On create it is always set as `true`)\n"
+                },
+                "businessProfile": {
+                    "$ref": "#/types/stripe:index/PortalConfigurationBusinessProfile:PortalConfigurationBusinessProfile",
+                    "description": "List(Resource). The business information shown to customers in the portal. More details in Business Profile section\n"
+                },
+                "defaultReturnUrl": {
+                    "type": "string",
+                    "description": "String. The default URL to redirect customers to when they click on the portal’s link to return to your website. This can be overriden when creating the session.\n"
+                },
+                "features": {
+                    "$ref": "#/types/stripe:index/PortalConfigurationFeatures:PortalConfigurationFeatures",
+                    "description": "List(Resource). Information about the features available in the portal. Feature section described in Feature section\n"
+                },
+                "loginPage": {
+                    "$ref": "#/types/stripe:index/PortalConfigurationLoginPage:PortalConfigurationLoginPage",
+                    "description": "List(Resource). The hosted login page for this configuration. See details in Login Page Section.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                }
+            },
+            "requiredInputs": [
+                "businessProfile",
+                "features"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PortalConfiguration resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "Bool. Whether the configuration is active and can be used to create portal sessions. (On create it is always set as `true`)\n"
+                    },
+                    "businessProfile": {
+                        "$ref": "#/types/stripe:index/PortalConfigurationBusinessProfile:PortalConfigurationBusinessProfile",
+                        "description": "List(Resource). The business information shown to customers in the portal. More details in Business Profile section\n"
+                    },
+                    "defaultReturnUrl": {
+                        "type": "string",
+                        "description": "String. The default URL to redirect customers to when they click on the portal’s link to return to your website. This can be overriden when creating the session.\n"
+                    },
+                    "features": {
+                        "$ref": "#/types/stripe:index/PortalConfigurationFeatures:PortalConfigurationFeatures",
+                        "description": "List(Resource). Information about the features available in the portal. Feature section described in Feature section\n"
+                    },
+                    "loginPage": {
+                        "$ref": "#/types/stripe:index/PortalConfigurationLoginPage:PortalConfigurationLoginPage",
+                        "description": "List(Resource). The hosted login page for this configuration. See details in Login Page Section.\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stripe:index/price:Price": {
+            "description": "With this resource, you can create a price - [Stripe API price documentation](https://stripe.com/docs/api/prices).\n\nPrices define the unit cost, currency, and (optional) billing cycle for both recurring and one-time purchases of\nproducts. Products help you track inventory or provisioning, and prices help you track payment terms.\n\nDifferent physical goods or levels of service should be represented by products, and pricing options should be\nrepresented by prices. This approach lets you change prices without having to change your provisioning scheme.\n\nFor example, you might have a single \"gold\" product that has prices for $10/month, $100/year, and €9 once.\n\n\u003e Removal of the price isn't supported through the Stripe SDK. The best practice, which this provider follows,\nis to archive the price by marking it as inactive on destroy, which indicates that the price is not longer\navailable for purchase.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as stripe from \"@pulumi/stripe\";\n\n// basic price for the product\nconst pricePrice = new stripe.Price(\"pricePrice\", {\n    product: stripe_product.product.id,\n    currency: \"aud\",\n    unitAmount: 100,\n});\n// basic free price for the product\nconst priceIndex_pricePrice = new stripe.Price(\"priceIndex/pricePrice\", {\n    product: stripe_product.product.id,\n    currency: \"aud\",\n    unitAmount: -1,\n});\n// recurring price for the product\nconst priceStripeIndex_pricePrice = new stripe.Price(\"priceStripeIndex/pricePrice\", {\n    product: stripe_product.product.id,\n    currency: \"aud\",\n    billingScheme: \"per_unit\",\n    unitAmount: 100,\n    recurring: {\n        interval: \"week\",\n        intervalCount: 1,\n    },\n});\n// tiered price for the product\nconst priceStripeIndex_pricePrice1 = new stripe.Price(\"priceStripeIndex/pricePrice1\", {\n    product: stripe_product.product.id,\n    currency: \"aud\",\n    billingScheme: \"tiered\",\n    tiersMode: \"graduated\",\n    tiers: [\n        {\n            upTo: 10,\n            unitAmount: 0,\n        },\n        {\n            upTo: 100,\n            unitAmount: 300,\n        },\n        {\n            upTo: -1,\n            unitAmount: 100.5,\n        },\n    ],\n    recurring: {\n        interval: \"week\",\n        aggregateUsage: \"sum\",\n        intervalCount: 2,\n        usageType: \"metered\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_stripe as stripe\n\n# basic price for the product\nprice_price = stripe.Price(\"pricePrice\",\n    product=stripe_product[\"product\"][\"id\"],\n    currency=\"aud\",\n    unit_amount=100)\n# basic free price for the product\nprice_index_price_price = stripe.Price(\"priceIndex/pricePrice\",\n    product=stripe_product[\"product\"][\"id\"],\n    currency=\"aud\",\n    unit_amount=-1)\n# recurring price for the product\nprice_stripe_index_price_price = stripe.Price(\"priceStripeIndex/pricePrice\",\n    product=stripe_product[\"product\"][\"id\"],\n    currency=\"aud\",\n    billing_scheme=\"per_unit\",\n    unit_amount=100,\n    recurring=stripe.PriceRecurringArgs(\n        interval=\"week\",\n        interval_count=1,\n    ))\n# tiered price for the product\nprice_stripe_index_price_price1 = stripe.Price(\"priceStripeIndex/pricePrice1\",\n    product=stripe_product[\"product\"][\"id\"],\n    currency=\"aud\",\n    billing_scheme=\"tiered\",\n    tiers_mode=\"graduated\",\n    tiers=[\n        stripe.PriceTierArgs(\n            up_to=10,\n            unit_amount=0,\n        ),\n        stripe.PriceTierArgs(\n            up_to=100,\n            unit_amount=300,\n        ),\n        stripe.PriceTierArgs(\n            up_to=-1,\n            unit_amount=100.5,\n        ),\n    ],\n    recurring=stripe.PriceRecurringArgs(\n        interval=\"week\",\n        aggregate_usage=\"sum\",\n        interval_count=2,\n        usage_type=\"metered\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Stripe = Pulumi.Stripe;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // basic price for the product\n    var pricePrice = new Stripe.Price(\"pricePrice\", new()\n    {\n        Product = stripe_product.Product.Id,\n        Currency = \"aud\",\n        UnitAmount = 100,\n    });\n\n    // basic free price for the product\n    var priceIndex_pricePrice = new Stripe.Price(\"priceIndex/pricePrice\", new()\n    {\n        Product = stripe_product.Product.Id,\n        Currency = \"aud\",\n        UnitAmount = -1,\n    });\n\n    // recurring price for the product\n    var priceStripeIndex_pricePrice = new Stripe.Price(\"priceStripeIndex/pricePrice\", new()\n    {\n        Product = stripe_product.Product.Id,\n        Currency = \"aud\",\n        BillingScheme = \"per_unit\",\n        UnitAmount = 100,\n        Recurring = new Stripe.Inputs.PriceRecurringArgs\n        {\n            Interval = \"week\",\n            IntervalCount = 1,\n        },\n    });\n\n    // tiered price for the product\n    var priceStripeIndex_pricePrice1 = new Stripe.Price(\"priceStripeIndex/pricePrice1\", new()\n    {\n        Product = stripe_product.Product.Id,\n        Currency = \"aud\",\n        BillingScheme = \"tiered\",\n        TiersMode = \"graduated\",\n        Tiers = new[]\n        {\n            new Stripe.Inputs.PriceTierArgs\n            {\n                UpTo = 10,\n                UnitAmount = 0,\n            },\n            new Stripe.Inputs.PriceTierArgs\n            {\n                UpTo = 100,\n                UnitAmount = 300,\n            },\n            new Stripe.Inputs.PriceTierArgs\n            {\n                UpTo = -1,\n                UnitAmount = 100.5,\n            },\n        },\n        Recurring = new Stripe.Inputs.PriceRecurringArgs\n        {\n            Interval = \"week\",\n            AggregateUsage = \"sum\",\n            IntervalCount = 2,\n            UsageType = \"metered\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/georgegebbett/pulumi-stripe/sdk/go/stripe\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := stripe.NewPrice(ctx, \"pricePrice\", \u0026stripe.PriceArgs{\n\t\t\tProduct:    pulumi.Any(stripe_product.Product.Id),\n\t\t\tCurrency:   pulumi.String(\"aud\"),\n\t\t\tUnitAmount: pulumi.Int(100),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewPrice(ctx, \"priceIndex/pricePrice\", \u0026stripe.PriceArgs{\n\t\t\tProduct:    pulumi.Any(stripe_product.Product.Id),\n\t\t\tCurrency:   pulumi.String(\"aud\"),\n\t\t\tUnitAmount: -1,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewPrice(ctx, \"priceStripeIndex/pricePrice\", \u0026stripe.PriceArgs{\n\t\t\tProduct:       pulumi.Any(stripe_product.Product.Id),\n\t\t\tCurrency:      pulumi.String(\"aud\"),\n\t\t\tBillingScheme: pulumi.String(\"per_unit\"),\n\t\t\tUnitAmount:    pulumi.Int(100),\n\t\t\tRecurring: \u0026stripe.PriceRecurringArgs{\n\t\t\t\tInterval:      pulumi.String(\"week\"),\n\t\t\t\tIntervalCount: pulumi.Int(1),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewPrice(ctx, \"priceStripeIndex/pricePrice1\", \u0026stripe.PriceArgs{\n\t\t\tProduct:       pulumi.Any(stripe_product.Product.Id),\n\t\t\tCurrency:      pulumi.String(\"aud\"),\n\t\t\tBillingScheme: pulumi.String(\"tiered\"),\n\t\t\tTiersMode:     pulumi.String(\"graduated\"),\n\t\t\tTiers: stripe.PriceTierArray{\n\t\t\t\t\u0026stripe.PriceTierArgs{\n\t\t\t\t\tUpTo:       pulumi.Int(10),\n\t\t\t\t\tUnitAmount: pulumi.Int(0),\n\t\t\t\t},\n\t\t\t\t\u0026stripe.PriceTierArgs{\n\t\t\t\t\tUpTo:       pulumi.Int(100),\n\t\t\t\t\tUnitAmount: pulumi.Int(300),\n\t\t\t\t},\n\t\t\t\t\u0026stripe.PriceTierArgs{\n\t\t\t\t\tUpTo:       -1,\n\t\t\t\t\tUnitAmount: pulumi.Int(100.5),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRecurring: \u0026stripe.PriceRecurringArgs{\n\t\t\t\tInterval:       pulumi.String(\"week\"),\n\t\t\t\tAggregateUsage: pulumi.String(\"sum\"),\n\t\t\t\tIntervalCount:  pulumi.Int(2),\n\t\t\t\tUsageType:      pulumi.String(\"metered\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Note on updating prices\n\nOnce created, you can update the `active`, `metadata`, `nickname`, `lookup_key`, `tax_behaviour` (only if unspecified)\nand `transfer_lookup_key` attributes.\n\nOther attribute edits will trigger a destroy action (archival) and creation of a new price entry.\n",
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Bool. Whether the price can be used for new purchases. Defaults to `true`.\n"
+                },
+                "billingScheme": {
+                    "type": "string",
+                    "description": "String. Describes how to compute the price per period. Either `per_unit` or `tiered`\n. `per_unit` indicates that the fixed amount (specified in `unit_amount` or `unit_amount_decimal`) will be charged per\nunit in quantity (for prices with `usage_type=licensed`), or per unit of total usage (for prices\nwith `usage_type=metered`). `tiered` indicates that the unit pricing will be computed using a tiering strategy as\ndefined using the `tiers` and `tiers_mode` attributes.\n"
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).\n"
+                },
+                "currencyOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stripe:index/PriceCurrencyOption:PriceCurrencyOption"
+                    },
+                    "description": "List(Resource). Prices defined in each available currency option. For details\nof individual arguments see Currency Options.\n"
+                },
+                "lookupKey": {
+                    "type": "string",
+                    "description": "String. A lookup key used to retrieve prices dynamically from a static string.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for\nstoring additional information about the object in a structured format.\n"
+                },
+                "nickname": {
+                    "type": "string",
+                    "description": "String. A brief description of the price, hidden from customers.\n"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "String. The ID of the product that this price will belong to.\n"
+                },
+                "recurring": {
+                    "$ref": "#/types/stripe:index/PriceRecurring:PriceRecurring",
+                    "description": "List(Resource). The recurring components of a price such as `interval` and `usage_type`. For\ndetails of individual arguments see Recurring.\n"
+                },
+                "taxBehaviour": {
+                    "type": "string",
+                    "description": "String. Specifies whether the price is considered inclusive of taxes or exclusive of\ntaxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it\ncannot be changed, default is `unspecified`.\n"
+                },
+                "tiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stripe:index/PriceTier:PriceTier"
+                    },
+                    "description": "List(Resource). Each element represents a pricing tier. This parameter requires `billing_scheme`\nto be set to `tiered`. See also the documentation for `billing_scheme`. For details of individual arguments\nsee Tiers.\n"
+                },
+                "tiersMode": {
+                    "type": "string",
+                    "description": "String. Defines if the tiering price should be `graduated`\nor `volume` based. In `volume`-based tiering, the maximum quantity within a period determines the per-unit price,\nin `graduated` tiering pricing can successively change as the quantity grows.\n"
+                },
+                "transferLookupKey": {
+                    "type": "boolean",
+                    "description": "Bool. If set to `true`, will atomically remove the lookup key from the existing\nprice, and assign it to this price.\n"
+                },
+                "transformQuantity": {
+                    "$ref": "#/types/stripe:index/PriceTransformQuantity:PriceTransformQuantity",
+                    "description": "List(Resource). Apply a transformation to the reported usage or set quantity before\ncomputing the billed price. Cannot be combined with `tiers`. For details of individual arguments\nsee Transform Quantity.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "String. One of `one_time` or `recurring` depending on whether the price is for a one-time purchase or a\nrecurring (subscription) purchase.\n"
+                },
+                "unitAmount": {
+                    "type": "integer",
+                    "description": "Int. A positive integer in cents (or `-1` for a free\nprice) representing how much to charge.\n"
+                },
+                "unitAmountDecimal": {
+                    "type": "number",
+                    "description": "Float. Same as `unit_amount`, but accepts a decimal value in cents with at most 12\ndecimal places. Only one of `unit_amount` and `unit_amount_decimal` can be set.\n"
+                }
+            },
+            "required": [
+                "currency",
+                "product",
+                "type"
+            ],
+            "inputProperties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Bool. Whether the price can be used for new purchases. Defaults to `true`.\n"
+                },
+                "billingScheme": {
+                    "type": "string",
+                    "description": "String. Describes how to compute the price per period. Either `per_unit` or `tiered`\n. `per_unit` indicates that the fixed amount (specified in `unit_amount` or `unit_amount_decimal`) will be charged per\nunit in quantity (for prices with `usage_type=licensed`), or per unit of total usage (for prices\nwith `usage_type=metered`). `tiered` indicates that the unit pricing will be computed using a tiering strategy as\ndefined using the `tiers` and `tiers_mode` attributes.\n",
+                    "willReplaceOnChanges": true
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).\n",
+                    "willReplaceOnChanges": true
+                },
+                "currencyOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stripe:index/PriceCurrencyOption:PriceCurrencyOption"
+                    },
+                    "description": "List(Resource). Prices defined in each available currency option. For details\nof individual arguments see Currency Options.\n"
+                },
+                "lookupKey": {
+                    "type": "string",
+                    "description": "String. A lookup key used to retrieve prices dynamically from a static string.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for\nstoring additional information about the object in a structured format.\n"
+                },
+                "nickname": {
+                    "type": "string",
+                    "description": "String. A brief description of the price, hidden from customers.\n"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "String. The ID of the product that this price will belong to.\n",
+                    "willReplaceOnChanges": true
+                },
+                "recurring": {
+                    "$ref": "#/types/stripe:index/PriceRecurring:PriceRecurring",
+                    "description": "List(Resource). The recurring components of a price such as `interval` and `usage_type`. For\ndetails of individual arguments see Recurring.\n",
+                    "willReplaceOnChanges": true
+                },
+                "taxBehaviour": {
+                    "type": "string",
+                    "description": "String. Specifies whether the price is considered inclusive of taxes or exclusive of\ntaxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it\ncannot be changed, default is `unspecified`.\n"
+                },
+                "tiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stripe:index/PriceTier:PriceTier"
+                    },
+                    "description": "List(Resource). Each element represents a pricing tier. This parameter requires `billing_scheme`\nto be set to `tiered`. See also the documentation for `billing_scheme`. For details of individual arguments\nsee Tiers.\n",
+                    "willReplaceOnChanges": true
+                },
+                "tiersMode": {
+                    "type": "string",
+                    "description": "String. Defines if the tiering price should be `graduated`\nor `volume` based. In `volume`-based tiering, the maximum quantity within a period determines the per-unit price,\nin `graduated` tiering pricing can successively change as the quantity grows.\n",
+                    "willReplaceOnChanges": true
+                },
+                "transferLookupKey": {
+                    "type": "boolean",
+                    "description": "Bool. If set to `true`, will atomically remove the lookup key from the existing\nprice, and assign it to this price.\n"
+                },
+                "transformQuantity": {
+                    "$ref": "#/types/stripe:index/PriceTransformQuantity:PriceTransformQuantity",
+                    "description": "List(Resource). Apply a transformation to the reported usage or set quantity before\ncomputing the billed price. Cannot be combined with `tiers`. For details of individual arguments\nsee Transform Quantity.\n",
+                    "willReplaceOnChanges": true
+                },
+                "unitAmount": {
+                    "type": "integer",
+                    "description": "Int. A positive integer in cents (or `-1` for a free\nprice) representing how much to charge.\n",
+                    "willReplaceOnChanges": true
+                },
+                "unitAmountDecimal": {
+                    "type": "number",
+                    "description": "Float. Same as `unit_amount`, but accepts a decimal value in cents with at most 12\ndecimal places. Only one of `unit_amount` and `unit_amount_decimal` can be set.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "currency",
+                "product"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Price resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "Bool. Whether the price can be used for new purchases. Defaults to `true`.\n"
+                    },
+                    "billingScheme": {
+                        "type": "string",
+                        "description": "String. Describes how to compute the price per period. Either `per_unit` or `tiered`\n. `per_unit` indicates that the fixed amount (specified in `unit_amount` or `unit_amount_decimal`) will be charged per\nunit in quantity (for prices with `usage_type=licensed`), or per unit of total usage (for prices\nwith `usage_type=metered`). `tiered` indicates that the unit pricing will be computed using a tiering strategy as\ndefined using the `tiers` and `tiers_mode` attributes.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "currency": {
+                        "type": "string",
+                        "description": "String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "currencyOptions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stripe:index/PriceCurrencyOption:PriceCurrencyOption"
+                        },
+                        "description": "List(Resource). Prices defined in each available currency option. For details\nof individual arguments see Currency Options.\n"
+                    },
+                    "lookupKey": {
+                        "type": "string",
+                        "description": "String. A lookup key used to retrieve prices dynamically from a static string.\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for\nstoring additional information about the object in a structured format.\n"
+                    },
+                    "nickname": {
+                        "type": "string",
+                        "description": "String. A brief description of the price, hidden from customers.\n"
+                    },
+                    "product": {
+                        "type": "string",
+                        "description": "String. The ID of the product that this price will belong to.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "recurring": {
+                        "$ref": "#/types/stripe:index/PriceRecurring:PriceRecurring",
+                        "description": "List(Resource). The recurring components of a price such as `interval` and `usage_type`. For\ndetails of individual arguments see Recurring.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "taxBehaviour": {
+                        "type": "string",
+                        "description": "String. Specifies whether the price is considered inclusive of taxes or exclusive of\ntaxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified as either `inclusive` or `exclusive`, it\ncannot be changed, default is `unspecified`.\n"
+                    },
+                    "tiers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stripe:index/PriceTier:PriceTier"
+                        },
+                        "description": "List(Resource). Each element represents a pricing tier. This parameter requires `billing_scheme`\nto be set to `tiered`. See also the documentation for `billing_scheme`. For details of individual arguments\nsee Tiers.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "tiersMode": {
+                        "type": "string",
+                        "description": "String. Defines if the tiering price should be `graduated`\nor `volume` based. In `volume`-based tiering, the maximum quantity within a period determines the per-unit price,\nin `graduated` tiering pricing can successively change as the quantity grows.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "transferLookupKey": {
+                        "type": "boolean",
+                        "description": "Bool. If set to `true`, will atomically remove the lookup key from the existing\nprice, and assign it to this price.\n"
+                    },
+                    "transformQuantity": {
+                        "$ref": "#/types/stripe:index/PriceTransformQuantity:PriceTransformQuantity",
+                        "description": "List(Resource). Apply a transformation to the reported usage or set quantity before\ncomputing the billed price. Cannot be combined with `tiers`. For details of individual arguments\nsee Transform Quantity.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "String. One of `one_time` or `recurring` depending on whether the price is for a one-time purchase or a\nrecurring (subscription) purchase.\n"
+                    },
+                    "unitAmount": {
+                        "type": "integer",
+                        "description": "Int. A positive integer in cents (or `-1` for a free\nprice) representing how much to charge.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "unitAmountDecimal": {
+                        "type": "number",
+                        "description": "Float. Same as `unit_amount`, but accepts a decimal value in cents with at most 12\ndecimal places. Only one of `unit_amount` and `unit_amount_decimal` can be set.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stripe:index/product:Product": {
+            "description": "With this resource, you can create a product - [Stripe API product documentation](https://stripe.com/docs/api/products).\n\nProducts describe the specific goods or services you offer to your customers. For example, \nyou might offer a Standard and Premium version of your goods or service; each version would be a separate Product.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as stripe from \"@pulumi/stripe\";\n\n// the most basic product\nconst product = new stripe.Product(\"product\", {\n    description: \"fantastic product\",\n    unitLabel: \"piece\",\n    url: \"https://www.terraform.io\",\n});\n```\n```python\nimport pulumi\nimport pulumi_stripe as stripe\n\n# the most basic product\nproduct = stripe.Product(\"product\",\n    description=\"fantastic product\",\n    unit_label=\"piece\",\n    url=\"https://www.terraform.io\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Stripe = Pulumi.Stripe;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // the most basic product\n    var product = new Stripe.Product(\"product\", new()\n    {\n        Description = \"fantastic product\",\n        UnitLabel = \"piece\",\n        Url = \"https://www.terraform.io\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/georgegebbett/pulumi-stripe/sdk/go/stripe\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := stripe.NewProduct(ctx, \"product\", \u0026stripe.ProductArgs{\n\t\t\tDescription: pulumi.String(\"fantastic product\"),\n\t\t\tUnitLabel:   pulumi.String(\"piece\"),\n\t\t\tUrl:         pulumi.String(\"https://www.terraform.io\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.stripe.Product;\nimport com.pulumi.stripe.ProductArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var product = new Product(\"product\", ProductArgs.builder()        \n            .description(\"fantastic product\")\n            .unitLabel(\"piece\")\n            .url(\"https://www.terraform.io\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # the most basic product\n  product:\n    type: stripe:Product\n    properties:\n      description: fantastic product\n      unitLabel: piece\n      url: https://www.terraform.io\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Bool. Whether the product is currently available for purchase. Defaults to `true`.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "String. The product’s description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.\n"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). A list of up to 8 URLs of images for this product, meant to be displayable to the customer.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "String. The product’s name, meant to be displayable to the customer. Whenever this product is sold via a subscription, name will show up on associated invoice line item descriptions.\n"
+                },
+                "packageDimensions": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "number"
+                    },
+                    "description": "Map(Float). The dimensions of this product for shipping purposes. When used these fields are required: `height`,`length`,`width` and `weight`; the precision is 2 decimal places.\n"
+                },
+                "productId": {
+                    "type": "string",
+                    "description": "String. The bespoke unique identifier for the object.\n"
+                },
+                "shippable": {
+                    "type": "boolean",
+                    "description": "Bool. Whether this product is shipped (i.e., physical goods).\n"
+                },
+                "statementDescriptor": {
+                    "type": "string",
+                    "description": "String. An arbitrary string to be displayed on your customer’s credit card or bank statement. While most banks display this information consistently, some may display it incorrectly or not at all. This may be up to 22 characters. The statement description may not include `\u003c`,` \u003e`, `\\`, `\"`, `’` characters, and will appear on your customer’s statement in capital letters. Non-ASCII characters are automatically stripped. It must contain at least one letter.\n"
+                },
+                "taxCode": {
+                    "type": "string",
+                    "description": "String. A tax code ID. Supported values are listed in the TaxCode resource and at https://stripe.com/docs/tax/tax-categories.\n"
+                },
+                "unitLabel": {
+                    "type": "string",
+                    "description": "String. A label that represents units of this product in Stripe and on customers’ receipts and invoices. When set, this will be included in associated invoice line item descriptions.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "String. A URL of a publicly-accessible webpage for this product.\n"
+                }
+            },
+            "required": [
+                "name",
+                "productId"
+            ],
+            "inputProperties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Bool. Whether the product is currently available for purchase. Defaults to `true`.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "String. The product’s description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.\n"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). A list of up to 8 URLs of images for this product, meant to be displayable to the customer.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "String. The product’s name, meant to be displayable to the customer. Whenever this product is sold via a subscription, name will show up on associated invoice line item descriptions.\n"
+                },
+                "packageDimensions": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "number"
+                    },
+                    "description": "Map(Float). The dimensions of this product for shipping purposes. When used these fields are required: `height`,`length`,`width` and `weight`; the precision is 2 decimal places.\n"
+                },
+                "productId": {
+                    "type": "string",
+                    "description": "String. The bespoke unique identifier for the object.\n",
+                    "willReplaceOnChanges": true
+                },
+                "shippable": {
+                    "type": "boolean",
+                    "description": "Bool. Whether this product is shipped (i.e., physical goods).\n"
+                },
+                "statementDescriptor": {
+                    "type": "string",
+                    "description": "String. An arbitrary string to be displayed on your customer’s credit card or bank statement. While most banks display this information consistently, some may display it incorrectly or not at all. This may be up to 22 characters. The statement description may not include `\u003c`,` \u003e`, `\\`, `\"`, `’` characters, and will appear on your customer’s statement in capital letters. Non-ASCII characters are automatically stripped. It must contain at least one letter.\n"
+                },
+                "taxCode": {
+                    "type": "string",
+                    "description": "String. A tax code ID. Supported values are listed in the TaxCode resource and at https://stripe.com/docs/tax/tax-categories.\n"
+                },
+                "unitLabel": {
+                    "type": "string",
+                    "description": "String. A label that represents units of this product in Stripe and on customers’ receipts and invoices. When set, this will be included in associated invoice line item descriptions.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "String. A URL of a publicly-accessible webpage for this product.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Product resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "Bool. Whether the product is currently available for purchase. Defaults to `true`.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "String. The product’s description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.\n"
+                    },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List(String). A list of up to 8 URLs of images for this product, meant to be displayable to the customer.\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "String. The product’s name, meant to be displayable to the customer. Whenever this product is sold via a subscription, name will show up on associated invoice line item descriptions.\n"
+                    },
+                    "packageDimensions": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "number"
+                        },
+                        "description": "Map(Float). The dimensions of this product for shipping purposes. When used these fields are required: `height`,`length`,`width` and `weight`; the precision is 2 decimal places.\n"
+                    },
+                    "productId": {
+                        "type": "string",
+                        "description": "String. The bespoke unique identifier for the object.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "shippable": {
+                        "type": "boolean",
+                        "description": "Bool. Whether this product is shipped (i.e., physical goods).\n"
+                    },
+                    "statementDescriptor": {
+                        "type": "string",
+                        "description": "String. An arbitrary string to be displayed on your customer’s credit card or bank statement. While most banks display this information consistently, some may display it incorrectly or not at all. This may be up to 22 characters. The statement description may not include `\u003c`,` \u003e`, `\\`, `\"`, `’` characters, and will appear on your customer’s statement in capital letters. Non-ASCII characters are automatically stripped. It must contain at least one letter.\n"
+                    },
+                    "taxCode": {
+                        "type": "string",
+                        "description": "String. A tax code ID. Supported values are listed in the TaxCode resource and at https://stripe.com/docs/tax/tax-categories.\n"
+                    },
+                    "unitLabel": {
+                        "type": "string",
+                        "description": "String. A label that represents units of this product in Stripe and on customers’ receipts and invoices. When set, this will be included in associated invoice line item descriptions.\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "String. A URL of a publicly-accessible webpage for this product.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stripe:index/promotionCode:PromotionCode": {
+            "description": "With this resource, you can create a promotion code - [Stripe API promotion code documentation](https://stripe.com/docs/api/promotion_codes).\n\nA Promotion Code represents a customer-redeemable code for a coupon. It can be used to create multiple codes for a single coupon.\n\n\u003e Removal of the promotion code isn't supported through the Stripe SDK.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as stripe from \"@pulumi/stripe\";\n\n// promotion code for the coupon\nconst codePromotionCode = new stripe.PromotionCode(\"codePromotionCode\", {\n    coupon: stripe_coupon.coupon.id,\n    code: \"FREE\",\n});\n// promotion code for the coupon with limitations\nconst codeIndex_promotionCodePromotionCode = new stripe.PromotionCode(\"codeIndex/promotionCodePromotionCode\", {\n    coupon: stripe_coupon.coupon.id,\n    code: \"FREE\",\n    maxRedemptions: 5,\n    expiresAt: \"2025-08-03T08:37:18+00:00\",\n});\n// promotion code for the coupon to customer\nconst codeStripeIndex_promotionCodePromotionCode = new stripe.PromotionCode(\"codeStripeIndex/promotionCodePromotionCode\", {\n    coupon: stripe_coupon.coupon.id,\n    code: \"FREE\",\n    customer: \"cus...\",\n});\n// promotion code for the coupon with restrictions\nconst codeStripeIndex_promotionCodePromotionCode1 = new stripe.PromotionCode(\"codeStripeIndex/promotionCodePromotionCode1\", {\n    coupon: stripe_coupon.coupon.id,\n    code: \"FREE\",\n    restrictions: {\n        firstTimeTransaction: true,\n        minimumAmount: 100,\n        minimumAmountCurrency: \"aud\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_stripe as stripe\n\n# promotion code for the coupon\ncode_promotion_code = stripe.PromotionCode(\"codePromotionCode\",\n    coupon=stripe_coupon[\"coupon\"][\"id\"],\n    code=\"FREE\")\n# promotion code for the coupon with limitations\ncode_index_promotion_code_promotion_code = stripe.PromotionCode(\"codeIndex/promotionCodePromotionCode\",\n    coupon=stripe_coupon[\"coupon\"][\"id\"],\n    code=\"FREE\",\n    max_redemptions=5,\n    expires_at=\"2025-08-03T08:37:18+00:00\")\n# promotion code for the coupon to customer\ncode_stripe_index_promotion_code_promotion_code = stripe.PromotionCode(\"codeStripeIndex/promotionCodePromotionCode\",\n    coupon=stripe_coupon[\"coupon\"][\"id\"],\n    code=\"FREE\",\n    customer=\"cus...\")\n# promotion code for the coupon with restrictions\ncode_stripe_index_promotion_code_promotion_code1 = stripe.PromotionCode(\"codeStripeIndex/promotionCodePromotionCode1\",\n    coupon=stripe_coupon[\"coupon\"][\"id\"],\n    code=\"FREE\",\n    restrictions=stripe.PromotionCodeRestrictionsArgs(\n        first_time_transaction=True,\n        minimum_amount=100,\n        minimum_amount_currency=\"aud\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Stripe = Pulumi.Stripe;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // promotion code for the coupon\n    var codePromotionCode = new Stripe.PromotionCode(\"codePromotionCode\", new()\n    {\n        Coupon = stripe_coupon.Coupon.Id,\n        Code = \"FREE\",\n    });\n\n    // promotion code for the coupon with limitations\n    var codeIndex_promotionCodePromotionCode = new Stripe.PromotionCode(\"codeIndex/promotionCodePromotionCode\", new()\n    {\n        Coupon = stripe_coupon.Coupon.Id,\n        Code = \"FREE\",\n        MaxRedemptions = 5,\n        ExpiresAt = \"2025-08-03T08:37:18+00:00\",\n    });\n\n    // promotion code for the coupon to customer\n    var codeStripeIndex_promotionCodePromotionCode = new Stripe.PromotionCode(\"codeStripeIndex/promotionCodePromotionCode\", new()\n    {\n        Coupon = stripe_coupon.Coupon.Id,\n        Code = \"FREE\",\n        Customer = \"cus...\",\n    });\n\n    // promotion code for the coupon with restrictions\n    var codeStripeIndex_promotionCodePromotionCode1 = new Stripe.PromotionCode(\"codeStripeIndex/promotionCodePromotionCode1\", new()\n    {\n        Coupon = stripe_coupon.Coupon.Id,\n        Code = \"FREE\",\n        Restrictions = new Stripe.Inputs.PromotionCodeRestrictionsArgs\n        {\n            FirstTimeTransaction = true,\n            MinimumAmount = 100,\n            MinimumAmountCurrency = \"aud\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/georgegebbett/pulumi-stripe/sdk/go/stripe\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := stripe.NewPromotionCode(ctx, \"codePromotionCode\", \u0026stripe.PromotionCodeArgs{\n\t\t\tCoupon: pulumi.Any(stripe_coupon.Coupon.Id),\n\t\t\tCode:   pulumi.String(\"FREE\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewPromotionCode(ctx, \"codeIndex/promotionCodePromotionCode\", \u0026stripe.PromotionCodeArgs{\n\t\t\tCoupon:         pulumi.Any(stripe_coupon.Coupon.Id),\n\t\t\tCode:           pulumi.String(\"FREE\"),\n\t\t\tMaxRedemptions: pulumi.Int(5),\n\t\t\tExpiresAt:      pulumi.String(\"2025-08-03T08:37:18+00:00\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewPromotionCode(ctx, \"codeStripeIndex/promotionCodePromotionCode\", \u0026stripe.PromotionCodeArgs{\n\t\t\tCoupon:   pulumi.Any(stripe_coupon.Coupon.Id),\n\t\t\tCode:     pulumi.String(\"FREE\"),\n\t\t\tCustomer: pulumi.String(\"cus...\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewPromotionCode(ctx, \"codeStripeIndex/promotionCodePromotionCode1\", \u0026stripe.PromotionCodeArgs{\n\t\t\tCoupon: pulumi.Any(stripe_coupon.Coupon.Id),\n\t\t\tCode:   pulumi.String(\"FREE\"),\n\t\t\tRestrictions: \u0026stripe.PromotionCodeRestrictionsArgs{\n\t\t\t\tFirstTimeTransaction:  pulumi.Bool(true),\n\t\t\t\tMinimumAmount:         pulumi.Int(100),\n\t\t\t\tMinimumAmountCurrency: pulumi.String(\"aud\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.stripe.PromotionCode;\nimport com.pulumi.stripe.PromotionCodeArgs;\nimport com.pulumi.stripe.inputs.PromotionCodeRestrictionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var codePromotionCode = new PromotionCode(\"codePromotionCode\", PromotionCodeArgs.builder()        \n            .coupon(stripe_coupon.coupon().id())\n            .code(\"FREE\")\n            .build());\n\n        var codeIndex_promotionCodePromotionCode = new PromotionCode(\"codeIndex/promotionCodePromotionCode\", PromotionCodeArgs.builder()        \n            .coupon(stripe_coupon.coupon().id())\n            .code(\"FREE\")\n            .maxRedemptions(5)\n            .expiresAt(\"2025-08-03T08:37:18+00:00\")\n            .build());\n\n        var codeStripeIndex_promotionCodePromotionCode = new PromotionCode(\"codeStripeIndex/promotionCodePromotionCode\", PromotionCodeArgs.builder()        \n            .coupon(stripe_coupon.coupon().id())\n            .code(\"FREE\")\n            .customer(\"cus...\")\n            .build());\n\n        var codeStripeIndex_promotionCodePromotionCode1 = new PromotionCode(\"codeStripeIndex/promotionCodePromotionCode1\", PromotionCodeArgs.builder()        \n            .coupon(stripe_coupon.coupon().id())\n            .code(\"FREE\")\n            .restrictions(PromotionCodeRestrictionsArgs.builder()\n                .firstTimeTransaction(true)\n                .minimumAmount(100)\n                .minimumAmountCurrency(\"aud\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # promotion code for the coupon\n  codePromotionCode:\n    type: stripe:PromotionCode\n    properties:\n      # coupon needs to be defined\n      coupon: ${stripe_coupon.coupon.id}\n      code: FREE\n  # promotion code for the coupon with limitations\n  codeIndex/promotionCodePromotionCode:\n    type: stripe:PromotionCode\n    properties:\n      # coupon needs to be defined\n      coupon: ${stripe_coupon.coupon.id}\n      code: FREE\n      maxRedemptions: 5\n      expiresAt: 2025-08-03T08:37:18+00:00\n  # promotion code for the coupon to customer\n  codeStripeIndex/promotionCodePromotionCode:\n    type: stripe:PromotionCode\n    properties:\n      # coupon needs to be defined\n      coupon: ${stripe_coupon.coupon.id}\n      code: FREE\n      customer: cus...\n  # promotion code for the coupon with restrictions\n  codeStripeIndex/promotionCodePromotionCode1:\n    type: stripe:PromotionCode\n    properties:\n      # coupon needs to be defined\n      coupon: ${stripe_coupon.coupon.id}\n      code: FREE\n      restrictions:\n        firstTimeTransaction: true\n        minimumAmount: 100\n        minimumAmountCurrency: aud\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Bool. Whether the promotion code is currently active. Defaults to `true`.\n"
+                },
+                "code": {
+                    "type": "string",
+                    "description": "String. The customer-facing code. Regardless of case, this code must be unique across all active promotion codes for a specific customer. If left blank, we will generate one automatically.\n"
+                },
+                "coupon": {
+                    "type": "string",
+                    "description": "String. The coupon for this promotion code.\n"
+                },
+                "customer": {
+                    "type": "string",
+                    "description": "String. The customer that this promotion code can be used by. If not set, the promotion code can be used by all customers.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "String. The timestamp at which this promotion code will expire. If the coupon has specified a `redeems_by`, then this value cannot be after the coupon’s `redeems_by`. Expected format is `RFC3339`.\n"
+                },
+                "maxRedemptions": {
+                    "type": "integer",
+                    "description": "Int. A positive integer specifying the number of times the promotion code can be redeemed. If the coupon has specified a `max_redemptions`, then this value cannot be greater than the coupon’s `max_redemptions`.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                },
+                "restrictions": {
+                    "$ref": "#/types/stripe:index/PromotionCodeRestrictions:PromotionCodeRestrictions",
+                    "description": "List(Resource). Settings that restrict the redemption of the promotion code. For details of individual arguments see Restrictions.\n"
+                }
+            },
+            "required": [
+                "coupon"
+            ],
+            "inputProperties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Bool. Whether the promotion code is currently active. Defaults to `true`.\n"
+                },
+                "code": {
+                    "type": "string",
+                    "description": "String. The customer-facing code. Regardless of case, this code must be unique across all active promotion codes for a specific customer. If left blank, we will generate one automatically.\n",
+                    "willReplaceOnChanges": true
+                },
+                "coupon": {
+                    "type": "string",
+                    "description": "String. The coupon for this promotion code.\n",
+                    "willReplaceOnChanges": true
+                },
+                "customer": {
+                    "type": "string",
+                    "description": "String. The customer that this promotion code can be used by. If not set, the promotion code can be used by all customers.\n",
+                    "willReplaceOnChanges": true
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "String. The timestamp at which this promotion code will expire. If the coupon has specified a `redeems_by`, then this value cannot be after the coupon’s `redeems_by`. Expected format is `RFC3339`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "maxRedemptions": {
+                    "type": "integer",
+                    "description": "Int. A positive integer specifying the number of times the promotion code can be redeemed. If the coupon has specified a `max_redemptions`, then this value cannot be greater than the coupon’s `max_redemptions`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                },
+                "restrictions": {
+                    "$ref": "#/types/stripe:index/PromotionCodeRestrictions:PromotionCodeRestrictions",
+                    "description": "List(Resource). Settings that restrict the redemption of the promotion code. For details of individual arguments see Restrictions.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "coupon"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PromotionCode resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "Bool. Whether the promotion code is currently active. Defaults to `true`.\n"
+                    },
+                    "code": {
+                        "type": "string",
+                        "description": "String. The customer-facing code. Regardless of case, this code must be unique across all active promotion codes for a specific customer. If left blank, we will generate one automatically.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "coupon": {
+                        "type": "string",
+                        "description": "String. The coupon for this promotion code.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "customer": {
+                        "type": "string",
+                        "description": "String. The customer that this promotion code can be used by. If not set, the promotion code can be used by all customers.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "String. The timestamp at which this promotion code will expire. If the coupon has specified a `redeems_by`, then this value cannot be after the coupon’s `redeems_by`. Expected format is `RFC3339`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "maxRedemptions": {
+                        "type": "integer",
+                        "description": "Int. A positive integer specifying the number of times the promotion code can be redeemed. If the coupon has specified a `max_redemptions`, then this value cannot be greater than the coupon’s `max_redemptions`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                    },
+                    "restrictions": {
+                        "$ref": "#/types/stripe:index/PromotionCodeRestrictions:PromotionCodeRestrictions",
+                        "description": "List(Resource). Settings that restrict the redemption of the promotion code. For details of individual arguments see Restrictions.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stripe:index/taxRate:TaxRate": {
+            "description": "With this resource, you can create a tax rate - [Stripe API tax rate  documentation](https://stripe.com/docs/api/tax_rates).\n\nTax rates can be applied to invoices, subscriptions and Checkout Sessions to collect tax.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as stripe from \"@pulumi/stripe\";\n\nconst taxRate = new stripe.TaxRate(\"taxRate\", {\n    active: true,\n    country: \"AU\",\n    description: \"GST Australia\",\n    displayName: \"GST\",\n    inclusive: true,\n    jurisdiction: \"AU\",\n    metadata: {},\n    percentage: 10,\n    state: \"\",\n    taxType: \"\",\n});\n```\n```python\nimport pulumi\nimport pulumi_stripe as stripe\n\ntax_rate = stripe.TaxRate(\"taxRate\",\n    active=True,\n    country=\"AU\",\n    description=\"GST Australia\",\n    display_name=\"GST\",\n    inclusive=True,\n    jurisdiction=\"AU\",\n    metadata={},\n    percentage=10,\n    state=\"\",\n    tax_type=\"\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Stripe = Pulumi.Stripe;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var taxRate = new Stripe.TaxRate(\"taxRate\", new()\n    {\n        Active = true,\n        Country = \"AU\",\n        Description = \"GST Australia\",\n        DisplayName = \"GST\",\n        Inclusive = true,\n        Jurisdiction = \"AU\",\n        Metadata = null,\n        Percentage = 10,\n        State = \"\",\n        TaxType = \"\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/georgegebbett/pulumi-stripe/sdk/go/stripe\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := stripe.NewTaxRate(ctx, \"taxRate\", \u0026stripe.TaxRateArgs{\n\t\t\tActive:       pulumi.Bool(true),\n\t\t\tCountry:      pulumi.String(\"AU\"),\n\t\t\tDescription:  pulumi.String(\"GST Australia\"),\n\t\t\tDisplayName:  pulumi.String(\"GST\"),\n\t\t\tInclusive:    pulumi.Bool(true),\n\t\t\tJurisdiction: pulumi.String(\"AU\"),\n\t\t\tMetadata:     nil,\n\t\t\tPercentage:   pulumi.Float64(10),\n\t\t\tState:        pulumi.String(\"\"),\n\t\t\tTaxType:      pulumi.String(\"\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.stripe.TaxRate;\nimport com.pulumi.stripe.TaxRateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var taxRate = new TaxRate(\"taxRate\", TaxRateArgs.builder()        \n            .active(true)\n            .country(\"AU\")\n            .description(\"GST Australia\")\n            .displayName(\"GST\")\n            .inclusive(true)\n            .jurisdiction(\"AU\")\n            .metadata()\n            .percentage(10)\n            .state(\"\")\n            .taxType(\"\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  taxRate:\n    type: stripe:TaxRate\n    properties:\n      active: true\n      # Optional fields\n      country: AU\n      description: GST Australia\n      # Required Fields\n      displayName: GST\n      inclusive: true\n      jurisdiction: AU\n      metadata: {}\n      percentage: 10\n      state:\n      taxType:\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Bool. Flag determining whether the tax rate is active or inactive (archived). Inactive tax rates cannot be used with new applications or Checkout Sessions, but will still work for subscriptions and invoices that already have it set.\n"
+                },
+                "country": {
+                    "type": "string",
+                    "description": "String. Two-letter country code (ISO 3166-1 alpha-2).\n"
+                },
+                "created": {
+                    "type": "integer",
+                    "description": "Int. Time at which the object was created. Measured in seconds since the Unix epoch.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "String. An arbitrary string attached to the tax rate for your internal use only. It will not be visible to your customers.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "String. The display name of the tax rate, which will be shown to users.\n"
+                },
+                "inclusive": {
+                    "type": "boolean",
+                    "description": "Bool. This specifies if the tax rate is inclusive or exclusive.\n* `percentage ` - (Required) Float. This represents the tax rate percent out of 100.\n"
+                },
+                "jurisdiction": {
+                    "type": "string",
+                    "description": "String. The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer’s invoice.\n"
+                },
+                "livemode": {
+                    "type": "boolean",
+                    "description": "Bool. Has the value true if the object exists in live mode or the value false if the object exists in test mode.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to metadata.\n"
+                },
+                "object": {
+                    "type": "string",
+                    "description": "String. String representing the object’s type. Objects of the same type share the same value.\n"
+                },
+                "percentage": {
+                    "type": "number",
+                    "description": "This represents the tax rate percent out of 100.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "String. ISO 3166-2 subdivision code, without country prefix. For example, “NY” for New York, United States.\n"
+                },
+                "taxType": {
+                    "type": "string",
+                    "description": "String. The high-level tax type, such as vat or sales_tax.\n"
+                }
+            },
+            "required": [
+                "created",
+                "displayName",
+                "inclusive",
+                "livemode",
+                "object",
+                "percentage"
+            ],
+            "inputProperties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Bool. Flag determining whether the tax rate is active or inactive (archived). Inactive tax rates cannot be used with new applications or Checkout Sessions, but will still work for subscriptions and invoices that already have it set.\n"
+                },
+                "country": {
+                    "type": "string",
+                    "description": "String. Two-letter country code (ISO 3166-1 alpha-2).\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "String. An arbitrary string attached to the tax rate for your internal use only. It will not be visible to your customers.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "String. The display name of the tax rate, which will be shown to users.\n"
+                },
+                "inclusive": {
+                    "type": "boolean",
+                    "description": "Bool. This specifies if the tax rate is inclusive or exclusive.\n* `percentage ` - (Required) Float. This represents the tax rate percent out of 100.\n"
+                },
+                "jurisdiction": {
+                    "type": "string",
+                    "description": "String. The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer’s invoice.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to metadata.\n"
+                },
+                "percentage": {
+                    "type": "number",
+                    "description": "This represents the tax rate percent out of 100.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "String. ISO 3166-2 subdivision code, without country prefix. For example, “NY” for New York, United States.\n"
+                },
+                "taxType": {
+                    "type": "string",
+                    "description": "String. The high-level tax type, such as vat or sales_tax.\n"
+                }
+            },
+            "requiredInputs": [
+                "displayName",
+                "inclusive",
+                "percentage"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TaxRate resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "Bool. Flag determining whether the tax rate is active or inactive (archived). Inactive tax rates cannot be used with new applications or Checkout Sessions, but will still work for subscriptions and invoices that already have it set.\n"
+                    },
+                    "country": {
+                        "type": "string",
+                        "description": "String. Two-letter country code (ISO 3166-1 alpha-2).\n"
+                    },
+                    "created": {
+                        "type": "integer",
+                        "description": "Int. Time at which the object was created. Measured in seconds since the Unix epoch.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "String. An arbitrary string attached to the tax rate for your internal use only. It will not be visible to your customers.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "String. The display name of the tax rate, which will be shown to users.\n"
+                    },
+                    "inclusive": {
+                        "type": "boolean",
+                        "description": "Bool. This specifies if the tax rate is inclusive or exclusive.\n* `percentage ` - (Required) Float. This represents the tax rate percent out of 100.\n"
+                    },
+                    "jurisdiction": {
+                        "type": "string",
+                        "description": "String. The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer’s invoice.\n"
+                    },
+                    "livemode": {
+                        "type": "boolean",
+                        "description": "Bool. Has the value true if the object exists in live mode or the value false if the object exists in test mode.\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to metadata.\n"
+                    },
+                    "object": {
+                        "type": "string",
+                        "description": "String. String representing the object’s type. Objects of the same type share the same value.\n"
+                    },
+                    "percentage": {
+                        "type": "number",
+                        "description": "This represents the tax rate percent out of 100.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "String. ISO 3166-2 subdivision code, without country prefix. For example, “NY” for New York, United States.\n"
+                    },
+                    "taxType": {
+                        "type": "string",
+                        "description": "String. The high-level tax type, such as vat or sales_tax.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stripe:index/webhookEndpoint:WebhookEndpoint": {
+            "description": "With this resource, you can create a webhook endpoint - [Stripe API webhook endpoint documentation](https://stripe.com/docs/api/webhook_endpoints).\n\nYou can configure webhook endpoints via the API to be notified about events that happen in your Stripe account or connected accounts.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as stripe from \"@pulumi/stripe\";\n\nconst webhook = new stripe.WebhookEndpoint(\"webhook\", {\n    description: \"example of webhook\",\n    enabledEvents: [\n        \"customer.subscription.created\",\n        \"customer.subscription.updated\",\n    ],\n    url: \"https://webhook-url-consumer.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_stripe as stripe\n\nwebhook = stripe.WebhookEndpoint(\"webhook\",\n    description=\"example of webhook\",\n    enabled_events=[\n        \"customer.subscription.created\",\n        \"customer.subscription.updated\",\n    ],\n    url=\"https://webhook-url-consumer.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Stripe = Pulumi.Stripe;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var webhook = new Stripe.WebhookEndpoint(\"webhook\", new()\n    {\n        Description = \"example of webhook\",\n        EnabledEvents = new[]\n        {\n            \"customer.subscription.created\",\n            \"customer.subscription.updated\",\n        },\n        Url = \"https://webhook-url-consumer.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/georgegebbett/pulumi-stripe/sdk/go/stripe\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := stripe.NewWebhookEndpoint(ctx, \"webhook\", \u0026stripe.WebhookEndpointArgs{\n\t\t\tDescription: pulumi.String(\"example of webhook\"),\n\t\t\tEnabledEvents: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"customer.subscription.created\"),\n\t\t\t\tpulumi.String(\"customer.subscription.updated\"),\n\t\t\t},\n\t\t\tUrl: pulumi.String(\"https://webhook-url-consumer.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.stripe.WebhookEndpoint;\nimport com.pulumi.stripe.WebhookEndpointArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var webhook = new WebhookEndpoint(\"webhook\", WebhookEndpointArgs.builder()        \n            .description(\"example of webhook\")\n            .enabledEvents(            \n                \"customer.subscription.created\",\n                \"customer.subscription.updated\")\n            .url(\"https://webhook-url-consumer.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  webhook:\n    type: stripe:WebhookEndpoint\n    properties:\n      description: example of webhook\n      enabledEvents:\n        - customer.subscription.created\n        - customer.subscription.updated\n      url: https://webhook-url-consumer.com\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "apiVersion": {
+                    "type": "string",
+                    "description": "String. Events sent to this endpoint will be generated with this Stripe Version instead of your account’s default Stripe Version.\n"
+                },
+                "connect": {
+                    "type": "boolean",
+                    "description": "Bool. Whether this endpoint should receive events from connected accounts (`true`), or from your account (`false`). Defaults to `false`.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "String. Description of what the webhook is used for.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Bool. Disable the webhook endpoint if set to `true`. Can be used only for modification already existing webhook endpoint.\n"
+                },
+                "enabledEvents": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). The list of events to enable for this endpoint. `[*]` indicates that all events are enabled, except those that require explicit selection. All supported events listed here: [Stripe event types](https://stripe.com/docs/api/events/types).\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "String. The endpoint’s secret, used to generate webhook signatures. This field is marked as `sensitive`.\n",
+                    "secret": true
+                },
+                "url": {
+                    "type": "string",
+                    "description": "String. The URL of the webhook endpoint.\n"
+                }
+            },
+            "required": [
+                "enabledEvents",
+                "secret",
+                "url"
+            ],
+            "inputProperties": {
+                "apiVersion": {
+                    "type": "string",
+                    "description": "String. Events sent to this endpoint will be generated with this Stripe Version instead of your account’s default Stripe Version.\n",
+                    "willReplaceOnChanges": true
+                },
+                "connect": {
+                    "type": "boolean",
+                    "description": "Bool. Whether this endpoint should receive events from connected accounts (`true`), or from your account (`false`). Defaults to `false`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "description": {
+                    "type": "string",
+                    "description": "String. Description of what the webhook is used for.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Bool. Disable the webhook endpoint if set to `true`. Can be used only for modification already existing webhook endpoint.\n"
+                },
+                "enabledEvents": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). The list of events to enable for this endpoint. `[*]` indicates that all events are enabled, except those that require explicit selection. All supported events listed here: [Stripe event types](https://stripe.com/docs/api/events/types).\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "String. The URL of the webhook endpoint.\n"
+                }
+            },
+            "requiredInputs": [
+                "enabledEvents",
+                "url"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WebhookEndpoint resources.\n",
+                "properties": {
+                    "apiVersion": {
+                        "type": "string",
+                        "description": "String. Events sent to this endpoint will be generated with this Stripe Version instead of your account’s default Stripe Version.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "connect": {
+                        "type": "boolean",
+                        "description": "Bool. Whether this endpoint should receive events from connected accounts (`true`), or from your account (`false`). Defaults to `false`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "String. Description of what the webhook is used for.\n"
+                    },
+                    "disabled": {
+                        "type": "boolean",
+                        "description": "Bool. Disable the webhook endpoint if set to `true`. Can be used only for modification already existing webhook endpoint.\n"
+                    },
+                    "enabledEvents": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List(String). The list of events to enable for this endpoint. `[*]` indicates that all events are enabled, except those that require explicit selection. All supported events listed here: [Stripe event types](https://stripe.com/docs/api/events/types).\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.\n"
+                    },
+                    "secret": {
+                        "type": "string",
+                        "description": "String. The endpoint’s secret, used to generate webhook signatures. This field is marked as `sensitive`.\n",
+                        "secret": true
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "String. The URL of the webhook endpoint.\n"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

@@ -134,7 +134,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
+				fmt.Sprintf("github.com/georgegebbett/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,
@@ -150,10 +150,11 @@ func Provider() tfbridge.ProviderInfo {
 
 	// These are new API's that you may opt to use to automatically compute resource tokens,
 	// and apply auto aliasing for full backwards compatibility.
-	// For more information, please reference: https://pkg.go.dev/github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge#ProviderInfo.ComputeTokens
+	// For more information, please reference:
+	// https://pkg.go.dev/github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge#ProviderInfo.ComputeTokens
 	prov.MustComputeTokens(tokens.SingleModule("stripe_", mainMod,
 		tokens.MakeStandard(mainPkg)))
-	prov.MustApplyAutoAliases()
+	//prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov
