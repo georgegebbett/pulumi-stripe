@@ -2,6 +2,8 @@
 
 The Stripe Resource Provider lets you manage [Stripe](https://stripe.com) resources.
 
+This is a bridged provider from https://github.com/lukasaron/terraform-provider-stripe
+
 ## Installing
 
 This package is available for several languages/platforms:
@@ -11,13 +13,19 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @georgegebbett/pulumi-stripe
+npm install pulumi-stripe
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @georgegebbett/pulumi-stripe
+yarn add pulumi-stripe
+```
+
+or indeed `pnpm`:
+
+```bash
+pnpm add pulumi-stripe
 ```
 
 ### Python
@@ -33,7 +41,7 @@ pip install pulumi-stripe
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
-go get github.com/georgegebbett/pulumi-stripe/sdk/go/...
+go get github.com/georgegebbett/pulumi-stripe/sdk/go
 ```
 
 ### .NET
@@ -41,11 +49,11 @@ go get github.com/georgegebbett/pulumi-stripe/sdk/go/...
 To use from .NET, install using `dotnet add package`:
 
 ```bash
-dotnet add package Pulumi.Foo
+dotnet add package Pulumi.Stripe
 ```
 
 ## Configuration
 
-The following configuration points are available for the `foo` provider:
+The following configuration points are available for the `stripe` provider:
 
 - `stripe:apiKey` (environment: `STRIPE_API_KEY`) - the API key for `stripe`
