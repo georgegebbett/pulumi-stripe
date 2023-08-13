@@ -1,5 +1,5 @@
 {
-    "name": "@pulumi/stripe",
+    "name": "@georgegebbett/pulumi-stripe",
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing stripe cloud resources.",
     "keywords": [

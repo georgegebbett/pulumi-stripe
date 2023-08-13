@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as stripe from "@pulumi/stripe";
+ * import * as stripe from "@georgegebbett/pulumi-stripe";
  *
  * const taxRate = new stripe.TaxRate("taxRate", {
  *     active: true,

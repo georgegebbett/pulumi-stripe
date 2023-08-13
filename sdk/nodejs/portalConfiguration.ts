@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as stripe from "@pulumi/stripe";
+ * import * as stripe from "@georgegebbett/pulumi-stripe";
  *
  * // A billing portal using all the available options
  * const portalConfiguration = new stripe.PortalConfiguration("portalConfiguration", {
