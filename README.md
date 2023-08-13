@@ -52,6 +52,13 @@ To use from .NET, install using `dotnet add package`:
 dotnet add package Pulumi.Stripe
 ```
 
+## A note on Go and .NET
+
+I have never done any real development in Go or .NET - indeed this was my first foray into Go at all. I cannot warrant
+that I have published the packages correctly, or provided good instructions for installing them.
+
+Please feel free to open a PR with any suggestions!
+
 ## Configuration
 
 The following configuration points are available for the `stripe` provider:
