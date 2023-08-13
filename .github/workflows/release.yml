@@ -208,7 +208,6 @@ jobs:
           - python
           - dotnet
           - go
-          - java
         nodeversion:
           - 16.x
         pythonversion:
