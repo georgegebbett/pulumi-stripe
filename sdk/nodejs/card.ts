@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as stripe from "@georgegebbett/pulumi-stripe";
+ * import * as stripe from "pulumi-stripe";
  *
  * // card for the customer
  * const cardCard = new stripe.Card("cardCard", {

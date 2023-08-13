@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as stripe from "@georgegebbett/pulumi-stripe";
+ * import * as stripe from "pulumi-stripe";
  *
  * // promotion code for the coupon
  * const codePromotionCode = new stripe.PromotionCode("codePromotionCode", {

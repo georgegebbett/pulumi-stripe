@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as stripe from "@georgegebbett/pulumi-stripe";
+ * import * as stripe from "pulumi-stripe";
  *
  * // basic price for the product
  * const pricePrice = new stripe.Price("pricePrice", {

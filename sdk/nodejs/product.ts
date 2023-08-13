@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as stripe from "@georgegebbett/pulumi-stripe";
+ * import * as stripe from "pulumi-stripe";
  *
  * // the most basic product
  * const product = new stripe.Product("product", {
