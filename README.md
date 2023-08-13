@@ -54,7 +54,7 @@ From the templated repository:
    This will do the following:
    - rename folders in `provider/cmd` to `pulumi-resource-foo` and `pulumi-tfgen-foo`
    - replace dependencies in `provider/go.mod` to reflect your repository name
-   - find and replace all instances of the boilerplate `xyz` with the `NAME` of your provider.
+   - find and replace all instances of the boilerplate `stripe` with the `NAME` of your provider.
 
    Note for third-party providers:
    - Make sure to set the correct GitHub organization/username in all files referencing your provider as a dependency:
@@ -359,7 +359,7 @@ before:
   hooks:
   - make tfgen
 builds:
-- binary: pulumi-resource-xyz
+- binary: pulumi-resource-stripe
   dir: provider
   goarch:
   - amd64
@@ -370,8 +370,8 @@ builds:
   - linux
   ignore: []
   ldflags:
-  - -X github.com/pulumi/pulumi-xyz/provider/pkg/version.Version={{.Tag}}
-  main: ./cmd/pulumi-resource-xyz/
+  - -X github.com/georgegebbett/pulumi-stripe/provider/pkg/version.Version={{.Tag}}
+  main: ./cmd/pulumi-resource-stripe/
   sort: asc
   use: git
 release:
@@ -396,18 +396,18 @@ dist
 ├── artifacts.json
 ├── config.yaml
 ├── metadata.json
-├── pulumi-xyz_darwin_amd64_v1
-│   └── pulumi-resource-xyz
-├── pulumi-xyz_darwin_arm64
-│   └── pulumi-resource-xyz
-├── pulumi-xyz_linux_amd64_v1
-│   └── pulumi-resource-xyz
-├── pulumi-xyz_linux_arm64
-│   └── pulumi-resource-xyz
-├── pulumi-xyz_windows_amd64_v1
-│   └── pulumi-resource-xyz.exe
-└── pulumi-xyz_windows_arm64
-    └── pulumi-resource-xyz.exe
+├── pulumi-stripe_darwin_amd64_v1
+│   └── pulumi-resource-stripe
+├── pulumi-stripe_darwin_arm64
+│   └── pulumi-resource-stripe
+├── pulumi-stripe_linux_amd64_v1
+│   └── pulumi-resource-stripe
+├── pulumi-stripe_linux_arm64
+│   └── pulumi-resource-stripe
+├── pulumi-stripe_windows_amd64_v1
+│   └── pulumi-resource-stripe.exe
+└── pulumi-stripe_windows_arm64
+    └── pulumi-resource-stripe.exe
 ```
 
 Any of the provider binaries can be used to target the correct machine architecture
