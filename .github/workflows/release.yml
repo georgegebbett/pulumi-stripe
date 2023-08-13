@@ -221,7 +221,7 @@ jobs:
       - build_sdk
     steps:
       - name: Create directory for untarring
-        run: mkdir ${{ github.workspace }}/sdk/${{ matrix.language }}
+        run: mkdir -p ${{ github.workspace }}/sdk/${{ matrix.language }}
       - name: Publish SDKs
         uses: pulumi/pulumi-package-publisher@v0.0.9
         with:
