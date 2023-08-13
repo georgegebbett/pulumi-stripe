@@ -1,6 +1,7 @@
 {
     "name": "stripe",
-    "description": "A Pulumi package for creating and managing stripe cloud resources.",
+    "displayName": "Stripe",
+    "description": "A Pulumi package for creating and managing Stripe resources.",
     "keywords": [
         "pulumi",
         "stripe",
@@ -10,7 +11,8 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`stripe` Terraform Provider](https://github.com/lukasaron/terraform-provider-stripe).",
     "repository": "https://github.com/georgegebbett/pulumi-stripe",
-    "publisher": "Pulumi",
+    "pluginDownloadURL": "github://api.github.com/georgegebbett",
+    "publisher": "George Gebbett",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
     },
@@ -28,7 +30,7 @@
         },
         "nodejs": {
             "packageName": "pulumi-stripe",
-            "packageDescription": "A Pulumi package for creating and managing stripe cloud resources.",
+            "packageDescription": "A Pulumi package for creating and managing Stripe resources.",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/lukasaron/terraform-provider-stripe)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-stripe` repo](https://github.com/georgegebbett/pulumi-stripe/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-stripe` repo](https://github.com/lukasaron/terraform-provider-stripe/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"

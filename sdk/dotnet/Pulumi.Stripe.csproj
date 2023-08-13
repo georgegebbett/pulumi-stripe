@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Pulumi</Authors>
-    <Company>Pulumi</Company>
-    <Description>A Pulumi package for creating and managing stripe cloud resources.</Description>
+    <Authors>George Gebbett</Authors>
+    <Company>George Gebbett</Company>
+    <Description>A Pulumi package for creating and managing Stripe resources.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://www.pulumi.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/georgegebbett/pulumi-stripe</RepositoryUrl>

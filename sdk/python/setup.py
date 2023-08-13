@@ -15,7 +15,7 @@ class InstallPluginCommand(install):
     def run(self):
         install.run(self)
         try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'stripe', PLUGIN_VERSION])
+            check_call(['pulumi', 'plugin', 'install', 'resource', 'stripe', PLUGIN_VERSION, '--server', 'github://api.github.com/georgegebbett'])
         except OSError as error:
             if error.errno == errno.ENOENT:
                 print(f"""
@@ -40,7 +40,7 @@ def readme():
 setup(name='pulumi_stripe',
       python_requires='>=3.7',
       version=VERSION,
-      description="A Pulumi package for creating and managing stripe cloud resources.",
+      description="A Pulumi package for creating and managing Stripe resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
       cmdclass={
