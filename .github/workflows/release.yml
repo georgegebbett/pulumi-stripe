@@ -222,6 +222,8 @@ jobs:
     steps:
       - name: Publish SDKs
         uses: pulumi/pulumi-package-publisher@v0.0.9
+        with:
+          sdk: ${{ matrix.language }}
     strategy:
       fail-fast: true
       matrix:
