@@ -2,7 +2,7 @@ module github.com/georgegebbett/pulumi-stripe/provider
 
 go 1.18
 
-replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9
+replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230710100801-03a71d0fca3d
 
 require (
 	github.com/lukasaron/terraform-provider-stripe v1.7.7
