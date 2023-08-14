@@ -1,0 +1,179 @@
+name: 'Pulumi Package publisher'
+description: 'A GitHub Action that publishes provider SDKs'
+inputs:
+  sdk:
+    description: The name of the language SDK being published
+    required: false
+    default: 'all'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Verify input
+      run: echo 'Publishing SDK:' && echo ${{ inputs.sdk }}
+      shell: bash
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+      with:
+        repository: ${{ github.repository }}
+    - name: Unshallow clone for tags
+      run: git fetch --prune --unshallow --tags
+      shell: bash
+    - name: Install Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: ${{ env.GOVERSION }}
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@v1.5.0
+      with:
+        repo: pulumi/pulumictl
+    - name: Install Pulumi CLI
+      uses: pulumi/action-install-pulumi-cli@v2
+    - name: Setup Node
+      if: inputs.sdk == 'nodejs' || inputs.sdk == 'all'
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODEVERSION }}
+        registry-url: https://registry.npmjs.org
+    - name: Download nodejs SDK
+      if: inputs.sdk == 'nodejs' || inputs.sdk == 'all'
+      uses: actions/download-artifact@v2
+      with:
+        name: nodejs-sdk.tar.gz
+        path: ${{ github.workspace }}/sdk/
+    - name: Uncompress nodejs SDK
+      if: inputs.sdk == 'nodejs' || inputs.sdk == 'all'
+      run: tar -zxf ${{ github.workspace }}/sdk/nodejs-sdk.tar.gz -C
+        ${{ github.workspace }}/sdk/nodejs
+      shell: bash
+    - name: Run npm whoami
+      if: inputs.sdk == 'nodejs' || inputs.sdk == 'all'
+      run: npm whoami
+      shell: bash
+      env:
+        NODE_AUTH_TOKEN: ${{ env.NODE_AUTH_TOKEN }}
+    - name: Add Node scripts.sh
+      # TODO: https://github.com/pulumi/pulumi/issues/13195 Move this hotfix to the Pulumi CLI.
+      if: inputs.sdk == 'nodejs' || inputs.sdk == 'all'
+      run: |
+        mkdir -p ${{ github.workspace }}/sdk/nodejs/bin/scripts
+        cat << 'EOF' > ${{ github.workspace }}/sdk/nodejs/bin/scripts/install-pulumi-plugin.js
+        "use strict";
+        var childProcess = require("child_process");
+
+        var args = process.argv.slice(2);
+        var res = childProcess.spawnSync("pulumi", ["plugin", "install"].concat(args), {
+            stdio: ["ignore", "inherit", "inherit"]
+        });
+
+        if (res.error && res.error.code === "ENOENT") {
+            console.error("\nThere was an error installing the resource provider plugin. " +
+                    "It looks like `pulumi` is not installed on your system. " +
+                    "Please visit https://pulumi.com/ to install the Pulumi CLI.\n" +
+                    "You may try manually installing the plugin by running " +
+                    "`pulumi plugin install " + args.join(" ") + "`");
+        } else if (res.error || res.status !== 0) {
+            console.error("\nThere was an error installing the resource provider plugin. " +
+                    "You may try to manually installing the plugin by running " +
+                    "`pulumi plugin install " + args.join(" ") + "`");
+        }
+
+        process.exit(0);
+        EOF
+      shell: bash
+    - name: Publish Node
+      if: inputs.sdk == 'nodejs' || inputs.sdk == 'all'
+      run: pulumi package publish-sdk nodejs --path ${{ github.workspace }}/sdk/nodejs/bin
+      shell: bash
+      env:
+        NODE_AUTH_TOKEN: ${{ env.NODE_AUTH_TOKEN }}
+    - name: Setup DotNet
+      if: inputs.sdk == 'dotnet' || inputs.sdk == 'all'
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.DOTNETVERSION }}
+    - name: Download dotnet SDK
+      if: inputs.sdk == 'dotnet' || inputs.sdk == 'all'
+      uses: actions/download-artifact@v2
+      with:
+        name: dotnet-sdk.tar.gz
+        path: ${{ github.workspace }}/sdk/
+    - name: Uncompress dotnet SDK
+      if: inputs.sdk == 'dotnet' || inputs.sdk == 'all'
+      run: tar -zxf ${{ github.workspace }}/sdk/dotnet-sdk.tar.gz -C
+        ${{ github.workspace }}/sdk/dotnet
+      shell: bash
+    - name: Publish dotnet SDK
+      if: inputs.sdk == 'dotnet' || inputs.sdk == 'all'
+      run: find "${{ github.workspace }}/sdk/dotnet/bin/Debug/" -name 'Pulumi.*.nupkg'
+        -exec dotnet nuget push -k "${NUGET_PUBLISH_KEY}" -s https://api.nuget.org/v3/index.json {} \;
+      shell: bash
+    - name: Setup Python
+      if: inputs.sdk == 'python' || inputs.sdk == 'all'
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ env.PYTHONVERSION }}
+    - name: Download python SDK
+      if: inputs.sdk == 'python' || inputs.sdk == 'all'
+      uses: actions/download-artifact@v2
+      with:
+        name: python-sdk.tar.gz
+        path: ${{ github.workspace }}/sdk/
+    - name: Uncompress python SDK
+      if: inputs.sdk == 'python' || inputs.sdk == 'all'
+      run: tar -zxf ${{ github.workspace }}/sdk/python-sdk.tar.gz -C
+        ${{ github.workspace }}/sdk/python
+      shell: bash
+    - name: Install Twine
+      if: inputs.sdk == 'python' || inputs.sdk == 'all'
+      run: python -m pip install pip twine
+      shell: bash
+    - name: Publish Python SDK
+      if: inputs.sdk == 'python' || inputs.sdk == 'all'
+      run: if [ -n "${PYPI_USERNAME}" ] ;
+        then PYPI_PUBLISH_USERNAME=${PYPI_USERNAME};
+        else PYPI_PUBLISH_USERNAME="pulumi";
+        fi &&
+        echo "Publishing Pip package to pypi as ${PYPI_PUBLISH_USERNAME}:" &&
+        twine upload
+        -u "${PYPI_PUBLISH_USERNAME}" -p "${PYPI_PASSWORD}"
+        "${{ github.workspace }}/sdk/python/bin/dist/*.tar.gz"
+        --skip-existing
+        --verbose
+      shell: bash
+    - name: Setup Java
+      if: inputs.sdk == 'java' || inputs.sdk == 'all'
+      uses: actions/setup-java@v3
+      with:
+        cache: gradle
+        distribution: temurin
+        java-version: ${{ env.JAVAVERSION }}
+    - name: Setup Gradle
+      if: inputs.sdk == 'java' || inputs.sdk == 'all'
+      uses: gradle/gradle-build-action@v2
+      with:
+        gradle-version: "7.6"
+    - name: Download java SDK
+      if: inputs.sdk == 'java' || inputs.sdk == 'all'
+      uses: actions/download-artifact@v2
+      with:
+        name: java-sdk.tar.gz
+        path: ${{ github.workspace}}/sdk/
+    - name: Uncompress java SDK
+      if: inputs.sdk == 'java' || inputs.sdk == 'all'
+      run: tar -zxf ${{github.workspace}}/sdk/java.tar.gz -C
+        ${{github.workspace}}/sdk/java
+      shell: bash
+    - name: Set PACKAGE_VERSION to Env
+      if: inputs.sdk == 'java' || inputs.sdk == 'all'
+      run: echo "PACKAGE_VERSION=$(pulumictl get version --language generic)" >>
+        $GITHUB_ENV
+      shell: bash
+    - name: Publish Java SDK
+      if: inputs.sdk == 'java' || inputs.sdk == 'all'
+      continue-on-error: true
+      uses: gradle/gradle-build-action@9b814496b50909128c6a52622b416c5ffa04db49
+      with:
+        arguments: publishToSonatype closeAndReleaseSonatypeStagingRepository
+        build-root-directory: ./sdk/java
+        gradle-version: 7.4.1
