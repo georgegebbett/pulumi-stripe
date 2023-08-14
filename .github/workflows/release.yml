@@ -223,7 +223,7 @@ jobs:
       - name: Create directory for untarring
         run: mkdir -p ${{ github.workspace }}/sdk/${{ matrix.language }}
       - name: Publish SDKs
-        uses: pulumi/pulumi-package-publisher@v0.0.9
+        uses: ./.github/actions/pulumi-publish.yml
         with:
           sdk: ${{ matrix.language }}
     strategy:
