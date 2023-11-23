@@ -50,7 +50,7 @@ runs:
       run: ls ${{steps.download.outputs.download-path}}
     - name: Uncompress nodejs SDK
       if: inputs.sdk == 'nodejs' || inputs.sdk == 'all'
-      run: tar -zxf ${{ github.workspace }}/sdk/nodejs-sdk.tar.gz -C
+      run: tar -zxf ${{ github.workspace }}/sdk/nodejs.tar.gz -C
         ${{ github.workspace }}/sdk/nodejs
       shell: bash
     - name: Run npm whoami
