@@ -64,6 +64,82 @@
         ]
     },
     "types": {
+        "stripe:index/FileLink:FileLink": {
+            "properties": {
+                "created": {
+                    "type": "integer",
+                    "description": "String. Time at which the object was created. Measured in seconds since the Unix epoch.\n"
+                },
+                "expired": {
+                    "type": "boolean",
+                    "description": "Bool. Returns if the link is already expired.\n"
+                },
+                "expiresAt": {
+                    "type": "integer",
+                    "description": "Int. The link isn’t available after this future timestamp.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "String. Unique identifier for the object.\n"
+                },
+                "livemode": {
+                    "type": "boolean",
+                    "description": "Bool. Has the value `true` if the object exists in live mode or the value `false` \nif the object exists in test mode.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. \nThis can be useful for storing additional information about the object in a structured format.\n"
+                },
+                "object": {
+                    "type": "string",
+                    "description": "String. String representing the object’s type. Objects of the same type share the same value.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "String. The publicly accessible URL to download the file.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "created",
+                        "expired",
+                        "expiresAt",
+                        "id",
+                        "livemode",
+                        "object",
+                        "url"
+                    ]
+                }
+            }
+        },
+        "stripe:index/FileLinkData:FileLinkData": {
+            "properties": {
+                "create": {
+                    "type": "boolean",
+                    "description": "Bool. Set this to `true` to create a file link for the newly created file. \nCreating a link is only possible when the file’s purpose is one of the following: `business_icon`, `business_logo`,\n`customer_signature`, `dispute_evidence`, `pci_document`, `tax_document_user_upload`, or `terminal_reader_splashscreen`.\n"
+                },
+                "expiresAt": {
+                    "type": "integer",
+                    "description": "Int. The link isn’t available after this future timestamp.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. \nThis can be useful for storing additional information about the object in a structured format.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "create"
+            ]
+        },
         "stripe:index/PortalConfigurationBusinessProfile:PortalConfigurationBusinessProfile": {
             "properties": {
                 "headline": {
@@ -139,7 +215,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.\n"
+                    "description": "Bool. Whether the feature is enabled.\n"
                 }
             },
             "type": "object",
@@ -151,7 +227,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.\n"
+                    "description": "Bool. Whether the feature is enabled.\n"
                 }
             },
             "type": "object",
@@ -163,7 +239,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.\n"
+                    "description": "Bool. Whether the feature is enabled.\n"
                 }
             },
             "type": "object",
@@ -179,7 +255,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.\n"
+                    "description": "Bool. Whether the feature is enabled.\n"
                 },
                 "mode": {
                     "type": "string",
@@ -219,7 +295,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.\n"
+                    "description": "Bool. Whether the feature is enabled.\n"
                 }
             },
             "type": "object"
@@ -235,7 +311,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.\n"
+                    "description": "Bool. Whether the feature is enabled.\n"
                 },
                 "products": {
                     "type": "array",
@@ -318,7 +394,7 @@
                 },
                 "unitAmount": {
                     "type": "integer",
-                    "description": "Int. A positive integer in cents (or 0 for a free price) representing how much to charge.\n"
+                    "description": "Int. A positive integer in cents (or -1 for a free price) representing how much to charge.\n"
                 },
                 "unitAmountDecimal": {
                     "type": "number",
@@ -465,6 +541,105 @@
                 "firstTimeTransaction",
                 "minimumAmount",
                 "minimumAmountCurrency"
+            ]
+        },
+        "stripe:index/ShippingRateDeliveryEstimate:ShippingRateDeliveryEstimate": {
+            "properties": {
+                "maximum": {
+                    "$ref": "#/types/stripe:index/ShippingRateDeliveryEstimateMaximum:ShippingRateDeliveryEstimateMaximum",
+                    "description": "List(Resource. The upper bound of the estimated range.\nPlease see Delivery Estimate Definition.\n"
+                },
+                "minimum": {
+                    "$ref": "#/types/stripe:index/ShippingRateDeliveryEstimateMinimum:ShippingRateDeliveryEstimateMinimum",
+                    "description": "List(Resource). The lower bound of the estimated range. \nPlease see Delivery Estimate Definition.\n"
+                }
+            },
+            "type": "object"
+        },
+        "stripe:index/ShippingRateDeliveryEstimateMaximum:ShippingRateDeliveryEstimateMaximum": {
+            "properties": {
+                "unit": {
+                    "type": "string",
+                    "description": "String. A unit of time. Possible values `hour`, `day`, `business_day`, `week` and `month`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "value": {
+                    "type": "integer",
+                    "description": "Int. Must be greater than 0.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "unit",
+                "value"
+            ]
+        },
+        "stripe:index/ShippingRateDeliveryEstimateMinimum:ShippingRateDeliveryEstimateMinimum": {
+            "properties": {
+                "unit": {
+                    "type": "string",
+                    "description": "String. A unit of time. Possible values `hour`, `day`, `business_day`, `week` and `month`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "value": {
+                    "type": "integer",
+                    "description": "Int. Must be greater than 0.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "unit",
+                "value"
+            ]
+        },
+        "stripe:index/ShippingRateFixedAmount:ShippingRateFixedAmount": {
+            "properties": {
+                "amount": {
+                    "type": "integer",
+                    "description": "Int. A non-negative integer in cents representing how much to charge.\n"
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).\n"
+                },
+                "currencyOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stripe:index/ShippingRateFixedAmountCurrencyOption:ShippingRateFixedAmountCurrencyOption"
+                    },
+                    "description": "List(Resource). Please see argument details Currency Option\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "amount",
+                "currency"
+            ]
+        },
+        "stripe:index/ShippingRateFixedAmountCurrencyOption:ShippingRateFixedAmountCurrencyOption": {
+            "properties": {
+                "amount": {
+                    "type": "integer",
+                    "description": "Int. (Required) Int. A non-negative integer in cents representing how much to charge.\n",
+                    "willReplaceOnChanges": true
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).\n",
+                    "willReplaceOnChanges": true
+                },
+                "taxBehavior": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "amount",
+                "currency"
             ]
         }
     },
@@ -1157,6 +1332,155 @@
                 "type": "object"
             }
         },
+        "stripe:index/file:File": {
+            "description": "This object represents files hosted on Stripe's servers - [Stripe API file documentation](https://stripe.com/docs/api/files).\nYou can upload files with the create file request (for example, when uploading dispute evidence).\n\nStripe File upload [guide](https://stripe.com/docs/file-upload#uploading-a-file)\n\n\u003e Update or removal of the file isn't supported through the Stripe SDK.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fs from \"fs\";\nimport * as stripe from \"pulumi-stripe\";\n\n// minimal file field\nconst logoFile = new stripe.File(\"logoFile\", {\n    filename: \"logo.jpg\",\n    purpose: \"business_logo\",\n    base64content: Buffer.from(fs.readFileSync(`${HOME}/logo.jpg`), 'binary').toString('base64'),\n});\n// file with file link\nconst logoIndex_fileFile = new stripe.File(\"logoIndex/fileFile\", {\n    filename: \"logo.jpg\",\n    purpose: \"business_logo\",\n    base64content: Buffer.from(fs.readFileSync(`${HOME}/logo.jpg`), 'binary').toString('base64'),\n    linkData: {\n        create: true,\n        expiresAt: 1826659124,\n    },\n});\n```\n```python\nimport pulumi\nimport base64\nimport pulumi_stripe as stripe\n\n# minimal file field\nlogo_file = stripe.File(\"logoFile\",\n    filename=\"logo.jpg\",\n    purpose=\"business_logo\",\n    base64content=(lambda path: base64.b64encode(open(path).read().encode()).decode())(f\"{home}/logo.jpg\"))\n# file with file link\nlogo_index_file_file = stripe.File(\"logoIndex/fileFile\",\n    filename=\"logo.jpg\",\n    purpose=\"business_logo\",\n    base64content=(lambda path: base64.b64encode(open(path).read().encode()).decode())(f\"{home}/logo.jpg\"),\n    link_data=stripe.FileLinkDataArgs(\n        create=True,\n        expires_at=1826659124,\n    ))\n```\n```csharp\nusing System;\nusing System.Collections.Generic;\nusing System.IO;\nusing System.Linq;\nusing Pulumi;\nusing Stripe = Pulumi.Stripe;\n\n\tprivate static string ReadFileBase64(string path) {\n\t\treturn Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(path)));\n\t}\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // minimal file field\n    var logoFile = new Stripe.File(\"logoFile\", new()\n    {\n        Filename = \"logo.jpg\",\n        Purpose = \"business_logo\",\n        Base64content = ReadFileBase64($\"{HOME}/logo.jpg\"),\n    });\n\n    // file with file link\n    var logoIndex_fileFile = new Stripe.File(\"logoIndex/fileFile\", new()\n    {\n        Filename = \"logo.jpg\",\n        Purpose = \"business_logo\",\n        Base64content = ReadFileBase64($\"{HOME}/logo.jpg\"),\n        LinkData = new Stripe.Inputs.FileLinkDataArgs\n        {\n            Create = true,\n            ExpiresAt = 1826659124,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/base64\"\n\t\"fmt\"\n\t\"os\"\n\n\t\"github.com/georgegebbett/pulumi-stripe/sdk/go/stripe\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc filebase64OrPanic(path string) pulumi.StringPtrInput {\n\tif fileData, err := os.ReadFile(path); err == nil {\n\t\treturn pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))\n\t} else {\n\t\tpanic(err.Error())\n\t}\n}\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := stripe.NewFile(ctx, \"logoFile\", \u0026stripe.FileArgs{\n\t\t\tFilename:      pulumi.String(\"logo.jpg\"),\n\t\t\tPurpose:       pulumi.String(\"business_logo\"),\n\t\t\tBase64content: filebase64OrPanic(fmt.Sprintf(\"%v/logo.jpg\", HOME)),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewFile(ctx, \"logoIndex/fileFile\", \u0026stripe.FileArgs{\n\t\t\tFilename:      pulumi.String(\"logo.jpg\"),\n\t\t\tPurpose:       pulumi.String(\"business_logo\"),\n\t\t\tBase64content: filebase64OrPanic(fmt.Sprintf(\"%v/logo.jpg\", HOME)),\n\t\t\tLinkData: \u0026stripe.FileLinkDataArgs{\n\t\t\t\tCreate:    pulumi.Bool(true),\n\t\t\t\tExpiresAt: pulumi.Int(1826659124),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.stripe.File;\nimport com.pulumi.stripe.FileArgs;\nimport com.pulumi.stripe.inputs.FileLinkDataArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var logoFile = new File(\"logoFile\", FileArgs.builder()        \n            .filename(\"logo.jpg\")\n            .purpose(\"business_logo\")\n            .base64content(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(String.format(\"%s/logo.jpg\", HOME)))))\n            .build());\n\n        var logoIndex_fileFile = new File(\"logoIndex/fileFile\", FileArgs.builder()        \n            .filename(\"logo.jpg\")\n            .purpose(\"business_logo\")\n            .base64content(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(String.format(\"%s/logo.jpg\", HOME)))))\n            .linkData(FileLinkDataArgs.builder()\n                .create(true)\n                .expiresAt(1826659124)\n                .build())\n            .build());\n\n    }\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "base64content": {
+                    "type": "string",
+                    "description": "A content file to upload encoded by base64.\n"
+                },
+                "created": {
+                    "type": "integer",
+                    "description": "String. Time at which the object was created. Measured in seconds since the Unix epoch.\n"
+                },
+                "expiresAt": {
+                    "type": "integer",
+                    "description": "Int. The link isn’t available after this future timestamp.\n"
+                },
+                "filename": {
+                    "type": "string",
+                    "description": "String. The suitable name for saving the file to a filesystem.\n"
+                },
+                "linkData": {
+                    "$ref": "#/types/stripe:index/FileLinkData:FileLinkData",
+                    "description": "Optional parameters that automatically create a file link for the newly created file.\n"
+                },
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stripe:index/FileLink:FileLink"
+                    },
+                    "description": "List(Resource). A list of [file links](https://stripe.com/docs/api/files/object#file_links) that point at this file.\nPlease see details of links.\n"
+                },
+                "object": {
+                    "type": "string",
+                    "description": "String. String representing the object’s type. Objects of the same type share the same value.\n"
+                },
+                "purpose": {
+                    "type": "string",
+                    "description": "String. The purpose of the uploaded file. One of these values are accepted: `account_requirement`,\n`additional_verification`, `business_icon`, `business_logo`, `customer_signature`, `dispute_evidence`,\n`document_provider_identity_document`, `finance_report_run`, `identity_document`, `identity_document_downloadable`,\n`pci_document`, `selfie`, `sigma_scheduled_query`, `tax_document_user_upload`, `terminal_reader_splashscreen`\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "Int. The size of the file object in bytes.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "String. The returned file type (for example, `csv`, `pdf`, `jpg`, or `png`).\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "String. The publicly accessible URL to download the file.\n"
+                }
+            },
+            "required": [
+                "base64content",
+                "created",
+                "expiresAt",
+                "filename",
+                "links",
+                "object",
+                "purpose",
+                "size",
+                "type",
+                "url"
+            ],
+            "inputProperties": {
+                "base64content": {
+                    "type": "string",
+                    "description": "A content file to upload encoded by base64.\n",
+                    "willReplaceOnChanges": true
+                },
+                "filename": {
+                    "type": "string",
+                    "description": "String. The suitable name for saving the file to a filesystem.\n",
+                    "willReplaceOnChanges": true
+                },
+                "linkData": {
+                    "$ref": "#/types/stripe:index/FileLinkData:FileLinkData",
+                    "description": "Optional parameters that automatically create a file link for the newly created file.\n",
+                    "willReplaceOnChanges": true
+                },
+                "purpose": {
+                    "type": "string",
+                    "description": "String. The purpose of the uploaded file. One of these values are accepted: `account_requirement`,\n`additional_verification`, `business_icon`, `business_logo`, `customer_signature`, `dispute_evidence`,\n`document_provider_identity_document`, `finance_report_run`, `identity_document`, `identity_document_downloadable`,\n`pci_document`, `selfie`, `sigma_scheduled_query`, `tax_document_user_upload`, `terminal_reader_splashscreen`\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "base64content",
+                "filename",
+                "purpose"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering File resources.\n",
+                "properties": {
+                    "base64content": {
+                        "type": "string",
+                        "description": "A content file to upload encoded by base64.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "created": {
+                        "type": "integer",
+                        "description": "String. Time at which the object was created. Measured in seconds since the Unix epoch.\n"
+                    },
+                    "expiresAt": {
+                        "type": "integer",
+                        "description": "Int. The link isn’t available after this future timestamp.\n"
+                    },
+                    "filename": {
+                        "type": "string",
+                        "description": "String. The suitable name for saving the file to a filesystem.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "linkData": {
+                        "$ref": "#/types/stripe:index/FileLinkData:FileLinkData",
+                        "description": "Optional parameters that automatically create a file link for the newly created file.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "links": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stripe:index/FileLink:FileLink"
+                        },
+                        "description": "List(Resource). A list of [file links](https://stripe.com/docs/api/files/object#file_links) that point at this file.\nPlease see details of links.\n"
+                    },
+                    "object": {
+                        "type": "string",
+                        "description": "String. String representing the object’s type. Objects of the same type share the same value.\n"
+                    },
+                    "purpose": {
+                        "type": "string",
+                        "description": "String. The purpose of the uploaded file. One of these values are accepted: `account_requirement`,\n`additional_verification`, `business_icon`, `business_logo`, `customer_signature`, `dispute_evidence`,\n`document_provider_identity_document`, `finance_report_run`, `identity_document`, `identity_document_downloadable`,\n`pci_document`, `selfie`, `sigma_scheduled_query`, `tax_document_user_upload`, `terminal_reader_splashscreen`\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "Int. The size of the file object in bytes.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "String. The returned file type (for example, `csv`, `pdf`, `jpg`, or `png`).\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "String. The publicly accessible URL to download the file.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "stripe:index/portalConfiguration:PortalConfiguration": {
             "description": "With this resource, you can create a Customer Portal Configuration - [Stripe API portal configuration documentation](https://stripe.com/docs/api/customer_portal/configuration).\n\nThe Billing customer portal is a Stripe-hosted UI for subscription and billing management.\n\nA portal configuration describes the functionality and features that you want to provide to your customers through the portal.\n\n\u003e Removal of the Customer Portal isn't supported through the Stripe SDK. The best practice, which this provider follows,\nis to deactivate the Customer Portal by marking it as inactive on destroy, which indicates that resource is no longer\navailable.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as stripe from \"pulumi-stripe\";\n\n// A billing portal using all the available options\nconst portalConfiguration = new stripe.PortalConfiguration(\"portalConfiguration\", {\n    businessProfile: {\n        headline: \"My special headline\",\n        privacyPolicyUrl: \"https://example.com/privacy\",\n        termsOfServiceUrl: \"https://example.com/terms\",\n    },\n    defaultReturnUrl: \"https://example.com/special_headline\",\n    features: {\n        customerUpdate: {\n            allowedUpdates: [\n                \"email\",\n                \"address\",\n                \"shipping\",\n                \"phone\",\n                \"tax_id\",\n            ],\n            enabled: true,\n        },\n        invoiceHistory: {\n            enabled: true,\n        },\n        paymentMethodUpdate: {\n            enabled: true,\n        },\n        subscriptionCancel: {\n            cancellationReason: {\n                enabled: true,\n                options: [\n                    \"too_expensive\",\n                    \"missing_features\",\n                    \"switched_service\",\n                    \"unused\",\n                    \"customer_service\",\n                    \"too_complex\",\n                    \"low_quality\",\n                    \"other\",\n                ],\n            },\n            enabled: true,\n            mode: \"at_period_end\",\n            prorationBehavior: \"none\",\n        },\n        subscriptionPauses: [{\n            enabled: true,\n        }],\n        subscriptionUpdates: [{\n            defaultAllowedUpdates: [\n                \"price\",\n                \"quantity\",\n                \"promotion_code\",\n            ],\n            enabled: true,\n            products: [{\n                prices: [\n                    \"my_price_id1\",\n                    \"my_price_id2\",\n                ],\n                product: \"my_product_id\",\n            }],\n            prorationBehavior: \"none\",\n        }],\n    },\n    metadata: {\n        foo: \"bar\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_stripe as stripe\n\n# A billing portal using all the available options\nportal_configuration = stripe.PortalConfiguration(\"portalConfiguration\",\n    business_profile=stripe.PortalConfigurationBusinessProfileArgs(\n        headline=\"My special headline\",\n        privacy_policy_url=\"https://example.com/privacy\",\n        terms_of_service_url=\"https://example.com/terms\",\n    ),\n    default_return_url=\"https://example.com/special_headline\",\n    features=stripe.PortalConfigurationFeaturesArgs(\n        customer_update=stripe.PortalConfigurationFeaturesCustomerUpdateArgs(\n            allowed_updates=[\n                \"email\",\n                \"address\",\n                \"shipping\",\n                \"phone\",\n                \"tax_id\",\n            ],\n            enabled=True,\n        ),\n        invoice_history=stripe.PortalConfigurationFeaturesInvoiceHistoryArgs(\n            enabled=True,\n        ),\n        payment_method_update=stripe.PortalConfigurationFeaturesPaymentMethodUpdateArgs(\n            enabled=True,\n        ),\n        subscription_cancel=stripe.PortalConfigurationFeaturesSubscriptionCancelArgs(\n            cancellation_reason=stripe.PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgs(\n                enabled=True,\n                options=[\n                    \"too_expensive\",\n                    \"missing_features\",\n                    \"switched_service\",\n                    \"unused\",\n                    \"customer_service\",\n                    \"too_complex\",\n                    \"low_quality\",\n                    \"other\",\n                ],\n            ),\n            enabled=True,\n            mode=\"at_period_end\",\n            proration_behavior=\"none\",\n        ),\n        subscription_pauses=[stripe.PortalConfigurationFeaturesSubscriptionPauseArgs(\n            enabled=True,\n        )],\n        subscription_updates=[stripe.PortalConfigurationFeaturesSubscriptionUpdateArgs(\n            default_allowed_updates=[\n                \"price\",\n                \"quantity\",\n                \"promotion_code\",\n            ],\n            enabled=True,\n            products=[stripe.PortalConfigurationFeaturesSubscriptionUpdateProductArgs(\n                prices=[\n                    \"my_price_id1\",\n                    \"my_price_id2\",\n                ],\n                product=\"my_product_id\",\n            )],\n            proration_behavior=\"none\",\n        )],\n    ),\n    metadata={\n        \"foo\": \"bar\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Stripe = Pulumi.Stripe;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // A billing portal using all the available options\n    var portalConfiguration = new Stripe.PortalConfiguration(\"portalConfiguration\", new()\n    {\n        BusinessProfile = new Stripe.Inputs.PortalConfigurationBusinessProfileArgs\n        {\n            Headline = \"My special headline\",\n            PrivacyPolicyUrl = \"https://example.com/privacy\",\n            TermsOfServiceUrl = \"https://example.com/terms\",\n        },\n        DefaultReturnUrl = \"https://example.com/special_headline\",\n        Features = new Stripe.Inputs.PortalConfigurationFeaturesArgs\n        {\n            CustomerUpdate = new Stripe.Inputs.PortalConfigurationFeaturesCustomerUpdateArgs\n            {\n                AllowedUpdates = new[]\n                {\n                    \"email\",\n                    \"address\",\n                    \"shipping\",\n                    \"phone\",\n                    \"tax_id\",\n                },\n                Enabled = true,\n            },\n            InvoiceHistory = new Stripe.Inputs.PortalConfigurationFeaturesInvoiceHistoryArgs\n            {\n                Enabled = true,\n            },\n            PaymentMethodUpdate = new Stripe.Inputs.PortalConfigurationFeaturesPaymentMethodUpdateArgs\n            {\n                Enabled = true,\n            },\n            SubscriptionCancel = new Stripe.Inputs.PortalConfigurationFeaturesSubscriptionCancelArgs\n            {\n                CancellationReason = new Stripe.Inputs.PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgs\n                {\n                    Enabled = true,\n                    Options = new[]\n                    {\n                        \"too_expensive\",\n                        \"missing_features\",\n                        \"switched_service\",\n                        \"unused\",\n                        \"customer_service\",\n                        \"too_complex\",\n                        \"low_quality\",\n                        \"other\",\n                    },\n                },\n                Enabled = true,\n                Mode = \"at_period_end\",\n                ProrationBehavior = \"none\",\n            },\n            SubscriptionPauses = new[]\n            {\n                new Stripe.Inputs.PortalConfigurationFeaturesSubscriptionPauseArgs\n                {\n                    Enabled = true,\n                },\n            },\n            SubscriptionUpdates = new[]\n            {\n                new Stripe.Inputs.PortalConfigurationFeaturesSubscriptionUpdateArgs\n                {\n                    DefaultAllowedUpdates = new[]\n                    {\n                        \"price\",\n                        \"quantity\",\n                        \"promotion_code\",\n                    },\n                    Enabled = true,\n                    Products = new[]\n                    {\n                        new Stripe.Inputs.PortalConfigurationFeaturesSubscriptionUpdateProductArgs\n                        {\n                            Prices = new[]\n                            {\n                                \"my_price_id1\",\n                                \"my_price_id2\",\n                            },\n                            Product = \"my_product_id\",\n                        },\n                    },\n                    ProrationBehavior = \"none\",\n                },\n            },\n        },\n        Metadata = \n        {\n            { \"foo\", \"bar\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/georgegebbett/pulumi-stripe/sdk/go/stripe\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := stripe.NewPortalConfiguration(ctx, \"portalConfiguration\", \u0026stripe.PortalConfigurationArgs{\n\t\t\tBusinessProfile: \u0026stripe.PortalConfigurationBusinessProfileArgs{\n\t\t\t\tHeadline:          pulumi.String(\"My special headline\"),\n\t\t\t\tPrivacyPolicyUrl:  pulumi.String(\"https://example.com/privacy\"),\n\t\t\t\tTermsOfServiceUrl: pulumi.String(\"https://example.com/terms\"),\n\t\t\t},\n\t\t\tDefaultReturnUrl: pulumi.String(\"https://example.com/special_headline\"),\n\t\t\tFeatures: \u0026stripe.PortalConfigurationFeaturesArgs{\n\t\t\t\tCustomerUpdate: \u0026stripe.PortalConfigurationFeaturesCustomerUpdateArgs{\n\t\t\t\t\tAllowedUpdates: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"email\"),\n\t\t\t\t\t\tpulumi.String(\"address\"),\n\t\t\t\t\t\tpulumi.String(\"shipping\"),\n\t\t\t\t\t\tpulumi.String(\"phone\"),\n\t\t\t\t\t\tpulumi.String(\"tax_id\"),\n\t\t\t\t\t},\n\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tInvoiceHistory: \u0026stripe.PortalConfigurationFeaturesInvoiceHistoryArgs{\n\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tPaymentMethodUpdate: \u0026stripe.PortalConfigurationFeaturesPaymentMethodUpdateArgs{\n\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tSubscriptionCancel: \u0026stripe.PortalConfigurationFeaturesSubscriptionCancelArgs{\n\t\t\t\t\tCancellationReason: \u0026stripe.PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgs{\n\t\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t\t\tOptions: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.String(\"too_expensive\"),\n\t\t\t\t\t\t\tpulumi.String(\"missing_features\"),\n\t\t\t\t\t\t\tpulumi.String(\"switched_service\"),\n\t\t\t\t\t\t\tpulumi.String(\"unused\"),\n\t\t\t\t\t\t\tpulumi.String(\"customer_service\"),\n\t\t\t\t\t\t\tpulumi.String(\"too_complex\"),\n\t\t\t\t\t\t\tpulumi.String(\"low_quality\"),\n\t\t\t\t\t\t\tpulumi.String(\"other\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tEnabled:           pulumi.Bool(true),\n\t\t\t\t\tMode:              pulumi.String(\"at_period_end\"),\n\t\t\t\t\tProrationBehavior: pulumi.String(\"none\"),\n\t\t\t\t},\n\t\t\t\tSubscriptionPauses: stripe.PortalConfigurationFeaturesSubscriptionPauseArray{\n\t\t\t\t\t\u0026stripe.PortalConfigurationFeaturesSubscriptionPauseArgs{\n\t\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tSubscriptionUpdates: stripe.PortalConfigurationFeaturesSubscriptionUpdateArray{\n\t\t\t\t\t\u0026stripe.PortalConfigurationFeaturesSubscriptionUpdateArgs{\n\t\t\t\t\t\tDefaultAllowedUpdates: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.String(\"price\"),\n\t\t\t\t\t\t\tpulumi.String(\"quantity\"),\n\t\t\t\t\t\t\tpulumi.String(\"promotion_code\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t\t\tProducts: stripe.PortalConfigurationFeaturesSubscriptionUpdateProductArray{\n\t\t\t\t\t\t\t\u0026stripe.PortalConfigurationFeaturesSubscriptionUpdateProductArgs{\n\t\t\t\t\t\t\t\tPrices: pulumi.StringArray{\n\t\t\t\t\t\t\t\t\tpulumi.String(\"my_price_id1\"),\n\t\t\t\t\t\t\t\t\tpulumi.String(\"my_price_id2\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\tProduct: pulumi.String(\"my_product_id\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\tProrationBehavior: pulumi.String(\"none\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tMetadata: pulumi.StringMap{\n\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.stripe.PortalConfiguration;\nimport com.pulumi.stripe.PortalConfigurationArgs;\nimport com.pulumi.stripe.inputs.PortalConfigurationBusinessProfileArgs;\nimport com.pulumi.stripe.inputs.PortalConfigurationFeaturesArgs;\nimport com.pulumi.stripe.inputs.PortalConfigurationFeaturesCustomerUpdateArgs;\nimport com.pulumi.stripe.inputs.PortalConfigurationFeaturesInvoiceHistoryArgs;\nimport com.pulumi.stripe.inputs.PortalConfigurationFeaturesPaymentMethodUpdateArgs;\nimport com.pulumi.stripe.inputs.PortalConfigurationFeaturesSubscriptionCancelArgs;\nimport com.pulumi.stripe.inputs.PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var portalConfiguration = new PortalConfiguration(\"portalConfiguration\", PortalConfigurationArgs.builder()        \n            .businessProfile(PortalConfigurationBusinessProfileArgs.builder()\n                .headline(\"My special headline\")\n                .privacyPolicyUrl(\"https://example.com/privacy\")\n                .termsOfServiceUrl(\"https://example.com/terms\")\n                .build())\n            .defaultReturnUrl(\"https://example.com/special_headline\")\n            .features(PortalConfigurationFeaturesArgs.builder()\n                .customerUpdate(PortalConfigurationFeaturesCustomerUpdateArgs.builder()\n                    .allowedUpdates(                    \n                        \"email\",\n                        \"address\",\n                        \"shipping\",\n                        \"phone\",\n                        \"tax_id\")\n                    .enabled(true)\n                    .build())\n                .invoiceHistory(PortalConfigurationFeaturesInvoiceHistoryArgs.builder()\n                    .enabled(true)\n                    .build())\n                .paymentMethodUpdate(PortalConfigurationFeaturesPaymentMethodUpdateArgs.builder()\n                    .enabled(true)\n                    .build())\n                .subscriptionCancel(PortalConfigurationFeaturesSubscriptionCancelArgs.builder()\n                    .cancellationReason(PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgs.builder()\n                        .enabled(true)\n                        .options(                        \n                            \"too_expensive\",\n                            \"missing_features\",\n                            \"switched_service\",\n                            \"unused\",\n                            \"customer_service\",\n                            \"too_complex\",\n                            \"low_quality\",\n                            \"other\")\n                        .build())\n                    .enabled(true)\n                    .mode(\"at_period_end\")\n                    .prorationBehavior(\"none\")\n                    .build())\n                .subscriptionPauses(PortalConfigurationFeaturesSubscriptionPauseArgs.builder()\n                    .enabled(true)\n                    .build())\n                .subscriptionUpdates(PortalConfigurationFeaturesSubscriptionUpdateArgs.builder()\n                    .defaultAllowedUpdates(                    \n                        \"price\",\n                        \"quantity\",\n                        \"promotion_code\")\n                    .enabled(true)\n                    .products(PortalConfigurationFeaturesSubscriptionUpdateProductArgs.builder()\n                        .prices(                        \n                            \"my_price_id1\",\n                            \"my_price_id2\")\n                        .product(\"my_product_id\")\n                        .build())\n                    .prorationBehavior(\"none\")\n                    .build())\n                .build())\n            .metadata(Map.of(\"foo\", \"bar\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # A billing portal using all the available options\n  portalConfiguration:\n    type: stripe:PortalConfiguration\n    properties:\n      businessProfile:\n        headline: My special headline\n        privacyPolicyUrl: https://example.com/privacy\n        termsOfServiceUrl: https://example.com/terms\n      defaultReturnUrl: https://example.com/special_headline\n      features:\n        customerUpdate:\n          allowedUpdates:\n            - email\n            - address\n            - shipping\n            - phone\n            - tax_id\n          enabled: true\n        invoiceHistory:\n          enabled: true\n        paymentMethodUpdate:\n          enabled: true\n        subscriptionCancel:\n          cancellationReason:\n            enabled: true\n            options:\n              - too_expensive\n              - missing_features\n              - switched_service\n              - unused\n              - customer_service\n              - too_complex\n              - low_quality\n              - other\n          enabled: true\n          mode: at_period_end\n          prorationBehavior: none\n        subscriptionPauses:\n          - enabled: true\n        subscriptionUpdates:\n          - defaultAllowedUpdates:\n              - price\n              - quantity\n              - promotion_code\n            enabled: true\n            products:\n              - prices:\n                  - my_price_id1\n                  - my_price_id2\n                product: my_product_id\n            prorationBehavior: none\n      metadata:\n        foo: bar\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
@@ -1176,6 +1500,10 @@
                     "$ref": "#/types/stripe:index/PortalConfigurationFeatures:PortalConfigurationFeatures",
                     "description": "List(Resource). Information about the features available in the portal. Feature section described in Feature section\n"
                 },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Bool. Whether the configuration is the default.\n"
+                },
                 "loginPage": {
                     "$ref": "#/types/stripe:index/PortalConfigurationLoginPage:PortalConfigurationLoginPage",
                     "description": "List(Resource). The hosted login page for this configuration. See details in Login Page Section.\n"
@@ -1191,6 +1519,7 @@
             "required": [
                 "businessProfile",
                 "features",
+                "isDefault",
                 "loginPage"
             ],
             "inputProperties": {
@@ -1245,6 +1574,10 @@
                         "$ref": "#/types/stripe:index/PortalConfigurationFeatures:PortalConfigurationFeatures",
                         "description": "List(Resource). Information about the features available in the portal. Feature section described in Feature section\n"
                     },
+                    "isDefault": {
+                        "type": "boolean",
+                        "description": "Bool. Whether the configuration is the default.\n"
+                    },
                     "loginPage": {
                         "$ref": "#/types/stripe:index/PortalConfigurationLoginPage:PortalConfigurationLoginPage",
                         "description": "List(Resource). The hosted login page for this configuration. See details in Login Page Section.\n"
@@ -1261,7 +1594,7 @@
             }
         },
         "stripe:index/price:Price": {
-            "description": "With this resource, you can create a price - [Stripe API price documentation](https://stripe.com/docs/api/prices).\n\nPrices define the unit cost, currency, and (optional) billing cycle for both recurring and one-time purchases of\nproducts. Products help you track inventory or provisioning, and prices help you track payment terms.\n\nDifferent physical goods or levels of service should be represented by products, and pricing options should be\nrepresented by prices. This approach lets you change prices without having to change your provisioning scheme.\n\nFor example, you might have a single \"gold\" product that has prices for $10/month, $100/year, and €9 once.\n\n\u003e Removal of the price isn't supported through the Stripe SDK. The best practice, which this provider follows,\nis to archive the price by marking it as inactive on destroy, which indicates that the price is not longer\navailable for purchase.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as stripe from \"pulumi-stripe\";\n\n// basic price for the product\nconst pricePrice = new stripe.Price(\"pricePrice\", {\n    product: stripe_product.product.id,\n    currency: \"aud\",\n    unitAmount: 100,\n});\n// basic free price for the product\nconst priceIndex_pricePrice = new stripe.Price(\"priceIndex/pricePrice\", {\n    product: stripe_product.product.id,\n    currency: \"aud\",\n    unitAmount: -1,\n});\n// recurring price for the product\nconst priceStripeIndex_pricePrice = new stripe.Price(\"priceStripeIndex/pricePrice\", {\n    product: stripe_product.product.id,\n    currency: \"aud\",\n    billingScheme: \"per_unit\",\n    unitAmount: 100,\n    recurring: {\n        interval: \"week\",\n        intervalCount: 1,\n    },\n});\n// tiered price for the product\nconst priceStripeIndex_pricePrice1 = new stripe.Price(\"priceStripeIndex/pricePrice1\", {\n    product: stripe_product.product.id,\n    currency: \"aud\",\n    billingScheme: \"tiered\",\n    tiersMode: \"graduated\",\n    tiers: [\n        {\n            upTo: 10,\n            unitAmount: 0,\n        },\n        {\n            upTo: 100,\n            unitAmount: 300,\n        },\n        {\n            upTo: -1,\n            unitAmount: 100.5,\n        },\n    ],\n    recurring: {\n        interval: \"week\",\n        aggregateUsage: \"sum\",\n        intervalCount: 2,\n        usageType: \"metered\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_stripe as stripe\n\n# basic price for the product\nprice_price = stripe.Price(\"pricePrice\",\n    product=stripe_product[\"product\"][\"id\"],\n    currency=\"aud\",\n    unit_amount=100)\n# basic free price for the product\nprice_index_price_price = stripe.Price(\"priceIndex/pricePrice\",\n    product=stripe_product[\"product\"][\"id\"],\n    currency=\"aud\",\n    unit_amount=-1)\n# recurring price for the product\nprice_stripe_index_price_price = stripe.Price(\"priceStripeIndex/pricePrice\",\n    product=stripe_product[\"product\"][\"id\"],\n    currency=\"aud\",\n    billing_scheme=\"per_unit\",\n    unit_amount=100,\n    recurring=stripe.PriceRecurringArgs(\n        interval=\"week\",\n        interval_count=1,\n    ))\n# tiered price for the product\nprice_stripe_index_price_price1 = stripe.Price(\"priceStripeIndex/pricePrice1\",\n    product=stripe_product[\"product\"][\"id\"],\n    currency=\"aud\",\n    billing_scheme=\"tiered\",\n    tiers_mode=\"graduated\",\n    tiers=[\n        stripe.PriceTierArgs(\n            up_to=10,\n            unit_amount=0,\n        ),\n        stripe.PriceTierArgs(\n            up_to=100,\n            unit_amount=300,\n        ),\n        stripe.PriceTierArgs(\n            up_to=-1,\n            unit_amount=100.5,\n        ),\n    ],\n    recurring=stripe.PriceRecurringArgs(\n        interval=\"week\",\n        aggregate_usage=\"sum\",\n        interval_count=2,\n        usage_type=\"metered\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Stripe = Pulumi.Stripe;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // basic price for the product\n    var pricePrice = new Stripe.Price(\"pricePrice\", new()\n    {\n        Product = stripe_product.Product.Id,\n        Currency = \"aud\",\n        UnitAmount = 100,\n    });\n\n    // basic free price for the product\n    var priceIndex_pricePrice = new Stripe.Price(\"priceIndex/pricePrice\", new()\n    {\n        Product = stripe_product.Product.Id,\n        Currency = \"aud\",\n        UnitAmount = -1,\n    });\n\n    // recurring price for the product\n    var priceStripeIndex_pricePrice = new Stripe.Price(\"priceStripeIndex/pricePrice\", new()\n    {\n        Product = stripe_product.Product.Id,\n        Currency = \"aud\",\n        BillingScheme = \"per_unit\",\n        UnitAmount = 100,\n        Recurring = new Stripe.Inputs.PriceRecurringArgs\n        {\n            Interval = \"week\",\n            IntervalCount = 1,\n        },\n    });\n\n    // tiered price for the product\n    var priceStripeIndex_pricePrice1 = new Stripe.Price(\"priceStripeIndex/pricePrice1\", new()\n    {\n        Product = stripe_product.Product.Id,\n        Currency = \"aud\",\n        BillingScheme = \"tiered\",\n        TiersMode = \"graduated\",\n        Tiers = new[]\n        {\n            new Stripe.Inputs.PriceTierArgs\n            {\n                UpTo = 10,\n                UnitAmount = 0,\n            },\n            new Stripe.Inputs.PriceTierArgs\n            {\n                UpTo = 100,\n                UnitAmount = 300,\n            },\n            new Stripe.Inputs.PriceTierArgs\n            {\n                UpTo = -1,\n                UnitAmount = 100.5,\n            },\n        },\n        Recurring = new Stripe.Inputs.PriceRecurringArgs\n        {\n            Interval = \"week\",\n            AggregateUsage = \"sum\",\n            IntervalCount = 2,\n            UsageType = \"metered\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/georgegebbett/pulumi-stripe/sdk/go/stripe\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := stripe.NewPrice(ctx, \"pricePrice\", \u0026stripe.PriceArgs{\n\t\t\tProduct:    pulumi.Any(stripe_product.Product.Id),\n\t\t\tCurrency:   pulumi.String(\"aud\"),\n\t\t\tUnitAmount: pulumi.Int(100),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewPrice(ctx, \"priceIndex/pricePrice\", \u0026stripe.PriceArgs{\n\t\t\tProduct:    pulumi.Any(stripe_product.Product.Id),\n\t\t\tCurrency:   pulumi.String(\"aud\"),\n\t\t\tUnitAmount: -1,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewPrice(ctx, \"priceStripeIndex/pricePrice\", \u0026stripe.PriceArgs{\n\t\t\tProduct:       pulumi.Any(stripe_product.Product.Id),\n\t\t\tCurrency:      pulumi.String(\"aud\"),\n\t\t\tBillingScheme: pulumi.String(\"per_unit\"),\n\t\t\tUnitAmount:    pulumi.Int(100),\n\t\t\tRecurring: \u0026stripe.PriceRecurringArgs{\n\t\t\t\tInterval:      pulumi.String(\"week\"),\n\t\t\t\tIntervalCount: pulumi.Int(1),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewPrice(ctx, \"priceStripeIndex/pricePrice1\", \u0026stripe.PriceArgs{\n\t\t\tProduct:       pulumi.Any(stripe_product.Product.Id),\n\t\t\tCurrency:      pulumi.String(\"aud\"),\n\t\t\tBillingScheme: pulumi.String(\"tiered\"),\n\t\t\tTiersMode:     pulumi.String(\"graduated\"),\n\t\t\tTiers: stripe.PriceTierArray{\n\t\t\t\t\u0026stripe.PriceTierArgs{\n\t\t\t\t\tUpTo:       pulumi.Int(10),\n\t\t\t\t\tUnitAmount: pulumi.Int(0),\n\t\t\t\t},\n\t\t\t\t\u0026stripe.PriceTierArgs{\n\t\t\t\t\tUpTo:       pulumi.Int(100),\n\t\t\t\t\tUnitAmount: pulumi.Int(300),\n\t\t\t\t},\n\t\t\t\t\u0026stripe.PriceTierArgs{\n\t\t\t\t\tUpTo:       -1,\n\t\t\t\t\tUnitAmount: pulumi.Int(100.5),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRecurring: \u0026stripe.PriceRecurringArgs{\n\t\t\t\tInterval:       pulumi.String(\"week\"),\n\t\t\t\tAggregateUsage: pulumi.String(\"sum\"),\n\t\t\t\tIntervalCount:  pulumi.Int(2),\n\t\t\t\tUsageType:      pulumi.String(\"metered\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Note on updating prices\n\nOnce created, you can update the `active`, `metadata`, `nickname`, `lookup_key`, `tax_behaviour` (only if unspecified)\nand `transfer_lookup_key` attributes.\n\nOther attribute edits will trigger a destroy action (archival) and creation of a new price entry.\n",
+            "description": "With this resource, you can create a price - [Stripe API price documentation](https://stripe.com/docs/api/prices).\n\nPrices define the unit cost, currency, and (optional) billing cycle for both recurring and one-time purchases of\nproducts. Products help you track inventory or provisioning, and prices help you track payment terms.\n\nDifferent physical goods or levels of service should be represented by products, and pricing options should be\nrepresented by prices. This approach lets you change prices without having to change your provisioning scheme.\n\nFor example, you might have a single \"gold\" product that has prices for $10/month, $100/year, and €9 once.\n\n\u003e Removal of the price isn't supported through the Stripe SDK. The best practice, which this provider follows,\nis to archive the price by marking it as inactive on destroy, which indicates that the price is no longer\navailable for purchase.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as stripe from \"pulumi-stripe\";\n\n// basic price for the product\nconst pricePrice = new stripe.Price(\"pricePrice\", {\n    product: stripe_product.product.id,\n    currency: \"aud\",\n    unitAmount: 100,\n});\n// basic free price for the product\nconst priceIndex_pricePrice = new stripe.Price(\"priceIndex/pricePrice\", {\n    product: stripe_product.product.id,\n    currency: \"aud\",\n    unitAmount: -1,\n});\n// recurring price for the product\nconst priceStripeIndex_pricePrice = new stripe.Price(\"priceStripeIndex/pricePrice\", {\n    product: stripe_product.product.id,\n    currency: \"aud\",\n    billingScheme: \"per_unit\",\n    unitAmount: 100,\n    recurring: {\n        interval: \"week\",\n        intervalCount: 1,\n    },\n});\n// tiered price for the product\nconst priceStripeIndex_pricePrice1 = new stripe.Price(\"priceStripeIndex/pricePrice1\", {\n    product: stripe_product.product.id,\n    currency: \"aud\",\n    billingScheme: \"tiered\",\n    tiersMode: \"graduated\",\n    tiers: [\n        {\n            upTo: 10,\n            unitAmount: 0,\n        },\n        {\n            upTo: 100,\n            unitAmount: 300,\n        },\n        {\n            upTo: -1,\n            unitAmountDecimal: 100.5,\n        },\n    ],\n    recurring: {\n        interval: \"week\",\n        aggregateUsage: \"sum\",\n        intervalCount: 2,\n        usageType: \"metered\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_stripe as stripe\n\n# basic price for the product\nprice_price = stripe.Price(\"pricePrice\",\n    product=stripe_product[\"product\"][\"id\"],\n    currency=\"aud\",\n    unit_amount=100)\n# basic free price for the product\nprice_index_price_price = stripe.Price(\"priceIndex/pricePrice\",\n    product=stripe_product[\"product\"][\"id\"],\n    currency=\"aud\",\n    unit_amount=-1)\n# recurring price for the product\nprice_stripe_index_price_price = stripe.Price(\"priceStripeIndex/pricePrice\",\n    product=stripe_product[\"product\"][\"id\"],\n    currency=\"aud\",\n    billing_scheme=\"per_unit\",\n    unit_amount=100,\n    recurring=stripe.PriceRecurringArgs(\n        interval=\"week\",\n        interval_count=1,\n    ))\n# tiered price for the product\nprice_stripe_index_price_price1 = stripe.Price(\"priceStripeIndex/pricePrice1\",\n    product=stripe_product[\"product\"][\"id\"],\n    currency=\"aud\",\n    billing_scheme=\"tiered\",\n    tiers_mode=\"graduated\",\n    tiers=[\n        stripe.PriceTierArgs(\n            up_to=10,\n            unit_amount=0,\n        ),\n        stripe.PriceTierArgs(\n            up_to=100,\n            unit_amount=300,\n        ),\n        stripe.PriceTierArgs(\n            up_to=-1,\n            unit_amount_decimal=100.5,\n        ),\n    ],\n    recurring=stripe.PriceRecurringArgs(\n        interval=\"week\",\n        aggregate_usage=\"sum\",\n        interval_count=2,\n        usage_type=\"metered\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Stripe = Pulumi.Stripe;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // basic price for the product\n    var pricePrice = new Stripe.Price(\"pricePrice\", new()\n    {\n        Product = stripe_product.Product.Id,\n        Currency = \"aud\",\n        UnitAmount = 100,\n    });\n\n    // basic free price for the product\n    var priceIndex_pricePrice = new Stripe.Price(\"priceIndex/pricePrice\", new()\n    {\n        Product = stripe_product.Product.Id,\n        Currency = \"aud\",\n        UnitAmount = -1,\n    });\n\n    // recurring price for the product\n    var priceStripeIndex_pricePrice = new Stripe.Price(\"priceStripeIndex/pricePrice\", new()\n    {\n        Product = stripe_product.Product.Id,\n        Currency = \"aud\",\n        BillingScheme = \"per_unit\",\n        UnitAmount = 100,\n        Recurring = new Stripe.Inputs.PriceRecurringArgs\n        {\n            Interval = \"week\",\n            IntervalCount = 1,\n        },\n    });\n\n    // tiered price for the product\n    var priceStripeIndex_pricePrice1 = new Stripe.Price(\"priceStripeIndex/pricePrice1\", new()\n    {\n        Product = stripe_product.Product.Id,\n        Currency = \"aud\",\n        BillingScheme = \"tiered\",\n        TiersMode = \"graduated\",\n        Tiers = new[]\n        {\n            new Stripe.Inputs.PriceTierArgs\n            {\n                UpTo = 10,\n                UnitAmount = 0,\n            },\n            new Stripe.Inputs.PriceTierArgs\n            {\n                UpTo = 100,\n                UnitAmount = 300,\n            },\n            new Stripe.Inputs.PriceTierArgs\n            {\n                UpTo = -1,\n                UnitAmountDecimal = 100.5,\n            },\n        },\n        Recurring = new Stripe.Inputs.PriceRecurringArgs\n        {\n            Interval = \"week\",\n            AggregateUsage = \"sum\",\n            IntervalCount = 2,\n            UsageType = \"metered\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/georgegebbett/pulumi-stripe/sdk/go/stripe\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := stripe.NewPrice(ctx, \"pricePrice\", \u0026stripe.PriceArgs{\n\t\t\tProduct:    pulumi.Any(stripe_product.Product.Id),\n\t\t\tCurrency:   pulumi.String(\"aud\"),\n\t\t\tUnitAmount: pulumi.Int(100),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewPrice(ctx, \"priceIndex/pricePrice\", \u0026stripe.PriceArgs{\n\t\t\tProduct:    pulumi.Any(stripe_product.Product.Id),\n\t\t\tCurrency:   pulumi.String(\"aud\"),\n\t\t\tUnitAmount: -1,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewPrice(ctx, \"priceStripeIndex/pricePrice\", \u0026stripe.PriceArgs{\n\t\t\tProduct:       pulumi.Any(stripe_product.Product.Id),\n\t\t\tCurrency:      pulumi.String(\"aud\"),\n\t\t\tBillingScheme: pulumi.String(\"per_unit\"),\n\t\t\tUnitAmount:    pulumi.Int(100),\n\t\t\tRecurring: \u0026stripe.PriceRecurringArgs{\n\t\t\t\tInterval:      pulumi.String(\"week\"),\n\t\t\t\tIntervalCount: pulumi.Int(1),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewPrice(ctx, \"priceStripeIndex/pricePrice1\", \u0026stripe.PriceArgs{\n\t\t\tProduct:       pulumi.Any(stripe_product.Product.Id),\n\t\t\tCurrency:      pulumi.String(\"aud\"),\n\t\t\tBillingScheme: pulumi.String(\"tiered\"),\n\t\t\tTiersMode:     pulumi.String(\"graduated\"),\n\t\t\tTiers: stripe.PriceTierArray{\n\t\t\t\t\u0026stripe.PriceTierArgs{\n\t\t\t\t\tUpTo:       pulumi.Int(10),\n\t\t\t\t\tUnitAmount: pulumi.Int(0),\n\t\t\t\t},\n\t\t\t\t\u0026stripe.PriceTierArgs{\n\t\t\t\t\tUpTo:       pulumi.Int(100),\n\t\t\t\t\tUnitAmount: pulumi.Int(300),\n\t\t\t\t},\n\t\t\t\t\u0026stripe.PriceTierArgs{\n\t\t\t\t\tUpTo:              -1,\n\t\t\t\t\tUnitAmountDecimal: pulumi.Float64(100.5),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRecurring: \u0026stripe.PriceRecurringArgs{\n\t\t\t\tInterval:       pulumi.String(\"week\"),\n\t\t\t\tAggregateUsage: pulumi.String(\"sum\"),\n\t\t\t\tIntervalCount:  pulumi.Int(2),\n\t\t\t\tUsageType:      pulumi.String(\"metered\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Note on updating prices\n\nOnce created, you can update the `active`, `metadata`, `nickname`, `lookup_key`, `tax_behaviour` (only if unspecified)\nand `transfer_lookup_key` attributes.\n\nOther attribute edits will trigger a destroy action (archival) and creation of a new price entry.\n",
             "properties": {
                 "active": {
                     "type": "boolean",
@@ -1342,9 +1675,12 @@
                 }
             },
             "required": [
+                "billingScheme",
                 "currency",
                 "product",
-                "type"
+                "type",
+                "unitAmount",
+                "unitAmountDecimal"
             ],
             "inputProperties": {
                 "active": {
@@ -1538,6 +1874,13 @@
                     "type": "string",
                     "description": "String. The product’s description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.\n"
                 },
+                "features": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). A list of up to 15 features for this product. These are displayed in pricing tables.\n"
+                },
                 "images": {
                     "type": "array",
                     "items": {
@@ -1601,6 +1944,13 @@
                     "type": "string",
                     "description": "String. The product’s description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.\n"
                 },
+                "features": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List(String). A list of up to 15 features for this product. These are displayed in pricing tables.\n"
+                },
                 "images": {
                     "type": "array",
                     "items": {
@@ -1662,6 +2012,13 @@
                     "description": {
                         "type": "string",
                         "description": "String. The product’s description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.\n"
+                    },
+                    "features": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List(String). A list of up to 15 features for this product. These are displayed in pricing tables.\n"
                     },
                     "images": {
                         "type": "array",
@@ -1847,6 +2204,160 @@
                     "restrictions": {
                         "$ref": "#/types/stripe:index/PromotionCodeRestrictions:PromotionCodeRestrictions",
                         "description": "List(Resource). Settings that restrict the redemption of the promotion code. For details of individual arguments see Restrictions.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stripe:index/shippingRate:ShippingRate": {
+            "description": "With this resource, you can create a shipping rate - [Stripe API shipping rate documentation](https://stripe.com/docs/api/shipping_rates).\n\n\nShipping rates let you display various shipping options—like standard, express, and overnight—with more accurate delivery estimates. \nCharge your customer for shipping using different Stripe products, some of which require coding.\n\n\u003e Removal of the shipping rate isn't supported through the Stripe SDK. The best practice, which this provider follows,\nis to archive the shipping rate by marking it as inactive on destroy, which indicates that the shipping rate is no longer\navailable.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as stripe from \"pulumi-stripe\";\n\n// shipping rate with delivery estimate\nconst shippingRate = new stripe.ShippingRate(\"shippingRate\", {\n    deliveryEstimates: [{\n        maximum: {\n            unit: \"day\",\n            value: 4,\n        },\n        minimum: {\n            unit: \"hour\",\n            value: 24,\n        },\n    }],\n    displayName: \"shipping rate\",\n    fixedAmount: {\n        amount: 1000,\n        currency: \"aud\",\n    },\n});\n// shipping rate with currency options\n// !!! Currency options have to be sorted alphabetically \n// !!! by the currency field\nconst shipping = new stripe.ShippingRate(\"shipping\", {\n    displayName: \"shipping rate\",\n    fixedAmount: {\n        amount: 1000,\n        currency: \"aud\",\n        currencyOptions: [\n            {\n                amount: 350,\n                currency: \"eur\",\n            },\n            {\n                amount: 500,\n                currency: \"usd\",\n            },\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_stripe as stripe\n\n# shipping rate with delivery estimate\nshipping_rate = stripe.ShippingRate(\"shippingRate\",\n    delivery_estimates=[stripe.ShippingRateDeliveryEstimateArgs(\n        maximum=stripe.ShippingRateDeliveryEstimateMaximumArgs(\n            unit=\"day\",\n            value=4,\n        ),\n        minimum=stripe.ShippingRateDeliveryEstimateMinimumArgs(\n            unit=\"hour\",\n            value=24,\n        ),\n    )],\n    display_name=\"shipping rate\",\n    fixed_amount=stripe.ShippingRateFixedAmountArgs(\n        amount=1000,\n        currency=\"aud\",\n    ))\n# shipping rate with currency options\n# !!! Currency options have to be sorted alphabetically \n# !!! by the currency field\nshipping = stripe.ShippingRate(\"shipping\",\n    display_name=\"shipping rate\",\n    fixed_amount=stripe.ShippingRateFixedAmountArgs(\n        amount=1000,\n        currency=\"aud\",\n        currency_options=[\n            stripe.ShippingRateFixedAmountCurrencyOptionArgs(\n                amount=350,\n                currency=\"eur\",\n            ),\n            stripe.ShippingRateFixedAmountCurrencyOptionArgs(\n                amount=500,\n                currency=\"usd\",\n            ),\n        ],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Stripe = Pulumi.Stripe;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // shipping rate with delivery estimate\n    var shippingRate = new Stripe.ShippingRate(\"shippingRate\", new()\n    {\n        DeliveryEstimates = new[]\n        {\n            new Stripe.Inputs.ShippingRateDeliveryEstimateArgs\n            {\n                Maximum = new Stripe.Inputs.ShippingRateDeliveryEstimateMaximumArgs\n                {\n                    Unit = \"day\",\n                    Value = 4,\n                },\n                Minimum = new Stripe.Inputs.ShippingRateDeliveryEstimateMinimumArgs\n                {\n                    Unit = \"hour\",\n                    Value = 24,\n                },\n            },\n        },\n        DisplayName = \"shipping rate\",\n        FixedAmount = new Stripe.Inputs.ShippingRateFixedAmountArgs\n        {\n            Amount = 1000,\n            Currency = \"aud\",\n        },\n    });\n\n    // shipping rate with currency options\n    // !!! Currency options have to be sorted alphabetically \n    // !!! by the currency field\n    var shipping = new Stripe.ShippingRate(\"shipping\", new()\n    {\n        DisplayName = \"shipping rate\",\n        FixedAmount = new Stripe.Inputs.ShippingRateFixedAmountArgs\n        {\n            Amount = 1000,\n            Currency = \"aud\",\n            CurrencyOptions = new[]\n            {\n                new Stripe.Inputs.ShippingRateFixedAmountCurrencyOptionArgs\n                {\n                    Amount = 350,\n                    Currency = \"eur\",\n                },\n                new Stripe.Inputs.ShippingRateFixedAmountCurrencyOptionArgs\n                {\n                    Amount = 500,\n                    Currency = \"usd\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/georgegebbett/pulumi-stripe/sdk/go/stripe\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := stripe.NewShippingRate(ctx, \"shippingRate\", \u0026stripe.ShippingRateArgs{\n\t\t\tDeliveryEstimates: stripe.ShippingRateDeliveryEstimateArray{\n\t\t\t\t\u0026stripe.ShippingRateDeliveryEstimateArgs{\n\t\t\t\t\tMaximum: \u0026stripe.ShippingRateDeliveryEstimateMaximumArgs{\n\t\t\t\t\t\tUnit:  pulumi.String(\"day\"),\n\t\t\t\t\t\tValue: pulumi.Int(4),\n\t\t\t\t\t},\n\t\t\t\t\tMinimum: \u0026stripe.ShippingRateDeliveryEstimateMinimumArgs{\n\t\t\t\t\t\tUnit:  pulumi.String(\"hour\"),\n\t\t\t\t\t\tValue: pulumi.Int(24),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tDisplayName: pulumi.String(\"shipping rate\"),\n\t\t\tFixedAmount: \u0026stripe.ShippingRateFixedAmountArgs{\n\t\t\t\tAmount:   pulumi.Int(1000),\n\t\t\t\tCurrency: pulumi.String(\"aud\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = stripe.NewShippingRate(ctx, \"shipping\", \u0026stripe.ShippingRateArgs{\n\t\t\tDisplayName: pulumi.String(\"shipping rate\"),\n\t\t\tFixedAmount: \u0026stripe.ShippingRateFixedAmountArgs{\n\t\t\t\tAmount:   pulumi.Int(1000),\n\t\t\t\tCurrency: pulumi.String(\"aud\"),\n\t\t\t\tCurrencyOptions: stripe.ShippingRateFixedAmountCurrencyOptionArray{\n\t\t\t\t\t\u0026stripe.ShippingRateFixedAmountCurrencyOptionArgs{\n\t\t\t\t\t\tAmount:   pulumi.Int(350),\n\t\t\t\t\t\tCurrency: pulumi.String(\"eur\"),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026stripe.ShippingRateFixedAmountCurrencyOptionArgs{\n\t\t\t\t\t\tAmount:   pulumi.Int(500),\n\t\t\t\t\t\tCurrency: pulumi.String(\"usd\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.stripe.ShippingRate;\nimport com.pulumi.stripe.ShippingRateArgs;\nimport com.pulumi.stripe.inputs.ShippingRateDeliveryEstimateArgs;\nimport com.pulumi.stripe.inputs.ShippingRateDeliveryEstimateMaximumArgs;\nimport com.pulumi.stripe.inputs.ShippingRateDeliveryEstimateMinimumArgs;\nimport com.pulumi.stripe.inputs.ShippingRateFixedAmountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var shippingRate = new ShippingRate(\"shippingRate\", ShippingRateArgs.builder()        \n            .deliveryEstimates(ShippingRateDeliveryEstimateArgs.builder()\n                .maximum(ShippingRateDeliveryEstimateMaximumArgs.builder()\n                    .unit(\"day\")\n                    .value(4)\n                    .build())\n                .minimum(ShippingRateDeliveryEstimateMinimumArgs.builder()\n                    .unit(\"hour\")\n                    .value(24)\n                    .build())\n                .build())\n            .displayName(\"shipping rate\")\n            .fixedAmount(ShippingRateFixedAmountArgs.builder()\n                .amount(1000)\n                .currency(\"aud\")\n                .build())\n            .build());\n\n        var shipping = new ShippingRate(\"shipping\", ShippingRateArgs.builder()        \n            .displayName(\"shipping rate\")\n            .fixedAmount(ShippingRateFixedAmountArgs.builder()\n                .amount(1000)\n                .currency(\"aud\")\n                .currencyOptions(                \n                    ShippingRateFixedAmountCurrencyOptionArgs.builder()\n                        .amount(350)\n                        .currency(\"eur\")\n                        .build(),\n                    ShippingRateFixedAmountCurrencyOptionArgs.builder()\n                        .amount(500)\n                        .currency(\"usd\")\n                        .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # shipping rate with delivery estimate\n  shippingRate:\n    type: stripe:ShippingRate\n    properties:\n      deliveryEstimates:\n        - maximum:\n            unit: day\n            value: 4\n          minimum:\n            unit: hour\n            value: 24\n      displayName: shipping rate\n      fixedAmount:\n        amount: 1000\n        currency: aud\n  # shipping rate with currency options\n  # // !!! Currency options have to be sorted alphabetically \n  # // !!! by the currency field\n  shipping:\n    type: stripe:ShippingRate\n    properties:\n      displayName: shipping rate\n      fixedAmount:\n        amount: 1000\n        currency: aud\n        currencyOptions:\n          - amount: 350\n            currency: eur\n          - amount: 500\n            currency: usd\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Bool. Whether the shipping rate is active (can't be used when creating). Defaults to `true`.\n"
+                },
+                "deliveryEstimates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stripe:index/ShippingRateDeliveryEstimate:ShippingRateDeliveryEstimate"
+                    },
+                    "description": "List(Resource). The estimated range for how long shipping will take, \nmeant to be displayable to the customer. This will appear on CheckoutSessions.\nFor details please see Delivery Estimate.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "String. The name of the shipping rate, meant to be displayable to the customer. \nThis will appear on CheckoutSessions.\n"
+                },
+                "fixedAmount": {
+                    "$ref": "#/types/stripe:index/ShippingRateFixedAmount:ShippingRateFixedAmount",
+                    "description": "List(Resource). Describes a fixed amount to charge for shipping. \nMust be present if type is `fixed_amount`. For details of individual arguments see Fixed Amount.\n"
+                },
+                "livemode": {
+                    "type": "boolean",
+                    "description": "Bool. Has the value true if the object exists in live mode or the value false if the object exists in test mode.\n"
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for\nstoring additional information about the object in a structured format.\n"
+                },
+                "taxBehavior": {
+                    "type": "string",
+                    "description": "Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of inclusive, exclusive, or\nunspecified.\n"
+                },
+                "taxCode": {
+                    "type": "string",
+                    "description": "String. A tax code ID. The Shipping tax code is `txcd_92010001`.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "String. The type of calculation to use on the shipping rate. Can only be `fixed_amount` for now.\n"
+                }
+            },
+            "required": [
+                "displayName",
+                "fixedAmount",
+                "livemode"
+            ],
+            "inputProperties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Bool. Whether the shipping rate is active (can't be used when creating). Defaults to `true`.\n"
+                },
+                "deliveryEstimates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stripe:index/ShippingRateDeliveryEstimate:ShippingRateDeliveryEstimate"
+                    },
+                    "description": "List(Resource). The estimated range for how long shipping will take, \nmeant to be displayable to the customer. This will appear on CheckoutSessions.\nFor details please see Delivery Estimate.\n",
+                    "willReplaceOnChanges": true
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "String. The name of the shipping rate, meant to be displayable to the customer. \nThis will appear on CheckoutSessions.\n",
+                    "willReplaceOnChanges": true
+                },
+                "fixedAmount": {
+                    "$ref": "#/types/stripe:index/ShippingRateFixedAmount:ShippingRateFixedAmount",
+                    "description": "List(Resource). Describes a fixed amount to charge for shipping. \nMust be present if type is `fixed_amount`. For details of individual arguments see Fixed Amount.\n",
+                    "willReplaceOnChanges": true
+                },
+                "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for\nstoring additional information about the object in a structured format.\n"
+                },
+                "taxBehavior": {
+                    "type": "string",
+                    "description": "Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of inclusive, exclusive, or\nunspecified.\n"
+                },
+                "taxCode": {
+                    "type": "string",
+                    "description": "String. A tax code ID. The Shipping tax code is `txcd_92010001`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "type": {
+                    "type": "string",
+                    "description": "String. The type of calculation to use on the shipping rate. Can only be `fixed_amount` for now.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "displayName",
+                "fixedAmount"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ShippingRate resources.\n",
+                "properties": {
+                    "active": {
+                        "type": "boolean",
+                        "description": "Bool. Whether the shipping rate is active (can't be used when creating). Defaults to `true`.\n"
+                    },
+                    "deliveryEstimates": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stripe:index/ShippingRateDeliveryEstimate:ShippingRateDeliveryEstimate"
+                        },
+                        "description": "List(Resource). The estimated range for how long shipping will take, \nmeant to be displayable to the customer. This will appear on CheckoutSessions.\nFor details please see Delivery Estimate.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "String. The name of the shipping rate, meant to be displayable to the customer. \nThis will appear on CheckoutSessions.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "fixedAmount": {
+                        "$ref": "#/types/stripe:index/ShippingRateFixedAmount:ShippingRateFixedAmount",
+                        "description": "List(Resource). Describes a fixed amount to charge for shipping. \nMust be present if type is `fixed_amount`. For details of individual arguments see Fixed Amount.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "livemode": {
+                        "type": "boolean",
+                        "description": "Bool. Has the value true if the object exists in live mode or the value false if the object exists in test mode.\n"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map(String). Set of key-value pairs that you can attach to an object. This can be useful for\nstoring additional information about the object in a structured format.\n"
+                    },
+                    "taxBehavior": {
+                        "type": "string",
+                        "description": "Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of inclusive, exclusive, or\nunspecified.\n"
+                    },
+                    "taxCode": {
+                        "type": "string",
+                        "description": "String. A tax code ID. The Shipping tax code is `txcd_92010001`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "String. The type of calculation to use on the shipping rate. Can only be `fixed_amount` for now.\n",
                         "willReplaceOnChanges": true
                     }
                 },
