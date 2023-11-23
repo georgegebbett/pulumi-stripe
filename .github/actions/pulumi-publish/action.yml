@@ -36,11 +36,18 @@ runs:
         node-version: ${{ env.NODEVERSION }}
         registry-url: https://registry.npmjs.org
     - name: Download nodejs SDK
+      id: download
       if: inputs.sdk == 'nodejs' || inputs.sdk == 'all'
       uses: actions/download-artifact@v2
       with:
         name: nodejs-sdk.tar.gz
         path: ${{ github.workspace }}/sdk/
+    - name: 'Echo download path'
+      shell: bash
+      run: echo ${{steps.download.outputs.download-path}}
+    - name: 'Echo download path'
+      shell: bash
+      run: ls ${{steps.download.outputs.download-path}}
     - name: Uncompress nodejs SDK
       if: inputs.sdk == 'nodejs' || inputs.sdk == 'all'
       run: tar -zxf ${{ github.workspace }}/sdk/nodejs-sdk.tar.gz -C
