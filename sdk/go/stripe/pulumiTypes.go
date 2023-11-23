@@ -13,6 +13,359 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type FileLink struct {
+	// String. Time at which the object was created. Measured in seconds since the Unix epoch.
+	Created *int `pulumi:"created"`
+	// Bool. Returns if the link is already expired.
+	Expired *bool `pulumi:"expired"`
+	// Int. The link isn’t available after this future timestamp.
+	ExpiresAt *int `pulumi:"expiresAt"`
+	// String. Unique identifier for the object.
+	Id *string `pulumi:"id"`
+	// Bool. Has the value `true` if the object exists in live mode or the value `false`
+	// if the object exists in test mode.
+	Livemode *bool `pulumi:"livemode"`
+	// Map(String). Set of key-value pairs that you can attach to an object.
+	// This can be useful for storing additional information about the object in a structured format.
+	Metadata map[string]string `pulumi:"metadata"`
+	// String. String representing the object’s type. Objects of the same type share the same value.
+	Object *string `pulumi:"object"`
+	// String. The publicly accessible URL to download the file.
+	Url *string `pulumi:"url"`
+}
+
+// FileLinkInput is an input type that accepts FileLinkArgs and FileLinkOutput values.
+// You can construct a concrete instance of `FileLinkInput` via:
+//
+//	FileLinkArgs{...}
+type FileLinkInput interface {
+	pulumi.Input
+
+	ToFileLinkOutput() FileLinkOutput
+	ToFileLinkOutputWithContext(context.Context) FileLinkOutput
+}
+
+type FileLinkArgs struct {
+	// String. Time at which the object was created. Measured in seconds since the Unix epoch.
+	Created pulumi.IntPtrInput `pulumi:"created"`
+	// Bool. Returns if the link is already expired.
+	Expired pulumi.BoolPtrInput `pulumi:"expired"`
+	// Int. The link isn’t available after this future timestamp.
+	ExpiresAt pulumi.IntPtrInput `pulumi:"expiresAt"`
+	// String. Unique identifier for the object.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Bool. Has the value `true` if the object exists in live mode or the value `false`
+	// if the object exists in test mode.
+	Livemode pulumi.BoolPtrInput `pulumi:"livemode"`
+	// Map(String). Set of key-value pairs that you can attach to an object.
+	// This can be useful for storing additional information about the object in a structured format.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// String. String representing the object’s type. Objects of the same type share the same value.
+	Object pulumi.StringPtrInput `pulumi:"object"`
+	// String. The publicly accessible URL to download the file.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (FileLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileLink)(nil)).Elem()
+}
+
+func (i FileLinkArgs) ToFileLinkOutput() FileLinkOutput {
+	return i.ToFileLinkOutputWithContext(context.Background())
+}
+
+func (i FileLinkArgs) ToFileLinkOutputWithContext(ctx context.Context) FileLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileLinkOutput)
+}
+
+// FileLinkArrayInput is an input type that accepts FileLinkArray and FileLinkArrayOutput values.
+// You can construct a concrete instance of `FileLinkArrayInput` via:
+//
+//	FileLinkArray{ FileLinkArgs{...} }
+type FileLinkArrayInput interface {
+	pulumi.Input
+
+	ToFileLinkArrayOutput() FileLinkArrayOutput
+	ToFileLinkArrayOutputWithContext(context.Context) FileLinkArrayOutput
+}
+
+type FileLinkArray []FileLinkInput
+
+func (FileLinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FileLink)(nil)).Elem()
+}
+
+func (i FileLinkArray) ToFileLinkArrayOutput() FileLinkArrayOutput {
+	return i.ToFileLinkArrayOutputWithContext(context.Background())
+}
+
+func (i FileLinkArray) ToFileLinkArrayOutputWithContext(ctx context.Context) FileLinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileLinkArrayOutput)
+}
+
+type FileLinkOutput struct{ *pulumi.OutputState }
+
+func (FileLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileLink)(nil)).Elem()
+}
+
+func (o FileLinkOutput) ToFileLinkOutput() FileLinkOutput {
+	return o
+}
+
+func (o FileLinkOutput) ToFileLinkOutputWithContext(ctx context.Context) FileLinkOutput {
+	return o
+}
+
+// String. Time at which the object was created. Measured in seconds since the Unix epoch.
+func (o FileLinkOutput) Created() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileLink) *int { return v.Created }).(pulumi.IntPtrOutput)
+}
+
+// Bool. Returns if the link is already expired.
+func (o FileLinkOutput) Expired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileLink) *bool { return v.Expired }).(pulumi.BoolPtrOutput)
+}
+
+// Int. The link isn’t available after this future timestamp.
+func (o FileLinkOutput) ExpiresAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileLink) *int { return v.ExpiresAt }).(pulumi.IntPtrOutput)
+}
+
+// String. Unique identifier for the object.
+func (o FileLinkOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileLink) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Bool. Has the value `true` if the object exists in live mode or the value `false`
+// if the object exists in test mode.
+func (o FileLinkOutput) Livemode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileLink) *bool { return v.Livemode }).(pulumi.BoolPtrOutput)
+}
+
+// Map(String). Set of key-value pairs that you can attach to an object.
+// This can be useful for storing additional information about the object in a structured format.
+func (o FileLinkOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FileLink) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// String. String representing the object’s type. Objects of the same type share the same value.
+func (o FileLinkOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileLink) *string { return v.Object }).(pulumi.StringPtrOutput)
+}
+
+// String. The publicly accessible URL to download the file.
+func (o FileLinkOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileLink) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type FileLinkArrayOutput struct{ *pulumi.OutputState }
+
+func (FileLinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FileLink)(nil)).Elem()
+}
+
+func (o FileLinkArrayOutput) ToFileLinkArrayOutput() FileLinkArrayOutput {
+	return o
+}
+
+func (o FileLinkArrayOutput) ToFileLinkArrayOutputWithContext(ctx context.Context) FileLinkArrayOutput {
+	return o
+}
+
+func (o FileLinkArrayOutput) Index(i pulumi.IntInput) FileLinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FileLink {
+		return vs[0].([]FileLink)[vs[1].(int)]
+	}).(FileLinkOutput)
+}
+
+type FileLinkData struct {
+	// Bool. Set this to `true` to create a file link for the newly created file.
+	// Creating a link is only possible when the file’s purpose is one of the following: `businessIcon`, `businessLogo`,
+	// `customerSignature`, `disputeEvidence`, `pciDocument`, `taxDocumentUserUpload`, or `terminalReaderSplashscreen`.
+	Create bool `pulumi:"create"`
+	// Int. The link isn’t available after this future timestamp.
+	ExpiresAt *int `pulumi:"expiresAt"`
+	// Map(String). Set of key-value pairs that you can attach to an object.
+	// This can be useful for storing additional information about the object in a structured format.
+	Metadata map[string]string `pulumi:"metadata"`
+}
+
+// FileLinkDataInput is an input type that accepts FileLinkDataArgs and FileLinkDataOutput values.
+// You can construct a concrete instance of `FileLinkDataInput` via:
+//
+//	FileLinkDataArgs{...}
+type FileLinkDataInput interface {
+	pulumi.Input
+
+	ToFileLinkDataOutput() FileLinkDataOutput
+	ToFileLinkDataOutputWithContext(context.Context) FileLinkDataOutput
+}
+
+type FileLinkDataArgs struct {
+	// Bool. Set this to `true` to create a file link for the newly created file.
+	// Creating a link is only possible when the file’s purpose is one of the following: `businessIcon`, `businessLogo`,
+	// `customerSignature`, `disputeEvidence`, `pciDocument`, `taxDocumentUserUpload`, or `terminalReaderSplashscreen`.
+	Create pulumi.BoolInput `pulumi:"create"`
+	// Int. The link isn’t available after this future timestamp.
+	ExpiresAt pulumi.IntPtrInput `pulumi:"expiresAt"`
+	// Map(String). Set of key-value pairs that you can attach to an object.
+	// This can be useful for storing additional information about the object in a structured format.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+}
+
+func (FileLinkDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileLinkData)(nil)).Elem()
+}
+
+func (i FileLinkDataArgs) ToFileLinkDataOutput() FileLinkDataOutput {
+	return i.ToFileLinkDataOutputWithContext(context.Background())
+}
+
+func (i FileLinkDataArgs) ToFileLinkDataOutputWithContext(ctx context.Context) FileLinkDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileLinkDataOutput)
+}
+
+func (i FileLinkDataArgs) ToFileLinkDataPtrOutput() FileLinkDataPtrOutput {
+	return i.ToFileLinkDataPtrOutputWithContext(context.Background())
+}
+
+func (i FileLinkDataArgs) ToFileLinkDataPtrOutputWithContext(ctx context.Context) FileLinkDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileLinkDataOutput).ToFileLinkDataPtrOutputWithContext(ctx)
+}
+
+// FileLinkDataPtrInput is an input type that accepts FileLinkDataArgs, FileLinkDataPtr and FileLinkDataPtrOutput values.
+// You can construct a concrete instance of `FileLinkDataPtrInput` via:
+//
+//	        FileLinkDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileLinkDataPtrInput interface {
+	pulumi.Input
+
+	ToFileLinkDataPtrOutput() FileLinkDataPtrOutput
+	ToFileLinkDataPtrOutputWithContext(context.Context) FileLinkDataPtrOutput
+}
+
+type fileLinkDataPtrType FileLinkDataArgs
+
+func FileLinkDataPtr(v *FileLinkDataArgs) FileLinkDataPtrInput {
+	return (*fileLinkDataPtrType)(v)
+}
+
+func (*fileLinkDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileLinkData)(nil)).Elem()
+}
+
+func (i *fileLinkDataPtrType) ToFileLinkDataPtrOutput() FileLinkDataPtrOutput {
+	return i.ToFileLinkDataPtrOutputWithContext(context.Background())
+}
+
+func (i *fileLinkDataPtrType) ToFileLinkDataPtrOutputWithContext(ctx context.Context) FileLinkDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileLinkDataPtrOutput)
+}
+
+type FileLinkDataOutput struct{ *pulumi.OutputState }
+
+func (FileLinkDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileLinkData)(nil)).Elem()
+}
+
+func (o FileLinkDataOutput) ToFileLinkDataOutput() FileLinkDataOutput {
+	return o
+}
+
+func (o FileLinkDataOutput) ToFileLinkDataOutputWithContext(ctx context.Context) FileLinkDataOutput {
+	return o
+}
+
+func (o FileLinkDataOutput) ToFileLinkDataPtrOutput() FileLinkDataPtrOutput {
+	return o.ToFileLinkDataPtrOutputWithContext(context.Background())
+}
+
+func (o FileLinkDataOutput) ToFileLinkDataPtrOutputWithContext(ctx context.Context) FileLinkDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileLinkData) *FileLinkData {
+		return &v
+	}).(FileLinkDataPtrOutput)
+}
+
+// Bool. Set this to `true` to create a file link for the newly created file.
+// Creating a link is only possible when the file’s purpose is one of the following: `businessIcon`, `businessLogo`,
+// `customerSignature`, `disputeEvidence`, `pciDocument`, `taxDocumentUserUpload`, or `terminalReaderSplashscreen`.
+func (o FileLinkDataOutput) Create() pulumi.BoolOutput {
+	return o.ApplyT(func(v FileLinkData) bool { return v.Create }).(pulumi.BoolOutput)
+}
+
+// Int. The link isn’t available after this future timestamp.
+func (o FileLinkDataOutput) ExpiresAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileLinkData) *int { return v.ExpiresAt }).(pulumi.IntPtrOutput)
+}
+
+// Map(String). Set of key-value pairs that you can attach to an object.
+// This can be useful for storing additional information about the object in a structured format.
+func (o FileLinkDataOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FileLinkData) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+type FileLinkDataPtrOutput struct{ *pulumi.OutputState }
+
+func (FileLinkDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileLinkData)(nil)).Elem()
+}
+
+func (o FileLinkDataPtrOutput) ToFileLinkDataPtrOutput() FileLinkDataPtrOutput {
+	return o
+}
+
+func (o FileLinkDataPtrOutput) ToFileLinkDataPtrOutputWithContext(ctx context.Context) FileLinkDataPtrOutput {
+	return o
+}
+
+func (o FileLinkDataPtrOutput) Elem() FileLinkDataOutput {
+	return o.ApplyT(func(v *FileLinkData) FileLinkData {
+		if v != nil {
+			return *v
+		}
+		var ret FileLinkData
+		return ret
+	}).(FileLinkDataOutput)
+}
+
+// Bool. Set this to `true` to create a file link for the newly created file.
+// Creating a link is only possible when the file’s purpose is one of the following: `businessIcon`, `businessLogo`,
+// `customerSignature`, `disputeEvidence`, `pciDocument`, `taxDocumentUserUpload`, or `terminalReaderSplashscreen`.
+func (o FileLinkDataPtrOutput) Create() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FileLinkData) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Create
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Int. The link isn’t available after this future timestamp.
+func (o FileLinkDataPtrOutput) ExpiresAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileLinkData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ExpiresAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// Map(String). Set of key-value pairs that you can attach to an object.
+// This can be useful for storing additional information about the object in a structured format.
+func (o FileLinkDataPtrOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FileLinkData) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringMapOutput)
+}
+
 type PortalConfigurationBusinessProfile struct {
 	// String. The messaging shown to customers in the portal.
 	Headline *string `pulumi:"headline"`
@@ -435,7 +788,7 @@ func (o PortalConfigurationFeaturesPtrOutput) SubscriptionUpdates() PortalConfig
 type PortalConfigurationFeaturesCustomerUpdate struct {
 	// List(String). The types of customer updates that are supported [`name`, `email`, `address`, `shipping`, `phone`, `taxId`]. When empty, customers are not updatable.
 	AllowedUpdates []string `pulumi:"allowedUpdates"`
-	// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+	// Bool. Whether the feature is enabled.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -453,7 +806,7 @@ type PortalConfigurationFeaturesCustomerUpdateInput interface {
 type PortalConfigurationFeaturesCustomerUpdateArgs struct {
 	// List(String). The types of customer updates that are supported [`name`, `email`, `address`, `shipping`, `phone`, `taxId`]. When empty, customers are not updatable.
 	AllowedUpdates pulumi.StringArrayInput `pulumi:"allowedUpdates"`
-	// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+	// Bool. Whether the feature is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -539,7 +892,7 @@ func (o PortalConfigurationFeaturesCustomerUpdateOutput) AllowedUpdates() pulumi
 	return o.ApplyT(func(v PortalConfigurationFeaturesCustomerUpdate) []string { return v.AllowedUpdates }).(pulumi.StringArrayOutput)
 }
 
-// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+// Bool. Whether the feature is enabled.
 func (o PortalConfigurationFeaturesCustomerUpdateOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesCustomerUpdate) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -578,7 +931,7 @@ func (o PortalConfigurationFeaturesCustomerUpdatePtrOutput) AllowedUpdates() pul
 	}).(pulumi.StringArrayOutput)
 }
 
-// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+// Bool. Whether the feature is enabled.
 func (o PortalConfigurationFeaturesCustomerUpdatePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PortalConfigurationFeaturesCustomerUpdate) *bool {
 		if v == nil {
@@ -589,7 +942,7 @@ func (o PortalConfigurationFeaturesCustomerUpdatePtrOutput) Enabled() pulumi.Boo
 }
 
 type PortalConfigurationFeaturesInvoiceHistory struct {
-	// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+	// Bool. Whether the feature is enabled.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -605,7 +958,7 @@ type PortalConfigurationFeaturesInvoiceHistoryInput interface {
 }
 
 type PortalConfigurationFeaturesInvoiceHistoryArgs struct {
-	// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+	// Bool. Whether the feature is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -686,7 +1039,7 @@ func (o PortalConfigurationFeaturesInvoiceHistoryOutput) ToPortalConfigurationFe
 	}).(PortalConfigurationFeaturesInvoiceHistoryPtrOutput)
 }
 
-// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+// Bool. Whether the feature is enabled.
 func (o PortalConfigurationFeaturesInvoiceHistoryOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesInvoiceHistory) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -715,7 +1068,7 @@ func (o PortalConfigurationFeaturesInvoiceHistoryPtrOutput) Elem() PortalConfigu
 	}).(PortalConfigurationFeaturesInvoiceHistoryOutput)
 }
 
-// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+// Bool. Whether the feature is enabled.
 func (o PortalConfigurationFeaturesInvoiceHistoryPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PortalConfigurationFeaturesInvoiceHistory) *bool {
 		if v == nil {
@@ -726,7 +1079,7 @@ func (o PortalConfigurationFeaturesInvoiceHistoryPtrOutput) Enabled() pulumi.Boo
 }
 
 type PortalConfigurationFeaturesPaymentMethodUpdate struct {
-	// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+	// Bool. Whether the feature is enabled.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -742,7 +1095,7 @@ type PortalConfigurationFeaturesPaymentMethodUpdateInput interface {
 }
 
 type PortalConfigurationFeaturesPaymentMethodUpdateArgs struct {
-	// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+	// Bool. Whether the feature is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -823,7 +1176,7 @@ func (o PortalConfigurationFeaturesPaymentMethodUpdateOutput) ToPortalConfigurat
 	}).(PortalConfigurationFeaturesPaymentMethodUpdatePtrOutput)
 }
 
-// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+// Bool. Whether the feature is enabled.
 func (o PortalConfigurationFeaturesPaymentMethodUpdateOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesPaymentMethodUpdate) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -852,7 +1205,7 @@ func (o PortalConfigurationFeaturesPaymentMethodUpdatePtrOutput) Elem() PortalCo
 	}).(PortalConfigurationFeaturesPaymentMethodUpdateOutput)
 }
 
-// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+// Bool. Whether the feature is enabled.
 func (o PortalConfigurationFeaturesPaymentMethodUpdatePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PortalConfigurationFeaturesPaymentMethodUpdate) *bool {
 		if v == nil {
@@ -865,7 +1218,7 @@ func (o PortalConfigurationFeaturesPaymentMethodUpdatePtrOutput) Enabled() pulum
 type PortalConfigurationFeaturesSubscriptionCancel struct {
 	// List(Resource). Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer. Details of this field is in Cancellation Reason.
 	CancellationReason *PortalConfigurationFeaturesSubscriptionCancelCancellationReason `pulumi:"cancellationReason"`
-	// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+	// Bool. Whether the feature is enabled.
 	Enabled bool `pulumi:"enabled"`
 	// String. Whether to cancel subscriptions immediately or at the end of the billing period. Valid value is either `immediately` or `atPeriodEnd`
 	Mode *string `pulumi:"mode"`
@@ -887,7 +1240,7 @@ type PortalConfigurationFeaturesSubscriptionCancelInput interface {
 type PortalConfigurationFeaturesSubscriptionCancelArgs struct {
 	// List(Resource). Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer. Details of this field is in Cancellation Reason.
 	CancellationReason PortalConfigurationFeaturesSubscriptionCancelCancellationReasonPtrInput `pulumi:"cancellationReason"`
-	// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+	// Bool. Whether the feature is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// String. Whether to cancel subscriptions immediately or at the end of the billing period. Valid value is either `immediately` or `atPeriodEnd`
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
@@ -979,7 +1332,7 @@ func (o PortalConfigurationFeaturesSubscriptionCancelOutput) CancellationReason(
 	}).(PortalConfigurationFeaturesSubscriptionCancelCancellationReasonPtrOutput)
 }
 
-// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+// Bool. Whether the feature is enabled.
 func (o PortalConfigurationFeaturesSubscriptionCancelOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesSubscriptionCancel) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -1028,7 +1381,7 @@ func (o PortalConfigurationFeaturesSubscriptionCancelPtrOutput) CancellationReas
 	}).(PortalConfigurationFeaturesSubscriptionCancelCancellationReasonPtrOutput)
 }
 
-// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+// Bool. Whether the feature is enabled.
 func (o PortalConfigurationFeaturesSubscriptionCancelPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PortalConfigurationFeaturesSubscriptionCancel) *bool {
 		if v == nil {
@@ -1215,7 +1568,7 @@ func (o PortalConfigurationFeaturesSubscriptionCancelCancellationReasonPtrOutput
 }
 
 type PortalConfigurationFeaturesSubscriptionPause struct {
-	// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+	// Bool. Whether the feature is enabled.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -1231,7 +1584,7 @@ type PortalConfigurationFeaturesSubscriptionPauseInput interface {
 }
 
 type PortalConfigurationFeaturesSubscriptionPauseArgs struct {
-	// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+	// Bool. Whether the feature is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -1286,7 +1639,7 @@ func (o PortalConfigurationFeaturesSubscriptionPauseOutput) ToPortalConfiguratio
 	return o
 }
 
-// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+// Bool. Whether the feature is enabled.
 func (o PortalConfigurationFeaturesSubscriptionPauseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesSubscriptionPause) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1314,7 +1667,7 @@ func (o PortalConfigurationFeaturesSubscriptionPauseArrayOutput) Index(i pulumi.
 type PortalConfigurationFeaturesSubscriptionUpdate struct {
 	// List(String). The types of subscription updates that are supported. When empty, subscriptions are not updatable. Supported values are `price`, `quantity`, and `promotionCode`.
 	DefaultAllowedUpdates []string `pulumi:"defaultAllowedUpdates"`
-	// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+	// Bool. Whether the feature is enabled.
 	Enabled bool `pulumi:"enabled"`
 	// List(Resource). The list of products that support subscription updates. See details Products.
 	Products []PortalConfigurationFeaturesSubscriptionUpdateProduct `pulumi:"products"`
@@ -1336,7 +1689,7 @@ type PortalConfigurationFeaturesSubscriptionUpdateInput interface {
 type PortalConfigurationFeaturesSubscriptionUpdateArgs struct {
 	// List(String). The types of subscription updates that are supported. When empty, subscriptions are not updatable. Supported values are `price`, `quantity`, and `promotionCode`.
 	DefaultAllowedUpdates pulumi.StringArrayInput `pulumi:"defaultAllowedUpdates"`
-	// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+	// Bool. Whether the feature is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// List(Resource). The list of products that support subscription updates. See details Products.
 	Products PortalConfigurationFeaturesSubscriptionUpdateProductArrayInput `pulumi:"products"`
@@ -1400,7 +1753,7 @@ func (o PortalConfigurationFeaturesSubscriptionUpdateOutput) DefaultAllowedUpdat
 	return o.ApplyT(func(v PortalConfigurationFeaturesSubscriptionUpdate) []string { return v.DefaultAllowedUpdates }).(pulumi.StringArrayOutput)
 }
 
-// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+// Bool. Whether the feature is enabled.
 func (o PortalConfigurationFeaturesSubscriptionUpdateOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesSubscriptionUpdate) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -1711,7 +2064,7 @@ type PriceCurrencyOption struct {
 	// This parameter requires `billingScheme` to be set to `tiered`. This resource can be used more than once and follows
 	// the same fields as the root tiers block
 	Tiers []PriceCurrencyOptionTier `pulumi:"tiers"`
-	// Int. A positive integer in cents (or 0 for a free price) representing how much to charge.
+	// Int. A positive integer in cents (or -1 for a free price) representing how much to charge.
 	UnitAmount *int `pulumi:"unitAmount"`
 	// Float. Same as unit_amount, but accepts a decimal value in cents with at most 12
 	// decimal places. Only one of unitAmount and unitAmountDecimal can be set.
@@ -1745,7 +2098,7 @@ type PriceCurrencyOptionArgs struct {
 	// This parameter requires `billingScheme` to be set to `tiered`. This resource can be used more than once and follows
 	// the same fields as the root tiers block
 	Tiers PriceCurrencyOptionTierArrayInput `pulumi:"tiers"`
-	// Int. A positive integer in cents (or 0 for a free price) representing how much to charge.
+	// Int. A positive integer in cents (or -1 for a free price) representing how much to charge.
 	UnitAmount pulumi.IntPtrInput `pulumi:"unitAmount"`
 	// Float. Same as unit_amount, but accepts a decimal value in cents with at most 12
 	// decimal places. Only one of unitAmount and unitAmountDecimal can be set.
@@ -1830,7 +2183,7 @@ func (o PriceCurrencyOptionOutput) Tiers() PriceCurrencyOptionTierArrayOutput {
 	return o.ApplyT(func(v PriceCurrencyOption) []PriceCurrencyOptionTier { return v.Tiers }).(PriceCurrencyOptionTierArrayOutput)
 }
 
-// Int. A positive integer in cents (or 0 for a free price) representing how much to charge.
+// Int. A positive integer in cents (or -1 for a free price) representing how much to charge.
 func (o PriceCurrencyOptionOutput) UnitAmount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PriceCurrencyOption) *int { return v.UnitAmount }).(pulumi.IntPtrOutput)
 }
@@ -2902,7 +3255,722 @@ func (o PromotionCodeRestrictionsPtrOutput) MinimumAmountCurrency() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type ShippingRateDeliveryEstimate struct {
+	// List(Resource. The upper bound of the estimated range.
+	// Please see Delivery Estimate Definition.
+	Maximum *ShippingRateDeliveryEstimateMaximum `pulumi:"maximum"`
+	// List(Resource). The lower bound of the estimated range.
+	// Please see Delivery Estimate Definition.
+	Minimum *ShippingRateDeliveryEstimateMinimum `pulumi:"minimum"`
+}
+
+// ShippingRateDeliveryEstimateInput is an input type that accepts ShippingRateDeliveryEstimateArgs and ShippingRateDeliveryEstimateOutput values.
+// You can construct a concrete instance of `ShippingRateDeliveryEstimateInput` via:
+//
+//	ShippingRateDeliveryEstimateArgs{...}
+type ShippingRateDeliveryEstimateInput interface {
+	pulumi.Input
+
+	ToShippingRateDeliveryEstimateOutput() ShippingRateDeliveryEstimateOutput
+	ToShippingRateDeliveryEstimateOutputWithContext(context.Context) ShippingRateDeliveryEstimateOutput
+}
+
+type ShippingRateDeliveryEstimateArgs struct {
+	// List(Resource. The upper bound of the estimated range.
+	// Please see Delivery Estimate Definition.
+	Maximum ShippingRateDeliveryEstimateMaximumPtrInput `pulumi:"maximum"`
+	// List(Resource). The lower bound of the estimated range.
+	// Please see Delivery Estimate Definition.
+	Minimum ShippingRateDeliveryEstimateMinimumPtrInput `pulumi:"minimum"`
+}
+
+func (ShippingRateDeliveryEstimateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShippingRateDeliveryEstimate)(nil)).Elem()
+}
+
+func (i ShippingRateDeliveryEstimateArgs) ToShippingRateDeliveryEstimateOutput() ShippingRateDeliveryEstimateOutput {
+	return i.ToShippingRateDeliveryEstimateOutputWithContext(context.Background())
+}
+
+func (i ShippingRateDeliveryEstimateArgs) ToShippingRateDeliveryEstimateOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShippingRateDeliveryEstimateOutput)
+}
+
+// ShippingRateDeliveryEstimateArrayInput is an input type that accepts ShippingRateDeliveryEstimateArray and ShippingRateDeliveryEstimateArrayOutput values.
+// You can construct a concrete instance of `ShippingRateDeliveryEstimateArrayInput` via:
+//
+//	ShippingRateDeliveryEstimateArray{ ShippingRateDeliveryEstimateArgs{...} }
+type ShippingRateDeliveryEstimateArrayInput interface {
+	pulumi.Input
+
+	ToShippingRateDeliveryEstimateArrayOutput() ShippingRateDeliveryEstimateArrayOutput
+	ToShippingRateDeliveryEstimateArrayOutputWithContext(context.Context) ShippingRateDeliveryEstimateArrayOutput
+}
+
+type ShippingRateDeliveryEstimateArray []ShippingRateDeliveryEstimateInput
+
+func (ShippingRateDeliveryEstimateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShippingRateDeliveryEstimate)(nil)).Elem()
+}
+
+func (i ShippingRateDeliveryEstimateArray) ToShippingRateDeliveryEstimateArrayOutput() ShippingRateDeliveryEstimateArrayOutput {
+	return i.ToShippingRateDeliveryEstimateArrayOutputWithContext(context.Background())
+}
+
+func (i ShippingRateDeliveryEstimateArray) ToShippingRateDeliveryEstimateArrayOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShippingRateDeliveryEstimateArrayOutput)
+}
+
+type ShippingRateDeliveryEstimateOutput struct{ *pulumi.OutputState }
+
+func (ShippingRateDeliveryEstimateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShippingRateDeliveryEstimate)(nil)).Elem()
+}
+
+func (o ShippingRateDeliveryEstimateOutput) ToShippingRateDeliveryEstimateOutput() ShippingRateDeliveryEstimateOutput {
+	return o
+}
+
+func (o ShippingRateDeliveryEstimateOutput) ToShippingRateDeliveryEstimateOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateOutput {
+	return o
+}
+
+// List(Resource. The upper bound of the estimated range.
+// Please see Delivery Estimate Definition.
+func (o ShippingRateDeliveryEstimateOutput) Maximum() ShippingRateDeliveryEstimateMaximumPtrOutput {
+	return o.ApplyT(func(v ShippingRateDeliveryEstimate) *ShippingRateDeliveryEstimateMaximum { return v.Maximum }).(ShippingRateDeliveryEstimateMaximumPtrOutput)
+}
+
+// List(Resource). The lower bound of the estimated range.
+// Please see Delivery Estimate Definition.
+func (o ShippingRateDeliveryEstimateOutput) Minimum() ShippingRateDeliveryEstimateMinimumPtrOutput {
+	return o.ApplyT(func(v ShippingRateDeliveryEstimate) *ShippingRateDeliveryEstimateMinimum { return v.Minimum }).(ShippingRateDeliveryEstimateMinimumPtrOutput)
+}
+
+type ShippingRateDeliveryEstimateArrayOutput struct{ *pulumi.OutputState }
+
+func (ShippingRateDeliveryEstimateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShippingRateDeliveryEstimate)(nil)).Elem()
+}
+
+func (o ShippingRateDeliveryEstimateArrayOutput) ToShippingRateDeliveryEstimateArrayOutput() ShippingRateDeliveryEstimateArrayOutput {
+	return o
+}
+
+func (o ShippingRateDeliveryEstimateArrayOutput) ToShippingRateDeliveryEstimateArrayOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateArrayOutput {
+	return o
+}
+
+func (o ShippingRateDeliveryEstimateArrayOutput) Index(i pulumi.IntInput) ShippingRateDeliveryEstimateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShippingRateDeliveryEstimate {
+		return vs[0].([]ShippingRateDeliveryEstimate)[vs[1].(int)]
+	}).(ShippingRateDeliveryEstimateOutput)
+}
+
+type ShippingRateDeliveryEstimateMaximum struct {
+	// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+	Unit string `pulumi:"unit"`
+	// Int. Must be greater than 0.
+	Value int `pulumi:"value"`
+}
+
+// ShippingRateDeliveryEstimateMaximumInput is an input type that accepts ShippingRateDeliveryEstimateMaximumArgs and ShippingRateDeliveryEstimateMaximumOutput values.
+// You can construct a concrete instance of `ShippingRateDeliveryEstimateMaximumInput` via:
+//
+//	ShippingRateDeliveryEstimateMaximumArgs{...}
+type ShippingRateDeliveryEstimateMaximumInput interface {
+	pulumi.Input
+
+	ToShippingRateDeliveryEstimateMaximumOutput() ShippingRateDeliveryEstimateMaximumOutput
+	ToShippingRateDeliveryEstimateMaximumOutputWithContext(context.Context) ShippingRateDeliveryEstimateMaximumOutput
+}
+
+type ShippingRateDeliveryEstimateMaximumArgs struct {
+	// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+	Unit pulumi.StringInput `pulumi:"unit"`
+	// Int. Must be greater than 0.
+	Value pulumi.IntInput `pulumi:"value"`
+}
+
+func (ShippingRateDeliveryEstimateMaximumArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShippingRateDeliveryEstimateMaximum)(nil)).Elem()
+}
+
+func (i ShippingRateDeliveryEstimateMaximumArgs) ToShippingRateDeliveryEstimateMaximumOutput() ShippingRateDeliveryEstimateMaximumOutput {
+	return i.ToShippingRateDeliveryEstimateMaximumOutputWithContext(context.Background())
+}
+
+func (i ShippingRateDeliveryEstimateMaximumArgs) ToShippingRateDeliveryEstimateMaximumOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateMaximumOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShippingRateDeliveryEstimateMaximumOutput)
+}
+
+func (i ShippingRateDeliveryEstimateMaximumArgs) ToShippingRateDeliveryEstimateMaximumPtrOutput() ShippingRateDeliveryEstimateMaximumPtrOutput {
+	return i.ToShippingRateDeliveryEstimateMaximumPtrOutputWithContext(context.Background())
+}
+
+func (i ShippingRateDeliveryEstimateMaximumArgs) ToShippingRateDeliveryEstimateMaximumPtrOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateMaximumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShippingRateDeliveryEstimateMaximumOutput).ToShippingRateDeliveryEstimateMaximumPtrOutputWithContext(ctx)
+}
+
+// ShippingRateDeliveryEstimateMaximumPtrInput is an input type that accepts ShippingRateDeliveryEstimateMaximumArgs, ShippingRateDeliveryEstimateMaximumPtr and ShippingRateDeliveryEstimateMaximumPtrOutput values.
+// You can construct a concrete instance of `ShippingRateDeliveryEstimateMaximumPtrInput` via:
+//
+//	        ShippingRateDeliveryEstimateMaximumArgs{...}
+//
+//	or:
+//
+//	        nil
+type ShippingRateDeliveryEstimateMaximumPtrInput interface {
+	pulumi.Input
+
+	ToShippingRateDeliveryEstimateMaximumPtrOutput() ShippingRateDeliveryEstimateMaximumPtrOutput
+	ToShippingRateDeliveryEstimateMaximumPtrOutputWithContext(context.Context) ShippingRateDeliveryEstimateMaximumPtrOutput
+}
+
+type shippingRateDeliveryEstimateMaximumPtrType ShippingRateDeliveryEstimateMaximumArgs
+
+func ShippingRateDeliveryEstimateMaximumPtr(v *ShippingRateDeliveryEstimateMaximumArgs) ShippingRateDeliveryEstimateMaximumPtrInput {
+	return (*shippingRateDeliveryEstimateMaximumPtrType)(v)
+}
+
+func (*shippingRateDeliveryEstimateMaximumPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShippingRateDeliveryEstimateMaximum)(nil)).Elem()
+}
+
+func (i *shippingRateDeliveryEstimateMaximumPtrType) ToShippingRateDeliveryEstimateMaximumPtrOutput() ShippingRateDeliveryEstimateMaximumPtrOutput {
+	return i.ToShippingRateDeliveryEstimateMaximumPtrOutputWithContext(context.Background())
+}
+
+func (i *shippingRateDeliveryEstimateMaximumPtrType) ToShippingRateDeliveryEstimateMaximumPtrOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateMaximumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShippingRateDeliveryEstimateMaximumPtrOutput)
+}
+
+type ShippingRateDeliveryEstimateMaximumOutput struct{ *pulumi.OutputState }
+
+func (ShippingRateDeliveryEstimateMaximumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShippingRateDeliveryEstimateMaximum)(nil)).Elem()
+}
+
+func (o ShippingRateDeliveryEstimateMaximumOutput) ToShippingRateDeliveryEstimateMaximumOutput() ShippingRateDeliveryEstimateMaximumOutput {
+	return o
+}
+
+func (o ShippingRateDeliveryEstimateMaximumOutput) ToShippingRateDeliveryEstimateMaximumOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateMaximumOutput {
+	return o
+}
+
+func (o ShippingRateDeliveryEstimateMaximumOutput) ToShippingRateDeliveryEstimateMaximumPtrOutput() ShippingRateDeliveryEstimateMaximumPtrOutput {
+	return o.ToShippingRateDeliveryEstimateMaximumPtrOutputWithContext(context.Background())
+}
+
+func (o ShippingRateDeliveryEstimateMaximumOutput) ToShippingRateDeliveryEstimateMaximumPtrOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateMaximumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShippingRateDeliveryEstimateMaximum) *ShippingRateDeliveryEstimateMaximum {
+		return &v
+	}).(ShippingRateDeliveryEstimateMaximumPtrOutput)
+}
+
+// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+func (o ShippingRateDeliveryEstimateMaximumOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v ShippingRateDeliveryEstimateMaximum) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+// Int. Must be greater than 0.
+func (o ShippingRateDeliveryEstimateMaximumOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v ShippingRateDeliveryEstimateMaximum) int { return v.Value }).(pulumi.IntOutput)
+}
+
+type ShippingRateDeliveryEstimateMaximumPtrOutput struct{ *pulumi.OutputState }
+
+func (ShippingRateDeliveryEstimateMaximumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShippingRateDeliveryEstimateMaximum)(nil)).Elem()
+}
+
+func (o ShippingRateDeliveryEstimateMaximumPtrOutput) ToShippingRateDeliveryEstimateMaximumPtrOutput() ShippingRateDeliveryEstimateMaximumPtrOutput {
+	return o
+}
+
+func (o ShippingRateDeliveryEstimateMaximumPtrOutput) ToShippingRateDeliveryEstimateMaximumPtrOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateMaximumPtrOutput {
+	return o
+}
+
+func (o ShippingRateDeliveryEstimateMaximumPtrOutput) Elem() ShippingRateDeliveryEstimateMaximumOutput {
+	return o.ApplyT(func(v *ShippingRateDeliveryEstimateMaximum) ShippingRateDeliveryEstimateMaximum {
+		if v != nil {
+			return *v
+		}
+		var ret ShippingRateDeliveryEstimateMaximum
+		return ret
+	}).(ShippingRateDeliveryEstimateMaximumOutput)
+}
+
+// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+func (o ShippingRateDeliveryEstimateMaximumPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShippingRateDeliveryEstimateMaximum) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Int. Must be greater than 0.
+func (o ShippingRateDeliveryEstimateMaximumPtrOutput) Value() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ShippingRateDeliveryEstimateMaximum) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.IntPtrOutput)
+}
+
+type ShippingRateDeliveryEstimateMinimum struct {
+	// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+	Unit string `pulumi:"unit"`
+	// Int. Must be greater than 0.
+	Value int `pulumi:"value"`
+}
+
+// ShippingRateDeliveryEstimateMinimumInput is an input type that accepts ShippingRateDeliveryEstimateMinimumArgs and ShippingRateDeliveryEstimateMinimumOutput values.
+// You can construct a concrete instance of `ShippingRateDeliveryEstimateMinimumInput` via:
+//
+//	ShippingRateDeliveryEstimateMinimumArgs{...}
+type ShippingRateDeliveryEstimateMinimumInput interface {
+	pulumi.Input
+
+	ToShippingRateDeliveryEstimateMinimumOutput() ShippingRateDeliveryEstimateMinimumOutput
+	ToShippingRateDeliveryEstimateMinimumOutputWithContext(context.Context) ShippingRateDeliveryEstimateMinimumOutput
+}
+
+type ShippingRateDeliveryEstimateMinimumArgs struct {
+	// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+	Unit pulumi.StringInput `pulumi:"unit"`
+	// Int. Must be greater than 0.
+	Value pulumi.IntInput `pulumi:"value"`
+}
+
+func (ShippingRateDeliveryEstimateMinimumArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShippingRateDeliveryEstimateMinimum)(nil)).Elem()
+}
+
+func (i ShippingRateDeliveryEstimateMinimumArgs) ToShippingRateDeliveryEstimateMinimumOutput() ShippingRateDeliveryEstimateMinimumOutput {
+	return i.ToShippingRateDeliveryEstimateMinimumOutputWithContext(context.Background())
+}
+
+func (i ShippingRateDeliveryEstimateMinimumArgs) ToShippingRateDeliveryEstimateMinimumOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateMinimumOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShippingRateDeliveryEstimateMinimumOutput)
+}
+
+func (i ShippingRateDeliveryEstimateMinimumArgs) ToShippingRateDeliveryEstimateMinimumPtrOutput() ShippingRateDeliveryEstimateMinimumPtrOutput {
+	return i.ToShippingRateDeliveryEstimateMinimumPtrOutputWithContext(context.Background())
+}
+
+func (i ShippingRateDeliveryEstimateMinimumArgs) ToShippingRateDeliveryEstimateMinimumPtrOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateMinimumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShippingRateDeliveryEstimateMinimumOutput).ToShippingRateDeliveryEstimateMinimumPtrOutputWithContext(ctx)
+}
+
+// ShippingRateDeliveryEstimateMinimumPtrInput is an input type that accepts ShippingRateDeliveryEstimateMinimumArgs, ShippingRateDeliveryEstimateMinimumPtr and ShippingRateDeliveryEstimateMinimumPtrOutput values.
+// You can construct a concrete instance of `ShippingRateDeliveryEstimateMinimumPtrInput` via:
+//
+//	        ShippingRateDeliveryEstimateMinimumArgs{...}
+//
+//	or:
+//
+//	        nil
+type ShippingRateDeliveryEstimateMinimumPtrInput interface {
+	pulumi.Input
+
+	ToShippingRateDeliveryEstimateMinimumPtrOutput() ShippingRateDeliveryEstimateMinimumPtrOutput
+	ToShippingRateDeliveryEstimateMinimumPtrOutputWithContext(context.Context) ShippingRateDeliveryEstimateMinimumPtrOutput
+}
+
+type shippingRateDeliveryEstimateMinimumPtrType ShippingRateDeliveryEstimateMinimumArgs
+
+func ShippingRateDeliveryEstimateMinimumPtr(v *ShippingRateDeliveryEstimateMinimumArgs) ShippingRateDeliveryEstimateMinimumPtrInput {
+	return (*shippingRateDeliveryEstimateMinimumPtrType)(v)
+}
+
+func (*shippingRateDeliveryEstimateMinimumPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShippingRateDeliveryEstimateMinimum)(nil)).Elem()
+}
+
+func (i *shippingRateDeliveryEstimateMinimumPtrType) ToShippingRateDeliveryEstimateMinimumPtrOutput() ShippingRateDeliveryEstimateMinimumPtrOutput {
+	return i.ToShippingRateDeliveryEstimateMinimumPtrOutputWithContext(context.Background())
+}
+
+func (i *shippingRateDeliveryEstimateMinimumPtrType) ToShippingRateDeliveryEstimateMinimumPtrOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateMinimumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShippingRateDeliveryEstimateMinimumPtrOutput)
+}
+
+type ShippingRateDeliveryEstimateMinimumOutput struct{ *pulumi.OutputState }
+
+func (ShippingRateDeliveryEstimateMinimumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShippingRateDeliveryEstimateMinimum)(nil)).Elem()
+}
+
+func (o ShippingRateDeliveryEstimateMinimumOutput) ToShippingRateDeliveryEstimateMinimumOutput() ShippingRateDeliveryEstimateMinimumOutput {
+	return o
+}
+
+func (o ShippingRateDeliveryEstimateMinimumOutput) ToShippingRateDeliveryEstimateMinimumOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateMinimumOutput {
+	return o
+}
+
+func (o ShippingRateDeliveryEstimateMinimumOutput) ToShippingRateDeliveryEstimateMinimumPtrOutput() ShippingRateDeliveryEstimateMinimumPtrOutput {
+	return o.ToShippingRateDeliveryEstimateMinimumPtrOutputWithContext(context.Background())
+}
+
+func (o ShippingRateDeliveryEstimateMinimumOutput) ToShippingRateDeliveryEstimateMinimumPtrOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateMinimumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShippingRateDeliveryEstimateMinimum) *ShippingRateDeliveryEstimateMinimum {
+		return &v
+	}).(ShippingRateDeliveryEstimateMinimumPtrOutput)
+}
+
+// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+func (o ShippingRateDeliveryEstimateMinimumOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v ShippingRateDeliveryEstimateMinimum) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+// Int. Must be greater than 0.
+func (o ShippingRateDeliveryEstimateMinimumOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v ShippingRateDeliveryEstimateMinimum) int { return v.Value }).(pulumi.IntOutput)
+}
+
+type ShippingRateDeliveryEstimateMinimumPtrOutput struct{ *pulumi.OutputState }
+
+func (ShippingRateDeliveryEstimateMinimumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShippingRateDeliveryEstimateMinimum)(nil)).Elem()
+}
+
+func (o ShippingRateDeliveryEstimateMinimumPtrOutput) ToShippingRateDeliveryEstimateMinimumPtrOutput() ShippingRateDeliveryEstimateMinimumPtrOutput {
+	return o
+}
+
+func (o ShippingRateDeliveryEstimateMinimumPtrOutput) ToShippingRateDeliveryEstimateMinimumPtrOutputWithContext(ctx context.Context) ShippingRateDeliveryEstimateMinimumPtrOutput {
+	return o
+}
+
+func (o ShippingRateDeliveryEstimateMinimumPtrOutput) Elem() ShippingRateDeliveryEstimateMinimumOutput {
+	return o.ApplyT(func(v *ShippingRateDeliveryEstimateMinimum) ShippingRateDeliveryEstimateMinimum {
+		if v != nil {
+			return *v
+		}
+		var ret ShippingRateDeliveryEstimateMinimum
+		return ret
+	}).(ShippingRateDeliveryEstimateMinimumOutput)
+}
+
+// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+func (o ShippingRateDeliveryEstimateMinimumPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShippingRateDeliveryEstimateMinimum) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Int. Must be greater than 0.
+func (o ShippingRateDeliveryEstimateMinimumPtrOutput) Value() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ShippingRateDeliveryEstimateMinimum) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.IntPtrOutput)
+}
+
+type ShippingRateFixedAmount struct {
+	// Int. A non-negative integer in cents representing how much to charge.
+	Amount int `pulumi:"amount"`
+	// String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
+	Currency string `pulumi:"currency"`
+	// List(Resource). Please see argument details Currency Option
+	CurrencyOptions []ShippingRateFixedAmountCurrencyOption `pulumi:"currencyOptions"`
+}
+
+// ShippingRateFixedAmountInput is an input type that accepts ShippingRateFixedAmountArgs and ShippingRateFixedAmountOutput values.
+// You can construct a concrete instance of `ShippingRateFixedAmountInput` via:
+//
+//	ShippingRateFixedAmountArgs{...}
+type ShippingRateFixedAmountInput interface {
+	pulumi.Input
+
+	ToShippingRateFixedAmountOutput() ShippingRateFixedAmountOutput
+	ToShippingRateFixedAmountOutputWithContext(context.Context) ShippingRateFixedAmountOutput
+}
+
+type ShippingRateFixedAmountArgs struct {
+	// Int. A non-negative integer in cents representing how much to charge.
+	Amount pulumi.IntInput `pulumi:"amount"`
+	// String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
+	Currency pulumi.StringInput `pulumi:"currency"`
+	// List(Resource). Please see argument details Currency Option
+	CurrencyOptions ShippingRateFixedAmountCurrencyOptionArrayInput `pulumi:"currencyOptions"`
+}
+
+func (ShippingRateFixedAmountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShippingRateFixedAmount)(nil)).Elem()
+}
+
+func (i ShippingRateFixedAmountArgs) ToShippingRateFixedAmountOutput() ShippingRateFixedAmountOutput {
+	return i.ToShippingRateFixedAmountOutputWithContext(context.Background())
+}
+
+func (i ShippingRateFixedAmountArgs) ToShippingRateFixedAmountOutputWithContext(ctx context.Context) ShippingRateFixedAmountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShippingRateFixedAmountOutput)
+}
+
+func (i ShippingRateFixedAmountArgs) ToShippingRateFixedAmountPtrOutput() ShippingRateFixedAmountPtrOutput {
+	return i.ToShippingRateFixedAmountPtrOutputWithContext(context.Background())
+}
+
+func (i ShippingRateFixedAmountArgs) ToShippingRateFixedAmountPtrOutputWithContext(ctx context.Context) ShippingRateFixedAmountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShippingRateFixedAmountOutput).ToShippingRateFixedAmountPtrOutputWithContext(ctx)
+}
+
+// ShippingRateFixedAmountPtrInput is an input type that accepts ShippingRateFixedAmountArgs, ShippingRateFixedAmountPtr and ShippingRateFixedAmountPtrOutput values.
+// You can construct a concrete instance of `ShippingRateFixedAmountPtrInput` via:
+//
+//	        ShippingRateFixedAmountArgs{...}
+//
+//	or:
+//
+//	        nil
+type ShippingRateFixedAmountPtrInput interface {
+	pulumi.Input
+
+	ToShippingRateFixedAmountPtrOutput() ShippingRateFixedAmountPtrOutput
+	ToShippingRateFixedAmountPtrOutputWithContext(context.Context) ShippingRateFixedAmountPtrOutput
+}
+
+type shippingRateFixedAmountPtrType ShippingRateFixedAmountArgs
+
+func ShippingRateFixedAmountPtr(v *ShippingRateFixedAmountArgs) ShippingRateFixedAmountPtrInput {
+	return (*shippingRateFixedAmountPtrType)(v)
+}
+
+func (*shippingRateFixedAmountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShippingRateFixedAmount)(nil)).Elem()
+}
+
+func (i *shippingRateFixedAmountPtrType) ToShippingRateFixedAmountPtrOutput() ShippingRateFixedAmountPtrOutput {
+	return i.ToShippingRateFixedAmountPtrOutputWithContext(context.Background())
+}
+
+func (i *shippingRateFixedAmountPtrType) ToShippingRateFixedAmountPtrOutputWithContext(ctx context.Context) ShippingRateFixedAmountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShippingRateFixedAmountPtrOutput)
+}
+
+type ShippingRateFixedAmountOutput struct{ *pulumi.OutputState }
+
+func (ShippingRateFixedAmountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShippingRateFixedAmount)(nil)).Elem()
+}
+
+func (o ShippingRateFixedAmountOutput) ToShippingRateFixedAmountOutput() ShippingRateFixedAmountOutput {
+	return o
+}
+
+func (o ShippingRateFixedAmountOutput) ToShippingRateFixedAmountOutputWithContext(ctx context.Context) ShippingRateFixedAmountOutput {
+	return o
+}
+
+func (o ShippingRateFixedAmountOutput) ToShippingRateFixedAmountPtrOutput() ShippingRateFixedAmountPtrOutput {
+	return o.ToShippingRateFixedAmountPtrOutputWithContext(context.Background())
+}
+
+func (o ShippingRateFixedAmountOutput) ToShippingRateFixedAmountPtrOutputWithContext(ctx context.Context) ShippingRateFixedAmountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShippingRateFixedAmount) *ShippingRateFixedAmount {
+		return &v
+	}).(ShippingRateFixedAmountPtrOutput)
+}
+
+// Int. A non-negative integer in cents representing how much to charge.
+func (o ShippingRateFixedAmountOutput) Amount() pulumi.IntOutput {
+	return o.ApplyT(func(v ShippingRateFixedAmount) int { return v.Amount }).(pulumi.IntOutput)
+}
+
+// String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
+func (o ShippingRateFixedAmountOutput) Currency() pulumi.StringOutput {
+	return o.ApplyT(func(v ShippingRateFixedAmount) string { return v.Currency }).(pulumi.StringOutput)
+}
+
+// List(Resource). Please see argument details Currency Option
+func (o ShippingRateFixedAmountOutput) CurrencyOptions() ShippingRateFixedAmountCurrencyOptionArrayOutput {
+	return o.ApplyT(func(v ShippingRateFixedAmount) []ShippingRateFixedAmountCurrencyOption { return v.CurrencyOptions }).(ShippingRateFixedAmountCurrencyOptionArrayOutput)
+}
+
+type ShippingRateFixedAmountPtrOutput struct{ *pulumi.OutputState }
+
+func (ShippingRateFixedAmountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShippingRateFixedAmount)(nil)).Elem()
+}
+
+func (o ShippingRateFixedAmountPtrOutput) ToShippingRateFixedAmountPtrOutput() ShippingRateFixedAmountPtrOutput {
+	return o
+}
+
+func (o ShippingRateFixedAmountPtrOutput) ToShippingRateFixedAmountPtrOutputWithContext(ctx context.Context) ShippingRateFixedAmountPtrOutput {
+	return o
+}
+
+func (o ShippingRateFixedAmountPtrOutput) Elem() ShippingRateFixedAmountOutput {
+	return o.ApplyT(func(v *ShippingRateFixedAmount) ShippingRateFixedAmount {
+		if v != nil {
+			return *v
+		}
+		var ret ShippingRateFixedAmount
+		return ret
+	}).(ShippingRateFixedAmountOutput)
+}
+
+// Int. A non-negative integer in cents representing how much to charge.
+func (o ShippingRateFixedAmountPtrOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ShippingRateFixedAmount) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Amount
+	}).(pulumi.IntPtrOutput)
+}
+
+// String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
+func (o ShippingRateFixedAmountPtrOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShippingRateFixedAmount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Currency
+	}).(pulumi.StringPtrOutput)
+}
+
+// List(Resource). Please see argument details Currency Option
+func (o ShippingRateFixedAmountPtrOutput) CurrencyOptions() ShippingRateFixedAmountCurrencyOptionArrayOutput {
+	return o.ApplyT(func(v *ShippingRateFixedAmount) []ShippingRateFixedAmountCurrencyOption {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyOptions
+	}).(ShippingRateFixedAmountCurrencyOptionArrayOutput)
+}
+
+type ShippingRateFixedAmountCurrencyOption struct {
+	// Int. (Required) Int. A non-negative integer in cents representing how much to charge.
+	Amount int `pulumi:"amount"`
+	// String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
+	Currency    string  `pulumi:"currency"`
+	TaxBehavior *string `pulumi:"taxBehavior"`
+}
+
+// ShippingRateFixedAmountCurrencyOptionInput is an input type that accepts ShippingRateFixedAmountCurrencyOptionArgs and ShippingRateFixedAmountCurrencyOptionOutput values.
+// You can construct a concrete instance of `ShippingRateFixedAmountCurrencyOptionInput` via:
+//
+//	ShippingRateFixedAmountCurrencyOptionArgs{...}
+type ShippingRateFixedAmountCurrencyOptionInput interface {
+	pulumi.Input
+
+	ToShippingRateFixedAmountCurrencyOptionOutput() ShippingRateFixedAmountCurrencyOptionOutput
+	ToShippingRateFixedAmountCurrencyOptionOutputWithContext(context.Context) ShippingRateFixedAmountCurrencyOptionOutput
+}
+
+type ShippingRateFixedAmountCurrencyOptionArgs struct {
+	// Int. (Required) Int. A non-negative integer in cents representing how much to charge.
+	Amount pulumi.IntInput `pulumi:"amount"`
+	// String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
+	Currency    pulumi.StringInput    `pulumi:"currency"`
+	TaxBehavior pulumi.StringPtrInput `pulumi:"taxBehavior"`
+}
+
+func (ShippingRateFixedAmountCurrencyOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShippingRateFixedAmountCurrencyOption)(nil)).Elem()
+}
+
+func (i ShippingRateFixedAmountCurrencyOptionArgs) ToShippingRateFixedAmountCurrencyOptionOutput() ShippingRateFixedAmountCurrencyOptionOutput {
+	return i.ToShippingRateFixedAmountCurrencyOptionOutputWithContext(context.Background())
+}
+
+func (i ShippingRateFixedAmountCurrencyOptionArgs) ToShippingRateFixedAmountCurrencyOptionOutputWithContext(ctx context.Context) ShippingRateFixedAmountCurrencyOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShippingRateFixedAmountCurrencyOptionOutput)
+}
+
+// ShippingRateFixedAmountCurrencyOptionArrayInput is an input type that accepts ShippingRateFixedAmountCurrencyOptionArray and ShippingRateFixedAmountCurrencyOptionArrayOutput values.
+// You can construct a concrete instance of `ShippingRateFixedAmountCurrencyOptionArrayInput` via:
+//
+//	ShippingRateFixedAmountCurrencyOptionArray{ ShippingRateFixedAmountCurrencyOptionArgs{...} }
+type ShippingRateFixedAmountCurrencyOptionArrayInput interface {
+	pulumi.Input
+
+	ToShippingRateFixedAmountCurrencyOptionArrayOutput() ShippingRateFixedAmountCurrencyOptionArrayOutput
+	ToShippingRateFixedAmountCurrencyOptionArrayOutputWithContext(context.Context) ShippingRateFixedAmountCurrencyOptionArrayOutput
+}
+
+type ShippingRateFixedAmountCurrencyOptionArray []ShippingRateFixedAmountCurrencyOptionInput
+
+func (ShippingRateFixedAmountCurrencyOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShippingRateFixedAmountCurrencyOption)(nil)).Elem()
+}
+
+func (i ShippingRateFixedAmountCurrencyOptionArray) ToShippingRateFixedAmountCurrencyOptionArrayOutput() ShippingRateFixedAmountCurrencyOptionArrayOutput {
+	return i.ToShippingRateFixedAmountCurrencyOptionArrayOutputWithContext(context.Background())
+}
+
+func (i ShippingRateFixedAmountCurrencyOptionArray) ToShippingRateFixedAmountCurrencyOptionArrayOutputWithContext(ctx context.Context) ShippingRateFixedAmountCurrencyOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShippingRateFixedAmountCurrencyOptionArrayOutput)
+}
+
+type ShippingRateFixedAmountCurrencyOptionOutput struct{ *pulumi.OutputState }
+
+func (ShippingRateFixedAmountCurrencyOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShippingRateFixedAmountCurrencyOption)(nil)).Elem()
+}
+
+func (o ShippingRateFixedAmountCurrencyOptionOutput) ToShippingRateFixedAmountCurrencyOptionOutput() ShippingRateFixedAmountCurrencyOptionOutput {
+	return o
+}
+
+func (o ShippingRateFixedAmountCurrencyOptionOutput) ToShippingRateFixedAmountCurrencyOptionOutputWithContext(ctx context.Context) ShippingRateFixedAmountCurrencyOptionOutput {
+	return o
+}
+
+// Int. (Required) Int. A non-negative integer in cents representing how much to charge.
+func (o ShippingRateFixedAmountCurrencyOptionOutput) Amount() pulumi.IntOutput {
+	return o.ApplyT(func(v ShippingRateFixedAmountCurrencyOption) int { return v.Amount }).(pulumi.IntOutput)
+}
+
+// String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
+func (o ShippingRateFixedAmountCurrencyOptionOutput) Currency() pulumi.StringOutput {
+	return o.ApplyT(func(v ShippingRateFixedAmountCurrencyOption) string { return v.Currency }).(pulumi.StringOutput)
+}
+
+func (o ShippingRateFixedAmountCurrencyOptionOutput) TaxBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShippingRateFixedAmountCurrencyOption) *string { return v.TaxBehavior }).(pulumi.StringPtrOutput)
+}
+
+type ShippingRateFixedAmountCurrencyOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (ShippingRateFixedAmountCurrencyOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ShippingRateFixedAmountCurrencyOption)(nil)).Elem()
+}
+
+func (o ShippingRateFixedAmountCurrencyOptionArrayOutput) ToShippingRateFixedAmountCurrencyOptionArrayOutput() ShippingRateFixedAmountCurrencyOptionArrayOutput {
+	return o
+}
+
+func (o ShippingRateFixedAmountCurrencyOptionArrayOutput) ToShippingRateFixedAmountCurrencyOptionArrayOutputWithContext(ctx context.Context) ShippingRateFixedAmountCurrencyOptionArrayOutput {
+	return o
+}
+
+func (o ShippingRateFixedAmountCurrencyOptionArrayOutput) Index(i pulumi.IntInput) ShippingRateFixedAmountCurrencyOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShippingRateFixedAmountCurrencyOption {
+		return vs[0].([]ShippingRateFixedAmountCurrencyOption)[vs[1].(int)]
+	}).(ShippingRateFixedAmountCurrencyOptionOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FileLinkInput)(nil)).Elem(), FileLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileLinkArrayInput)(nil)).Elem(), FileLinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileLinkDataInput)(nil)).Elem(), FileLinkDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileLinkDataPtrInput)(nil)).Elem(), FileLinkDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PortalConfigurationBusinessProfileInput)(nil)).Elem(), PortalConfigurationBusinessProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PortalConfigurationBusinessProfilePtrInput)(nil)).Elem(), PortalConfigurationBusinessProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PortalConfigurationFeaturesInput)(nil)).Elem(), PortalConfigurationFeaturesArgs{})
@@ -2939,6 +4007,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PriceTransformQuantityPtrInput)(nil)).Elem(), PriceTransformQuantityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PromotionCodeRestrictionsInput)(nil)).Elem(), PromotionCodeRestrictionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PromotionCodeRestrictionsPtrInput)(nil)).Elem(), PromotionCodeRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShippingRateDeliveryEstimateInput)(nil)).Elem(), ShippingRateDeliveryEstimateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShippingRateDeliveryEstimateArrayInput)(nil)).Elem(), ShippingRateDeliveryEstimateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShippingRateDeliveryEstimateMaximumInput)(nil)).Elem(), ShippingRateDeliveryEstimateMaximumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShippingRateDeliveryEstimateMaximumPtrInput)(nil)).Elem(), ShippingRateDeliveryEstimateMaximumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShippingRateDeliveryEstimateMinimumInput)(nil)).Elem(), ShippingRateDeliveryEstimateMinimumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShippingRateDeliveryEstimateMinimumPtrInput)(nil)).Elem(), ShippingRateDeliveryEstimateMinimumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShippingRateFixedAmountInput)(nil)).Elem(), ShippingRateFixedAmountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShippingRateFixedAmountPtrInput)(nil)).Elem(), ShippingRateFixedAmountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShippingRateFixedAmountCurrencyOptionInput)(nil)).Elem(), ShippingRateFixedAmountCurrencyOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShippingRateFixedAmountCurrencyOptionArrayInput)(nil)).Elem(), ShippingRateFixedAmountCurrencyOptionArray{})
+	pulumi.RegisterOutputType(FileLinkOutput{})
+	pulumi.RegisterOutputType(FileLinkArrayOutput{})
+	pulumi.RegisterOutputType(FileLinkDataOutput{})
+	pulumi.RegisterOutputType(FileLinkDataPtrOutput{})
 	pulumi.RegisterOutputType(PortalConfigurationBusinessProfileOutput{})
 	pulumi.RegisterOutputType(PortalConfigurationBusinessProfilePtrOutput{})
 	pulumi.RegisterOutputType(PortalConfigurationFeaturesOutput{})
@@ -2975,4 +4057,14 @@ func init() {
 	pulumi.RegisterOutputType(PriceTransformQuantityPtrOutput{})
 	pulumi.RegisterOutputType(PromotionCodeRestrictionsOutput{})
 	pulumi.RegisterOutputType(PromotionCodeRestrictionsPtrOutput{})
+	pulumi.RegisterOutputType(ShippingRateDeliveryEstimateOutput{})
+	pulumi.RegisterOutputType(ShippingRateDeliveryEstimateArrayOutput{})
+	pulumi.RegisterOutputType(ShippingRateDeliveryEstimateMaximumOutput{})
+	pulumi.RegisterOutputType(ShippingRateDeliveryEstimateMaximumPtrOutput{})
+	pulumi.RegisterOutputType(ShippingRateDeliveryEstimateMinimumOutput{})
+	pulumi.RegisterOutputType(ShippingRateDeliveryEstimateMinimumPtrOutput{})
+	pulumi.RegisterOutputType(ShippingRateFixedAmountOutput{})
+	pulumi.RegisterOutputType(ShippingRateFixedAmountPtrOutput{})
+	pulumi.RegisterOutputType(ShippingRateFixedAmountCurrencyOptionOutput{})
+	pulumi.RegisterOutputType(ShippingRateFixedAmountCurrencyOptionArrayOutput{})
 }

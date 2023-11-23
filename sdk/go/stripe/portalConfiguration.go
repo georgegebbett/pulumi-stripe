@@ -127,6 +127,8 @@ type PortalConfiguration struct {
 	DefaultReturnUrl pulumi.StringPtrOutput `pulumi:"defaultReturnUrl"`
 	// List(Resource). Information about the features available in the portal. Feature section described in Feature section
 	Features PortalConfigurationFeaturesOutput `pulumi:"features"`
+	// Bool. Whether the configuration is the default.
+	IsDefault pulumi.BoolOutput `pulumi:"isDefault"`
 	// List(Resource). The hosted login page for this configuration. See details in Login Page Section.
 	LoginPage PortalConfigurationLoginPageOutput `pulumi:"loginPage"`
 	// Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -177,6 +179,8 @@ type portalConfigurationState struct {
 	DefaultReturnUrl *string `pulumi:"defaultReturnUrl"`
 	// List(Resource). Information about the features available in the portal. Feature section described in Feature section
 	Features *PortalConfigurationFeatures `pulumi:"features"`
+	// Bool. Whether the configuration is the default.
+	IsDefault *bool `pulumi:"isDefault"`
 	// List(Resource). The hosted login page for this configuration. See details in Login Page Section.
 	LoginPage *PortalConfigurationLoginPage `pulumi:"loginPage"`
 	// Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -192,6 +196,8 @@ type PortalConfigurationState struct {
 	DefaultReturnUrl pulumi.StringPtrInput
 	// List(Resource). Information about the features available in the portal. Feature section described in Feature section
 	Features PortalConfigurationFeaturesPtrInput
+	// Bool. Whether the configuration is the default.
+	IsDefault pulumi.BoolPtrInput
 	// List(Resource). The hosted login page for this configuration. See details in Login Page Section.
 	LoginPage PortalConfigurationLoginPagePtrInput
 	// Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -338,6 +344,11 @@ func (o PortalConfigurationOutput) DefaultReturnUrl() pulumi.StringPtrOutput {
 // List(Resource). Information about the features available in the portal. Feature section described in Feature section
 func (o PortalConfigurationOutput) Features() PortalConfigurationFeaturesOutput {
 	return o.ApplyT(func(v *PortalConfiguration) PortalConfigurationFeaturesOutput { return v.Features }).(PortalConfigurationFeaturesOutput)
+}
+
+// Bool. Whether the configuration is the default.
+func (o PortalConfigurationOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PortalConfiguration) pulumi.BoolOutput { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
 // List(Resource). The hosted login page for this configuration. See details in Login Page Section.
