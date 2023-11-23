@@ -107,7 +107,7 @@ runs:
         path: ${{ github.workspace }}/sdk/
     - name: Uncompress dotnet SDK
       if: inputs.sdk == 'dotnet' || inputs.sdk == 'all'
-      run: tar -zxf ${{ github.workspace }}/sdk/dotnet-sdk.tar.gz -C
+      run: tar -zxf ${{ github.workspace }}/sdk/dotnet.tar.gz -C
         ${{ github.workspace }}/sdk/dotnet
       shell: bash
     - name: Publish dotnet SDK
@@ -128,7 +128,7 @@ runs:
         path: ${{ github.workspace }}/sdk/
     - name: Uncompress python SDK
       if: inputs.sdk == 'python' || inputs.sdk == 'all'
-      run: tar -zxf ${{ github.workspace }}/sdk/python-sdk.tar.gz -C
+      run: tar -zxf ${{ github.workspace }}/sdk/python.tar.gz -C
         ${{ github.workspace }}/sdk/python
       shell: bash
     - name: Install Twine
