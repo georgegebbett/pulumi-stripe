@@ -228,7 +228,7 @@ jobs:
         with:
           sdk: ${{ matrix.language }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         dotnetversion:
           - 3.1.301
