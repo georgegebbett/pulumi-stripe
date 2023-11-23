@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "outDir": "bin",
+        "target": "es2016",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "sourceMap": true,
+        "stripInternal": true,
+        "experimentalDecorators": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true
+    },
+    "files": [
+        "card.ts",
+        "config/index.ts",
+        "config/vars.ts",
+        "coupon.ts",
+        "customer.ts",
+        "file.ts",
+        "index.ts",
+        "portalConfiguration.ts",
+        "price.ts",
+        "product.ts",
+        "promotionCode.ts",
+        "provider.ts",
+        "shippingRate.ts",
+        "taxRate.ts",
+        "types/index.ts",
+        "types/input.ts",
+        "types/output.ts",
+        "utilities.ts",
+        "webhookEndpoint.ts"
+    ]
+}

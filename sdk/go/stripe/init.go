@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Coupon{}
 	case "stripe:index/customer:Customer":
 		r = &Customer{}
+	case "stripe:index/file:File":
+		r = &File{}
 	case "stripe:index/portalConfiguration:PortalConfiguration":
 		r = &PortalConfiguration{}
 	case "stripe:index/price:Price":
@@ -35,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Product{}
 	case "stripe:index/promotionCode:PromotionCode":
 		r = &PromotionCode{}
+	case "stripe:index/shippingRate:ShippingRate":
+		r = &ShippingRate{}
 	case "stripe:index/taxRate:TaxRate":
 		r = &TaxRate{}
 	case "stripe:index/webhookEndpoint:WebhookEndpoint":
@@ -87,6 +91,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"stripe",
+		"index/file",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stripe",
 		"index/portalConfiguration",
 		&module{version},
 	)
@@ -103,6 +112,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stripe",
 		"index/promotionCode",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stripe",
+		"index/shippingRate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

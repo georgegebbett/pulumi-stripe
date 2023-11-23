@@ -23,7 +23,7 @@ import (
 // For example, you might have a single "gold" product that has prices for $10/month, $100/year, and €9 once.
 //
 // > Removal of the price isn't supported through the Stripe SDK. The best practice, which this provider follows,
-// is to archive the price by marking it as inactive on destroy, which indicates that the price is not longer
+// is to archive the price by marking it as inactive on destroy, which indicates that the price is no longer
 // available for purchase.
 //
 // ## Example Usage
@@ -84,8 +84,8 @@ import (
 //						UnitAmount: pulumi.Int(300),
 //					},
 //					&stripe.PriceTierArgs{
-//						UpTo:       -1,
-//						UnitAmount: pulumi.Int(100.5),
+//						UpTo:              -1,
+//						UnitAmountDecimal: pulumi.Float64(100.5),
 //					},
 //				},
 //				Recurring: &stripe.PriceRecurringArgs{
@@ -119,7 +119,7 @@ type Price struct {
 	// unit in quantity (for prices with `usage_type=licensed`), or per unit of total usage (for prices
 	// with `usage_type=metered`). `tiered` indicates that the unit pricing will be computed using a tiering strategy as
 	// defined using the `tiers` and `tiersMode` attributes.
-	BillingScheme pulumi.StringPtrOutput `pulumi:"billingScheme"`
+	BillingScheme pulumi.StringOutput `pulumi:"billingScheme"`
 	// String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
 	Currency pulumi.StringOutput `pulumi:"currency"`
 	// List(Resource). Prices defined in each available currency option. For details
@@ -161,10 +161,10 @@ type Price struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Int. A positive integer in cents (or `-1` for a free
 	// price) representing how much to charge.
-	UnitAmount pulumi.IntPtrOutput `pulumi:"unitAmount"`
+	UnitAmount pulumi.IntOutput `pulumi:"unitAmount"`
 	// Float. Same as `unitAmount`, but accepts a decimal value in cents with at most 12
 	// decimal places. Only one of `unitAmount` and `unitAmountDecimal` can be set.
-	UnitAmountDecimal pulumi.Float64PtrOutput `pulumi:"unitAmountDecimal"`
+	UnitAmountDecimal pulumi.Float64Output `pulumi:"unitAmountDecimal"`
 }
 
 // NewPrice registers a new resource with the given unique name, arguments, and options.
@@ -522,8 +522,8 @@ func (o PriceOutput) Active() pulumi.BoolPtrOutput {
 // unit in quantity (for prices with `usage_type=licensed`), or per unit of total usage (for prices
 // with `usage_type=metered`). `tiered` indicates that the unit pricing will be computed using a tiering strategy as
 // defined using the `tiers` and `tiersMode` attributes.
-func (o PriceOutput) BillingScheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Price) pulumi.StringPtrOutput { return v.BillingScheme }).(pulumi.StringPtrOutput)
+func (o PriceOutput) BillingScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v *Price) pulumi.StringOutput { return v.BillingScheme }).(pulumi.StringOutput)
 }
 
 // String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
@@ -606,14 +606,14 @@ func (o PriceOutput) Type() pulumi.StringOutput {
 
 // Int. A positive integer in cents (or `-1` for a free
 // price) representing how much to charge.
-func (o PriceOutput) UnitAmount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Price) pulumi.IntPtrOutput { return v.UnitAmount }).(pulumi.IntPtrOutput)
+func (o PriceOutput) UnitAmount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Price) pulumi.IntOutput { return v.UnitAmount }).(pulumi.IntOutput)
 }
 
 // Float. Same as `unitAmount`, but accepts a decimal value in cents with at most 12
 // decimal places. Only one of `unitAmount` and `unitAmountDecimal` can be set.
-func (o PriceOutput) UnitAmountDecimal() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *Price) pulumi.Float64PtrOutput { return v.UnitAmountDecimal }).(pulumi.Float64PtrOutput)
+func (o PriceOutput) UnitAmountDecimal() pulumi.Float64Output {
+	return o.ApplyT(func(v *Price) pulumi.Float64Output { return v.UnitAmountDecimal }).(pulumi.Float64Output)
 }
 
 type PriceArrayOutput struct{ *pulumi.OutputState }

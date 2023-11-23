@@ -50,6 +50,8 @@ type Product struct {
 	Active pulumi.BoolPtrOutput `pulumi:"active"`
 	// String. The product’s description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// List(String). A list of up to 15 features for this product. These are displayed in pricing tables.
+	Features pulumi.StringArrayOutput `pulumi:"features"`
 	// List(String). A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
 	Images pulumi.StringArrayOutput `pulumi:"images"`
 	// Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -106,6 +108,8 @@ type productState struct {
 	Active *bool `pulumi:"active"`
 	// String. The product’s description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.
 	Description *string `pulumi:"description"`
+	// List(String). A list of up to 15 features for this product. These are displayed in pricing tables.
+	Features []string `pulumi:"features"`
 	// List(String). A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
 	Images []string `pulumi:"images"`
 	// Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -133,6 +137,8 @@ type ProductState struct {
 	Active pulumi.BoolPtrInput
 	// String. The product’s description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.
 	Description pulumi.StringPtrInput
+	// List(String). A list of up to 15 features for this product. These are displayed in pricing tables.
+	Features pulumi.StringArrayInput
 	// List(String). A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
 	Images pulumi.StringArrayInput
 	// Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -164,6 +170,8 @@ type productArgs struct {
 	Active *bool `pulumi:"active"`
 	// String. The product’s description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.
 	Description *string `pulumi:"description"`
+	// List(String). A list of up to 15 features for this product. These are displayed in pricing tables.
+	Features []string `pulumi:"features"`
 	// List(String). A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
 	Images []string `pulumi:"images"`
 	// Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -192,6 +200,8 @@ type ProductArgs struct {
 	Active pulumi.BoolPtrInput
 	// String. The product’s description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.
 	Description pulumi.StringPtrInput
+	// List(String). A list of up to 15 features for this product. These are displayed in pricing tables.
+	Features pulumi.StringArrayInput
 	// List(String). A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
 	Images pulumi.StringArrayInput
 	// Map(String). Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -309,6 +319,11 @@ func (o ProductOutput) Active() pulumi.BoolPtrOutput {
 // String. The product’s description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.
 func (o ProductOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Product) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List(String). A list of up to 15 features for this product. These are displayed in pricing tables.
+func (o ProductOutput) Features() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Product) pulumi.StringArrayOutput { return v.Features }).(pulumi.StringArrayOutput)
 }
 
 // List(String). A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
