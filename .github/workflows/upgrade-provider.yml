@@ -9,6 +9,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   upgrade_provider:
     name: upgrade-provider
