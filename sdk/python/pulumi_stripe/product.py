@@ -463,11 +463,6 @@ class Product(pulumi.CustomResource):
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        With this resource, you can create a product - [Stripe API product documentation](https://stripe.com/docs/api/products).
-
-        Products describe the specific goods or services you offer to your customers. For example,
-        you might offer a Standard and Premium version of your goods or service; each version would be a separate Product.
-
         ## Example Usage
 
         ```python
@@ -504,11 +499,6 @@ class Product(pulumi.CustomResource):
                  args: Optional[ProductArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With this resource, you can create a product - [Stripe API product documentation](https://stripe.com/docs/api/products).
-
-        Products describe the specific goods or services you offer to your customers. For example,
-        you might offer a Standard and Premium version of your goods or service; each version would be a separate Product.
-
         ## Example Usage
 
         ```python

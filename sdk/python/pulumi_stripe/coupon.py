@@ -437,6 +437,30 @@ class Coupon(pulumi.CustomResource):
 
         For example, an invoice with a subtotal of $100 will have a final total of $0 if a coupon with an amount_off of 20000 is applied to it and an invoice with a subtotal of $300 will have a final total of $100 if a coupon with an amount_off of 20000 is applied to it.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_stripe as stripe
+
+        # coupon for the amount off discount
+        coupon_coupon = stripe.Coupon("couponCoupon",
+            amount_off=1000,
+            currency="aud",
+            duration="once",
+            max_redemptions=10)
+        # coupon for the percentage off discount
+        coupon_index_coupon_coupon = stripe.Coupon("couponIndex/couponCoupon",
+            percent_off=33.3,
+            duration="forever")
+        # coupon with limitation to a date and the product only
+        coupon_stripe_index_coupon_coupon = stripe.Coupon("couponStripeIndex/couponCoupon",
+            amount_off=2000,
+            duration="once",
+            redeem_by="2025-07-23T03:27:06+00:00",
+            applies_tos=[stripe_product["product"]["id"]])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] amount_off: Int. Amount (in the currency specified) that will be taken off the subtotal of any invoices for this customer.
@@ -465,6 +489,30 @@ class Coupon(pulumi.CustomResource):
         A coupon has either a `percent_off` or an `amount_off` and `currency`. If you set an `amount_off`, that amount will be subtracted from any invoice’s subtotal.
 
         For example, an invoice with a subtotal of $100 will have a final total of $0 if a coupon with an amount_off of 20000 is applied to it and an invoice with a subtotal of $300 will have a final total of $100 if a coupon with an amount_off of 20000 is applied to it.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_stripe as stripe
+
+        # coupon for the amount off discount
+        coupon_coupon = stripe.Coupon("couponCoupon",
+            amount_off=1000,
+            currency="aud",
+            duration="once",
+            max_redemptions=10)
+        # coupon for the percentage off discount
+        coupon_index_coupon_coupon = stripe.Coupon("couponIndex/couponCoupon",
+            percent_off=33.3,
+            duration="forever")
+        # coupon with limitation to a date and the product only
+        coupon_stripe_index_coupon_coupon = stripe.Coupon("couponStripeIndex/couponCoupon",
+            amount_off=2000,
+            duration="once",
+            redeem_by="2025-07-23T03:27:06+00:00",
+            applies_tos=[stripe_product["product"]["id"]])
+        ```
 
         :param str resource_name: The name of the resource.
         :param CouponArgs args: The arguments to use to populate this resource's properties.
