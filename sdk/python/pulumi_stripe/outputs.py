@@ -706,6 +706,7 @@ class PortalConfigurationLoginPage(dict):
                  url: Optional[str] = None):
         """
         :param bool enabled: Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+        :param str url: A shareable URL to the hosted portal login page. Your customers will be able to log in with their email and receive a link to their customer portal.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -723,6 +724,9 @@ class PortalConfigurationLoginPage(dict):
     @property
     @pulumi.getter
     def url(self) -> Optional[str]:
+        """
+        A shareable URL to the hosted portal login page. Your customers will be able to log in with their email and receive a link to their customer portal.
+        """
         return pulumi.get(self, "url")
 
 
@@ -1472,6 +1476,7 @@ class ShippingRateFixedAmountCurrencyOption(dict):
         """
         :param int amount: Int. (Required) Int. A non-negative integer in cents representing how much to charge.
         :param str currency: String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
+        :param str tax_behavior: Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of inclusive, exclusive, or unspecified.
         """
         pulumi.set(__self__, "amount", amount)
         pulumi.set(__self__, "currency", currency)
@@ -1497,6 +1502,9 @@ class ShippingRateFixedAmountCurrencyOption(dict):
     @property
     @pulumi.getter(name="taxBehavior")
     def tax_behavior(self) -> Optional[str]:
+        """
+        Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of inclusive, exclusive, or unspecified.
+        """
         return pulumi.get(self, "tax_behavior")
 
 
