@@ -1898,8 +1898,9 @@ func (o PortalConfigurationFeaturesSubscriptionUpdateProductArrayOutput) Index(i
 
 type PortalConfigurationLoginPage struct {
 	// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
-	Enabled *bool   `pulumi:"enabled"`
-	Url     *string `pulumi:"url"`
+	Enabled *bool `pulumi:"enabled"`
+	// A shareable URL to the hosted portal login page. Your customers will be able to log in with their email and receive a link to their customer portal.
+	Url *string `pulumi:"url"`
 }
 
 // PortalConfigurationLoginPageInput is an input type that accepts PortalConfigurationLoginPageArgs and PortalConfigurationLoginPageOutput values.
@@ -1915,8 +1916,9 @@ type PortalConfigurationLoginPageInput interface {
 
 type PortalConfigurationLoginPageArgs struct {
 	// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
-	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Url     pulumi.StringPtrInput `pulumi:"url"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// A shareable URL to the hosted portal login page. Your customers will be able to log in with their email and receive a link to their customer portal.
+	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (PortalConfigurationLoginPageArgs) ElementType() reflect.Type {
@@ -2001,6 +2003,7 @@ func (o PortalConfigurationLoginPageOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PortalConfigurationLoginPage) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// A shareable URL to the hosted portal login page. Your customers will be able to log in with their email and receive a link to their customer portal.
 func (o PortalConfigurationLoginPageOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PortalConfigurationLoginPage) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -2039,6 +2042,7 @@ func (o PortalConfigurationLoginPagePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// A shareable URL to the hosted portal login page. Your customers will be able to log in with their email and receive a link to their customer portal.
 func (o PortalConfigurationLoginPagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PortalConfigurationLoginPage) *string {
 		if v == nil {
@@ -3858,7 +3862,8 @@ type ShippingRateFixedAmountCurrencyOption struct {
 	// Int. (Required) Int. A non-negative integer in cents representing how much to charge.
 	Amount int `pulumi:"amount"`
 	// String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
-	Currency    string  `pulumi:"currency"`
+	Currency string `pulumi:"currency"`
+	// Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of inclusive, exclusive, or unspecified.
 	TaxBehavior *string `pulumi:"taxBehavior"`
 }
 
@@ -3877,7 +3882,8 @@ type ShippingRateFixedAmountCurrencyOptionArgs struct {
 	// Int. (Required) Int. A non-negative integer in cents representing how much to charge.
 	Amount pulumi.IntInput `pulumi:"amount"`
 	// String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
-	Currency    pulumi.StringInput    `pulumi:"currency"`
+	Currency pulumi.StringInput `pulumi:"currency"`
+	// Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of inclusive, exclusive, or unspecified.
 	TaxBehavior pulumi.StringPtrInput `pulumi:"taxBehavior"`
 }
 
@@ -3942,6 +3948,7 @@ func (o ShippingRateFixedAmountCurrencyOptionOutput) Currency() pulumi.StringOut
 	return o.ApplyT(func(v ShippingRateFixedAmountCurrencyOption) string { return v.Currency }).(pulumi.StringOutput)
 }
 
+// Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of inclusive, exclusive, or unspecified.
 func (o ShippingRateFixedAmountCurrencyOptionOutput) TaxBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShippingRateFixedAmountCurrencyOption) *string { return v.TaxBehavior }).(pulumi.StringPtrOutput)
 }
