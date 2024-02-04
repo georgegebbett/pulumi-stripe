@@ -18,6 +18,9 @@ namespace Pulumi.Stripe.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// A shareable URL to the hosted portal login page. Your customers will be able to log in with their email and receive a link to their customer portal.
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

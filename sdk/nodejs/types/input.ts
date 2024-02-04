@@ -199,6 +199,9 @@ export interface PortalConfigurationLoginPage {
      * Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * A shareable URL to the hosted portal login page. Your customers will be able to log in with their email and receive a link to their customer portal.
+     */
     url?: pulumi.Input<string>;
 }
 
@@ -422,5 +425,8 @@ export interface ShippingRateFixedAmountCurrencyOption {
      * String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
      */
     currency: pulumi.Input<string>;
+    /**
+     * Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of inclusive, exclusive, or unspecified.
+     */
     taxBehavior?: pulumi.Input<string>;
 }
