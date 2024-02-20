@@ -21,6 +21,9 @@ namespace Pulumi.Stripe.Outputs
         /// String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
         /// </summary>
         public readonly string Currency;
+        /// <summary>
+        /// Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of inclusive, exclusive, or unspecified.
+        /// </summary>
         public readonly string? TaxBehavior;
 
         [OutputConstructor]
