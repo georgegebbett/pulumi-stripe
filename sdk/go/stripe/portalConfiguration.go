@@ -36,6 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// A billing portal using all the available options
 //			_, err := stripe.NewPortalConfiguration(ctx, "portalConfiguration", &stripe.PortalConfigurationArgs{
 //				BusinessProfile: &stripe.PortalConfigurationBusinessProfileArgs{
 //					Headline:          pulumi.String("My special headline"),
