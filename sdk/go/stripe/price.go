@@ -40,6 +40,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// basic price for the product
 //			_, err := stripe.NewPrice(ctx, "pricePrice", &stripe.PriceArgs{
 //				Product:    pulumi.Any(stripe_product.Product.Id),
 //				Currency:   pulumi.String("aud"),
@@ -48,6 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// basic free price for the product
 //			_, err = stripe.NewPrice(ctx, "priceIndex/pricePrice", &stripe.PriceArgs{
 //				Product:    pulumi.Any(stripe_product.Product.Id),
 //				Currency:   pulumi.String("aud"),
@@ -56,6 +58,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// recurring price for the product
 //			_, err = stripe.NewPrice(ctx, "priceStripeIndex/pricePrice", &stripe.PriceArgs{
 //				Product:       pulumi.Any(stripe_product.Product.Id),
 //				Currency:      pulumi.String("aud"),
@@ -69,6 +72,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// tiered price for the product
 //			_, err = stripe.NewPrice(ctx, "priceStripeIndex/pricePrice1", &stripe.PriceArgs{
 //				Product:       pulumi.Any(stripe_product.Product.Id),
 //				Currency:      pulumi.String("aud"),
