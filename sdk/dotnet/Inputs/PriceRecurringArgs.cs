@@ -28,7 +28,7 @@ namespace Pulumi.Stripe.Inputs
         public Input<string> Interval { get; set; } = null!;
 
         /// <summary>
-        /// Int. The number of intervals between subscription billings. For
+        /// Int. This parameter is (Required) when interval value is set. The number of intervals between subscription billings. For
         /// example, `interval=month` and `interval_count=3` bills every 3 months. Maximum of one year interval allowed (1 year,
         /// 12 months, or 52 weeks).
         /// </summary>
