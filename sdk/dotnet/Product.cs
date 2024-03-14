@@ -10,13 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Stripe
 {
     /// <summary>
-    /// With this resource, you can create a product - [Stripe API product documentation](https://stripe.com/docs/api/products).
-    /// 
-    /// Products describe the specific goods or services you offer to your customers. For example,
-    /// you might offer a Standard and Premium version of your goods or service; each version would be a separate Product.
-    /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,6 +31,7 @@ namespace Pulumi.Stripe
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [StripeResourceType("stripe:index/product:Product")]
     public partial class Product : global::Pulumi.CustomResource

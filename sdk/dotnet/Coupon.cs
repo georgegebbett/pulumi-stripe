@@ -17,6 +17,49 @@ namespace Pulumi.Stripe
     /// A coupon has either a `percent_off` or an `amount_off` and `currency`. If you set an `amount_off`, that amount will be subtracted from any invoice’s subtotal.
     /// 
     /// For example, an invoice with a subtotal of $100 will have a final total of $0 if a coupon with an amount_off of 20000 is applied to it and an invoice with a subtotal of $300 will have a final total of $100 if a coupon with an amount_off of 20000 is applied to it.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Stripe = Pulumi.Stripe;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // coupon for the amount off discount
+    ///     var couponCoupon = new Stripe.Coupon("couponCoupon", new()
+    ///     {
+    ///         AmountOff = 1000,
+    ///         Currency = "aud",
+    ///         Duration = "once",
+    ///         MaxRedemptions = 10,
+    ///     });
+    /// 
+    ///     // coupon for the percentage off discount
+    ///     var couponIndex_couponCoupon = new Stripe.Coupon("couponIndex/couponCoupon", new()
+    ///     {
+    ///         PercentOff = 33.3,
+    ///         Duration = "forever",
+    ///     });
+    /// 
+    ///     // coupon with limitation to a date and the product only
+    ///     var couponStripeIndex_couponCoupon = new Stripe.Coupon("couponStripeIndex/couponCoupon", new()
+    ///     {
+    ///         AmountOff = 2000,
+    ///         Duration = "once",
+    ///         RedeemBy = "2025-07-23T03:27:06+00:00",
+    ///         AppliesTos = new[]
+    ///         {
+    ///             stripe_product.Product.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [StripeResourceType("stripe:index/coupon:Coupon")]
     public partial class Coupon : global::Pulumi.CustomResource
