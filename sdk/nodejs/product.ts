@@ -5,13 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * With this resource, you can create a product - [Stripe API product documentation](https://stripe.com/docs/api/products).
- *
- * Products describe the specific goods or services you offer to your customers. For example,
- * you might offer a Standard and Premium version of your goods or service; each version would be a separate Product.
- *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as stripe from "pulumi-stripe";
@@ -23,6 +19,7 @@ import * as utilities from "./utilities";
  *     url: "https://www.terraform.io",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class Product extends pulumi.CustomResource {
     /**

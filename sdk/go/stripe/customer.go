@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -30,6 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// A customer with other details
 //			_, err := stripe.NewCustomer(ctx, "customer", &stripe.CustomerArgs{
 //				Balance:       pulumi.Int(10000),
 //				InvoicePrefix: pulumi.String("LA000"),
@@ -61,6 +63,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type Customer struct {
 	pulumi.CustomResourceState
 

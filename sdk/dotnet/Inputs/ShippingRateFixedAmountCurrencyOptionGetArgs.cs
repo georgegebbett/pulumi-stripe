@@ -24,6 +24,9 @@ namespace Pulumi.Stripe.Inputs
         [Input("currency", required: true)]
         public Input<string> Currency { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of inclusive, exclusive, or unspecified.
+        /// </summary>
         [Input("taxBehavior")]
         public Input<string>? TaxBehavior { get; set; }
 
