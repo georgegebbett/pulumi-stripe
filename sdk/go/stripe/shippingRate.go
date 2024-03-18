@@ -23,6 +23,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -35,6 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// shipping rate with delivery estimate
 //			_, err := stripe.NewShippingRate(ctx, "shippingRate", &stripe.ShippingRateArgs{
 //				DeliveryEstimates: stripe.ShippingRateDeliveryEstimateArray{
 //					&stripe.ShippingRateDeliveryEstimateArgs{
@@ -57,6 +59,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// shipping rate with currency options
+//			// !!! Currency options have to be sorted alphabetically
+//			// !!! by the currency field
 //			_, err = stripe.NewShippingRate(ctx, "shipping", &stripe.ShippingRateArgs{
 //				DisplayName: pulumi.String("shipping rate"),
 //				FixedAmount: &stripe.ShippingRateFixedAmountArgs{
@@ -82,6 +87,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type ShippingRate struct {
 	pulumi.CustomResourceState
 

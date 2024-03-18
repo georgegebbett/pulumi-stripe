@@ -26,6 +26,7 @@ namespace Pulumi.Stripe
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -100,6 +101,8 @@ namespace Pulumi.Stripe
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Note on updating prices
     /// 
     /// Once created, you can update the `active`, `metadata`, `nickname`, `lookup_key`, `tax_behaviour` (only if unspecified)
