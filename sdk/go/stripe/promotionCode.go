@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -32,6 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// promotion code for the coupon
 //			_, err := stripe.NewPromotionCode(ctx, "codePromotionCode", &stripe.PromotionCodeArgs{
 //				Coupon: pulumi.Any(stripe_coupon.Coupon.Id),
 //				Code:   pulumi.String("FREE"),
@@ -39,6 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// promotion code for the coupon with limitations
 //			_, err = stripe.NewPromotionCode(ctx, "codeIndex/promotionCodePromotionCode", &stripe.PromotionCodeArgs{
 //				Coupon:         pulumi.Any(stripe_coupon.Coupon.Id),
 //				Code:           pulumi.String("FREE"),
@@ -48,6 +51,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// promotion code for the coupon to customer
 //			_, err = stripe.NewPromotionCode(ctx, "codeStripeIndex/promotionCodePromotionCode", &stripe.PromotionCodeArgs{
 //				Coupon:   pulumi.Any(stripe_coupon.Coupon.Id),
 //				Code:     pulumi.String("FREE"),
@@ -56,6 +60,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// promotion code for the coupon with restrictions
 //			_, err = stripe.NewPromotionCode(ctx, "codeStripeIndex/promotionCodePromotionCode1", &stripe.PromotionCodeArgs{
 //				Coupon: pulumi.Any(stripe_coupon.Coupon.Id),
 //				Code:   pulumi.String("FREE"),
@@ -73,6 +78,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type PromotionCode struct {
 	pulumi.CustomResourceState
 
