@@ -21,6 +21,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -35,9 +36,9 @@ import (
 //
 // )
 //
-//	func filebase64OrPanic(path string) pulumi.StringPtrInput {
+//	func filebase64OrPanic(path string) string {
 //		if fileData, err := os.ReadFile(path); err == nil {
-//			return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
+//			return base64.StdEncoding.EncodeToString(fileData[:])
 //		} else {
 //			panic(err.Error())
 //		}
@@ -45,6 +46,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// minimal file field
 //			_, err := stripe.NewFile(ctx, "logoFile", &stripe.FileArgs{
 //				Filename:      pulumi.String("logo.jpg"),
 //				Purpose:       pulumi.String("business_logo"),
@@ -53,6 +55,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// file with file link
 //			_, err = stripe.NewFile(ctx, "logoIndex/fileFile", &stripe.FileArgs{
 //				Filename:      pulumi.String("logo.jpg"),
 //				Purpose:       pulumi.String("business_logo"),
@@ -70,6 +73,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type File struct {
 	pulumi.CustomResourceState
 
