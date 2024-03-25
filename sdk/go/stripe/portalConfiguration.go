@@ -24,6 +24,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,6 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// A billing portal using all the available options
 //			_, err := stripe.NewPortalConfiguration(ctx, "portalConfiguration", &stripe.PortalConfigurationArgs{
 //				BusinessProfile: &stripe.PortalConfigurationBusinessProfileArgs{
 //					Headline:          pulumi.String("My special headline"),
@@ -116,6 +118,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type PortalConfiguration struct {
 	pulumi.CustomResourceState
 
