@@ -12,6 +12,35 @@ import * as utilities from "./utilities";
  * A coupon has either a `percentOff` or an `amountOff` and `currency`. If you set an `amountOff`, that amount will be subtracted from any invoice’s subtotal.
  *
  * For example, an invoice with a subtotal of $100 will have a final total of $0 if a coupon with an amountOff of 20000 is applied to it and an invoice with a subtotal of $300 will have a final total of $100 if a coupon with an amountOff of 20000 is applied to it.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as stripe from "pulumi-stripe";
+ *
+ * // coupon for the amount off discount
+ * const couponCoupon = new stripe.Coupon("couponCoupon", {
+ *     amountOff: 1000,
+ *     currency: "aud",
+ *     duration: "once",
+ *     maxRedemptions: 10,
+ * });
+ * // coupon for the percentage off discount
+ * const couponIndex_couponCoupon = new stripe.Coupon("couponIndex/couponCoupon", {
+ *     percentOff: 33.3,
+ *     duration: "forever",
+ * });
+ * // coupon with limitation to a date and the product only
+ * const couponStripeIndex_couponCoupon = new stripe.Coupon("couponStripeIndex/couponCoupon", {
+ *     amountOff: 2000,
+ *     duration: "once",
+ *     redeemBy: "2025-07-23T03:27:06+00:00",
+ *     appliesTos: [stripe_product.product.id],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class Coupon extends pulumi.CustomResource {
     /**
