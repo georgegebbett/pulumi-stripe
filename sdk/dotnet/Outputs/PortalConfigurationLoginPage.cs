@@ -17,6 +17,9 @@ namespace Pulumi.Stripe.Outputs
         /// Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
         /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// A shareable URL to the hosted portal login page. Your customers will be able to log in with their email and receive a link to their customer portal.
+        /// </summary>
         public readonly string? Url;
 
         [OutputConstructor]
