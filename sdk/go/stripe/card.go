@@ -14,6 +14,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -26,6 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// card for the customer
 //			_, err := stripe.NewCard(ctx, "cardCard", &stripe.CardArgs{
 //				Customer: pulumi.Any(stripe_customer.Customer.Id),
 //				Number:   pulumi.String("4242424242424242"),
@@ -36,6 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// card for the customer with address
 //			_, err = stripe.NewCard(ctx, "cardIndex/cardCard", &stripe.CardArgs{
 //				Customer: pulumi.Any(stripe_customer.Customer.Id),
 //				Number:   pulumi.String("4242424242424242"),
@@ -59,6 +62,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type Card struct {
 	pulumi.CustomResourceState
 
