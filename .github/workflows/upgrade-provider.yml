@@ -18,3 +18,4 @@ jobs:
         uses: pulumi/pulumi-upgrade-provider-action@main
         with:
           email: github@georgegebbett.co.uk
+          username: georgegebbett
