@@ -9,8 +9,8 @@ on:
 permissions: write-all
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+  GH_TOKEN: ${{ secrets.BOT_TOKEN }}
 jobs:
   upgrade_provider:
     name: upgrade-provider
