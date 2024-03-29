@@ -6,9 +6,11 @@ on:
   schedule:
     - cron: '0 5 * * *'
   workflow_dispatch:
+permissions: write-all
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   upgrade_provider:
     name: upgrade-provider
@@ -16,6 +18,3 @@ jobs:
     steps:
       - name: Call upgrade provider action
         uses: pulumi/pulumi-upgrade-provider-action@main
-        with:
-          email: github@georgegebbett.co.uk
-          username: georgegebbett
