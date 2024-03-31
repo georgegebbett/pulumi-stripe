@@ -300,6 +300,7 @@ class File(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import base64
@@ -320,6 +321,7 @@ class File(pulumi.CustomResource):
                 expires_at=1826659124,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -347,6 +349,7 @@ class File(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import base64
@@ -367,6 +370,7 @@ class File(pulumi.CustomResource):
                 expires_at=1826659124,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param FileArgs args: The arguments to use to populate this resource's properties.
