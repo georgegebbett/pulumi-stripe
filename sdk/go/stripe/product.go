@@ -11,13 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With this resource, you can create a product - [Stripe API product documentation](https://stripe.com/docs/api/products).
-//
-// Products describe the specific goods or services you offer to your customers. For example,
-// you might offer a Standard and Premium version of your goods or service; each version would be a separate Product.
-//
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -30,6 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// the most basic product
 //			_, err := stripe.NewProduct(ctx, "product", &stripe.ProductArgs{
 //				Description: pulumi.String("fantastic product"),
 //				UnitLabel:   pulumi.String("piece"),
@@ -43,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type Product struct {
 	pulumi.CustomResourceState
 

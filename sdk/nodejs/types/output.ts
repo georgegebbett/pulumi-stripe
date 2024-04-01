@@ -199,6 +199,9 @@ export interface PortalConfigurationLoginPage {
      * Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
      */
     enabled?: boolean;
+    /**
+     * A shareable URL to the hosted portal login page. Your customers will be able to log in with their email and receive a link to their customer portal.
+     */
     url: string;
 }
 
@@ -297,7 +300,7 @@ export interface PriceRecurring {
      */
     interval: string;
     /**
-     * Int. The number of intervals between subscription billings. For
+     * Int. This parameter is (Required) when interval value is set. The number of intervals between subscription billings. For
      * example, `interval=month` and `interval_count=3` bills every 3 months. Maximum of one year interval allowed (1 year,
      * 12 months, or 52 weeks).
      */
@@ -422,6 +425,9 @@ export interface ShippingRateFixedAmountCurrencyOption {
      * String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
      */
     currency: string;
+    /**
+     * Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of inclusive, exclusive, or unspecified.
+     */
     taxBehavior?: string;
 }
 

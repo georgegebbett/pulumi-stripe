@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
@@ -25,19 +26,20 @@ import * as utilities from "./utilities";
  * const logoFile = new stripe.File("logoFile", {
  *     filename: "logo.jpg",
  *     purpose: "business_logo",
- *     base64content: Buffer.from(fs.readFileSync(`${HOME}/logo.jpg`), 'binary').toString('base64'),
+ *     base64content: fs.readFileSync(`${HOME}/logo.jpg`, { encoding: "base64" }),
  * });
  * // file with file link
  * const logoIndex_fileFile = new stripe.File("logoIndex/fileFile", {
  *     filename: "logo.jpg",
  *     purpose: "business_logo",
- *     base64content: Buffer.from(fs.readFileSync(`${HOME}/logo.jpg`), 'binary').toString('base64'),
+ *     base64content: fs.readFileSync(`${HOME}/logo.jpg`, { encoding: "base64" }),
  *     linkData: {
  *         create: true,
  *         expiresAt: 1826659124,
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class File extends pulumi.CustomResource {
     /**
