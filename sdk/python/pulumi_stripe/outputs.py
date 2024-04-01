@@ -706,6 +706,7 @@ class PortalConfigurationLoginPage(dict):
                  url: Optional[str] = None):
         """
         :param bool enabled: Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+        :param str url: A shareable URL to the hosted portal login page. Your customers will be able to log in with their email and receive a link to their customer portal.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -723,6 +724,9 @@ class PortalConfigurationLoginPage(dict):
     @property
     @pulumi.getter
     def url(self) -> Optional[str]:
+        """
+        A shareable URL to the hosted portal login page. Your customers will be able to log in with their email and receive a link to their customer portal.
+        """
         return pulumi.get(self, "url")
 
 
@@ -1033,7 +1037,7 @@ class PriceRecurring(dict):
                Allowed values are `sum` for summing up all usage during a period, `last_during_period` for using the last usage
                record reported within a period, `last_ever` for using the last usage record ever (across period bounds) or `max`
                which uses the usage record with the maximum reported usage during a period.
-        :param int interval_count: Int. The number of intervals between subscription billings. For
+        :param int interval_count: Int. This parameter is (Required) when interval value is set. The number of intervals between subscription billings. For
                example, `interval=month` and `interval_count=3` bills every 3 months. Maximum of one year interval allowed (1 year,
                12 months, or 52 weeks).
         :param str usage_type: String. Configures how the quantity per period should be determined. Can be either `metered`
@@ -1071,7 +1075,7 @@ class PriceRecurring(dict):
     @pulumi.getter(name="intervalCount")
     def interval_count(self) -> Optional[int]:
         """
-        Int. The number of intervals between subscription billings. For
+        Int. This parameter is (Required) when interval value is set. The number of intervals between subscription billings. For
         example, `interval=month` and `interval_count=3` bills every 3 months. Maximum of one year interval allowed (1 year,
         12 months, or 52 weeks).
         """
@@ -1472,6 +1476,7 @@ class ShippingRateFixedAmountCurrencyOption(dict):
         """
         :param int amount: Int. (Required) Int. A non-negative integer in cents representing how much to charge.
         :param str currency: String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
+        :param str tax_behavior: Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of inclusive, exclusive, or unspecified.
         """
         pulumi.set(__self__, "amount", amount)
         pulumi.set(__self__, "currency", currency)
@@ -1497,6 +1502,9 @@ class ShippingRateFixedAmountCurrencyOption(dict):
     @property
     @pulumi.getter(name="taxBehavior")
     def tax_behavior(self) -> Optional[str]:
+        """
+        Specifies whether the rate is considered inclusive of taxes or exclusive of taxes. One of inclusive, exclusive, or unspecified.
+        """
         return pulumi.get(self, "tax_behavior")
 
 

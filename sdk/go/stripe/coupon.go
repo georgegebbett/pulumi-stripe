@@ -18,6 +18,58 @@ import (
 // A coupon has either a `percentOff` or an `amountOff` and `currency`. If you set an `amountOff`, that amount will be subtracted from any invoice’s subtotal.
 //
 // For example, an invoice with a subtotal of $100 will have a final total of $0 if a coupon with an amountOff of 20000 is applied to it and an invoice with a subtotal of $300 will have a final total of $100 if a coupon with an amountOff of 20000 is applied to it.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/georgegebbett/pulumi-stripe/sdk/go/stripe"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// coupon for the amount off discount
+//			_, err := stripe.NewCoupon(ctx, "couponCoupon", &stripe.CouponArgs{
+//				AmountOff:      pulumi.Int(1000),
+//				Currency:       pulumi.String("aud"),
+//				Duration:       pulumi.String("once"),
+//				MaxRedemptions: pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// coupon for the percentage off discount
+//			_, err = stripe.NewCoupon(ctx, "couponIndex/couponCoupon", &stripe.CouponArgs{
+//				PercentOff: pulumi.Float64(33.3),
+//				Duration:   pulumi.String("forever"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// coupon with limitation to a date and the product only
+//			_, err = stripe.NewCoupon(ctx, "couponStripeIndex/couponCoupon", &stripe.CouponArgs{
+//				AmountOff: pulumi.Int(2000),
+//				Duration:  pulumi.String("once"),
+//				RedeemBy:  pulumi.String("2025-07-23T03:27:06+00:00"),
+//				AppliesTos: pulumi.StringArray{
+//					stripe_product.Product.Id,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 type Coupon struct {
 	pulumi.CustomResourceState
 
