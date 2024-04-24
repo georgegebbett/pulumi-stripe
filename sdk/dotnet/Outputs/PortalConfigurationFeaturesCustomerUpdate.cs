@@ -14,11 +14,11 @@ namespace Pulumi.Stripe.Outputs
     public sealed class PortalConfigurationFeaturesCustomerUpdate
     {
         /// <summary>
-        /// List(String). The types of customer updates that are supported [`name`, `email`, `address`, `shipping`, `phone`, `tax_id`]. When empty, customers are not updatable.
+        /// The types of customer updates that are supported. When empty, customers are not updatable.
         /// </summary>
         public readonly ImmutableArray<string> AllowedUpdates;
         /// <summary>
-        /// Bool. Whether the feature is enabled.
+        /// Whether the feature is enabled.
         /// </summary>
         public readonly bool Enabled;
 

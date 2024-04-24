@@ -465,7 +465,6 @@ class Product(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_stripe as stripe
@@ -476,7 +475,6 @@ class Product(pulumi.CustomResource):
             unit_label="piece",
             url="https://www.terraform.io")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -503,7 +501,6 @@ class Product(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_stripe as stripe
@@ -514,7 +511,6 @@ class Product(pulumi.CustomResource):
             unit_label="piece",
             url="https://www.terraform.io")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ProductArgs args: The arguments to use to populate this resource's properties.

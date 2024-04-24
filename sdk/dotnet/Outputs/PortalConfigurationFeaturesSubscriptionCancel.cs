@@ -14,19 +14,19 @@ namespace Pulumi.Stripe.Outputs
     public sealed class PortalConfigurationFeaturesSubscriptionCancel
     {
         /// <summary>
-        /// List(Resource). Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer. Details of this field is in Cancellation Reason.
+        /// Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer
         /// </summary>
         public readonly Outputs.PortalConfigurationFeaturesSubscriptionCancelCancellationReason? CancellationReason;
         /// <summary>
-        /// Bool. Whether the feature is enabled.
+        /// Whether the feature is enabled.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// String. Whether to cancel subscriptions immediately or at the end of the billing period. Valid value is either `immediately` or `at_period_end`
+        /// Whether to cancel subscriptions immediately or at the end of the billing period.
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `create_prorations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+        /// Whether to create prorations when canceling subscriptions.
         /// </summary>
         public readonly string? ProrationBehavior;
 

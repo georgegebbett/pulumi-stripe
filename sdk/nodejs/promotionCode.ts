@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as stripe from "pulumi-stripe";
@@ -49,7 +48,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class PromotionCode extends pulumi.CustomResource {
     /**

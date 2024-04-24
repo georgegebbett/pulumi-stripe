@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as stripe from "pulumi-stripe";
@@ -25,7 +24,6 @@ import * as utilities from "./utilities";
  *     url: "https://webhook-url-consumer.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class WebhookEndpoint extends pulumi.CustomResource {
     /**

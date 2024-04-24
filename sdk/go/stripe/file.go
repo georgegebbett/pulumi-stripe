@@ -21,7 +21,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,7 +72,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type File struct {
 	pulumi.CustomResourceState
 
@@ -81,7 +79,7 @@ type File struct {
 	Base64content pulumi.StringOutput `pulumi:"base64content"`
 	// String. Time at which the object was created. Measured in seconds since the Unix epoch.
 	Created pulumi.IntOutput `pulumi:"created"`
-	// Int. The link isn’t available after this future timestamp.
+	// Int. Time that the link expires.
 	ExpiresAt pulumi.IntOutput `pulumi:"expiresAt"`
 	// String. The suitable name for saving the file to a filesystem.
 	Filename pulumi.StringOutput `pulumi:"filename"`
@@ -148,7 +146,7 @@ type fileState struct {
 	Base64content *string `pulumi:"base64content"`
 	// String. Time at which the object was created. Measured in seconds since the Unix epoch.
 	Created *int `pulumi:"created"`
-	// Int. The link isn’t available after this future timestamp.
+	// Int. Time that the link expires.
 	ExpiresAt *int `pulumi:"expiresAt"`
 	// String. The suitable name for saving the file to a filesystem.
 	Filename *string `pulumi:"filename"`
@@ -177,7 +175,7 @@ type FileState struct {
 	Base64content pulumi.StringPtrInput
 	// String. Time at which the object was created. Measured in seconds since the Unix epoch.
 	Created pulumi.IntPtrInput
-	// Int. The link isn’t available after this future timestamp.
+	// Int. Time that the link expires.
 	ExpiresAt pulumi.IntPtrInput
 	// String. The suitable name for saving the file to a filesystem.
 	Filename pulumi.StringPtrInput
@@ -331,7 +329,7 @@ func (o FileOutput) Created() pulumi.IntOutput {
 	return o.ApplyT(func(v *File) pulumi.IntOutput { return v.Created }).(pulumi.IntOutput)
 }
 
-// Int. The link isn’t available after this future timestamp.
+// Int. Time that the link expires.
 func (o FileOutput) ExpiresAt() pulumi.IntOutput {
 	return o.ApplyT(func(v *File) pulumi.IntOutput { return v.ExpiresAt }).(pulumi.IntOutput)
 }

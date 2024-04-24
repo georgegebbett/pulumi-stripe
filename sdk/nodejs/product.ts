@@ -7,7 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as stripe from "pulumi-stripe";
@@ -19,7 +18,6 @@ import * as utilities from "./utilities";
  *     url: "https://www.terraform.io",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Product extends pulumi.CustomResource {
     /**
