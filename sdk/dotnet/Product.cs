@@ -12,7 +12,6 @@ namespace Pulumi.Stripe
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -31,7 +30,6 @@ namespace Pulumi.Stripe
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [StripeResourceType("stripe:index/product:Product")]
     public partial class Product : global::Pulumi.CustomResource
