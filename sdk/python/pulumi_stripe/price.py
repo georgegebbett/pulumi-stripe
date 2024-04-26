@@ -668,7 +668,6 @@ class Price(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_stripe as stripe
@@ -720,7 +719,6 @@ class Price(pulumi.CustomResource):
                 usage_type="metered",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Note on updating prices
 
@@ -789,7 +787,6 @@ class Price(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_stripe as stripe
@@ -841,7 +838,6 @@ class Price(pulumi.CustomResource):
                 usage_type="metered",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Note on updating prices
 

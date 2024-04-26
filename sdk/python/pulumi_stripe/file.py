@@ -106,7 +106,7 @@ class _FileState:
         Input properties used for looking up and filtering File resources.
         :param pulumi.Input[str] base64content: A content file to upload encoded by base64.
         :param pulumi.Input[int] created: String. Time at which the object was created. Measured in seconds since the Unix epoch.
-        :param pulumi.Input[int] expires_at: Int. The link isn’t available after this future timestamp.
+        :param pulumi.Input[int] expires_at: Int. Time that the link expires.
         :param pulumi.Input[str] filename: String. The suitable name for saving the file to a filesystem.
         :param pulumi.Input['FileLinkDataArgs'] link_data: Optional parameters that automatically create a file link for the newly created file.
         :param pulumi.Input[Sequence[pulumi.Input['FileLinkArgs']]] links: List(Resource). A list of [file links](https://stripe.com/docs/api/files/object#file_links) that point at this file.
@@ -171,7 +171,7 @@ class _FileState:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[int]]:
         """
-        Int. The link isn’t available after this future timestamp.
+        Int. Time that the link expires.
         """
         return pulumi.get(self, "expires_at")
 
@@ -300,7 +300,6 @@ class File(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import base64
@@ -321,7 +320,6 @@ class File(pulumi.CustomResource):
                 expires_at=1826659124,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -349,7 +347,6 @@ class File(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import base64
@@ -370,7 +367,6 @@ class File(pulumi.CustomResource):
                 expires_at=1826659124,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param FileArgs args: The arguments to use to populate this resource's properties.
@@ -447,7 +443,7 @@ class File(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] base64content: A content file to upload encoded by base64.
         :param pulumi.Input[int] created: String. Time at which the object was created. Measured in seconds since the Unix epoch.
-        :param pulumi.Input[int] expires_at: Int. The link isn’t available after this future timestamp.
+        :param pulumi.Input[int] expires_at: Int. Time that the link expires.
         :param pulumi.Input[str] filename: String. The suitable name for saving the file to a filesystem.
         :param pulumi.Input[pulumi.InputType['FileLinkDataArgs']] link_data: Optional parameters that automatically create a file link for the newly created file.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileLinkArgs']]]] links: List(Resource). A list of [file links](https://stripe.com/docs/api/files/object#file_links) that point at this file.
@@ -498,7 +494,7 @@ class File(pulumi.CustomResource):
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> pulumi.Output[int]:
         """
-        Int. The link isn’t available after this future timestamp.
+        Int. Time that the link expires.
         """
         return pulumi.get(self, "expires_at")
 
