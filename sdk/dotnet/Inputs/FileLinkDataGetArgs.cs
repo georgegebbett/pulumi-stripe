@@ -13,15 +13,13 @@ namespace Pulumi.Stripe.Inputs
     public sealed class FileLinkDataGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bool. Set this to `true` to create a file link for the newly created file. 
-        /// Creating a link is only possible when the file’s purpose is one of the following: `business_icon`, `business_logo`,
-        /// `customer_signature`, `dispute_evidence`, `pci_document`, `tax_document_user_upload`, or `terminal_reader_splashscreen`.
+        /// Set this to true to create a file link for the newly created file. Creating a link is only possible when the file’s purpose is one of the following: business_icon, business_logo, customer_signature, dispute_evidence, pci_document, tax_document_user_upload, or terminal_reader_splashscreen.
         /// </summary>
         [Input("create", required: true)]
         public Input<bool> Create { get; set; } = null!;
 
         /// <summary>
-        /// Int. The link isn’t available after this future timestamp.
+        /// Int. Time that the link expires.
         /// </summary>
         [Input("expiresAt")]
         public Input<int>? ExpiresAt { get; set; }
@@ -30,8 +28,7 @@ namespace Pulumi.Stripe.Inputs
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// Map(String). Set of key-value pairs that you can attach to an object. 
-        /// This can be useful for storing additional information about the object in a structured format.
+        /// Map(String). Set of key-value pairs that you can attach to an object.
         /// </summary>
         public InputMap<string> Metadata
         {

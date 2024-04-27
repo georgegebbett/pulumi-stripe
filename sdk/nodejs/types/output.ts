@@ -15,7 +15,7 @@ export interface FileLink {
      */
     expired: boolean;
     /**
-     * Int. The link isn’t available after this future timestamp.
+     * Int. Time that the link expires.
      */
     expiresAt: number;
     /**
@@ -28,8 +28,7 @@ export interface FileLink {
      */
     livemode: boolean;
     /**
-     * Map(String). Set of key-value pairs that you can attach to an object. 
-     * This can be useful for storing additional information about the object in a structured format.
+     * Map(String). Set of key-value pairs that you can attach to an object.
      */
     metadata?: {[key: string]: string};
     /**
@@ -44,18 +43,15 @@ export interface FileLink {
 
 export interface FileLinkData {
     /**
-     * Bool. Set this to `true` to create a file link for the newly created file. 
-     * Creating a link is only possible when the file’s purpose is one of the following: `businessIcon`, `businessLogo`,
-     * `customerSignature`, `disputeEvidence`, `pciDocument`, `taxDocumentUserUpload`, or `terminalReaderSplashscreen`.
+     * Set this to true to create a file link for the newly created file. Creating a link is only possible when the file’s purpose is one of the following: business_icon, business_logo, customer_signature, dispute_evidence, pci_document, tax_document_user_upload, or terminal_reader_splashscreen.
      */
     create: boolean;
     /**
-     * Int. The link isn’t available after this future timestamp.
+     * Int. Time that the link expires.
      */
     expiresAt?: number;
     /**
-     * Map(String). Set of key-value pairs that you can attach to an object. 
-     * This can be useful for storing additional information about the object in a structured format.
+     * Map(String). Set of key-value pairs that you can attach to an object.
      */
     metadata?: {[key: string]: string};
 }
@@ -104,44 +100,44 @@ export interface PortalConfigurationFeatures {
 
 export interface PortalConfigurationFeaturesCustomerUpdate {
     /**
-     * List(String). The types of customer updates that are supported [`name`, `email`, `address`, `shipping`, `phone`, `taxId`]. When empty, customers are not updatable.
+     * The types of customer updates that are supported. When empty, customers are not updatable.
      */
     allowedUpdates?: string[];
     /**
-     * Bool. Whether the feature is enabled.
+     * Whether the feature is enabled.
      */
     enabled: boolean;
 }
 
 export interface PortalConfigurationFeaturesInvoiceHistory {
     /**
-     * Bool. Whether the feature is enabled.
+     * Whether the feature is enabled.
      */
     enabled: boolean;
 }
 
 export interface PortalConfigurationFeaturesPaymentMethodUpdate {
     /**
-     * Bool. Whether the feature is enabled.
+     * Whether the feature is enabled.
      */
     enabled: boolean;
 }
 
 export interface PortalConfigurationFeaturesSubscriptionCancel {
     /**
-     * List(Resource). Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer. Details of this field is in Cancellation Reason.
+     * Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer
      */
     cancellationReason?: outputs.PortalConfigurationFeaturesSubscriptionCancelCancellationReason;
     /**
-     * Bool. Whether the feature is enabled.
+     * Whether the feature is enabled.
      */
     enabled: boolean;
     /**
-     * String. Whether to cancel subscriptions immediately or at the end of the billing period. Valid value is either `immediately` or `atPeriodEnd`
+     * Whether to cancel subscriptions immediately or at the end of the billing period.
      */
     mode?: string;
     /**
-     * String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `createProrations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+     * Whether to create prorations when canceling subscriptions.
      */
     prorationBehavior?: string;
 }
@@ -159,26 +155,26 @@ export interface PortalConfigurationFeaturesSubscriptionCancelCancellationReason
 
 export interface PortalConfigurationFeaturesSubscriptionPause {
     /**
-     * Bool. Whether the feature is enabled.
+     * Whether the feature is enabled.
      */
     enabled?: boolean;
 }
 
 export interface PortalConfigurationFeaturesSubscriptionUpdate {
     /**
-     * List(String). The types of subscription updates that are supported. When empty, subscriptions are not updatable. Supported values are `price`, `quantity`, and `promotionCode`.
+     * The types of subscription updates that are supported. When empty, subscriptions are not updateable.
      */
     defaultAllowedUpdates: string[];
     /**
-     * Bool. Whether the feature is enabled.
+     * Whether the feature is enabled.
      */
     enabled: boolean;
     /**
-     * List(Resource). The list of products that support subscription updates. See details Products.
+     * The list of products that support subscription updates.
      */
     products: outputs.PortalConfigurationFeaturesSubscriptionUpdateProduct[];
     /**
-     * String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `createProrations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+     * Determines how to handle prorations resulting from subscription updates
      */
     prorationBehavior?: string;
 }
@@ -381,22 +377,22 @@ export interface ShippingRateDeliveryEstimate {
 
 export interface ShippingRateDeliveryEstimateMaximum {
     /**
-     * String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+     * The upper bound of the estimated range. If empty, represents no lower bound.
      */
     unit: string;
     /**
-     * Int. Must be greater than 0.
+     * Must be greater than 0.
      */
     value: number;
 }
 
 export interface ShippingRateDeliveryEstimateMinimum {
     /**
-     * String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+     * The lower bound of the estimated range. If empty, represents no lower bound.
      */
     unit: string;
     /**
-     * Int. Must be greater than 0.
+     * Must be greater than 0.
      */
     value: number;
 }

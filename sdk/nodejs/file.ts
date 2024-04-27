@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
@@ -39,7 +38,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class File extends pulumi.CustomResource {
     /**
@@ -78,7 +76,7 @@ export class File extends pulumi.CustomResource {
      */
     public /*out*/ readonly created!: pulumi.Output<number>;
     /**
-     * Int. The link isn’t available after this future timestamp.
+     * Int. Time that the link expires.
      */
     public /*out*/ readonly expiresAt!: pulumi.Output<number>;
     /**
@@ -183,7 +181,7 @@ export interface FileState {
      */
     created?: pulumi.Input<number>;
     /**
-     * Int. The link isn’t available after this future timestamp.
+     * Int. Time that the link expires.
      */
     expiresAt?: pulumi.Input<number>;
     /**

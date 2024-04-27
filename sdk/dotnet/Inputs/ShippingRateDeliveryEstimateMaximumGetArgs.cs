@@ -13,13 +13,13 @@ namespace Pulumi.Stripe.Inputs
     public sealed class ShippingRateDeliveryEstimateMaximumGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String. A unit of time. Possible values `hour`, `day`, `business_day`, `week` and `month`.
+        /// The upper bound of the estimated range. If empty, represents no lower bound.
         /// </summary>
         [Input("unit", required: true)]
         public Input<string> Unit { get; set; } = null!;
 
         /// <summary>
-        /// Int. Must be greater than 0.
+        /// Must be greater than 0.
         /// </summary>
         [Input("value", required: true)]
         public Input<int> Value { get; set; } = null!;

@@ -20,7 +20,6 @@ namespace Pulumi.Stripe
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -59,7 +58,6 @@ namespace Pulumi.Stripe
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [StripeResourceType("stripe:index/coupon:Coupon")]
     public partial class Coupon : global::Pulumi.CustomResource
