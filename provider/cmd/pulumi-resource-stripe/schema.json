@@ -76,7 +76,7 @@
                 },
                 "expiresAt": {
                     "type": "integer",
-                    "description": "Int. The link isn’t available after this future timestamp.\n"
+                    "description": "Int. Time that the link expires.\n"
                 },
                 "id": {
                     "type": "string",
@@ -91,7 +91,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map(String). Set of key-value pairs that you can attach to an object. \nThis can be useful for storing additional information about the object in a structured format.\n"
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object.\n"
                 },
                 "object": {
                     "type": "string",
@@ -121,18 +121,18 @@
             "properties": {
                 "create": {
                     "type": "boolean",
-                    "description": "Bool. Set this to `true` to create a file link for the newly created file. \nCreating a link is only possible when the file’s purpose is one of the following: `business_icon`, `business_logo`,\n`customer_signature`, `dispute_evidence`, `pci_document`, `tax_document_user_upload`, or `terminal_reader_splashscreen`.\n"
+                    "description": "Set this to true to create a file link for the newly created file. Creating a link is only possible when the file’s purpose is one of the following: business_icon, business_logo, customer_signature, dispute_evidence, pci_document, tax_document_user_upload, or terminal_reader_splashscreen.\n"
                 },
                 "expiresAt": {
                     "type": "integer",
-                    "description": "Int. The link isn’t available after this future timestamp.\n"
+                    "description": "Int. Time that the link expires.\n"
                 },
                 "metadata": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map(String). Set of key-value pairs that you can attach to an object. \nThis can be useful for storing additional information about the object in a structured format.\n"
+                    "description": "Map(String). Set of key-value pairs that you can attach to an object.\n"
                 }
             },
             "type": "object",
@@ -211,11 +211,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List(String). The types of customer updates that are supported [`name`, `email`, `address`, `shipping`, `phone`, `tax_id`]. When empty, customers are not updatable.\n"
+                    "description": "The types of customer updates that are supported. When empty, customers are not updatable.\n"
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Bool. Whether the feature is enabled.\n"
+                    "description": "Whether the feature is enabled.\n"
                 }
             },
             "type": "object",
@@ -227,7 +227,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Bool. Whether the feature is enabled.\n"
+                    "description": "Whether the feature is enabled.\n"
                 }
             },
             "type": "object",
@@ -239,7 +239,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Bool. Whether the feature is enabled.\n"
+                    "description": "Whether the feature is enabled.\n"
                 }
             },
             "type": "object",
@@ -251,19 +251,19 @@
             "properties": {
                 "cancellationReason": {
                     "$ref": "#/types/stripe:index/PortalConfigurationFeaturesSubscriptionCancelCancellationReason:PortalConfigurationFeaturesSubscriptionCancelCancellationReason",
-                    "description": "List(Resource). Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer. Details of this field is in Cancellation Reason.\n"
+                    "description": "Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer\n"
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Bool. Whether the feature is enabled.\n"
+                    "description": "Whether the feature is enabled.\n"
                 },
                 "mode": {
                     "type": "string",
-                    "description": "String. Whether to cancel subscriptions immediately or at the end of the billing period. Valid value is either `immediately` or `at_period_end`\n"
+                    "description": "Whether to cancel subscriptions immediately or at the end of the billing period.\n"
                 },
                 "prorationBehavior": {
                     "type": "string",
-                    "description": "String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `create_prorations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.\n"
+                    "description": "Whether to create prorations when canceling subscriptions.\n"
                 }
             },
             "type": "object",
@@ -295,7 +295,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Bool. Whether the feature is enabled.\n"
+                    "description": "Whether the feature is enabled.\n"
                 }
             },
             "type": "object"
@@ -307,22 +307,22 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List(String). The types of subscription updates that are supported. When empty, subscriptions are not updatable. Supported values are `price`, `quantity`, and `promotion_code`.\n"
+                    "description": "The types of subscription updates that are supported. When empty, subscriptions are not updateable.\n"
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Bool. Whether the feature is enabled.\n"
+                    "description": "Whether the feature is enabled.\n"
                 },
                 "products": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/stripe:index/PortalConfigurationFeaturesSubscriptionUpdateProduct:PortalConfigurationFeaturesSubscriptionUpdateProduct"
                     },
-                    "description": "List(Resource). The list of products that support subscription updates. See details Products.\n"
+                    "description": "The list of products that support subscription updates.\n"
                 },
                 "prorationBehavior": {
                     "type": "string",
-                    "description": "String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `create_prorations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.\n"
+                    "description": "Determines how to handle prorations resulting from subscription updates\n"
                 }
             },
             "type": "object",
@@ -561,12 +561,12 @@
             "properties": {
                 "unit": {
                     "type": "string",
-                    "description": "String. A unit of time. Possible values `hour`, `day`, `business_day`, `week` and `month`.\n",
+                    "description": "The upper bound of the estimated range. If empty, represents no lower bound.\n",
                     "willReplaceOnChanges": true
                 },
                 "value": {
                     "type": "integer",
-                    "description": "Int. Must be greater than 0.\n",
+                    "description": "Must be greater than 0.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -580,12 +580,12 @@
             "properties": {
                 "unit": {
                     "type": "string",
-                    "description": "String. A unit of time. Possible values `hour`, `day`, `business_day`, `week` and `month`.\n",
+                    "description": "The lower bound of the estimated range. If empty, represents no lower bound.\n",
                     "willReplaceOnChanges": true
                 },
                 "value": {
                     "type": "integer",
-                    "description": "Int. Must be greater than 0.\n",
+                    "description": "Must be greater than 0.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -1347,7 +1347,7 @@
                 },
                 "expiresAt": {
                     "type": "integer",
-                    "description": "Int. The link isn’t available after this future timestamp.\n"
+                    "description": "Int. Time that the link expires.\n"
                 },
                 "filename": {
                     "type": "string",
@@ -1438,7 +1438,7 @@
                     },
                     "expiresAt": {
                         "type": "integer",
-                        "description": "Int. The link isn’t available after this future timestamp.\n"
+                        "description": "Int. Time that the link expires.\n"
                     },
                     "filename": {
                         "type": "string",
