@@ -14,19 +14,19 @@ namespace Pulumi.Stripe.Outputs
     public sealed class PortalConfigurationFeaturesSubscriptionUpdate
     {
         /// <summary>
-        /// List(String). The types of subscription updates that are supported. When empty, subscriptions are not updatable. Supported values are `price`, `quantity`, and `promotion_code`.
+        /// The types of subscription updates that are supported. When empty, subscriptions are not updateable.
         /// </summary>
         public readonly ImmutableArray<string> DefaultAllowedUpdates;
         /// <summary>
-        /// Bool. Whether the feature is enabled.
+        /// Whether the feature is enabled.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// List(Resource). The list of products that support subscription updates. See details Products.
+        /// The list of products that support subscription updates.
         /// </summary>
         public readonly ImmutableArray<Outputs.PortalConfigurationFeaturesSubscriptionUpdateProduct> Products;
         /// <summary>
-        /// String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `create_prorations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+        /// Determines how to handle prorations resulting from subscription updates
         /// </summary>
         public readonly string? ProrationBehavior;
 

@@ -22,7 +22,7 @@ namespace Pulumi.Stripe.Outputs
         /// </summary>
         public readonly bool? Expired;
         /// <summary>
-        /// Int. The link isn’t available after this future timestamp.
+        /// Int. Time that the link expires.
         /// </summary>
         public readonly int? ExpiresAt;
         /// <summary>
@@ -35,8 +35,7 @@ namespace Pulumi.Stripe.Outputs
         /// </summary>
         public readonly bool? Livemode;
         /// <summary>
-        /// Map(String). Set of key-value pairs that you can attach to an object. 
-        /// This can be useful for storing additional information about the object in a structured format.
+        /// Map(String). Set of key-value pairs that you can attach to an object.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Metadata;
         /// <summary>

@@ -19,7 +19,6 @@ namespace Pulumi.Stripe
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System;
     /// using System.Collections.Generic;
@@ -59,7 +58,6 @@ namespace Pulumi.Stripe
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [StripeResourceType("stripe:index/file:File")]
     public partial class File : global::Pulumi.CustomResource
@@ -77,7 +75,7 @@ namespace Pulumi.Stripe
         public Output<int> Created { get; private set; } = null!;
 
         /// <summary>
-        /// Int. The link isn’t available after this future timestamp.
+        /// Int. Time that the link expires.
         /// </summary>
         [Output("expiresAt")]
         public Output<int> ExpiresAt { get; private set; } = null!;
@@ -229,7 +227,7 @@ namespace Pulumi.Stripe
         public Input<int>? Created { get; set; }
 
         /// <summary>
-        /// Int. The link isn’t available after this future timestamp.
+        /// Int. Time that the link expires.
         /// </summary>
         [Input("expiresAt")]
         public Input<int>? ExpiresAt { get; set; }

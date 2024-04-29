@@ -69,12 +69,11 @@ class FileLink(dict):
         """
         :param int created: String. Time at which the object was created. Measured in seconds since the Unix epoch.
         :param bool expired: Bool. Returns if the link is already expired.
-        :param int expires_at: Int. The link isn’t available after this future timestamp.
+        :param int expires_at: Int. Time that the link expires.
         :param str id: String. Unique identifier for the object.
         :param bool livemode: Bool. Has the value `true` if the object exists in live mode or the value `false` 
                if the object exists in test mode.
-        :param Mapping[str, str] metadata: Map(String). Set of key-value pairs that you can attach to an object. 
-               This can be useful for storing additional information about the object in a structured format.
+        :param Mapping[str, str] metadata: Map(String). Set of key-value pairs that you can attach to an object.
         :param str object: String. String representing the object’s type. Objects of the same type share the same value.
         :param str url: String. The publicly accessible URL to download the file.
         """
@@ -115,7 +114,7 @@ class FileLink(dict):
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[int]:
         """
-        Int. The link isn’t available after this future timestamp.
+        Int. Time that the link expires.
         """
         return pulumi.get(self, "expires_at")
 
@@ -140,8 +139,7 @@ class FileLink(dict):
     @pulumi.getter
     def metadata(self) -> Optional[Mapping[str, str]]:
         """
-        Map(String). Set of key-value pairs that you can attach to an object. 
-        This can be useful for storing additional information about the object in a structured format.
+        Map(String). Set of key-value pairs that you can attach to an object.
         """
         return pulumi.get(self, "metadata")
 
@@ -186,12 +184,9 @@ class FileLinkData(dict):
                  expires_at: Optional[int] = None,
                  metadata: Optional[Mapping[str, str]] = None):
         """
-        :param bool create: Bool. Set this to `true` to create a file link for the newly created file. 
-               Creating a link is only possible when the file’s purpose is one of the following: `business_icon`, `business_logo`,
-               `customer_signature`, `dispute_evidence`, `pci_document`, `tax_document_user_upload`, or `terminal_reader_splashscreen`.
-        :param int expires_at: Int. The link isn’t available after this future timestamp.
-        :param Mapping[str, str] metadata: Map(String). Set of key-value pairs that you can attach to an object. 
-               This can be useful for storing additional information about the object in a structured format.
+        :param bool create: Set this to true to create a file link for the newly created file. Creating a link is only possible when the file’s purpose is one of the following: business_icon, business_logo, customer_signature, dispute_evidence, pci_document, tax_document_user_upload, or terminal_reader_splashscreen.
+        :param int expires_at: Int. Time that the link expires.
+        :param Mapping[str, str] metadata: Map(String). Set of key-value pairs that you can attach to an object.
         """
         pulumi.set(__self__, "create", create)
         if expires_at is not None:
@@ -203,9 +198,7 @@ class FileLinkData(dict):
     @pulumi.getter
     def create(self) -> bool:
         """
-        Bool. Set this to `true` to create a file link for the newly created file. 
-        Creating a link is only possible when the file’s purpose is one of the following: `business_icon`, `business_logo`,
-        `customer_signature`, `dispute_evidence`, `pci_document`, `tax_document_user_upload`, or `terminal_reader_splashscreen`.
+        Set this to true to create a file link for the newly created file. Creating a link is only possible when the file’s purpose is one of the following: business_icon, business_logo, customer_signature, dispute_evidence, pci_document, tax_document_user_upload, or terminal_reader_splashscreen.
         """
         return pulumi.get(self, "create")
 
@@ -213,7 +206,7 @@ class FileLinkData(dict):
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[int]:
         """
-        Int. The link isn’t available after this future timestamp.
+        Int. Time that the link expires.
         """
         return pulumi.get(self, "expires_at")
 
@@ -221,8 +214,7 @@ class FileLinkData(dict):
     @pulumi.getter
     def metadata(self) -> Optional[Mapping[str, str]]:
         """
-        Map(String). Set of key-value pairs that you can attach to an object. 
-        This can be useful for storing additional information about the object in a structured format.
+        Map(String). Set of key-value pairs that you can attach to an object.
         """
         return pulumi.get(self, "metadata")
 
@@ -418,8 +410,8 @@ class PortalConfigurationFeaturesCustomerUpdate(dict):
                  enabled: bool,
                  allowed_updates: Optional[Sequence[str]] = None):
         """
-        :param bool enabled: Bool. Whether the feature is enabled.
-        :param Sequence[str] allowed_updates: List(String). The types of customer updates that are supported [`name`, `email`, `address`, `shipping`, `phone`, `tax_id`]. When empty, customers are not updatable.
+        :param bool enabled: Whether the feature is enabled.
+        :param Sequence[str] allowed_updates: The types of customer updates that are supported. When empty, customers are not updatable.
         """
         pulumi.set(__self__, "enabled", enabled)
         if allowed_updates is not None:
@@ -429,7 +421,7 @@ class PortalConfigurationFeaturesCustomerUpdate(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Bool. Whether the feature is enabled.
+        Whether the feature is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -437,7 +429,7 @@ class PortalConfigurationFeaturesCustomerUpdate(dict):
     @pulumi.getter(name="allowedUpdates")
     def allowed_updates(self) -> Optional[Sequence[str]]:
         """
-        List(String). The types of customer updates that are supported [`name`, `email`, `address`, `shipping`, `phone`, `tax_id`]. When empty, customers are not updatable.
+        The types of customer updates that are supported. When empty, customers are not updatable.
         """
         return pulumi.get(self, "allowed_updates")
 
@@ -447,7 +439,7 @@ class PortalConfigurationFeaturesInvoiceHistory(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Bool. Whether the feature is enabled.
+        :param bool enabled: Whether the feature is enabled.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -455,7 +447,7 @@ class PortalConfigurationFeaturesInvoiceHistory(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Bool. Whether the feature is enabled.
+        Whether the feature is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -465,7 +457,7 @@ class PortalConfigurationFeaturesPaymentMethodUpdate(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Bool. Whether the feature is enabled.
+        :param bool enabled: Whether the feature is enabled.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -473,7 +465,7 @@ class PortalConfigurationFeaturesPaymentMethodUpdate(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Bool. Whether the feature is enabled.
+        Whether the feature is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -505,10 +497,10 @@ class PortalConfigurationFeaturesSubscriptionCancel(dict):
                  mode: Optional[str] = None,
                  proration_behavior: Optional[str] = None):
         """
-        :param bool enabled: Bool. Whether the feature is enabled.
-        :param 'PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgs' cancellation_reason: List(Resource). Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer. Details of this field is in Cancellation Reason.
-        :param str mode: String. Whether to cancel subscriptions immediately or at the end of the billing period. Valid value is either `immediately` or `at_period_end`
-        :param str proration_behavior: String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `create_prorations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+        :param bool enabled: Whether the feature is enabled.
+        :param 'PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgs' cancellation_reason: Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer
+        :param str mode: Whether to cancel subscriptions immediately or at the end of the billing period.
+        :param str proration_behavior: Whether to create prorations when canceling subscriptions.
         """
         pulumi.set(__self__, "enabled", enabled)
         if cancellation_reason is not None:
@@ -522,7 +514,7 @@ class PortalConfigurationFeaturesSubscriptionCancel(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Bool. Whether the feature is enabled.
+        Whether the feature is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -530,7 +522,7 @@ class PortalConfigurationFeaturesSubscriptionCancel(dict):
     @pulumi.getter(name="cancellationReason")
     def cancellation_reason(self) -> Optional['outputs.PortalConfigurationFeaturesSubscriptionCancelCancellationReason']:
         """
-        List(Resource). Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer. Details of this field is in Cancellation Reason.
+        Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer
         """
         return pulumi.get(self, "cancellation_reason")
 
@@ -538,7 +530,7 @@ class PortalConfigurationFeaturesSubscriptionCancel(dict):
     @pulumi.getter
     def mode(self) -> Optional[str]:
         """
-        String. Whether to cancel subscriptions immediately or at the end of the billing period. Valid value is either `immediately` or `at_period_end`
+        Whether to cancel subscriptions immediately or at the end of the billing period.
         """
         return pulumi.get(self, "mode")
 
@@ -546,7 +538,7 @@ class PortalConfigurationFeaturesSubscriptionCancel(dict):
     @pulumi.getter(name="prorationBehavior")
     def proration_behavior(self) -> Optional[str]:
         """
-        String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `create_prorations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+        Whether to create prorations when canceling subscriptions.
         """
         return pulumi.get(self, "proration_behavior")
 
@@ -585,7 +577,7 @@ class PortalConfigurationFeaturesSubscriptionPause(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
         """
-        :param bool enabled: Bool. Whether the feature is enabled.
+        :param bool enabled: Whether the feature is enabled.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -594,7 +586,7 @@ class PortalConfigurationFeaturesSubscriptionPause(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Bool. Whether the feature is enabled.
+        Whether the feature is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -626,10 +618,10 @@ class PortalConfigurationFeaturesSubscriptionUpdate(dict):
                  products: Sequence['outputs.PortalConfigurationFeaturesSubscriptionUpdateProduct'],
                  proration_behavior: Optional[str] = None):
         """
-        :param Sequence[str] default_allowed_updates: List(String). The types of subscription updates that are supported. When empty, subscriptions are not updatable. Supported values are `price`, `quantity`, and `promotion_code`.
-        :param bool enabled: Bool. Whether the feature is enabled.
-        :param Sequence['PortalConfigurationFeaturesSubscriptionUpdateProductArgs'] products: List(Resource). The list of products that support subscription updates. See details Products.
-        :param str proration_behavior: String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `create_prorations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+        :param Sequence[str] default_allowed_updates: The types of subscription updates that are supported. When empty, subscriptions are not updateable.
+        :param bool enabled: Whether the feature is enabled.
+        :param Sequence['PortalConfigurationFeaturesSubscriptionUpdateProductArgs'] products: The list of products that support subscription updates.
+        :param str proration_behavior: Determines how to handle prorations resulting from subscription updates
         """
         pulumi.set(__self__, "default_allowed_updates", default_allowed_updates)
         pulumi.set(__self__, "enabled", enabled)
@@ -641,7 +633,7 @@ class PortalConfigurationFeaturesSubscriptionUpdate(dict):
     @pulumi.getter(name="defaultAllowedUpdates")
     def default_allowed_updates(self) -> Sequence[str]:
         """
-        List(String). The types of subscription updates that are supported. When empty, subscriptions are not updatable. Supported values are `price`, `quantity`, and `promotion_code`.
+        The types of subscription updates that are supported. When empty, subscriptions are not updateable.
         """
         return pulumi.get(self, "default_allowed_updates")
 
@@ -649,7 +641,7 @@ class PortalConfigurationFeaturesSubscriptionUpdate(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Bool. Whether the feature is enabled.
+        Whether the feature is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -657,7 +649,7 @@ class PortalConfigurationFeaturesSubscriptionUpdate(dict):
     @pulumi.getter
     def products(self) -> Sequence['outputs.PortalConfigurationFeaturesSubscriptionUpdateProduct']:
         """
-        List(Resource). The list of products that support subscription updates. See details Products.
+        The list of products that support subscription updates.
         """
         return pulumi.get(self, "products")
 
@@ -665,7 +657,7 @@ class PortalConfigurationFeaturesSubscriptionUpdate(dict):
     @pulumi.getter(name="prorationBehavior")
     def proration_behavior(self) -> Optional[str]:
         """
-        String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `create_prorations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+        Determines how to handle prorations resulting from subscription updates
         """
         return pulumi.get(self, "proration_behavior")
 
@@ -1340,8 +1332,8 @@ class ShippingRateDeliveryEstimateMaximum(dict):
                  unit: str,
                  value: int):
         """
-        :param str unit: String. A unit of time. Possible values `hour`, `day`, `business_day`, `week` and `month`.
-        :param int value: Int. Must be greater than 0.
+        :param str unit: The upper bound of the estimated range. If empty, represents no lower bound.
+        :param int value: Must be greater than 0.
         """
         pulumi.set(__self__, "unit", unit)
         pulumi.set(__self__, "value", value)
@@ -1350,7 +1342,7 @@ class ShippingRateDeliveryEstimateMaximum(dict):
     @pulumi.getter
     def unit(self) -> str:
         """
-        String. A unit of time. Possible values `hour`, `day`, `business_day`, `week` and `month`.
+        The upper bound of the estimated range. If empty, represents no lower bound.
         """
         return pulumi.get(self, "unit")
 
@@ -1358,7 +1350,7 @@ class ShippingRateDeliveryEstimateMaximum(dict):
     @pulumi.getter
     def value(self) -> int:
         """
-        Int. Must be greater than 0.
+        Must be greater than 0.
         """
         return pulumi.get(self, "value")
 
@@ -1369,8 +1361,8 @@ class ShippingRateDeliveryEstimateMinimum(dict):
                  unit: str,
                  value: int):
         """
-        :param str unit: String. A unit of time. Possible values `hour`, `day`, `business_day`, `week` and `month`.
-        :param int value: Int. Must be greater than 0.
+        :param str unit: The lower bound of the estimated range. If empty, represents no lower bound.
+        :param int value: Must be greater than 0.
         """
         pulumi.set(__self__, "unit", unit)
         pulumi.set(__self__, "value", value)
@@ -1379,7 +1371,7 @@ class ShippingRateDeliveryEstimateMinimum(dict):
     @pulumi.getter
     def unit(self) -> str:
         """
-        String. A unit of time. Possible values `hour`, `day`, `business_day`, `week` and `month`.
+        The lower bound of the estimated range. If empty, represents no lower bound.
         """
         return pulumi.get(self, "unit")
 
@@ -1387,7 +1379,7 @@ class ShippingRateDeliveryEstimateMinimum(dict):
     @pulumi.getter
     def value(self) -> int:
         """
-        Int. Must be greater than 0.
+        Must be greater than 0.
         """
         return pulumi.get(self, "value")
 
