@@ -18,7 +18,7 @@ type FileLink struct {
 	Created *int `pulumi:"created"`
 	// Bool. Returns if the link is already expired.
 	Expired *bool `pulumi:"expired"`
-	// Int. The link isn’t available after this future timestamp.
+	// Int. Time that the link expires.
 	ExpiresAt *int `pulumi:"expiresAt"`
 	// String. Unique identifier for the object.
 	Id *string `pulumi:"id"`
@@ -26,7 +26,6 @@ type FileLink struct {
 	// if the object exists in test mode.
 	Livemode *bool `pulumi:"livemode"`
 	// Map(String). Set of key-value pairs that you can attach to an object.
-	// This can be useful for storing additional information about the object in a structured format.
 	Metadata map[string]string `pulumi:"metadata"`
 	// String. String representing the object’s type. Objects of the same type share the same value.
 	Object *string `pulumi:"object"`
@@ -50,7 +49,7 @@ type FileLinkArgs struct {
 	Created pulumi.IntPtrInput `pulumi:"created"`
 	// Bool. Returns if the link is already expired.
 	Expired pulumi.BoolPtrInput `pulumi:"expired"`
-	// Int. The link isn’t available after this future timestamp.
+	// Int. Time that the link expires.
 	ExpiresAt pulumi.IntPtrInput `pulumi:"expiresAt"`
 	// String. Unique identifier for the object.
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -58,7 +57,6 @@ type FileLinkArgs struct {
 	// if the object exists in test mode.
 	Livemode pulumi.BoolPtrInput `pulumi:"livemode"`
 	// Map(String). Set of key-value pairs that you can attach to an object.
-	// This can be useful for storing additional information about the object in a structured format.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// String. String representing the object’s type. Objects of the same type share the same value.
 	Object pulumi.StringPtrInput `pulumi:"object"`
@@ -127,7 +125,7 @@ func (o FileLinkOutput) Expired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FileLink) *bool { return v.Expired }).(pulumi.BoolPtrOutput)
 }
 
-// Int. The link isn’t available after this future timestamp.
+// Int. Time that the link expires.
 func (o FileLinkOutput) ExpiresAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FileLink) *int { return v.ExpiresAt }).(pulumi.IntPtrOutput)
 }
@@ -144,7 +142,6 @@ func (o FileLinkOutput) Livemode() pulumi.BoolPtrOutput {
 }
 
 // Map(String). Set of key-value pairs that you can attach to an object.
-// This can be useful for storing additional information about the object in a structured format.
 func (o FileLinkOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v FileLink) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -180,14 +177,11 @@ func (o FileLinkArrayOutput) Index(i pulumi.IntInput) FileLinkOutput {
 }
 
 type FileLinkData struct {
-	// Bool. Set this to `true` to create a file link for the newly created file.
-	// Creating a link is only possible when the file’s purpose is one of the following: `businessIcon`, `businessLogo`,
-	// `customerSignature`, `disputeEvidence`, `pciDocument`, `taxDocumentUserUpload`, or `terminalReaderSplashscreen`.
+	// Set this to true to create a file link for the newly created file. Creating a link is only possible when the file’s purpose is one of the following: business_icon, business_logo, customer_signature, dispute_evidence, pci_document, tax_document_user_upload, or terminal_reader_splashscreen.
 	Create bool `pulumi:"create"`
-	// Int. The link isn’t available after this future timestamp.
+	// Int. Time that the link expires.
 	ExpiresAt *int `pulumi:"expiresAt"`
 	// Map(String). Set of key-value pairs that you can attach to an object.
-	// This can be useful for storing additional information about the object in a structured format.
 	Metadata map[string]string `pulumi:"metadata"`
 }
 
@@ -203,14 +197,11 @@ type FileLinkDataInput interface {
 }
 
 type FileLinkDataArgs struct {
-	// Bool. Set this to `true` to create a file link for the newly created file.
-	// Creating a link is only possible when the file’s purpose is one of the following: `businessIcon`, `businessLogo`,
-	// `customerSignature`, `disputeEvidence`, `pciDocument`, `taxDocumentUserUpload`, or `terminalReaderSplashscreen`.
+	// Set this to true to create a file link for the newly created file. Creating a link is only possible when the file’s purpose is one of the following: business_icon, business_logo, customer_signature, dispute_evidence, pci_document, tax_document_user_upload, or terminal_reader_splashscreen.
 	Create pulumi.BoolInput `pulumi:"create"`
-	// Int. The link isn’t available after this future timestamp.
+	// Int. Time that the link expires.
 	ExpiresAt pulumi.IntPtrInput `pulumi:"expiresAt"`
 	// Map(String). Set of key-value pairs that you can attach to an object.
-	// This can be useful for storing additional information about the object in a structured format.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 }
 
@@ -291,20 +282,17 @@ func (o FileLinkDataOutput) ToFileLinkDataPtrOutputWithContext(ctx context.Conte
 	}).(FileLinkDataPtrOutput)
 }
 
-// Bool. Set this to `true` to create a file link for the newly created file.
-// Creating a link is only possible when the file’s purpose is one of the following: `businessIcon`, `businessLogo`,
-// `customerSignature`, `disputeEvidence`, `pciDocument`, `taxDocumentUserUpload`, or `terminalReaderSplashscreen`.
+// Set this to true to create a file link for the newly created file. Creating a link is only possible when the file’s purpose is one of the following: business_icon, business_logo, customer_signature, dispute_evidence, pci_document, tax_document_user_upload, or terminal_reader_splashscreen.
 func (o FileLinkDataOutput) Create() pulumi.BoolOutput {
 	return o.ApplyT(func(v FileLinkData) bool { return v.Create }).(pulumi.BoolOutput)
 }
 
-// Int. The link isn’t available after this future timestamp.
+// Int. Time that the link expires.
 func (o FileLinkDataOutput) ExpiresAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FileLinkData) *int { return v.ExpiresAt }).(pulumi.IntPtrOutput)
 }
 
 // Map(String). Set of key-value pairs that you can attach to an object.
-// This can be useful for storing additional information about the object in a structured format.
 func (o FileLinkDataOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v FileLinkData) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -333,9 +321,7 @@ func (o FileLinkDataPtrOutput) Elem() FileLinkDataOutput {
 	}).(FileLinkDataOutput)
 }
 
-// Bool. Set this to `true` to create a file link for the newly created file.
-// Creating a link is only possible when the file’s purpose is one of the following: `businessIcon`, `businessLogo`,
-// `customerSignature`, `disputeEvidence`, `pciDocument`, `taxDocumentUserUpload`, or `terminalReaderSplashscreen`.
+// Set this to true to create a file link for the newly created file. Creating a link is only possible when the file’s purpose is one of the following: business_icon, business_logo, customer_signature, dispute_evidence, pci_document, tax_document_user_upload, or terminal_reader_splashscreen.
 func (o FileLinkDataPtrOutput) Create() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FileLinkData) *bool {
 		if v == nil {
@@ -345,7 +331,7 @@ func (o FileLinkDataPtrOutput) Create() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Int. The link isn’t available after this future timestamp.
+// Int. Time that the link expires.
 func (o FileLinkDataPtrOutput) ExpiresAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FileLinkData) *int {
 		if v == nil {
@@ -356,7 +342,6 @@ func (o FileLinkDataPtrOutput) ExpiresAt() pulumi.IntPtrOutput {
 }
 
 // Map(String). Set of key-value pairs that you can attach to an object.
-// This can be useful for storing additional information about the object in a structured format.
 func (o FileLinkDataPtrOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FileLinkData) map[string]string {
 		if v == nil {
@@ -786,9 +771,9 @@ func (o PortalConfigurationFeaturesPtrOutput) SubscriptionUpdates() PortalConfig
 }
 
 type PortalConfigurationFeaturesCustomerUpdate struct {
-	// List(String). The types of customer updates that are supported [`name`, `email`, `address`, `shipping`, `phone`, `taxId`]. When empty, customers are not updatable.
+	// The types of customer updates that are supported. When empty, customers are not updatable.
 	AllowedUpdates []string `pulumi:"allowedUpdates"`
-	// Bool. Whether the feature is enabled.
+	// Whether the feature is enabled.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -804,9 +789,9 @@ type PortalConfigurationFeaturesCustomerUpdateInput interface {
 }
 
 type PortalConfigurationFeaturesCustomerUpdateArgs struct {
-	// List(String). The types of customer updates that are supported [`name`, `email`, `address`, `shipping`, `phone`, `taxId`]. When empty, customers are not updatable.
+	// The types of customer updates that are supported. When empty, customers are not updatable.
 	AllowedUpdates pulumi.StringArrayInput `pulumi:"allowedUpdates"`
-	// Bool. Whether the feature is enabled.
+	// Whether the feature is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -887,12 +872,12 @@ func (o PortalConfigurationFeaturesCustomerUpdateOutput) ToPortalConfigurationFe
 	}).(PortalConfigurationFeaturesCustomerUpdatePtrOutput)
 }
 
-// List(String). The types of customer updates that are supported [`name`, `email`, `address`, `shipping`, `phone`, `taxId`]. When empty, customers are not updatable.
+// The types of customer updates that are supported. When empty, customers are not updatable.
 func (o PortalConfigurationFeaturesCustomerUpdateOutput) AllowedUpdates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesCustomerUpdate) []string { return v.AllowedUpdates }).(pulumi.StringArrayOutput)
 }
 
-// Bool. Whether the feature is enabled.
+// Whether the feature is enabled.
 func (o PortalConfigurationFeaturesCustomerUpdateOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesCustomerUpdate) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -921,7 +906,7 @@ func (o PortalConfigurationFeaturesCustomerUpdatePtrOutput) Elem() PortalConfigu
 	}).(PortalConfigurationFeaturesCustomerUpdateOutput)
 }
 
-// List(String). The types of customer updates that are supported [`name`, `email`, `address`, `shipping`, `phone`, `taxId`]. When empty, customers are not updatable.
+// The types of customer updates that are supported. When empty, customers are not updatable.
 func (o PortalConfigurationFeaturesCustomerUpdatePtrOutput) AllowedUpdates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PortalConfigurationFeaturesCustomerUpdate) []string {
 		if v == nil {
@@ -931,7 +916,7 @@ func (o PortalConfigurationFeaturesCustomerUpdatePtrOutput) AllowedUpdates() pul
 	}).(pulumi.StringArrayOutput)
 }
 
-// Bool. Whether the feature is enabled.
+// Whether the feature is enabled.
 func (o PortalConfigurationFeaturesCustomerUpdatePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PortalConfigurationFeaturesCustomerUpdate) *bool {
 		if v == nil {
@@ -942,7 +927,7 @@ func (o PortalConfigurationFeaturesCustomerUpdatePtrOutput) Enabled() pulumi.Boo
 }
 
 type PortalConfigurationFeaturesInvoiceHistory struct {
-	// Bool. Whether the feature is enabled.
+	// Whether the feature is enabled.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -958,7 +943,7 @@ type PortalConfigurationFeaturesInvoiceHistoryInput interface {
 }
 
 type PortalConfigurationFeaturesInvoiceHistoryArgs struct {
-	// Bool. Whether the feature is enabled.
+	// Whether the feature is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -1039,7 +1024,7 @@ func (o PortalConfigurationFeaturesInvoiceHistoryOutput) ToPortalConfigurationFe
 	}).(PortalConfigurationFeaturesInvoiceHistoryPtrOutput)
 }
 
-// Bool. Whether the feature is enabled.
+// Whether the feature is enabled.
 func (o PortalConfigurationFeaturesInvoiceHistoryOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesInvoiceHistory) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -1068,7 +1053,7 @@ func (o PortalConfigurationFeaturesInvoiceHistoryPtrOutput) Elem() PortalConfigu
 	}).(PortalConfigurationFeaturesInvoiceHistoryOutput)
 }
 
-// Bool. Whether the feature is enabled.
+// Whether the feature is enabled.
 func (o PortalConfigurationFeaturesInvoiceHistoryPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PortalConfigurationFeaturesInvoiceHistory) *bool {
 		if v == nil {
@@ -1079,7 +1064,7 @@ func (o PortalConfigurationFeaturesInvoiceHistoryPtrOutput) Enabled() pulumi.Boo
 }
 
 type PortalConfigurationFeaturesPaymentMethodUpdate struct {
-	// Bool. Whether the feature is enabled.
+	// Whether the feature is enabled.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -1095,7 +1080,7 @@ type PortalConfigurationFeaturesPaymentMethodUpdateInput interface {
 }
 
 type PortalConfigurationFeaturesPaymentMethodUpdateArgs struct {
-	// Bool. Whether the feature is enabled.
+	// Whether the feature is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -1176,7 +1161,7 @@ func (o PortalConfigurationFeaturesPaymentMethodUpdateOutput) ToPortalConfigurat
 	}).(PortalConfigurationFeaturesPaymentMethodUpdatePtrOutput)
 }
 
-// Bool. Whether the feature is enabled.
+// Whether the feature is enabled.
 func (o PortalConfigurationFeaturesPaymentMethodUpdateOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesPaymentMethodUpdate) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -1205,7 +1190,7 @@ func (o PortalConfigurationFeaturesPaymentMethodUpdatePtrOutput) Elem() PortalCo
 	}).(PortalConfigurationFeaturesPaymentMethodUpdateOutput)
 }
 
-// Bool. Whether the feature is enabled.
+// Whether the feature is enabled.
 func (o PortalConfigurationFeaturesPaymentMethodUpdatePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PortalConfigurationFeaturesPaymentMethodUpdate) *bool {
 		if v == nil {
@@ -1216,13 +1201,13 @@ func (o PortalConfigurationFeaturesPaymentMethodUpdatePtrOutput) Enabled() pulum
 }
 
 type PortalConfigurationFeaturesSubscriptionCancel struct {
-	// List(Resource). Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer. Details of this field is in Cancellation Reason.
+	// Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer
 	CancellationReason *PortalConfigurationFeaturesSubscriptionCancelCancellationReason `pulumi:"cancellationReason"`
-	// Bool. Whether the feature is enabled.
+	// Whether the feature is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// String. Whether to cancel subscriptions immediately or at the end of the billing period. Valid value is either `immediately` or `atPeriodEnd`
+	// Whether to cancel subscriptions immediately or at the end of the billing period.
 	Mode *string `pulumi:"mode"`
-	// String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `createProrations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+	// Whether to create prorations when canceling subscriptions.
 	ProrationBehavior *string `pulumi:"prorationBehavior"`
 }
 
@@ -1238,13 +1223,13 @@ type PortalConfigurationFeaturesSubscriptionCancelInput interface {
 }
 
 type PortalConfigurationFeaturesSubscriptionCancelArgs struct {
-	// List(Resource). Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer. Details of this field is in Cancellation Reason.
+	// Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer
 	CancellationReason PortalConfigurationFeaturesSubscriptionCancelCancellationReasonPtrInput `pulumi:"cancellationReason"`
-	// Bool. Whether the feature is enabled.
+	// Whether the feature is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// String. Whether to cancel subscriptions immediately or at the end of the billing period. Valid value is either `immediately` or `atPeriodEnd`
+	// Whether to cancel subscriptions immediately or at the end of the billing period.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `createProrations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+	// Whether to create prorations when canceling subscriptions.
 	ProrationBehavior pulumi.StringPtrInput `pulumi:"prorationBehavior"`
 }
 
@@ -1325,24 +1310,24 @@ func (o PortalConfigurationFeaturesSubscriptionCancelOutput) ToPortalConfigurati
 	}).(PortalConfigurationFeaturesSubscriptionCancelPtrOutput)
 }
 
-// List(Resource). Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer. Details of this field is in Cancellation Reason.
+// Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer
 func (o PortalConfigurationFeaturesSubscriptionCancelOutput) CancellationReason() PortalConfigurationFeaturesSubscriptionCancelCancellationReasonPtrOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesSubscriptionCancel) *PortalConfigurationFeaturesSubscriptionCancelCancellationReason {
 		return v.CancellationReason
 	}).(PortalConfigurationFeaturesSubscriptionCancelCancellationReasonPtrOutput)
 }
 
-// Bool. Whether the feature is enabled.
+// Whether the feature is enabled.
 func (o PortalConfigurationFeaturesSubscriptionCancelOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesSubscriptionCancel) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// String. Whether to cancel subscriptions immediately or at the end of the billing period. Valid value is either `immediately` or `atPeriodEnd`
+// Whether to cancel subscriptions immediately or at the end of the billing period.
 func (o PortalConfigurationFeaturesSubscriptionCancelOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesSubscriptionCancel) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-// String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `createProrations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+// Whether to create prorations when canceling subscriptions.
 func (o PortalConfigurationFeaturesSubscriptionCancelOutput) ProrationBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesSubscriptionCancel) *string { return v.ProrationBehavior }).(pulumi.StringPtrOutput)
 }
@@ -1371,7 +1356,7 @@ func (o PortalConfigurationFeaturesSubscriptionCancelPtrOutput) Elem() PortalCon
 	}).(PortalConfigurationFeaturesSubscriptionCancelOutput)
 }
 
-// List(Resource). Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer. Details of this field is in Cancellation Reason.
+// Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer
 func (o PortalConfigurationFeaturesSubscriptionCancelPtrOutput) CancellationReason() PortalConfigurationFeaturesSubscriptionCancelCancellationReasonPtrOutput {
 	return o.ApplyT(func(v *PortalConfigurationFeaturesSubscriptionCancel) *PortalConfigurationFeaturesSubscriptionCancelCancellationReason {
 		if v == nil {
@@ -1381,7 +1366,7 @@ func (o PortalConfigurationFeaturesSubscriptionCancelPtrOutput) CancellationReas
 	}).(PortalConfigurationFeaturesSubscriptionCancelCancellationReasonPtrOutput)
 }
 
-// Bool. Whether the feature is enabled.
+// Whether the feature is enabled.
 func (o PortalConfigurationFeaturesSubscriptionCancelPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PortalConfigurationFeaturesSubscriptionCancel) *bool {
 		if v == nil {
@@ -1391,7 +1376,7 @@ func (o PortalConfigurationFeaturesSubscriptionCancelPtrOutput) Enabled() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
-// String. Whether to cancel subscriptions immediately or at the end of the billing period. Valid value is either `immediately` or `atPeriodEnd`
+// Whether to cancel subscriptions immediately or at the end of the billing period.
 func (o PortalConfigurationFeaturesSubscriptionCancelPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PortalConfigurationFeaturesSubscriptionCancel) *string {
 		if v == nil {
@@ -1401,7 +1386,7 @@ func (o PortalConfigurationFeaturesSubscriptionCancelPtrOutput) Mode() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `createProrations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+// Whether to create prorations when canceling subscriptions.
 func (o PortalConfigurationFeaturesSubscriptionCancelPtrOutput) ProrationBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PortalConfigurationFeaturesSubscriptionCancel) *string {
 		if v == nil {
@@ -1568,7 +1553,7 @@ func (o PortalConfigurationFeaturesSubscriptionCancelCancellationReasonPtrOutput
 }
 
 type PortalConfigurationFeaturesSubscriptionPause struct {
-	// Bool. Whether the feature is enabled.
+	// Whether the feature is enabled.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -1584,7 +1569,7 @@ type PortalConfigurationFeaturesSubscriptionPauseInput interface {
 }
 
 type PortalConfigurationFeaturesSubscriptionPauseArgs struct {
-	// Bool. Whether the feature is enabled.
+	// Whether the feature is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -1639,7 +1624,7 @@ func (o PortalConfigurationFeaturesSubscriptionPauseOutput) ToPortalConfiguratio
 	return o
 }
 
-// Bool. Whether the feature is enabled.
+// Whether the feature is enabled.
 func (o PortalConfigurationFeaturesSubscriptionPauseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesSubscriptionPause) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1665,13 +1650,13 @@ func (o PortalConfigurationFeaturesSubscriptionPauseArrayOutput) Index(i pulumi.
 }
 
 type PortalConfigurationFeaturesSubscriptionUpdate struct {
-	// List(String). The types of subscription updates that are supported. When empty, subscriptions are not updatable. Supported values are `price`, `quantity`, and `promotionCode`.
+	// The types of subscription updates that are supported. When empty, subscriptions are not updateable.
 	DefaultAllowedUpdates []string `pulumi:"defaultAllowedUpdates"`
-	// Bool. Whether the feature is enabled.
+	// Whether the feature is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// List(Resource). The list of products that support subscription updates. See details Products.
+	// The list of products that support subscription updates.
 	Products []PortalConfigurationFeaturesSubscriptionUpdateProduct `pulumi:"products"`
-	// String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `createProrations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+	// Determines how to handle prorations resulting from subscription updates
 	ProrationBehavior *string `pulumi:"prorationBehavior"`
 }
 
@@ -1687,13 +1672,13 @@ type PortalConfigurationFeaturesSubscriptionUpdateInput interface {
 }
 
 type PortalConfigurationFeaturesSubscriptionUpdateArgs struct {
-	// List(String). The types of subscription updates that are supported. When empty, subscriptions are not updatable. Supported values are `price`, `quantity`, and `promotionCode`.
+	// The types of subscription updates that are supported. When empty, subscriptions are not updateable.
 	DefaultAllowedUpdates pulumi.StringArrayInput `pulumi:"defaultAllowedUpdates"`
-	// Bool. Whether the feature is enabled.
+	// Whether the feature is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// List(Resource). The list of products that support subscription updates. See details Products.
+	// The list of products that support subscription updates.
 	Products PortalConfigurationFeaturesSubscriptionUpdateProductArrayInput `pulumi:"products"`
-	// String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `createProrations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+	// Determines how to handle prorations resulting from subscription updates
 	ProrationBehavior pulumi.StringPtrInput `pulumi:"prorationBehavior"`
 }
 
@@ -1748,24 +1733,24 @@ func (o PortalConfigurationFeaturesSubscriptionUpdateOutput) ToPortalConfigurati
 	return o
 }
 
-// List(String). The types of subscription updates that are supported. When empty, subscriptions are not updatable. Supported values are `price`, `quantity`, and `promotionCode`.
+// The types of subscription updates that are supported. When empty, subscriptions are not updateable.
 func (o PortalConfigurationFeaturesSubscriptionUpdateOutput) DefaultAllowedUpdates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesSubscriptionUpdate) []string { return v.DefaultAllowedUpdates }).(pulumi.StringArrayOutput)
 }
 
-// Bool. Whether the feature is enabled.
+// Whether the feature is enabled.
 func (o PortalConfigurationFeaturesSubscriptionUpdateOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesSubscriptionUpdate) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// List(Resource). The list of products that support subscription updates. See details Products.
+// The list of products that support subscription updates.
 func (o PortalConfigurationFeaturesSubscriptionUpdateOutput) Products() PortalConfigurationFeaturesSubscriptionUpdateProductArrayOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesSubscriptionUpdate) []PortalConfigurationFeaturesSubscriptionUpdateProduct {
 		return v.Products
 	}).(PortalConfigurationFeaturesSubscriptionUpdateProductArrayOutput)
 }
 
-// String. Whether to create prorations when canceling subscriptions. Possible values are `none` and `createProrations`, which is only compatible with `mode=immediately`. No prorations are generated when canceling a subscription at the end of its natural billing period.
+// Determines how to handle prorations resulting from subscription updates
 func (o PortalConfigurationFeaturesSubscriptionUpdateOutput) ProrationBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PortalConfigurationFeaturesSubscriptionUpdate) *string { return v.ProrationBehavior }).(pulumi.StringPtrOutput)
 }
@@ -3372,9 +3357,9 @@ func (o ShippingRateDeliveryEstimateArrayOutput) Index(i pulumi.IntInput) Shippi
 }
 
 type ShippingRateDeliveryEstimateMaximum struct {
-	// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+	// The upper bound of the estimated range. If empty, represents no lower bound.
 	Unit string `pulumi:"unit"`
-	// Int. Must be greater than 0.
+	// Must be greater than 0.
 	Value int `pulumi:"value"`
 }
 
@@ -3390,9 +3375,9 @@ type ShippingRateDeliveryEstimateMaximumInput interface {
 }
 
 type ShippingRateDeliveryEstimateMaximumArgs struct {
-	// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+	// The upper bound of the estimated range. If empty, represents no lower bound.
 	Unit pulumi.StringInput `pulumi:"unit"`
-	// Int. Must be greater than 0.
+	// Must be greater than 0.
 	Value pulumi.IntInput `pulumi:"value"`
 }
 
@@ -3473,12 +3458,12 @@ func (o ShippingRateDeliveryEstimateMaximumOutput) ToShippingRateDeliveryEstimat
 	}).(ShippingRateDeliveryEstimateMaximumPtrOutput)
 }
 
-// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+// The upper bound of the estimated range. If empty, represents no lower bound.
 func (o ShippingRateDeliveryEstimateMaximumOutput) Unit() pulumi.StringOutput {
 	return o.ApplyT(func(v ShippingRateDeliveryEstimateMaximum) string { return v.Unit }).(pulumi.StringOutput)
 }
 
-// Int. Must be greater than 0.
+// Must be greater than 0.
 func (o ShippingRateDeliveryEstimateMaximumOutput) Value() pulumi.IntOutput {
 	return o.ApplyT(func(v ShippingRateDeliveryEstimateMaximum) int { return v.Value }).(pulumi.IntOutput)
 }
@@ -3507,7 +3492,7 @@ func (o ShippingRateDeliveryEstimateMaximumPtrOutput) Elem() ShippingRateDeliver
 	}).(ShippingRateDeliveryEstimateMaximumOutput)
 }
 
-// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+// The upper bound of the estimated range. If empty, represents no lower bound.
 func (o ShippingRateDeliveryEstimateMaximumPtrOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ShippingRateDeliveryEstimateMaximum) *string {
 		if v == nil {
@@ -3517,7 +3502,7 @@ func (o ShippingRateDeliveryEstimateMaximumPtrOutput) Unit() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Int. Must be greater than 0.
+// Must be greater than 0.
 func (o ShippingRateDeliveryEstimateMaximumPtrOutput) Value() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ShippingRateDeliveryEstimateMaximum) *int {
 		if v == nil {
@@ -3528,9 +3513,9 @@ func (o ShippingRateDeliveryEstimateMaximumPtrOutput) Value() pulumi.IntPtrOutpu
 }
 
 type ShippingRateDeliveryEstimateMinimum struct {
-	// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+	// The lower bound of the estimated range. If empty, represents no lower bound.
 	Unit string `pulumi:"unit"`
-	// Int. Must be greater than 0.
+	// Must be greater than 0.
 	Value int `pulumi:"value"`
 }
 
@@ -3546,9 +3531,9 @@ type ShippingRateDeliveryEstimateMinimumInput interface {
 }
 
 type ShippingRateDeliveryEstimateMinimumArgs struct {
-	// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+	// The lower bound of the estimated range. If empty, represents no lower bound.
 	Unit pulumi.StringInput `pulumi:"unit"`
-	// Int. Must be greater than 0.
+	// Must be greater than 0.
 	Value pulumi.IntInput `pulumi:"value"`
 }
 
@@ -3629,12 +3614,12 @@ func (o ShippingRateDeliveryEstimateMinimumOutput) ToShippingRateDeliveryEstimat
 	}).(ShippingRateDeliveryEstimateMinimumPtrOutput)
 }
 
-// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+// The lower bound of the estimated range. If empty, represents no lower bound.
 func (o ShippingRateDeliveryEstimateMinimumOutput) Unit() pulumi.StringOutput {
 	return o.ApplyT(func(v ShippingRateDeliveryEstimateMinimum) string { return v.Unit }).(pulumi.StringOutput)
 }
 
-// Int. Must be greater than 0.
+// Must be greater than 0.
 func (o ShippingRateDeliveryEstimateMinimumOutput) Value() pulumi.IntOutput {
 	return o.ApplyT(func(v ShippingRateDeliveryEstimateMinimum) int { return v.Value }).(pulumi.IntOutput)
 }
@@ -3663,7 +3648,7 @@ func (o ShippingRateDeliveryEstimateMinimumPtrOutput) Elem() ShippingRateDeliver
 	}).(ShippingRateDeliveryEstimateMinimumOutput)
 }
 
-// String. A unit of time. Possible values `hour`, `day`, `businessDay`, `week` and `month`.
+// The lower bound of the estimated range. If empty, represents no lower bound.
 func (o ShippingRateDeliveryEstimateMinimumPtrOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ShippingRateDeliveryEstimateMinimum) *string {
 		if v == nil {
@@ -3673,7 +3658,7 @@ func (o ShippingRateDeliveryEstimateMinimumPtrOutput) Unit() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Int. Must be greater than 0.
+// Must be greater than 0.
 func (o ShippingRateDeliveryEstimateMinimumPtrOutput) Value() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ShippingRateDeliveryEstimateMinimum) *int {
 		if v == nil {

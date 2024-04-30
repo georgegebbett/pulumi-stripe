@@ -25,7 +25,7 @@ namespace Pulumi.Stripe.Inputs
         public Input<bool>? Expired { get; set; }
 
         /// <summary>
-        /// Int. The link isn’t available after this future timestamp.
+        /// Int. Time that the link expires.
         /// </summary>
         [Input("expiresAt")]
         public Input<int>? ExpiresAt { get; set; }
@@ -47,8 +47,7 @@ namespace Pulumi.Stripe.Inputs
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// Map(String). Set of key-value pairs that you can attach to an object. 
-        /// This can be useful for storing additional information about the object in a structured format.
+        /// Map(String). Set of key-value pairs that you can attach to an object.
         /// </summary>
         public InputMap<string> Metadata
         {

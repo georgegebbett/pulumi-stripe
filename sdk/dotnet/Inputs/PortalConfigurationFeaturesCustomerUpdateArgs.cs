@@ -16,7 +16,7 @@ namespace Pulumi.Stripe.Inputs
         private InputList<string>? _allowedUpdates;
 
         /// <summary>
-        /// List(String). The types of customer updates that are supported [`name`, `email`, `address`, `shipping`, `phone`, `tax_id`]. When empty, customers are not updatable.
+        /// The types of customer updates that are supported. When empty, customers are not updatable.
         /// </summary>
         public InputList<string> AllowedUpdates
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Stripe.Inputs
         }
 
         /// <summary>
-        /// Bool. Whether the feature is enabled.
+        /// Whether the feature is enabled.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
