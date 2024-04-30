@@ -14,7 +14,7 @@ namespace Pulumi.Stripe.Outputs
     public sealed class PortalConfigurationFeaturesSubscriptionPause
     {
         /// <summary>
-        /// Bool. Whether the feature is enabled.
+        /// Whether the feature is enabled.
         /// </summary>
         public readonly bool? Enabled;
 

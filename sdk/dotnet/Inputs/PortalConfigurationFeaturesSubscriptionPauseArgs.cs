@@ -13,7 +13,7 @@ namespace Pulumi.Stripe.Inputs
     public sealed class PortalConfigurationFeaturesSubscriptionPauseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bool. Whether the feature is enabled.
+        /// Whether the feature is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

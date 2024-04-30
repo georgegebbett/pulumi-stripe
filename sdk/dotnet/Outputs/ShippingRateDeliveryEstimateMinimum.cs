@@ -14,11 +14,11 @@ namespace Pulumi.Stripe.Outputs
     public sealed class ShippingRateDeliveryEstimateMinimum
     {
         /// <summary>
-        /// String. A unit of time. Possible values `hour`, `day`, `business_day`, `week` and `month`.
+        /// The lower bound of the estimated range. If empty, represents no lower bound.
         /// </summary>
         public readonly string Unit;
         /// <summary>
-        /// Int. Must be greater than 0.
+        /// Must be greater than 0.
         /// </summary>
         public readonly int Value;
 

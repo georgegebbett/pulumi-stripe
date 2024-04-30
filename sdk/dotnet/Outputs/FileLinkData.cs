@@ -14,18 +14,15 @@ namespace Pulumi.Stripe.Outputs
     public sealed class FileLinkData
     {
         /// <summary>
-        /// Bool. Set this to `true` to create a file link for the newly created file. 
-        /// Creating a link is only possible when the file’s purpose is one of the following: `business_icon`, `business_logo`,
-        /// `customer_signature`, `dispute_evidence`, `pci_document`, `tax_document_user_upload`, or `terminal_reader_splashscreen`.
+        /// Set this to true to create a file link for the newly created file. Creating a link is only possible when the file’s purpose is one of the following: business_icon, business_logo, customer_signature, dispute_evidence, pci_document, tax_document_user_upload, or terminal_reader_splashscreen.
         /// </summary>
         public readonly bool Create;
         /// <summary>
-        /// Int. The link isn’t available after this future timestamp.
+        /// Int. Time that the link expires.
         /// </summary>
         public readonly int? ExpiresAt;
         /// <summary>
-        /// Map(String). Set of key-value pairs that you can attach to an object. 
-        /// This can be useful for storing additional information about the object in a structured format.
+        /// Map(String). Set of key-value pairs that you can attach to an object.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Metadata;
 
