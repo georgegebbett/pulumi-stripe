@@ -32,6 +32,7 @@ env:
   PUBLISH_PYPI: true
   PROVIDER: stripe
   DOTNETVERSION: 8.0.x
+  PULUMI_CONVERT: "0"  # Skip example conversion that's causing tfgen to fail
 jobs:
   prerequisites:
     name: prerequisites
