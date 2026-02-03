@@ -105,6 +105,6 @@ jobs:
           fi
 
           upgrade-provider "${{ github.repository }}" \
-            --kind=provider \
+            --kind=all \
             --target-version="${{ steps.version.outputs.target }}" \
             $MAJOR_FLAG
