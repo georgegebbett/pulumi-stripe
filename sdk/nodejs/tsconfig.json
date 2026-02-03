@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "bin",
-        "target": "es2016",
+        "target": "ES2020",
         "module": "commonjs",
         "moduleResolution": "node",
         "declaration": true,
@@ -18,11 +18,14 @@
         "config/vars.ts",
         "coupon.ts",
         "customer.ts",
+        "entitlementsFeature.ts",
         "file.ts",
         "index.ts",
+        "meter.ts",
         "portalConfiguration.ts",
         "price.ts",
         "product.ts",
+        "productFeature.ts",
         "promotionCode.ts",
         "provider.ts",
         "shippingRate.ts",
