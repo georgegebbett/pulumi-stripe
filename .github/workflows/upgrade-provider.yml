@@ -95,6 +95,8 @@ jobs:
       - name: Run upgrade-provider
         if: steps.check.outputs.skip != 'true'
         run: |
+          export PATH="$(go env GOPATH)/bin:$PATH"
+
           MAJOR_FLAG=""
           if [ "${{ steps.current.outputs.is_major }}" = "true" ]; then
             MAJOR_FLAG="--major"
