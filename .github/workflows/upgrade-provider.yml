@@ -44,7 +44,7 @@ jobs:
         uses: pulumi/actions@v5
 
       - name: Install upgrade-provider
-        run: go install github.com/pulumi/upgrade-provider@main
+        run: go install github.com/pulumi/upgrade-provider@160d4b6
 
       - name: Configure git
         run: |
