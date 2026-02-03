@@ -1,20 +1,33 @@
 name: Upgrade provider
 on:
-  issues:
-    types:
-      - opened
   schedule:
-    - cron: '0 5 * * *'
+    - cron: '0 5 * * 1'  # Weekly on Mondays at 5 AM UTC
   workflow_dispatch:
-permissions: write-all
+    inputs:
+      version:
+        description: 'Upstream provider version to upgrade to (without v prefix, e.g. 3.4.1). Leave empty to auto-detect latest.'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
 
 env:
-  GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
-  GH_TOKEN: ${{ secrets.BOT_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   upgrade_provider:
     name: upgrade-provider
     runs-on: ubuntu-latest
     steps:
       - name: Call upgrade provider action
-        uses: pulumi/pulumi-upgrade-provider-action@main
+        uses: pulumi/pulumi-upgrade-provider-action@v0.0.17
+        with:
+          kind: provider
+          email: "github-actions[bot]@users.noreply.github.com"
+          username: "github-actions[bot]"
+          automerge: false
+          target-version: ${{ inputs.version }}
+          go-version-file: provider/go.mod
