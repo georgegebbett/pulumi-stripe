@@ -48,8 +48,9 @@ jobs:
 
       - name: Install upgrade-provider
         run: |
+          export GOBIN=/home/runner/go/bin
           go install github.com/pulumi/upgrade-provider@main
-          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+          echo "/home/runner/go/bin" >> $GITHUB_PATH
 
       - name: Configure git
         run: |
