@@ -22,7 +22,7 @@ builds:
       - -X github.com/georgegebbett/pulumi-stripe/provider/pkg/version.Version={{.Tag }}
     main: ./cmd/pulumi-resource-stripe/
 changelog:
-  skip: true
+  disable: true
 release:
   disable: false
   prerelease: auto
