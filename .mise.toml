@@ -1,0 +1,4 @@
+[tools]
+go = "1.22"
+node = "20"
+python = "3.11"

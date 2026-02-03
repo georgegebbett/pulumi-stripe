@@ -43,8 +43,11 @@ jobs:
       - name: Install Pulumi CLI
         uses: pulumi/actions@v5
 
+      - name: Install mise
+        uses: jdx/mise-action@v2
+
       - name: Install upgrade-provider
-        run: go install github.com/pulumi/upgrade-provider@160d4b6
+        run: go install github.com/pulumi/upgrade-provider@main
 
       - name: Configure git
         run: |
