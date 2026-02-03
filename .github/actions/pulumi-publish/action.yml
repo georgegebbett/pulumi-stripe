@@ -34,7 +34,12 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ env.NODEVERSION }}
-        registry-url: https://registry.npmjs.org
+        # Note: Don't set registry-url - it creates .npmrc expecting NODE_AUTH_TOKEN
+        # OIDC trusted publishing handles auth automatically with --provenance
+    - name: Upgrade npm for trusted publishing
+      if: inputs.sdk == 'nodejs' || inputs.sdk == 'all'
+      run: npm install -g npm@latest
+      shell: bash
     - name: Download nodejs SDK
       id: download
       if: inputs.sdk == 'nodejs' || inputs.sdk == 'all'
