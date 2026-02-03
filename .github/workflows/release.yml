@@ -31,34 +31,35 @@ env:
   PYPI_REPOSITORY_URL: ""
   PUBLISH_PYPI: true
   PROVIDER: stripe
+  DOTNETVERSION: 8.0.x
 jobs:
   prerequisites:
     name: prerequisites
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
       - name: Checkout Scripts Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: ci-scripts
           repository: pulumi/scripts
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
       - name: Install Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
           go-version: ${{matrix.goversion}}
           cache-dependency-path: |
             sdk/go.sum
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.5.0
+        uses: jaxxstorm/action-install-gh-release@v1
         with:
           repo: pulumi/pulumictl
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{matrix.nodeversion}}
           registry-url: https://registry.npmjs.org
@@ -66,7 +67,7 @@ jobs:
         uses: pulumi/action-install-pulumi-cli@v2
       - if: github.event_name == 'pull_request'
         name: Install Schema Tools
-        uses: jaxxstorm/action-install-gh-release@v1.5.0
+        uses: jaxxstorm/action-install-gh-release@v1
         with:
           repo: mikhailshilkov/schema-tools
       - name: Clear GitHub Actions Ubuntu runner disk space
@@ -87,7 +88,7 @@ jobs:
           github.workspace }}/bin/ pulumi-resource-${{ env.PROVIDER }}
           pulumi-tfgen-${{ env.PROVIDER }}
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PROVIDER }}-provider.tar.gz
           path: ${{ github.workspace }}/bin/provider.tar.gz
@@ -95,82 +96,82 @@ jobs:
       fail-fast: true
       matrix:
         goversion:
-          - 1.21.x
+          - 1.22.x
         nodeversion:
-          - 16.x
+          - 20.x
         pythonversion:
-          - "3.9"
+          - "3.11"
   publish_binary:
     name: publish
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
       - name: Install Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v5
         with:
           go-version: ${{matrix.goversion}}
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.5.0
+        uses: jaxxstorm/action-install-gh-release@v1
         with:
           repo: pulumi/pulumictl
       - name: Set PreRelease Version
         run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v2
+        uses: goreleaser/goreleaser-action@v6
         with:
-          args: -p 3 release --rm-dist
+          args: -p 3 release --clean
           version: latest
     strategy:
       fail-fast: true
       matrix:
         goversion:
-          - 1.21.x
+          - 1.22.x
   build_sdk:
     name: build_sdk
     runs-on: ubuntu-latest
     needs: prerequisites
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
       - name: Checkout Scripts Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: ci-scripts
           repository: pulumi/scripts
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
       - name: Install Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
           go-version: ${{matrix.goversion}}
           cache-dependency-path: |
             sdk/go.sum
       - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.5.0
+        uses: jaxxstorm/action-install-gh-release@v1
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
         uses: pulumi/action-install-pulumi-cli@v2
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{matrix.nodeversion}}
           registry-url: https://registry.npmjs.org
       - name: Setup DotNet
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNETVERSION }}
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: ${{matrix.pythonversion}}
       - name: Download provider + tfgen binaries
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: ${{ env.PROVIDER }}-provider.tar.gz
           path: ${{ github.workspace }}/bin
@@ -194,7 +195,7 @@ jobs:
       - name: Compress SDK folder
         run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }} .
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.language  }}-sdk.tar.gz
           path: ${{ github.workspace}}/sdk/${{ matrix.language }}.tar.gz
@@ -202,16 +203,16 @@ jobs:
       fail-fast: true
       matrix:
         goversion:
-          - 1.21.x
+          - 1.22.x
         language:
           - nodejs
           - python
           - dotnet
           - go
         nodeversion:
-          - 16.x
+          - 20.x
         pythonversion:
-          - "3.9"
+          - "3.11"
 
   publish_sdk:
     name: Publish SDKs
@@ -220,7 +221,7 @@ jobs:
       - publish_binary
       - build_sdk
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Create directory for untarring
         run: mkdir -p ${{ github.workspace }}/sdk/${{ matrix.language }}
       - name: Publish SDKs
@@ -233,13 +234,13 @@ jobs:
         dotnetversion:
           - 3.1.301
         goversion:
-          - 1.21.x
+          - 1.22.x
         language:
           - nodejs
           - python
           - dotnet
           - go
         nodeversion:
-          - 16.x
+          - 20.x
         pythonversion:
-          - "3.9"
+          - "3.11"
