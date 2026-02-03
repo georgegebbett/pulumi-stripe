@@ -53,12 +53,6 @@ runs:
       run: tar -zxf ${{ github.workspace }}/sdk/nodejs.tar.gz -C
         ${{ github.workspace }}/sdk/nodejs
       shell: bash
-    - name: Run npm whoami
-      if: inputs.sdk == 'nodejs' || inputs.sdk == 'all'
-      run: npm whoami
-      shell: bash
-      env:
-        NODE_AUTH_TOKEN: ${{ env.NODE_AUTH_TOKEN }}
     - name: Add Node scripts.sh
       # TODO: https://github.com/pulumi/pulumi/issues/13195 Move this hotfix to the Pulumi CLI.
       if: inputs.sdk == 'nodejs' || inputs.sdk == 'all'
@@ -90,10 +84,9 @@ runs:
       shell: bash
     - name: Publish Node
       if: inputs.sdk == 'nodejs' || inputs.sdk == 'all'
-      run: pulumi package publish-sdk nodejs --path ${{ github.workspace }}/sdk/nodejs/bin
+      run: npm publish --provenance --access public
       shell: bash
-      env:
-        NODE_AUTH_TOKEN: ${{ env.NODE_AUTH_TOKEN }}
+      working-directory: ${{ github.workspace }}/sdk/nodejs/bin
     - name: Setup DotNet
       if: inputs.sdk == 'dotnet' || inputs.sdk == 'all'
       uses: actions/setup-dotnet@v4

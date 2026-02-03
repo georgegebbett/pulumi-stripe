@@ -5,6 +5,7 @@ on:
       - v*.*.*
 permissions:
   contents: write
+  id-token: write
 env:
   # THIS GITHUB_TOKEN IS A REQUIREMENT TO BE ABLE TO WRITE TO GH RELEASES
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
