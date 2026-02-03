@@ -16,6 +16,7 @@ permissions:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  PULUMI_CONVERT: "0"  # Skip example conversion that's causing tfgen to fail
 
 jobs:
   upgrade_provider:
