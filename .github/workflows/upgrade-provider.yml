@@ -107,4 +107,5 @@ jobs:
           upgrade-provider "${{ github.repository }}" \
             --kind=all \
             --target-version="${{ steps.version.outputs.target }}" \
+            --allow-missing-docs=true \
             $MAJOR_FLAG
