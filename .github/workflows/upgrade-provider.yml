@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Upstream provider version to upgrade to (without v prefix, e.g. 3.4.1). Leave empty to auto-detect latest.'
+        description: 'Upstream provider version (without v prefix, e.g. 3.4.1). Leave empty for latest.'
         required: false
         type: string
 
@@ -22,12 +22,83 @@ jobs:
     name: upgrade-provider
     runs-on: ubuntu-latest
     steps:
-      - name: Call upgrade provider action
-        uses: pulumi/pulumi-upgrade-provider-action@v0.0.17
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          kind: provider
-          email: "github-actions[bot]@users.noreply.github.com"
-          username: "github-actions[bot]"
-          automerge: false
-          target-version: ${{ inputs.version }}
+          fetch-depth: 0
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
           go-version-file: provider/go.mod
+          cache-dependency-path: provider/go.sum
+
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1
+        with:
+          repo: pulumi/pulumictl
+          tag: v0.0.46
+          cache: enable
+
+      - name: Install Pulumi CLI
+        uses: pulumi/actions@v5
+
+      - name: Install upgrade-provider
+        run: go install github.com/pulumi/upgrade-provider@main
+
+      - name: Configure git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Get target version
+        id: version
+        run: |
+          if [ -n "${{ inputs.version }}" ]; then
+            echo "target=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
+          else
+            LATEST=$(gh api repos/lukasaron/terraform-provider-stripe/releases/latest --jq '.tag_name' | sed 's/^v//')
+            echo "target=$LATEST" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Get current version
+        id: current
+        run: |
+          CURRENT=$(grep 'github.com/lukasaron/terraform-provider-stripe' provider/go.mod | awk '{print $2}' | sed 's/^v//')
+          echo "version=$CURRENT" >> "$GITHUB_OUTPUT"
+
+          # Extract major versions
+          CURRENT_MAJOR=$(echo "$CURRENT" | cut -d. -f1)
+          TARGET_MAJOR=$(echo "${{ steps.version.outputs.target }}" | cut -d. -f1)
+
+          if [ "$CURRENT_MAJOR" != "$TARGET_MAJOR" ]; then
+            echo "is_major=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_major=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check if upgrade needed
+        id: check
+        run: |
+          if [ "${{ steps.version.outputs.target }}" = "${{ steps.current.outputs.version }}" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Already at version ${{ steps.current.outputs.version }}"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            echo "Will upgrade from ${{ steps.current.outputs.version }} to ${{ steps.version.outputs.target }}"
+            echo "Major version change: ${{ steps.current.outputs.is_major }}"
+          fi
+
+      - name: Run upgrade-provider
+        if: steps.check.outputs.skip != 'true'
+        run: |
+          MAJOR_FLAG=""
+          if [ "${{ steps.current.outputs.is_major }}" = "true" ]; then
+            MAJOR_FLAG="--major"
+            echo "Including --major flag for major version upgrade"
+          fi
+
+          upgrade-provider "${{ github.repository }}" \
+            --kind=provider \
+            --target-version="${{ steps.version.outputs.target }}" \
+            $MAJOR_FLAG
