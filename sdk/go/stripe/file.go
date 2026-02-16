@@ -81,7 +81,8 @@ import (
 type File struct {
 	pulumi.CustomResourceState
 
-	// A content file to upload encoded by base64.
+	// String. A content file to upload encoded by Base64,
+	// ideally use Terraform function filebase64 .
 	Base64content pulumi.StringOutput `pulumi:"base64content"`
 	// String. Time at which the object was created. Measured in seconds since the Unix epoch.
 	Created pulumi.IntOutput `pulumi:"created"`
@@ -148,7 +149,8 @@ func GetFile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering File resources.
 type fileState struct {
-	// A content file to upload encoded by base64.
+	// String. A content file to upload encoded by Base64,
+	// ideally use Terraform function filebase64 .
 	Base64content *string `pulumi:"base64content"`
 	// String. Time at which the object was created. Measured in seconds since the Unix epoch.
 	Created *int `pulumi:"created"`
@@ -177,7 +179,8 @@ type fileState struct {
 }
 
 type FileState struct {
-	// A content file to upload encoded by base64.
+	// String. A content file to upload encoded by Base64,
+	// ideally use Terraform function filebase64 .
 	Base64content pulumi.StringPtrInput
 	// String. Time at which the object was created. Measured in seconds since the Unix epoch.
 	Created pulumi.IntPtrInput
@@ -210,7 +213,8 @@ func (FileState) ElementType() reflect.Type {
 }
 
 type fileArgs struct {
-	// A content file to upload encoded by base64.
+	// String. A content file to upload encoded by Base64,
+	// ideally use Terraform function filebase64 .
 	Base64content string `pulumi:"base64content"`
 	// String. The suitable name for saving the file to a filesystem.
 	Filename string `pulumi:"filename"`
@@ -225,7 +229,8 @@ type fileArgs struct {
 
 // The set of arguments for constructing a File resource.
 type FileArgs struct {
-	// A content file to upload encoded by base64.
+	// String. A content file to upload encoded by Base64,
+	// ideally use Terraform function filebase64 .
 	Base64content pulumi.StringInput
 	// String. The suitable name for saving the file to a filesystem.
 	Filename pulumi.StringInput
@@ -325,7 +330,8 @@ func (o FileOutput) ToFileOutputWithContext(ctx context.Context) FileOutput {
 	return o
 }
 
-// A content file to upload encoded by base64.
+// String. A content file to upload encoded by Base64,
+// ideally use Terraform function filebase64 .
 func (o FileOutput) Base64content() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.Base64content }).(pulumi.StringOutput)
 }

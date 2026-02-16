@@ -69,7 +69,8 @@ namespace Pulumi.Stripe
     public partial class File : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A content file to upload encoded by base64.
+        /// String. A content file to upload encoded by Base64, 
+        /// ideally use Terraform function filebase64 .
         /// </summary>
         [Output("base64content")]
         public Output<string> Base64content { get; private set; } = null!;
@@ -186,7 +187,8 @@ namespace Pulumi.Stripe
     public sealed class FileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A content file to upload encoded by base64.
+        /// String. A content file to upload encoded by Base64, 
+        /// ideally use Terraform function filebase64 .
         /// </summary>
         [Input("base64content", required: true)]
         public Input<string> Base64content { get; set; } = null!;
@@ -221,7 +223,8 @@ namespace Pulumi.Stripe
     public sealed class FileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A content file to upload encoded by base64.
+        /// String. A content file to upload encoded by Base64, 
+        /// ideally use Terraform function filebase64 .
         /// </summary>
         [Input("base64content")]
         public Input<string>? Base64content { get; set; }

@@ -27,7 +27,8 @@ class FileArgs:
                  link_data: Optional[pulumi.Input['FileLinkDataArgs']] = None):
         """
         The set of arguments for constructing a File resource.
-        :param pulumi.Input[_builtins.str] base64content: A content file to upload encoded by base64.
+        :param pulumi.Input[_builtins.str] base64content: String. A content file to upload encoded by Base64, 
+               ideally use Terraform function filebase64 .
         :param pulumi.Input[_builtins.str] filename: String. The suitable name for saving the file to a filesystem.
         :param pulumi.Input[_builtins.str] purpose: String. The purpose of the uploaded file. One of these values are accepted: `account_requirement`,
                `additional_verification`, `business_icon`, `business_logo`, `customer_signature`, `dispute_evidence`,
@@ -45,7 +46,8 @@ class FileArgs:
     @pulumi.getter
     def base64content(self) -> pulumi.Input[_builtins.str]:
         """
-        A content file to upload encoded by base64.
+        String. A content file to upload encoded by Base64, 
+        ideally use Terraform function filebase64 .
         """
         return pulumi.get(self, "base64content")
 
@@ -109,7 +111,8 @@ class _FileState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering File resources.
-        :param pulumi.Input[_builtins.str] base64content: A content file to upload encoded by base64.
+        :param pulumi.Input[_builtins.str] base64content: String. A content file to upload encoded by Base64, 
+               ideally use Terraform function filebase64 .
         :param pulumi.Input[_builtins.int] created: String. Time at which the object was created. Measured in seconds since the Unix epoch.
         :param pulumi.Input[_builtins.int] expires_at: Int. Time that the link expires.
         :param pulumi.Input[_builtins.str] filename: String. The suitable name for saving the file to a filesystem.
@@ -152,7 +155,8 @@ class _FileState:
     @pulumi.getter
     def base64content(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A content file to upload encoded by base64.
+        String. A content file to upload encoded by Base64, 
+        ideally use Terraform function filebase64 .
         """
         return pulumi.get(self, "base64content")
 
@@ -335,7 +339,8 @@ class File(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] base64content: A content file to upload encoded by base64.
+        :param pulumi.Input[_builtins.str] base64content: String. A content file to upload encoded by Base64, 
+               ideally use Terraform function filebase64 .
         :param pulumi.Input[_builtins.str] filename: String. The suitable name for saving the file to a filesystem.
         :param pulumi.Input[Union['FileLinkDataArgs', 'FileLinkDataArgsDict']] link_data: Optional parameters that automatically create a file link for the newly created file.
         :param pulumi.Input[_builtins.str] purpose: String. The purpose of the uploaded file. One of these values are accepted: `account_requirement`,
@@ -459,7 +464,8 @@ class File(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] base64content: A content file to upload encoded by base64.
+        :param pulumi.Input[_builtins.str] base64content: String. A content file to upload encoded by Base64, 
+               ideally use Terraform function filebase64 .
         :param pulumi.Input[_builtins.int] created: String. Time at which the object was created. Measured in seconds since the Unix epoch.
         :param pulumi.Input[_builtins.int] expires_at: Int. Time that the link expires.
         :param pulumi.Input[_builtins.str] filename: String. The suitable name for saving the file to a filesystem.
@@ -496,7 +502,8 @@ class File(pulumi.CustomResource):
     @pulumi.getter
     def base64content(self) -> pulumi.Output[_builtins.str]:
         """
-        A content file to upload encoded by base64.
+        String. A content file to upload encoded by Base64, 
+        ideally use Terraform function filebase64 .
         """
         return pulumi.get(self, "base64content")
 
