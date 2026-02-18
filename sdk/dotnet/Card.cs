@@ -10,6 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Stripe
 {
     /// <summary>
+    /// With this resource, you can create a card - [Stripe API card documentation](https://stripe.com/docs/api/cards).
+    /// 
+    /// You can store multiple cards on a customer in order to charge the customer later. You can also store multiple debit
+    /// cards on a recipient in order to transfer to those cards later.
+    /// 
+    /// &gt; Passing your cardholder’s full credit card number to Stripe’s API isn't a recommended approach. In rare cases, you
+    /// may have to continue handling full credit card information directly. If this applies to you, you can enable unsafe
+    /// processing in your [dashboard](https://dashboard.stripe.com/settings/integration).
+    /// 
+    /// &gt; Using the stripe.Card resource may potentially leak credit card information into your Terraform State.
+    /// Please see these recommendations
+    /// on how to treat sensitive data in Terraform State.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

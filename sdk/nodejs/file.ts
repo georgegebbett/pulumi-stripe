@@ -74,7 +74,8 @@ export class File extends pulumi.CustomResource {
     }
 
     /**
-     * A content file to upload encoded by base64.
+     * String. A content file to upload encoded by Base64, 
+     * ideally use Terraform function filebase64 .
      */
     declare public readonly base64content: pulumi.Output<string>;
     /**
@@ -179,7 +180,8 @@ export class File extends pulumi.CustomResource {
  */
 export interface FileState {
     /**
-     * A content file to upload encoded by base64.
+     * String. A content file to upload encoded by Base64, 
+     * ideally use Terraform function filebase64 .
      */
     base64content?: pulumi.Input<string>;
     /**
@@ -233,7 +235,8 @@ export interface FileState {
  */
 export interface FileArgs {
     /**
-     * A content file to upload encoded by base64.
+     * String. A content file to upload encoded by Base64, 
+     * ideally use Terraform function filebase64 .
      */
     base64content: pulumi.Input<string>;
     /**
