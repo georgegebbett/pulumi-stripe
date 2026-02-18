@@ -1,0 +1,51 @@
+name: Regenerate SDKs
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+env:
+  PULUMI_CONVERT: "0"
+
+jobs:
+  regenerate:
+    name: regenerate-sdks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: provider/go.mod
+          cache-dependency-path: provider/go.sum
+
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1
+        with:
+          repo: pulumi/pulumictl
+          tag: v0.0.46
+          cache: enable
+
+      - name: Install Pulumi CLI
+        uses: pulumi/actions@v5
+
+      - name: Generate SDKs
+        run: make build_sdks
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push
+        run: |
+          git add sdk/
+          if git diff --cached --quiet; then
+            echo "No SDK changes to commit"
+          else
+            git commit -m "Regenerate SDKs"
+            git push
+          fi
