@@ -55,13 +55,15 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@v1
         with:
           repo: pulumi/pulumictl
+          tag: v0.0.46
+          cache: enable
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: ${{matrix.nodeversion}}
           registry-url: https://registry.npmjs.org
       - name: Install Pulumi CLI
-        uses: pulumi/action-install-pulumi-cli@v2
+        uses: pulumi/actions@v5
       - if: github.event_name == 'pull_request'
         name: Install Schema Tools
         uses: jaxxstorm/action-install-gh-release@v1
@@ -114,6 +116,8 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@v1
         with:
           repo: pulumi/pulumictl
+          tag: v0.0.46
+          cache: enable
       - name: Set PreRelease Version
         run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
       - name: Run GoReleaser
@@ -152,8 +156,10 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@v1
         with:
           repo: pulumi/pulumictl
+          tag: v0.0.46
+          cache: enable
       - name: Install Pulumi CLI
-        uses: pulumi/action-install-pulumi-cli@v2
+        uses: pulumi/actions@v5
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
