@@ -10,7 +10,7 @@
     <RepositoryUrl>https://github.com/georgegebbett/pulumi-stripe</RepositoryUrl>
     <PackageIcon>logo.png</PackageIcon>
 
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
@@ -31,11 +31,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="version.txt" />
-    <None Include="version.txt" Pack="True" PackagePath="content" />
   </ItemGroup>
 
   <ItemGroup>
