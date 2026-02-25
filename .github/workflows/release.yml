@@ -27,7 +27,7 @@ env:
   PYPI_REPOSITORY_URL: ""
   PUBLISH_PYPI: true
   PROVIDER: stripe
-  DOTNETVERSION: 8.0.x
+  DOTNETVERSION: 10.0.x
   PULUMI_CONVERT: "0"  # Skip example conversion that's causing tfgen to fail
 jobs:
   prerequisites:
@@ -235,7 +235,7 @@ jobs:
       fail-fast: true
       matrix:
         dotnetversion:
-          - 3.1.301
+          - 10.0.x
         goversion:
           - 1.22.x
         language:

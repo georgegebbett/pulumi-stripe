@@ -60,7 +60,7 @@ RUN apt-get remove dotnet* && \
     apt-get remove netstandard&
 
 RUN apt-get update && \
-    apt-get install dotnet-sdk-6.0 -y
+    apt-get install dotnet-sdk-10.0 -y
 
 # Install Pulumi
 RUN curl -fsSL https://get.pulumi.com | sh
