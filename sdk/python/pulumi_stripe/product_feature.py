@@ -23,6 +23,7 @@ class ProductFeatureArgs:
                  product: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ProductFeature resource.
+
         :param pulumi.Input[_builtins.str] entitlements_feature: String. The ID of the Entitlements Feature the product will be attached to
         :param pulumi.Input[_builtins.str] product: String. The ID of the product that this Entitlements Feature will be attached to.
         """
@@ -63,6 +64,7 @@ class _ProductFeatureState:
                  product: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProductFeature resources.
+
         :param pulumi.Input[_builtins.str] entitlements_feature: String. The ID of the Entitlements Feature the product will be attached to
         :param pulumi.Input[_builtins.bool] livemode: Bool. Has the value `true` if the object exists in live mode or the value `false`
                if the object exists in test mode.
@@ -162,6 +164,7 @@ class ProductFeature(pulumi.CustomResource):
         $ pulumi import stripe:index/productFeature:ProductFeature product_feature <product_feature_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] entitlements_feature: String. The ID of the Entitlements Feature the product will be attached to
@@ -197,6 +200,7 @@ class ProductFeature(pulumi.CustomResource):
         ```sh
         $ pulumi import stripe:index/productFeature:ProductFeature product_feature <product_feature_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProductFeatureArgs args: The arguments to use to populate this resource's properties.

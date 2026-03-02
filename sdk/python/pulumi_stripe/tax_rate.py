@@ -31,6 +31,7 @@ class TaxRateArgs:
                  tax_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TaxRate resource.
+
         :param pulumi.Input[_builtins.str] display_name: String. The display name of the tax rate, which will be shown to users.
         :param pulumi.Input[_builtins.bool] inclusive: Bool. This specifies if the tax rate is inclusive or exclusive.
                * `percentage ` - (Required) Float. This represents the tax rate percent out of 100.
@@ -201,6 +202,7 @@ class _TaxRateState:
                  tax_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TaxRate resources.
+
         :param pulumi.Input[_builtins.bool] active: Bool. Flag determining whether the tax rate is active or inactive (archived). Inactive tax rates cannot be used with new applications or Checkout Sessions, but will still work for subscriptions and invoices that already have it set.
         :param pulumi.Input[_builtins.str] country: String. Two-letter country code (ISO 3166-1 alpha-2).
         :param pulumi.Input[_builtins.int] created: Int. Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -450,6 +452,7 @@ class TaxRate(pulumi.CustomResource):
         $ pulumi import stripe:index/taxRate:TaxRate rate <tax_rate_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Bool. Flag determining whether the tax rate is active or inactive (archived). Inactive tax rates cannot be used with new applications or Checkout Sessions, but will still work for subscriptions and invoices that already have it set.
@@ -501,6 +504,7 @@ class TaxRate(pulumi.CustomResource):
         ```sh
         $ pulumi import stripe:index/taxRate:TaxRate rate <tax_rate_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TaxRateArgs args: The arguments to use to populate this resource's properties.

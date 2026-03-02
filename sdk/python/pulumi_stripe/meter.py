@@ -29,6 +29,7 @@ class MeterArgs:
                  value_settings: Optional[pulumi.Input['MeterValueSettingsArgs']] = None):
         """
         The set of arguments for constructing a Meter resource.
+
         :param pulumi.Input['MeterDefaultAggregationArgs'] default_aggregation: List(Resource). The default settings to aggregate a meter’s events with.
         :param pulumi.Input[_builtins.str] display_name: String. The display name of the meter.
         :param pulumi.Input[_builtins.str] event_name: String. The name of the meter event to record usage for. Corresponds with the `event_name` field on meter events.
@@ -130,6 +131,7 @@ class _MeterState:
                  value_settings: Optional[pulumi.Input['MeterValueSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering Meter resources.
+
         :param pulumi.Input['MeterCustomerMappingArgs'] customer_mapping: Lst(Resource). Fields that specify how to map a meter event to a customer.
         :param pulumi.Input['MeterDefaultAggregationArgs'] default_aggregation: List(Resource). The default settings to aggregate a meter’s events with.
         :param pulumi.Input[_builtins.str] display_name: String. The display name of the meter.
@@ -279,6 +281,7 @@ class Meter(pulumi.CustomResource):
         $ pulumi import stripe:index/meter:Meter meter <meter_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['MeterCustomerMappingArgs', 'MeterCustomerMappingArgsDict']] customer_mapping: Lst(Resource). Fields that specify how to map a meter event to a customer.
@@ -336,6 +339,7 @@ class Meter(pulumi.CustomResource):
         ```sh
         $ pulumi import stripe:index/meter:Meter meter <meter_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MeterArgs args: The arguments to use to populate this resource's properties.

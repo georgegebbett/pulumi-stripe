@@ -27,6 +27,7 @@ class FileArgs:
                  link_data: Optional[pulumi.Input['FileLinkDataArgs']] = None):
         """
         The set of arguments for constructing a File resource.
+
         :param pulumi.Input[_builtins.str] base64content: String. A content file to upload encoded by Base64, 
                ideally use Terraform function filebase64 .
         :param pulumi.Input[_builtins.str] filename: String. The suitable name for saving the file to a filesystem.
@@ -111,6 +112,7 @@ class _FileState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering File resources.
+
         :param pulumi.Input[_builtins.str] base64content: String. A content file to upload encoded by Base64, 
                ideally use Terraform function filebase64 .
         :param pulumi.Input[_builtins.int] created: String. Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -337,6 +339,7 @@ class File(pulumi.CustomResource):
         $ pulumi import stripe:index/file:File file <file_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] base64content: String. A content file to upload encoded by Base64, 
@@ -390,6 +393,7 @@ class File(pulumi.CustomResource):
         ```sh
         $ pulumi import stripe:index/file:File file <file_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FileArgs args: The arguments to use to populate this resource's properties.

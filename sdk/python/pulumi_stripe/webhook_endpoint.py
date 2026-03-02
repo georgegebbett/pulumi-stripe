@@ -28,6 +28,7 @@ class WebhookEndpointArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a WebhookEndpoint resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_events: List(String). The list of events to enable for this endpoint. `[*]` indicates that all events are enabled, except those that require explicit selection. All supported events listed here: [Stripe event types](https://stripe.com/docs/api/events/types).
         :param pulumi.Input[_builtins.str] url: String. The URL of the webhook endpoint.
         :param pulumi.Input[_builtins.str] api_version: String. Events sent to this endpoint will be generated with this Stripe Version instead of your account’s default Stripe Version.
@@ -148,6 +149,7 @@ class _WebhookEndpointState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebhookEndpoint resources.
+
         :param pulumi.Input[_builtins.str] api_version: String. Events sent to this endpoint will be generated with this Stripe Version instead of your account’s default Stripe Version.
         :param pulumi.Input[_builtins.str] application: String. The ID of the associated Connect application.
         :param pulumi.Input[_builtins.bool] connect: Bool. Whether this endpoint should receive events from connected accounts (`true`), or from your account (`false`). Defaults to `false`.
@@ -326,6 +328,7 @@ class WebhookEndpoint(pulumi.CustomResource):
         $ pulumi import stripe:index/webhookEndpoint:WebhookEndpoint webhook <webhook_endpoint_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_version: String. Events sent to this endpoint will be generated with this Stripe Version instead of your account’s default Stripe Version.
@@ -367,6 +370,7 @@ class WebhookEndpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import stripe:index/webhookEndpoint:WebhookEndpoint webhook <webhook_endpoint_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WebhookEndpointArgs args: The arguments to use to populate this resource's properties.

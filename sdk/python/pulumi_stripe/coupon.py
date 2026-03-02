@@ -32,6 +32,7 @@ class CouponArgs:
                  redeem_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Coupon resource.
+
         :param pulumi.Input[_builtins.int] amount_off: Int. Amount (in the currency specified) that will be taken off the subtotal of any invoices for this customer.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applies_tos: List(String). A list of product IDs this coupon applies to.
         :param pulumi.Input[_builtins.str] coupon_id: String. Unique string of your choice that will be used to identify this coupon when applying it to a customer.
@@ -218,6 +219,7 @@ class _CouponState:
                  valid: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Coupon resources.
+
         :param pulumi.Input[_builtins.int] amount_off: Int. Amount (in the currency specified) that will be taken off the subtotal of any invoices for this customer.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applies_tos: List(String). A list of product IDs this coupon applies to.
         :param pulumi.Input[_builtins.str] coupon_id: String. Unique string of your choice that will be used to identify this coupon when applying it to a customer.
@@ -473,6 +475,7 @@ class Coupon(pulumi.CustomResource):
         $ pulumi import stripe:index/coupon:Coupon coupon <coupon_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] amount_off: Int. Amount (in the currency specified) that will be taken off the subtotal of any invoices for this customer.
@@ -531,6 +534,7 @@ class Coupon(pulumi.CustomResource):
         ```sh
         $ pulumi import stripe:index/coupon:Coupon coupon <coupon_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CouponArgs args: The arguments to use to populate this resource's properties.

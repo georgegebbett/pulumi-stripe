@@ -34,6 +34,7 @@ class ProductArgs:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Product resource.
+
         :param pulumi.Input[_builtins.bool] active: Bool. Whether the product is currently available for purchase. Defaults to `true`.
         :param pulumi.Input[_builtins.str] description: String. The product’s description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] images: List(String). A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
@@ -250,6 +251,7 @@ class _ProductState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Product resources.
+
         :param pulumi.Input[_builtins.bool] active: Bool. Whether the product is currently available for purchase. Defaults to `true`.
         :param pulumi.Input[_builtins.str] description: String. The product’s description, meant to be displayable to the customer. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] images: List(String). A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
@@ -495,6 +497,7 @@ class Product(pulumi.CustomResource):
         $ pulumi import stripe:index/product:Product product <product_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Bool. Whether the product is currently available for purchase. Defaults to `true`.
@@ -543,6 +546,7 @@ class Product(pulumi.CustomResource):
         ```sh
         $ pulumi import stripe:index/product:Product product <product_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProductArgs args: The arguments to use to populate this resource's properties.

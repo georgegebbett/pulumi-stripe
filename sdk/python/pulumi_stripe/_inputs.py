@@ -73,45 +73,40 @@ __all__ = [
     'ShippingRateFixedAmountCurrencyOptionArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class FileLinkArgsDict(TypedDict):
-        created: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        String. Time at which the object was created. Measured in seconds since the Unix epoch.
-        """
-        expired: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Bool. Returns if the link is already expired.
-        """
-        expires_at: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. Time that the link expires.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. Unique identifier for the object.
-        """
-        livemode: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Bool. Has the value `true` if the object exists in live mode or the value `false` 
-        if the object exists in test mode.
-        """
-        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Map(String). Set of key-value pairs that you can attach to an object.
-        """
-        object: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. String representing the object’s type. Objects of the same type share the same value.
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. The publicly accessible URL to download the file.
-        """
-elif False:
-    FileLinkArgsDict: TypeAlias = Mapping[str, Any]
+class FileLinkArgsDict(TypedDict):
+    created: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    String. Time at which the object was created. Measured in seconds since the Unix epoch.
+    """
+    expired: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Bool. Returns if the link is already expired.
+    """
+    expires_at: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. Time that the link expires.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. Unique identifier for the object.
+    """
+    livemode: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Bool. Has the value `true` if the object exists in live mode or the value `false` 
+    if the object exists in test mode.
+    """
+    metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Map(String). Set of key-value pairs that you can attach to an object.
+    """
+    object: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. String representing the object’s type. Objects of the same type share the same value.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. The publicly accessible URL to download the file.
+    """
 
 @pulumi.input_type
 class FileLinkArgs:
@@ -250,22 +245,19 @@ class FileLinkArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class FileLinkDataArgsDict(TypedDict):
-        create: pulumi.Input[_builtins.bool]
-        """
-        Set this to true to create a file link for the newly created file. Creating a link is only possible when the file’s purpose is one of the following: business_icon, business_logo, customer_signature, dispute_evidence, pci_document, tax_document_user_upload, or terminal_reader_splashscreen.
-        """
-        expires_at: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. Time that the link expires.
-        """
-        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Map(String). Set of key-value pairs that you can attach to an object.
-        """
-elif False:
-    FileLinkDataArgsDict: TypeAlias = Mapping[str, Any]
+class FileLinkDataArgsDict(TypedDict):
+    create: pulumi.Input[_builtins.bool]
+    """
+    Set this to true to create a file link for the newly created file. Creating a link is only possible when the file’s purpose is one of the following: business_icon, business_logo, customer_signature, dispute_evidence, pci_document, tax_document_user_upload, or terminal_reader_splashscreen.
+    """
+    expires_at: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. Time that the link expires.
+    """
+    metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Map(String). Set of key-value pairs that you can attach to an object.
+    """
 
 @pulumi.input_type
 class FileLinkDataArgs:
@@ -321,18 +313,15 @@ class FileLinkDataArgs:
         pulumi.set(self, "metadata", value)
 
 
-if not MYPY:
-    class MeterCustomerMappingArgsDict(TypedDict):
-        event_payload_key: pulumi.Input[_builtins.str]
-        """
-        String. The key in the event payload to use for customer mapping.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        String. The method for mapping a meter event to a customer. Must be `by_id`.
-        """
-elif False:
-    MeterCustomerMappingArgsDict: TypeAlias = Mapping[str, Any]
+class MeterCustomerMappingArgsDict(TypedDict):
+    event_payload_key: pulumi.Input[_builtins.str]
+    """
+    String. The key in the event payload to use for customer mapping.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    String. The method for mapping a meter event to a customer. Must be `by_id`.
+    """
 
 @pulumi.input_type
 class MeterCustomerMappingArgs:
@@ -371,14 +360,11 @@ class MeterCustomerMappingArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class MeterDefaultAggregationArgsDict(TypedDict):
-        formula: pulumi.Input[_builtins.str]
-        """
-        String. Specifies how events are aggregated. Allowed values are `count` to count the number of events and `sum` to sum each event’s value.
-        """
-elif False:
-    MeterDefaultAggregationArgsDict: TypeAlias = Mapping[str, Any]
+class MeterDefaultAggregationArgsDict(TypedDict):
+    formula: pulumi.Input[_builtins.str]
+    """
+    String. Specifies how events are aggregated. Allowed values are `count` to count the number of events and `sum` to sum each event’s value.
+    """
 
 @pulumi.input_type
 class MeterDefaultAggregationArgs:
@@ -402,14 +388,11 @@ class MeterDefaultAggregationArgs:
         pulumi.set(self, "formula", value)
 
 
-if not MYPY:
-    class MeterValueSettingsArgsDict(TypedDict):
-        event_payload_key: pulumi.Input[_builtins.str]
-        """
-        The key in the usage event payload to use as the value for this meter. For example, if the event payload  contains usage on a bytes_used field, then set the event_payload_key to “bytes_used”
-        """
-elif False:
-    MeterValueSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class MeterValueSettingsArgsDict(TypedDict):
+    event_payload_key: pulumi.Input[_builtins.str]
+    """
+    The key in the usage event payload to use as the value for this meter. For example, if the event payload  contains usage on a bytes_used field, then set the event_payload_key to “bytes_used”
+    """
 
 @pulumi.input_type
 class MeterValueSettingsArgs:
@@ -433,22 +416,19 @@ class MeterValueSettingsArgs:
         pulumi.set(self, "event_payload_key", value)
 
 
-if not MYPY:
-    class PortalConfigurationBusinessProfileArgsDict(TypedDict):
-        headline: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. The messaging shown to customers in the portal.
-        """
-        privacy_policy_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. A link to the business's publicly available privacy policy.
-        """
-        terms_of_service_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. A link to the business's publicly available terms of service.
-        """
-elif False:
-    PortalConfigurationBusinessProfileArgsDict: TypeAlias = Mapping[str, Any]
+class PortalConfigurationBusinessProfileArgsDict(TypedDict):
+    headline: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. The messaging shown to customers in the portal.
+    """
+    privacy_policy_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. A link to the business's publicly available privacy policy.
+    """
+    terms_of_service_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. A link to the business's publicly available terms of service.
+    """
 
 @pulumi.input_type
 class PortalConfigurationBusinessProfileArgs:
@@ -505,30 +485,27 @@ class PortalConfigurationBusinessProfileArgs:
         pulumi.set(self, "terms_of_service_url", value)
 
 
-if not MYPY:
-    class PortalConfigurationFeaturesArgsDict(TypedDict):
-        customer_update: NotRequired[pulumi.Input['PortalConfigurationFeaturesCustomerUpdateArgsDict']]
-        """
-        List(Resource). Information about updating the customer details in the portal. See Customer Update.
-        """
-        invoice_history: NotRequired[pulumi.Input['PortalConfigurationFeaturesInvoiceHistoryArgsDict']]
-        """
-        List(Resource). Information about showing the billing history in the portal. See Invoice History.
-        """
-        payment_method_update: NotRequired[pulumi.Input['PortalConfigurationFeaturesPaymentMethodUpdateArgsDict']]
-        """
-        List(Resource). Information about updating payment methods in the portal. See Payment Method Update.
-        """
-        subscription_cancel: NotRequired[pulumi.Input['PortalConfigurationFeaturesSubscriptionCancelArgsDict']]
-        """
-        List(Resource). Information about canceling subscriptions in the portal. See Subscription Cancel.
-        """
-        subscription_updates: NotRequired[pulumi.Input[Sequence[pulumi.Input['PortalConfigurationFeaturesSubscriptionUpdateArgsDict']]]]
-        """
-        List(Resource). Information about updating subscriptions in the portal. See Subscription Update.
-        """
-elif False:
-    PortalConfigurationFeaturesArgsDict: TypeAlias = Mapping[str, Any]
+class PortalConfigurationFeaturesArgsDict(TypedDict):
+    customer_update: NotRequired[pulumi.Input['PortalConfigurationFeaturesCustomerUpdateArgsDict']]
+    """
+    List(Resource). Information about updating the customer details in the portal. See Customer Update.
+    """
+    invoice_history: NotRequired[pulumi.Input['PortalConfigurationFeaturesInvoiceHistoryArgsDict']]
+    """
+    List(Resource). Information about showing the billing history in the portal. See Invoice History.
+    """
+    payment_method_update: NotRequired[pulumi.Input['PortalConfigurationFeaturesPaymentMethodUpdateArgsDict']]
+    """
+    List(Resource). Information about updating payment methods in the portal. See Payment Method Update.
+    """
+    subscription_cancel: NotRequired[pulumi.Input['PortalConfigurationFeaturesSubscriptionCancelArgsDict']]
+    """
+    List(Resource). Information about canceling subscriptions in the portal. See Subscription Cancel.
+    """
+    subscription_updates: NotRequired[pulumi.Input[Sequence[pulumi.Input['PortalConfigurationFeaturesSubscriptionUpdateArgsDict']]]]
+    """
+    List(Resource). Information about updating subscriptions in the portal. See Subscription Update.
+    """
 
 @pulumi.input_type
 class PortalConfigurationFeaturesArgs:
@@ -617,18 +594,15 @@ class PortalConfigurationFeaturesArgs:
         pulumi.set(self, "subscription_updates", value)
 
 
-if not MYPY:
-    class PortalConfigurationFeaturesCustomerUpdateArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Whether the feature is enabled.
-        """
-        allowed_updates: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The types of customer updates that are supported. When empty, customers are not updatable.
-        """
-elif False:
-    PortalConfigurationFeaturesCustomerUpdateArgsDict: TypeAlias = Mapping[str, Any]
+class PortalConfigurationFeaturesCustomerUpdateArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether the feature is enabled.
+    """
+    allowed_updates: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The types of customer updates that are supported. When empty, customers are not updatable.
+    """
 
 @pulumi.input_type
 class PortalConfigurationFeaturesCustomerUpdateArgs:
@@ -668,14 +642,11 @@ class PortalConfigurationFeaturesCustomerUpdateArgs:
         pulumi.set(self, "allowed_updates", value)
 
 
-if not MYPY:
-    class PortalConfigurationFeaturesInvoiceHistoryArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Whether the feature is enabled.
-        """
-elif False:
-    PortalConfigurationFeaturesInvoiceHistoryArgsDict: TypeAlias = Mapping[str, Any]
+class PortalConfigurationFeaturesInvoiceHistoryArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether the feature is enabled.
+    """
 
 @pulumi.input_type
 class PortalConfigurationFeaturesInvoiceHistoryArgs:
@@ -699,14 +670,11 @@ class PortalConfigurationFeaturesInvoiceHistoryArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class PortalConfigurationFeaturesPaymentMethodUpdateArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Whether the feature is enabled.
-        """
-elif False:
-    PortalConfigurationFeaturesPaymentMethodUpdateArgsDict: TypeAlias = Mapping[str, Any]
+class PortalConfigurationFeaturesPaymentMethodUpdateArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether the feature is enabled.
+    """
 
 @pulumi.input_type
 class PortalConfigurationFeaturesPaymentMethodUpdateArgs:
@@ -730,26 +698,23 @@ class PortalConfigurationFeaturesPaymentMethodUpdateArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class PortalConfigurationFeaturesSubscriptionCancelArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Whether the feature is enabled.
-        """
-        cancellation_reason: NotRequired[pulumi.Input['PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgsDict']]
-        """
-        Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer
-        """
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to cancel subscriptions immediately or at the end of the billing period.
-        """
-        proration_behavior: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether to create prorations when canceling subscriptions.
-        """
-elif False:
-    PortalConfigurationFeaturesSubscriptionCancelArgsDict: TypeAlias = Mapping[str, Any]
+class PortalConfigurationFeaturesSubscriptionCancelArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether the feature is enabled.
+    """
+    cancellation_reason: NotRequired[pulumi.Input['PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgsDict']]
+    """
+    Whether the cancellation reasons will be collected in the portal and which options are exposed to the customer
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to cancel subscriptions immediately or at the end of the billing period.
+    """
+    proration_behavior: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether to create prorations when canceling subscriptions.
+    """
 
 @pulumi.input_type
 class PortalConfigurationFeaturesSubscriptionCancelArgs:
@@ -821,18 +786,15 @@ class PortalConfigurationFeaturesSubscriptionCancelArgs:
         pulumi.set(self, "proration_behavior", value)
 
 
-if not MYPY:
-    class PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Bool. Whether the feature is enabled.
-        """
-        options: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        List(String). Which cancellation reasons will be given as options to the customer. Supported values are `too_expensive`, `missing_features`, `switched_service`, `unused`, `customer_service`, `too_complex`, `low_quality`, and `other`.
-        """
-elif False:
-    PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgsDict: TypeAlias = Mapping[str, Any]
+class PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Bool. Whether the feature is enabled.
+    """
+    options: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List(String). Which cancellation reasons will be given as options to the customer. Supported values are `too_expensive`, `missing_features`, `switched_service`, `unused`, `customer_service`, `too_complex`, `low_quality`, and `other`.
+    """
 
 @pulumi.input_type
 class PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgs:
@@ -871,26 +833,23 @@ class PortalConfigurationFeaturesSubscriptionCancelCancellationReasonArgs:
         pulumi.set(self, "options", value)
 
 
-if not MYPY:
-    class PortalConfigurationFeaturesSubscriptionUpdateArgsDict(TypedDict):
-        default_allowed_updates: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The types of subscription updates that are supported. When empty, subscriptions are not updateable.
-        """
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Whether the feature is enabled.
-        """
-        products: pulumi.Input[Sequence[pulumi.Input['PortalConfigurationFeaturesSubscriptionUpdateProductArgsDict']]]
-        """
-        The list of products that support subscription updates.
-        """
-        proration_behavior: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Determines how to handle prorations resulting from subscription updates
-        """
-elif False:
-    PortalConfigurationFeaturesSubscriptionUpdateArgsDict: TypeAlias = Mapping[str, Any]
+class PortalConfigurationFeaturesSubscriptionUpdateArgsDict(TypedDict):
+    default_allowed_updates: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The types of subscription updates that are supported. When empty, subscriptions are not updateable.
+    """
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether the feature is enabled.
+    """
+    products: pulumi.Input[Sequence[pulumi.Input['PortalConfigurationFeaturesSubscriptionUpdateProductArgsDict']]]
+    """
+    The list of products that support subscription updates.
+    """
+    proration_behavior: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Determines how to handle prorations resulting from subscription updates
+    """
 
 @pulumi.input_type
 class PortalConfigurationFeaturesSubscriptionUpdateArgs:
@@ -960,18 +919,15 @@ class PortalConfigurationFeaturesSubscriptionUpdateArgs:
         pulumi.set(self, "proration_behavior", value)
 
 
-if not MYPY:
-    class PortalConfigurationFeaturesSubscriptionUpdateProductArgsDict(TypedDict):
-        prices: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        List(String). The list of price IDs for the product that a subscription can be updated to.
-        """
-        product: pulumi.Input[_builtins.str]
-        """
-        String. The product id.
-        """
-elif False:
-    PortalConfigurationFeaturesSubscriptionUpdateProductArgsDict: TypeAlias = Mapping[str, Any]
+class PortalConfigurationFeaturesSubscriptionUpdateProductArgsDict(TypedDict):
+    prices: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List(String). The list of price IDs for the product that a subscription can be updated to.
+    """
+    product: pulumi.Input[_builtins.str]
+    """
+    String. The product id.
+    """
 
 @pulumi.input_type
 class PortalConfigurationFeaturesSubscriptionUpdateProductArgs:
@@ -1010,18 +966,15 @@ class PortalConfigurationFeaturesSubscriptionUpdateProductArgs:
         pulumi.set(self, "product", value)
 
 
-if not MYPY:
-    class PortalConfigurationLoginPageArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A shareable URL to the hosted portal login page. Your customers will be able to log in with their email and receive a link to their customer portal.
-        """
-elif False:
-    PortalConfigurationLoginPageArgsDict: TypeAlias = Mapping[str, Any]
+class PortalConfigurationLoginPageArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Bool. Set to true to generate a shareable URL login_page.url that will take your customers to a hosted login page for the customer portal.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A shareable URL to the hosted portal login page. Your customers will be able to log in with their email and receive a link to their customer portal.
+    """
 
 @pulumi.input_type
 class PortalConfigurationLoginPageArgs:
@@ -1062,42 +1015,39 @@ class PortalConfigurationLoginPageArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class PriceCurrencyOptionArgsDict(TypedDict):
-        currency: pulumi.Input[_builtins.str]
-        """
-        String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
-        """
-        custom_unit_amount: NotRequired[pulumi.Input['PriceCurrencyOptionCustomUnitAmountArgsDict']]
-        """
-        List(Resource). When set,
-        provides configuration for the amount to be adjusted by the customer during Checkout Sessions and Payment Links.
-        See details in Custom Unit Amount.
-        """
-        tax_behavior: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. Only required if a default tax behavior was not provided in the Stripe Tax settings.
-        Specifies whether the price is considered inclusive of taxes or exclusive of taxes.
-        One of `inclusive`, `exclusive`, or `unspecified`.
-        Once specified as either inclusive or exclusive, it cannot be changed.
-        """
-        tiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['PriceCurrencyOptionTierArgsDict']]]]
-        """
-        List(Resource). Each element represents a pricing tier.
-        This parameter requires `billing_scheme` to be set to `tiered`. This resource can be used more than once and follows
-        the same fields as the root tiers block
-        """
-        unit_amount: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. A positive integer in cents (or -1 for a free price) representing how much to charge.
-        """
-        unit_amount_decimal: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Float. Same as unit_amount, but accepts a decimal value in cents with at most 12
-        decimal places. Only one of unit_amount and unit_amount_decimal can be set.
-        """
-elif False:
-    PriceCurrencyOptionArgsDict: TypeAlias = Mapping[str, Any]
+class PriceCurrencyOptionArgsDict(TypedDict):
+    currency: pulumi.Input[_builtins.str]
+    """
+    String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
+    """
+    custom_unit_amount: NotRequired[pulumi.Input['PriceCurrencyOptionCustomUnitAmountArgsDict']]
+    """
+    List(Resource). When set,
+    provides configuration for the amount to be adjusted by the customer during Checkout Sessions and Payment Links.
+    See details in Custom Unit Amount.
+    """
+    tax_behavior: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. Only required if a default tax behavior was not provided in the Stripe Tax settings.
+    Specifies whether the price is considered inclusive of taxes or exclusive of taxes.
+    One of `inclusive`, `exclusive`, or `unspecified`.
+    Once specified as either inclusive or exclusive, it cannot be changed.
+    """
+    tiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['PriceCurrencyOptionTierArgsDict']]]]
+    """
+    List(Resource). Each element represents a pricing tier.
+    This parameter requires `billing_scheme` to be set to `tiered`. This resource can be used more than once and follows
+    the same fields as the root tiers block
+    """
+    unit_amount: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. A positive integer in cents (or -1 for a free price) representing how much to charge.
+    """
+    unit_amount_decimal: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Float. Same as unit_amount, but accepts a decimal value in cents with at most 12
+    decimal places. Only one of unit_amount and unit_amount_decimal can be set.
+    """
 
 @pulumi.input_type
 class PriceCurrencyOptionArgs:
@@ -1217,27 +1167,24 @@ class PriceCurrencyOptionArgs:
         pulumi.set(self, "unit_amount_decimal", value)
 
 
-if not MYPY:
-    class PriceCurrencyOptionCustomUnitAmountArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Bool. Pass in `true` to enable `custom_unit_amount`, otherwise omit `custom_unit_amount`.
-        """
-        maximum: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. The maximum unit amount the customer can specify for this item.
-        """
-        minimum: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. The minimum unit amount the customer can specify for this item.
-        Must be at least the minimum charge amount.
-        """
-        preset: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. The starting unit amount which can be updated by the customer.
-        """
-elif False:
-    PriceCurrencyOptionCustomUnitAmountArgsDict: TypeAlias = Mapping[str, Any]
+class PriceCurrencyOptionCustomUnitAmountArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Bool. Pass in `true` to enable `custom_unit_amount`, otherwise omit `custom_unit_amount`.
+    """
+    maximum: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. The maximum unit amount the customer can specify for this item.
+    """
+    minimum: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. The minimum unit amount the customer can specify for this item.
+    Must be at least the minimum charge amount.
+    """
+    preset: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. The starting unit amount which can be updated by the customer.
+    """
 
 @pulumi.input_type
 class PriceCurrencyOptionCustomUnitAmountArgs:
@@ -1311,34 +1258,31 @@ class PriceCurrencyOptionCustomUnitAmountArgs:
         pulumi.set(self, "preset", value)
 
 
-if not MYPY:
-    class PriceCurrencyOptionTierArgsDict(TypedDict):
-        flat_amount: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. The flat billing amount for an entire tier, regardless of the number of units in the
-        tier.
-        """
-        flat_amount_decimal: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Float. Same as `flat_amount`, but accepts a decimal value representing an integer
-        in the minor units of the currency. Only one of `flat_amount` and `flat_amount_decimal` can be set.
-        """
-        unit_amount: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. The per-unit billing amount for each individual unit for which this tier applies.
-        """
-        unit_amount_decimal: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Float. Same as `unit_amount`, but accepts a decimal value in cents with at most 12
-        decimal places. Only one of `unit_amount` and `unit_amount_decimal` can be set.
-        """
-        up_to: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. Specifies the upper bound of this tier. The lower bound of a tier is the upper bound of the
-        previous tier adding one. Use `-1` to define a fallback tier.
-        """
-elif False:
-    PriceCurrencyOptionTierArgsDict: TypeAlias = Mapping[str, Any]
+class PriceCurrencyOptionTierArgsDict(TypedDict):
+    flat_amount: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. The flat billing amount for an entire tier, regardless of the number of units in the
+    tier.
+    """
+    flat_amount_decimal: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Float. Same as `flat_amount`, but accepts a decimal value representing an integer
+    in the minor units of the currency. Only one of `flat_amount` and `flat_amount_decimal` can be set.
+    """
+    unit_amount: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. The per-unit billing amount for each individual unit for which this tier applies.
+    """
+    unit_amount_decimal: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Float. Same as `unit_amount`, but accepts a decimal value in cents with at most 12
+    decimal places. Only one of `unit_amount` and `unit_amount_decimal` can be set.
+    """
+    up_to: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. Specifies the upper bound of this tier. The lower bound of a tier is the upper bound of the
+    previous tier adding one. Use `-1` to define a fallback tier.
+    """
 
 @pulumi.input_type
 class PriceCurrencyOptionTierArgs:
@@ -1435,27 +1379,24 @@ class PriceCurrencyOptionTierArgs:
         pulumi.set(self, "up_to", value)
 
 
-if not MYPY:
-    class PriceCustomUnitAmountArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Bool. Pass in `true` to enable `custom_unit_amount`, otherwise omit `custom_unit_amount`.
-        """
-        maximum: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. The maximum unit amount the customer can specify for this item.
-        """
-        minimum: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. The minimum unit amount the customer can specify for this item.
-        Must be at least the minimum charge amount.
-        """
-        preset: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. The starting unit amount which can be updated by the customer.
-        """
-elif False:
-    PriceCustomUnitAmountArgsDict: TypeAlias = Mapping[str, Any]
+class PriceCustomUnitAmountArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Bool. Pass in `true` to enable `custom_unit_amount`, otherwise omit `custom_unit_amount`.
+    """
+    maximum: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. The maximum unit amount the customer can specify for this item.
+    """
+    minimum: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. The minimum unit amount the customer can specify for this item.
+    Must be at least the minimum charge amount.
+    """
+    preset: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. The starting unit amount which can be updated by the customer.
+    """
 
 @pulumi.input_type
 class PriceCustomUnitAmountArgs:
@@ -1529,37 +1470,34 @@ class PriceCustomUnitAmountArgs:
         pulumi.set(self, "preset", value)
 
 
-if not MYPY:
-    class PriceRecurringArgsDict(TypedDict):
-        interval: pulumi.Input[_builtins.str]
-        """
-        String. Specifies billing frequency. Either `day`, `week`, `month` or `year`.
-        """
-        aggregate_usage: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. Specifies a usage of aggregation strategy for prices of `usage_type=metered`.
-        Allowed values are `sum` for summing up all usage during a period, `last_during_period` for using the last usage
-        record reported within a period, `last_ever` for using the last usage record ever (across period bounds) or `max`
-        which uses the usage record with the maximum reported usage during a period.
-        """
-        interval_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. This parameter is (Required) when interval value is set. The number of intervals between subscription billings. For
-        example, `interval=month` and `interval_count=3` bills every 3 months. Maximum of one year interval allowed (1 year,
-        12 months, or 52 weeks).
-        """
-        meter: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. The meter tracking the usage of a metered price.
-        """
-        usage_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. Configures how the quantity per period should be determined. Can be either `metered`
-        or `licensed`. `licensed` automatically bills the quantity set when adding it to a subscription. `metered` aggregates
-        the total usage based on usage records. Defaults to `licensed`.
-        """
-elif False:
-    PriceRecurringArgsDict: TypeAlias = Mapping[str, Any]
+class PriceRecurringArgsDict(TypedDict):
+    interval: pulumi.Input[_builtins.str]
+    """
+    String. Specifies billing frequency. Either `day`, `week`, `month` or `year`.
+    """
+    aggregate_usage: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. Specifies a usage of aggregation strategy for prices of `usage_type=metered`.
+    Allowed values are `sum` for summing up all usage during a period, `last_during_period` for using the last usage
+    record reported within a period, `last_ever` for using the last usage record ever (across period bounds) or `max`
+    which uses the usage record with the maximum reported usage during a period.
+    """
+    interval_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. This parameter is (Required) when interval value is set. The number of intervals between subscription billings. For
+    example, `interval=month` and `interval_count=3` bills every 3 months. Maximum of one year interval allowed (1 year,
+    12 months, or 52 weeks).
+    """
+    meter: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. The meter tracking the usage of a metered price.
+    """
+    usage_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. Configures how the quantity per period should be determined. Can be either `metered`
+    or `licensed`. `licensed` automatically bills the quantity set when adding it to a subscription. `metered` aggregates
+    the total usage based on usage records. Defaults to `licensed`.
+    """
 
 @pulumi.input_type
 class PriceRecurringArgs:
@@ -1661,34 +1599,31 @@ class PriceRecurringArgs:
         pulumi.set(self, "usage_type", value)
 
 
-if not MYPY:
-    class PriceTierArgsDict(TypedDict):
-        flat_amount: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. The flat billing amount for an entire tier, regardless of the number of units in the
-        tier.
-        """
-        flat_amount_decimal: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Float. Same as `flat_amount`, but accepts a decimal value representing an integer
-        in the minor units of the currency. Only one of `flat_amount` and `flat_amount_decimal` can be set.
-        """
-        unit_amount: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. The per-unit billing amount for each individual unit for which this tier applies.
-        """
-        unit_amount_decimal: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Float. Same as `unit_amount`, but accepts a decimal value in cents with at most 12
-        decimal places. Only one of `unit_amount` and `unit_amount_decimal` can be set.
-        """
-        up_to: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. Specifies the upper bound of this tier. The lower bound of a tier is the upper bound of the
-        previous tier adding one. Use `-1` to define a fallback tier.
-        """
-elif False:
-    PriceTierArgsDict: TypeAlias = Mapping[str, Any]
+class PriceTierArgsDict(TypedDict):
+    flat_amount: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. The flat billing amount for an entire tier, regardless of the number of units in the
+    tier.
+    """
+    flat_amount_decimal: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Float. Same as `flat_amount`, but accepts a decimal value representing an integer
+    in the minor units of the currency. Only one of `flat_amount` and `flat_amount_decimal` can be set.
+    """
+    unit_amount: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. The per-unit billing amount for each individual unit for which this tier applies.
+    """
+    unit_amount_decimal: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Float. Same as `unit_amount`, but accepts a decimal value in cents with at most 12
+    decimal places. Only one of `unit_amount` and `unit_amount_decimal` can be set.
+    """
+    up_to: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. Specifies the upper bound of this tier. The lower bound of a tier is the upper bound of the
+    previous tier adding one. Use `-1` to define a fallback tier.
+    """
 
 @pulumi.input_type
 class PriceTierArgs:
@@ -1785,18 +1720,15 @@ class PriceTierArgs:
         pulumi.set(self, "up_to", value)
 
 
-if not MYPY:
-    class PriceTransformQuantityArgsDict(TypedDict):
-        divide_by: pulumi.Input[_builtins.int]
-        """
-        Int. Divide usage by this number.
-        """
-        round: pulumi.Input[_builtins.str]
-        """
-        String. After division, either round the result `up` or `down`.
-        """
-elif False:
-    PriceTransformQuantityArgsDict: TypeAlias = Mapping[str, Any]
+class PriceTransformQuantityArgsDict(TypedDict):
+    divide_by: pulumi.Input[_builtins.int]
+    """
+    Int. Divide usage by this number.
+    """
+    round: pulumi.Input[_builtins.str]
+    """
+    String. After division, either round the result `up` or `down`.
+    """
 
 @pulumi.input_type
 class PriceTransformQuantityArgs:
@@ -1835,22 +1767,19 @@ class PriceTransformQuantityArgs:
         pulumi.set(self, "round", value)
 
 
-if not MYPY:
-    class PromotionCodeRestrictionsArgsDict(TypedDict):
-        first_time_transaction: pulumi.Input[_builtins.bool]
-        """
-        Bool. A Boolean indicating if the Promotion Code should only be redeemed for Customers without any successful payments or invoices.
-        """
-        minimum_amount: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Int. Minimum amount required to redeem this Promotion Code into a Coupon (e.g., a purchase must be $100 or more to work).
-        """
-        minimum_amount_currency: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. Three-letter ISO code for `minimum_amount`.
-        """
-elif False:
-    PromotionCodeRestrictionsArgsDict: TypeAlias = Mapping[str, Any]
+class PromotionCodeRestrictionsArgsDict(TypedDict):
+    first_time_transaction: pulumi.Input[_builtins.bool]
+    """
+    Bool. A Boolean indicating if the Promotion Code should only be redeemed for Customers without any successful payments or invoices.
+    """
+    minimum_amount: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Int. Minimum amount required to redeem this Promotion Code into a Coupon (e.g., a purchase must be $100 or more to work).
+    """
+    minimum_amount_currency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. Three-letter ISO code for `minimum_amount`.
+    """
 
 @pulumi.input_type
 class PromotionCodeRestrictionsArgs:
@@ -1906,20 +1835,17 @@ class PromotionCodeRestrictionsArgs:
         pulumi.set(self, "minimum_amount_currency", value)
 
 
-if not MYPY:
-    class ShippingRateDeliveryEstimateArgsDict(TypedDict):
-        maximum: NotRequired[pulumi.Input['ShippingRateDeliveryEstimateMaximumArgsDict']]
-        """
-        List(Resource. The upper bound of the estimated range.
-        Please see Delivery Estimate Definition.
-        """
-        minimum: NotRequired[pulumi.Input['ShippingRateDeliveryEstimateMinimumArgsDict']]
-        """
-        List(Resource). The lower bound of the estimated range. 
-        Please see Delivery Estimate Definition.
-        """
-elif False:
-    ShippingRateDeliveryEstimateArgsDict: TypeAlias = Mapping[str, Any]
+class ShippingRateDeliveryEstimateArgsDict(TypedDict):
+    maximum: NotRequired[pulumi.Input['ShippingRateDeliveryEstimateMaximumArgsDict']]
+    """
+    List(Resource. The upper bound of the estimated range.
+    Please see Delivery Estimate Definition.
+    """
+    minimum: NotRequired[pulumi.Input['ShippingRateDeliveryEstimateMinimumArgsDict']]
+    """
+    List(Resource). The lower bound of the estimated range. 
+    Please see Delivery Estimate Definition.
+    """
 
 @pulumi.input_type
 class ShippingRateDeliveryEstimateArgs:
@@ -1964,18 +1890,15 @@ class ShippingRateDeliveryEstimateArgs:
         pulumi.set(self, "minimum", value)
 
 
-if not MYPY:
-    class ShippingRateDeliveryEstimateMaximumArgsDict(TypedDict):
-        unit: pulumi.Input[_builtins.str]
-        """
-        The upper bound of the estimated range. If empty, represents no lower bound.
-        """
-        value: pulumi.Input[_builtins.int]
-        """
-        Must be greater than 0.
-        """
-elif False:
-    ShippingRateDeliveryEstimateMaximumArgsDict: TypeAlias = Mapping[str, Any]
+class ShippingRateDeliveryEstimateMaximumArgsDict(TypedDict):
+    unit: pulumi.Input[_builtins.str]
+    """
+    The upper bound of the estimated range. If empty, represents no lower bound.
+    """
+    value: pulumi.Input[_builtins.int]
+    """
+    Must be greater than 0.
+    """
 
 @pulumi.input_type
 class ShippingRateDeliveryEstimateMaximumArgs:
@@ -2014,18 +1937,15 @@ class ShippingRateDeliveryEstimateMaximumArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ShippingRateDeliveryEstimateMinimumArgsDict(TypedDict):
-        unit: pulumi.Input[_builtins.str]
-        """
-        The lower bound of the estimated range. If empty, represents no lower bound.
-        """
-        value: pulumi.Input[_builtins.int]
-        """
-        Must be greater than 0.
-        """
-elif False:
-    ShippingRateDeliveryEstimateMinimumArgsDict: TypeAlias = Mapping[str, Any]
+class ShippingRateDeliveryEstimateMinimumArgsDict(TypedDict):
+    unit: pulumi.Input[_builtins.str]
+    """
+    The lower bound of the estimated range. If empty, represents no lower bound.
+    """
+    value: pulumi.Input[_builtins.int]
+    """
+    Must be greater than 0.
+    """
 
 @pulumi.input_type
 class ShippingRateDeliveryEstimateMinimumArgs:
@@ -2064,22 +1984,19 @@ class ShippingRateDeliveryEstimateMinimumArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class ShippingRateFixedAmountArgsDict(TypedDict):
-        amount: pulumi.Input[_builtins.int]
-        """
-        Int. A non-negative integer in cents representing how much to charge.
-        """
-        currency: pulumi.Input[_builtins.str]
-        """
-        String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
-        """
-        currency_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['ShippingRateFixedAmountCurrencyOptionArgsDict']]]]
-        """
-        List(Resource). Please see argument details Currency Option
-        """
-elif False:
-    ShippingRateFixedAmountArgsDict: TypeAlias = Mapping[str, Any]
+class ShippingRateFixedAmountArgsDict(TypedDict):
+    amount: pulumi.Input[_builtins.int]
+    """
+    Int. A non-negative integer in cents representing how much to charge.
+    """
+    currency: pulumi.Input[_builtins.str]
+    """
+    String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
+    """
+    currency_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['ShippingRateFixedAmountCurrencyOptionArgsDict']]]]
+    """
+    List(Resource). Please see argument details Currency Option
+    """
 
 @pulumi.input_type
 class ShippingRateFixedAmountArgs:
@@ -2134,23 +2051,20 @@ class ShippingRateFixedAmountArgs:
         pulumi.set(self, "currency_options", value)
 
 
-if not MYPY:
-    class ShippingRateFixedAmountCurrencyOptionArgsDict(TypedDict):
-        amount: pulumi.Input[_builtins.int]
-        """
-        Int. (Required) Int. A non-negative integer in cents representing how much to charge.
-        """
-        currency: pulumi.Input[_builtins.str]
-        """
-        String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
-        """
-        tax_behavior: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String. Specifies whether the price is considered inclusive of taxes or exclusive of
-        taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified it cannot be changed, default is `unspecified`.
-        """
-elif False:
-    ShippingRateFixedAmountCurrencyOptionArgsDict: TypeAlias = Mapping[str, Any]
+class ShippingRateFixedAmountCurrencyOptionArgsDict(TypedDict):
+    amount: pulumi.Input[_builtins.int]
+    """
+    Int. (Required) Int. A non-negative integer in cents representing how much to charge.
+    """
+    currency: pulumi.Input[_builtins.str]
+    """
+    String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
+    """
+    tax_behavior: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String. Specifies whether the price is considered inclusive of taxes or exclusive of
+    taxes. One of `inclusive`, `exclusive`, or `unspecified`. Once specified it cannot be changed, default is `unspecified`.
+    """
 
 @pulumi.input_type
 class ShippingRateFixedAmountCurrencyOptionArgs:

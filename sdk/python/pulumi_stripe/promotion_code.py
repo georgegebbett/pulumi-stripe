@@ -31,6 +31,7 @@ class PromotionCodeArgs:
                  restrictions: Optional[pulumi.Input['PromotionCodeRestrictionsArgs']] = None):
         """
         The set of arguments for constructing a PromotionCode resource.
+
         :param pulumi.Input[_builtins.str] coupon: String. The coupon for this promotion code.
         :param pulumi.Input[_builtins.bool] active: Bool. Whether the promotion code is currently active. Defaults to `true`.
         :param pulumi.Input[_builtins.str] code: String. The customer-facing code. Regardless of case, this code must be unique across all active promotion codes for a specific customer. If left blank, we will generate one automatically.
@@ -166,6 +167,7 @@ class _PromotionCodeState:
                  restrictions: Optional[pulumi.Input['PromotionCodeRestrictionsArgs']] = None):
         """
         Input properties used for looking up and filtering PromotionCode resources.
+
         :param pulumi.Input[_builtins.bool] active: Bool. Whether the promotion code is currently active. Defaults to `true`.
         :param pulumi.Input[_builtins.str] code: String. The customer-facing code. Regardless of case, this code must be unique across all active promotion codes for a specific customer. If left blank, we will generate one automatically.
         :param pulumi.Input[_builtins.str] coupon: String. The coupon for this promotion code.
@@ -349,6 +351,7 @@ class PromotionCode(pulumi.CustomResource):
         $ pulumi import stripe:index/promotionCode:PromotionCode code <promotion_code_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Bool. Whether the promotion code is currently active. Defaults to `true`.
@@ -410,6 +413,7 @@ class PromotionCode(pulumi.CustomResource):
         ```sh
         $ pulumi import stripe:index/promotionCode:PromotionCode code <promotion_code_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PromotionCodeArgs args: The arguments to use to populate this resource's properties.
