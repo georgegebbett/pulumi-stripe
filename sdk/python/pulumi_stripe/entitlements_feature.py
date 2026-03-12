@@ -24,6 +24,7 @@ class EntitlementsFeatureArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EntitlementsFeature resource.
+
         :param pulumi.Input[_builtins.str] lookup_key: String. A unique key you provide as your own system identifier. This may be up to 80 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Map(String). Set of key-value pairs that you can attach to an object.
                This can be useful for storing additional information about the object in a structured format.
@@ -84,6 +85,7 @@ class _EntitlementsFeatureState:
                  object: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EntitlementsFeature resources.
+
         :param pulumi.Input[_builtins.bool] active: Inactive features cannot be attached to new products.
         :param pulumi.Input[_builtins.bool] livemode: Bool. Has the value `true` if the object exists in live mode or the value `false`
                if the object exists in test mode.
@@ -215,6 +217,7 @@ class EntitlementsFeature(pulumi.CustomResource):
         $ pulumi import stripe:index/entitlementsFeature:EntitlementsFeature feature <feature_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] lookup_key: String. A unique key you provide as your own system identifier. This may be up to 80 characters.
@@ -251,6 +254,7 @@ class EntitlementsFeature(pulumi.CustomResource):
         ```sh
         $ pulumi import stripe:index/entitlementsFeature:EntitlementsFeature feature <feature_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EntitlementsFeatureArgs args: The arguments to use to populate this resource's properties.

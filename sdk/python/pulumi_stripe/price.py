@@ -40,6 +40,7 @@ class PriceArgs:
                  unit_amount_decimal: Optional[pulumi.Input[_builtins.float]] = None):
         """
         The set of arguments for constructing a Price resource.
+
         :param pulumi.Input[_builtins.str] currency: String. Three-letter ISO currency code, in lowercase - [supported currencies](https://stripe.com/docs/currencies).
         :param pulumi.Input[_builtins.str] product: String. The ID of the product that this price will belong to.
         :param pulumi.Input[_builtins.bool] active: Bool. Whether the price can be used for new purchases. Defaults to `true`.
@@ -359,6 +360,7 @@ class _PriceState:
                  unit_amount_decimal: Optional[pulumi.Input[_builtins.float]] = None):
         """
         Input properties used for looking up and filtering Price resources.
+
         :param pulumi.Input[_builtins.bool] active: Bool. Whether the price can be used for new purchases. Defaults to `true`.
         :param pulumi.Input[_builtins.str] billing_scheme: String. Describes how to compute the price per period. Either `per_unit` or `tiered`
                . `per_unit` indicates that the fixed amount (specified in `unit_amount` or `unit_amount_decimal`) will be charged per
@@ -789,6 +791,7 @@ class Price(pulumi.CustomResource):
         $ pulumi import stripe:index/price:Price price <price_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Bool. Whether the price can be used for new purchases. Defaults to `true`.
@@ -925,6 +928,7 @@ class Price(pulumi.CustomResource):
         ```sh
         $ pulumi import stripe:index/price:Price price <price_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PriceArgs args: The arguments to use to populate this resource's properties.

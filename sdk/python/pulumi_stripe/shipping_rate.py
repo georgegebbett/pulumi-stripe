@@ -31,6 +31,7 @@ class ShippingRateArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ShippingRate resource.
+
         :param pulumi.Input[_builtins.str] display_name: String. The name of the shipping rate, meant to be displayable to the customer. 
                This will appear on CheckoutSessions.
         :param pulumi.Input['ShippingRateFixedAmountArgs'] fixed_amount: List(Resource). Describes a fixed amount to charge for shipping. 
@@ -178,6 +179,7 @@ class _ShippingRateState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ShippingRate resources.
+
         :param pulumi.Input[_builtins.bool] active: Bool. Whether the shipping rate is active (can't be used when creating). Defaults to `true`.
         :param pulumi.Input[Sequence[pulumi.Input['ShippingRateDeliveryEstimateArgs']]] delivery_estimates: List(Resource). The estimated range for how long shipping will take, 
                meant to be displayable to the customer. This will appear on CheckoutSessions.
@@ -401,6 +403,7 @@ class ShippingRate(pulumi.CustomResource):
         $ pulumi import stripe:index/shippingRate:ShippingRate rate <shipping_rate_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Bool. Whether the shipping rate is active (can't be used when creating). Defaults to `true`.
@@ -481,6 +484,7 @@ class ShippingRate(pulumi.CustomResource):
         ```sh
         $ pulumi import stripe:index/shippingRate:ShippingRate rate <shipping_rate_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ShippingRateArgs args: The arguments to use to populate this resource's properties.

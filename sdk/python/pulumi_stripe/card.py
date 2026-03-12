@@ -29,6 +29,7 @@ class CardArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Card resource.
+
         :param pulumi.Input[_builtins.str] customer: String. The customer that this card belongs to.
         :param pulumi.Input[_builtins.int] exp_month: Int. Number representing the card's expiration month.
         :param pulumi.Input[_builtins.int] exp_year: Int. Four-digit number representing the card's expiration year.
@@ -177,6 +178,7 @@ class _CardState:
                  tokenization_method: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Card resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] address: Map(String). Address map with fields related to the address: `line1`, `line2`, `city`, `state`
                , `zip` and `country`.
         :param pulumi.Input[_builtins.str] address_line1_check: String. If address `line1` was provided, results of the check: `pass`, `fail`, `unavailable`,
@@ -541,6 +543,7 @@ class Card(pulumi.CustomResource):
         $ pulumi import stripe:index/card:Card card <card_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] address: Map(String). Address map with fields related to the address: `line1`, `line2`, `city`, `state`
@@ -610,6 +613,7 @@ class Card(pulumi.CustomResource):
         ```sh
         $ pulumi import stripe:index/card:Card card <card_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CardArgs args: The arguments to use to populate this resource's properties.

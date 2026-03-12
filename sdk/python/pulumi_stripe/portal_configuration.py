@@ -29,6 +29,7 @@ class PortalConfigurationArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PortalConfiguration resource.
+
         :param pulumi.Input['PortalConfigurationBusinessProfileArgs'] business_profile: List(Resource). The business information shown to customers in the portal. More details in Business Profile section
         :param pulumi.Input['PortalConfigurationFeaturesArgs'] features: List(Resource). Information about the features available in the portal. Feature section described in Feature section
         :param pulumi.Input[_builtins.bool] active: Bool. Whether the configuration is active and can be used to create portal sessions. (On create it is always set as `true`)
@@ -132,6 +133,7 @@ class _PortalConfigurationState:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering PortalConfiguration resources.
+
         :param pulumi.Input[_builtins.bool] active: Bool. Whether the configuration is active and can be used to create portal sessions. (On create it is always set as `true`)
         :param pulumi.Input['PortalConfigurationBusinessProfileArgs'] business_profile: List(Resource). The business information shown to customers in the portal. More details in Business Profile section
         :param pulumi.Input[_builtins.str] default_return_url: String. The default URL to redirect customers to when they click on the portal’s link to return to your website. This can be overriden when creating the session.
@@ -339,6 +341,7 @@ class PortalConfiguration(pulumi.CustomResource):
         $ pulumi import stripe:index/portalConfiguration:PortalConfiguration configuration <portal_configuration_id>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Bool. Whether the configuration is active and can be used to create portal sessions. (On create it is always set as `true`)
@@ -439,6 +442,7 @@ class PortalConfiguration(pulumi.CustomResource):
         ```sh
         $ pulumi import stripe:index/portalConfiguration:PortalConfiguration configuration <portal_configuration_id>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PortalConfigurationArgs args: The arguments to use to populate this resource's properties.
